@@ -3,12 +3,12 @@
 /******************************************************************************/
 
 @font-face {
-    font-family: "Mukta";
+    font-family: "Source Sans Pro";
     src: url("../fonts/SourceSansPro-Regular.ttf") format("ttf");
 }
     
 @font-face {
-    font-family: "Nunito";
+    font-family: "Roboto";
     src: url("../fonts/Roboto-Regular.ttf") format("ttf");
 }
 
