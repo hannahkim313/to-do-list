@@ -1,0 +1,51 @@
+/******************************************************************************/
+/* Inspired by: https://www.joshwcomeau.com/css/custom-css-reset/
+/******************************************************************************/
+
+@font-face {
+    font-family: "Mukta";
+    src: url("../fonts/SourceSansPro-Regular.ttf") format("ttf");
+}
+    
+@font-face {
+    font-family: "Nunito";
+    src: url("../fonts/Roboto-Regular.ttf") format("ttf");
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    max-width: 1920px;
+    height: 100%;
+}
+
+body {
+    font-family: "Source Sans Pro", "Roboto", sans-serif;
+
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+#root, #__next {
+    isolation: isolate;
+}
