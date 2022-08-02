@@ -5,9 +5,122 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do Manager</title>
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/style.css">
     <script src="../src/index.js" defer></script>
 </head>
     <body>
         <!-- Hard code HTML to create skeleton structure before using webpack plugin -->
+        <header>
+            <img src="../src/img/logo.svg" alt="Logo icon of three horizontal lines">
+            <h1>To-Do Manager</h1>
+        </header>
+        <nav class="sidebar">
+            <menu class="sidebar-sections">
+                <li>
+                    <a href="">
+                        <img src="../src/img/home.svg" alt="Home icon">
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="../src/img/calendar-today.svg" alt="Calendar icon with a single dot inside of it">
+                        <p>Today</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="../src/img/calendar-month.svg" alt="Calendar icon with multiple dots inside of it">
+                        <p>Upcoming</p>
+                    </a>
+                </li>
+                <li class="projects-section">
+                    <a href="">
+                        <div class="section-title">
+                            <img src="../src/img/folder.svg" alt="Folder icon">
+                            <p>Projects</p>
+                        </div>
+                        <img src="../src/img/chevron-down.svg" alt="Chevron down icon">
+                    </a>
+                    <menu class="projects">
+                        <li>
+                            <a href="">
+                                <div class="project-name">
+                                    <img src="../src/img/circle-filled.svg" alt="Filled circle icon">
+                                    <p>Errands</p>
+                                </div>
+                                <aside class="alerts">
+                                    <p class="overdue">1</p>
+                                    <p class="remaining">2</p>
+                                </aside>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="project-name">
+                                    <img src="../src/img/circle-filled.svg" alt="Filled circle icon">
+                                    <p>Road Trip</p>
+                                </div>
+                                <aside class="alerts">
+                                    <p class="remaining">7</p>
+                                </aside>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="project-name">
+                                    <img src="../src/img/circle-filled.svg" alt="Filled circle icon">
+                                    <p>Work</p>
+                                </div>
+                                <aside class="alerts">
+                                    <p class="overdue">1</p>
+                                    <p class="remaining">2</p>
+                                </aside>
+                            </a>
+                        </li>
+                    </menu>
+                </li>
+            </menu>
+            <button>
+                <img src="../src/img/plus-light.svg" alt="Plus icon">
+                <p>Add project</p>
+            </button>
+        </nav>
+        <main id="home-page">
+            <h2>Home</h2>
+            <article class="overview">
+                <h3>Overview</h3>
+                <div class="date-container">
+                    <p class="date">8</p>
+                    <p class="day">Wed,<br>Jun 2022</p>
+                </div>
+                <div class="tasks-overview">
+                    <article class="tasks-completed">
+                        <h4>4</h4>
+                        <p>Tasks<br>completed</p>
+                    </article>
+                    <article class="tasks-remaining">
+                        <h4>3</h4>
+                        <p>Tasks<br>remaining</p>
+                    </article>
+                    <article class="tasks-overdue">
+                        <h4>2</h4>
+                        <p>Tasks<br>overdue</p>
+                    </article>
+                </div>
+                <div class="img-container"><img src="../src/img/overview.jpg" alt="Foggy forest"></div>
+            </article>
+            <article class="notes">
+                <h3>Notes</h3>
+                <textarea name="user-notes" id="user-notes" cols="30" rows="10"></textarea>
+            </article>
+        </main>
+        <footer>
+            <a href="">
+                <img src="../src/img/github.svg" alt="Github icon">
+                <p>Hannah Kim</p>
+            </a>
+        </footer>
     </body>
 </html>
