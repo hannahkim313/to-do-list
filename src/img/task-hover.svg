@@ -1,0 +1,9 @@
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <ellipse ry="9" rx="9" id="svg_2" cy="12" cx="12" fill="#e0d4ca"/>
+  <path d="m12,20a8,8 0 0 1 -8,-8a8,8 0 0 1 8,-8a8,8 0 0 1 8,8a8,8 0 0 1 -8,8m0,-18a10,10 0 0 0 -10,10a10,10 0 0 0 10,10a10,10 0 0 0 10,-10a10,10 0 0 0 -10,-10z" id="svg_1" fill="#433929"/>
+  <ellipse ry="0.25" rx="1.84375" id="svg_3" cy="13.28124" cx="-9.15624" fill="#7d8446"/>
+ </g>
+
+</svg>

@@ -47,7 +47,7 @@
                         <li>
                             <a href="">
                                 <div class="project-name">
-                                    <img src="../src/img/circle-filled.svg" alt="Filled circle icon">
+                                    <img src="../src/img/circle-filled-dark-orange.svg" alt="Filled circle icon">
                                     <p>Errands</p>
                                 </div>
                                 <aside class="alerts">
@@ -59,7 +59,7 @@
                         <li>
                             <a href="">
                                 <div class="project-name">
-                                    <img src="../src/img/circle-filled.svg" alt="Filled circle icon">
+                                    <img src="../src/img/circle-filled-dark-orange.svg" alt="Filled circle icon">
                                     <p>Road Trip</p>
                                 </div>
                                 <aside class="alerts">
@@ -70,7 +70,7 @@
                         <li>
                             <a href="">
                                 <div class="project-name">
-                                    <img src="../src/img/circle-filled.svg" alt="Filled circle icon">
+                                    <img src="../src/img/circle-filled-dark-orange.svg" alt="Filled circle icon">
                                     <p>Work</p>
                                 </div>
                                 <aside class="alerts">
@@ -87,7 +87,7 @@
                 <p>Add project</p>
             </button>
         </nav>
-        <main id="home-page">
+        <!-- <main id="home-page">
             <h2>Home</h2>
             <article class="overview">
                 <h3>Overview</h3>
@@ -115,6 +115,111 @@
                 <h3>Notes</h3>
                 <textarea name="user-notes" id="user-notes" cols="30" rows="10"></textarea>
             </article>
+        </main> -->
+        <main id="today-page">
+            <h2>Today</h2>
+            <div class="projects">
+                <article class="project one">
+                    <h3>Errands</h3>
+                    <div class="options">
+                        <button type="button" class="drop-down">
+                            <p class="input">
+                                Sort by: Date
+                                <img src="../src/img/arrow-up.svg" alt="Low to high">
+                            </p>
+                            <img src="../src/img/chevron-down.svg" alt="Click to expand sort by options">
+                        </button>
+                        <button type="button">
+                            <img src="../src/img/plus-dark.svg" alt="Add new task">
+                        </button>
+                        <button type="button">
+                            <img src="../src/img/dots-horizontal.svg" alt="Additional options for project">
+                        </button>
+                    </div>
+                    <menu class="tasks">
+                        <li class="task one">
+                            <div class="left">
+                                <button type="button">
+                                    <img src="../src/img/checkbox.svg" alt="Checked box">
+                                </button>
+                                <p>Get groceries</p>
+                            </div>
+                            <div class="right">
+                                <p>Jun 8, 2022</p>
+                                <img src="../src/img/circle-filled-yellow.svg" alt="Medium priority">
+                                <div class="buttons">
+                                    <button type="button">
+                                        <img src="../src/img/pencil.svg" alt="Edit task">
+                                    </button>
+                                    <button type="button">
+                                        <img src="../src/img/trash-can.svg" alt="Delete task">
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="task two">
+                            <div class="left">
+                                <button type="button">
+                                    <img src="../src/img/circle-outline.svg" alt="Unchecked box">
+                                </button>
+                                <p>Meal prep</p>
+                            </div>
+                            <div class="right">
+                                <p>Jun 8, 2022</p>
+                                <img src="../src/img/circle-filled-blue.svg" alt="Low priority">
+                                <div class="buttons">
+                                    <button type="button">
+                                        <img src="../src/img/pencil.svg" alt="Edit task">
+                                    </button>
+                                    <button type="button">
+                                        <img src="../src/img/trash-can.svg" alt="Delete task">
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </menu>
+                </article>
+                <article class="project two">
+                    <h3>Work</h3>
+                    <div class="options">
+                        <button type="button" class="drop-down">
+                            <p class="input">
+                                Sort by: Date
+                                <img src="../src/img/arrow-up.svg" alt="Low to high">
+                            </p>
+                            <img src="../src/img/chevron-down.svg" alt="Click to expand sort by options">
+                        </button>
+                        <button type="button">
+                            <img src="../src/img/plus-dark.svg" alt="Add new task">
+                        </button>
+                        <button type="button">
+                            <img src="../src/img/dots-horizontal.svg" alt="Additional options for project">
+                        </button>
+                    </div>
+                    <div class="tasks">
+                        <article class="task one">
+                            <div class="left">
+                                <button type="button">
+                                    <img src="../src/img/circle-outline.svg" alt="Unchecked box">
+                                </button>
+                                <p>Introduce new team members</p>
+                            </div>
+                            <div class="right">
+                                <p>Jun 8, 2022</p>
+                                <img src="../src/img/circle-filled-red.svg" alt="High priority">
+                                <div class="buttons">
+                                    <button type="button">
+                                        <img src="../src/img/pencil.svg" alt="Edit task">
+                                    </button>
+                                    <button type="button">
+                                        <img src="../src/img/trash-can.svg" alt="Delete task">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </article>
+            </div>
         </main>
         <footer>
             <a href="">

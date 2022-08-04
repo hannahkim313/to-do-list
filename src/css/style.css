@@ -369,6 +369,157 @@ header img[src*="logo"] {
 }
 
 /******************************************************************************/
+/* Selectors for the today page start here.
+/******************************************************************************/
+
+#today-page {
+    padding: 8px 16px 16px 16px;
+
+    overflow-y: auto;
+    
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+#today-page h2 {
+    padding: 16px 16px 16px 32px;
+
+    border-bottom: 1px solid var(--main-font-color);
+
+    grid-row: 1 / 2;
+}
+
+#today-page .projects {
+    padding: 16px;
+
+    grid-row: 2 / 3;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#today-page .projects button {
+    background: none;
+    border: none;
+}
+
+#today-page .projects img[src$="svg"] {
+    width: 1.3rem;
+}
+
+#today-page .projects .project {
+    padding: 16px;
+    
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: repeat(auto-fit, minmax(1rem, auto));
+}
+
+#today-page .projects .project h3 {
+    padding-bottom: 16px;
+    
+    grid-column: 1 / 2;
+}
+
+/* Selectors for the project options start here. */
+
+#today-page .projects .project .options {
+    padding-bottom: 16px;
+    
+    grid-column: 2 / 3;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#today-page .projects .project .options button:first-child:hover {
+    background-color: var(--grey);
+}
+
+#today-page .projects .project .options button:not(:first-child) {
+    padding: 4px;
+    
+    transition: all 0.1s ease-out;
+}
+
+#today-page .projects .project .options button:not(:first-child):hover {
+    background-color: var(--light-grey);
+    border-radius: 8px;
+
+    transition: all 0.1s ease-in;
+}
+
+#today-page .projects .project .options .drop-down {
+    padding: 2px 8px;
+    
+    background-color: var(--light-grey);
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+}
+
+#today-page .projects .project .options .drop-down .input {
+    display: flex;
+    align-items: center;
+}
+
+/* Selectors for the project tasks start here. */
+
+#today-page .projects .project .tasks {
+    grid-column: 1 / 3;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#today-page .projects .project .task {
+    padding: 16px 18px;
+
+    background-color: var(--grey-orange-light);
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#today-page .projects .project .task .left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#today-page .projects .project .task .right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+#today-page .projects .project .task .right .buttons {
+    display: flex;
+    gap: 8px;
+}
+
+#today-page .projects .project .task .right .buttons button {
+    padding: 4px;
+
+    transition: all 0.1s ease-out;
+}
+
+#today-page .projects .project .task .right .buttons button:hover {
+    background-color: #e0d4ca;
+    border-radius: 8px;
+
+    transition: all 0.1s ease-in;
+}
+
+/******************************************************************************/
 /* Selectors for the footer start here.
 /******************************************************************************/
 
