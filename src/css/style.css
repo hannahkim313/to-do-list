@@ -9,12 +9,16 @@
 :root {
     --main-font-color: #433929;
 
+    --light-grey: #eaeaea;
+    --grey: #e1e1e1;
     --main-brown: #cdb69b;
     --main-brown-light: #eacfb1;
     --grey-orange: #f0e3d8;
-    --grey-orange-hover: #dbcec4;
-    --dark-orange: #b4790c;
-    --dark-orange-hover: #cc890e;
+    --grey-orange-light: #f3ede5;
+    --grey-orange-dark : #c4ac9a;
+    --grey-orange-hover: #e0d4ca;
+    --dark-orange: #cc890e;
+    --dark-orange-hover: #b4790c;
     --red: #ac5f4e;
     --yellow: #e8b24f;
     --green: #9c8651;
@@ -74,6 +78,7 @@ header img[src*="logo"] {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 16px;
 }
 
 .sidebar li {
@@ -88,10 +93,14 @@ header img[src*="logo"] {
     display: flex;
     align-items: center;
     gap: 8px;
+
+    transition: all 0.1s ease-out;
 }
 
 .sidebar li a:hover {
     background-color: var(--grey-orange-hover);
+
+    transition: all 0.1s ease-in;
 }
 
 .sidebar .sidebar-sections .projects-section > a {
@@ -110,6 +119,12 @@ header img[src*="logo"] {
 
 /* Selectors for the sidebar "Projects" section start here. */
 
+.sidebar .projects {
+    height: 350px;
+
+    overflow-y: auto;
+}
+
 .sidebar .projects > li > a {
     padding-left: 40px;
 
@@ -124,7 +139,7 @@ header img[src*="logo"] {
 }
 
 .sidebar .projects > li > a img[src*="circle-filled"] {
-    width: 0.7rem;
+    width: 0.8rem;
 }
 
 .sidebar .projects > li > a .alerts {
@@ -147,7 +162,7 @@ header img[src*="logo"] {
 }
 
 .sidebar .projects > li > a .alerts .remaining {
-    background-color: var(--yellow);
+    background-color: var(--grey-orange-dark);
 }
 
 /* Selectors for the sidebar button start here. */
@@ -184,7 +199,7 @@ header img[src*="logo"] {
 }
 
 /******************************************************************************/
-/* Selectors for the main content of the home page start here.
+/* Selectors for the home page start here.
 /******************************************************************************/
 
 #home-page {
@@ -344,7 +359,7 @@ header img[src*="logo"] {
     margin-left: 16px;
     padding: 16px;
 
-    background-color: #f3ede5;
+    background-color: var(--grey-orange-light);
     border: none;
     border-radius: 8px;
 }
