@@ -9,8 +9,9 @@
 :root {
     --main-font-color: #433929;
 
-    --light-grey: #eaeaea;
     --grey: #e1e1e1;
+    --grey-light: #eaeaea;
+    --grey-dark: #867e72;
     --main-brown: #cdb69b;
     --main-brown-light: #eacfb1;
     --grey-orange: #f0e3d8;
@@ -448,7 +449,7 @@ header img[src*="logo"] {
 }
 
 #today-page .projects .project .options button:not(:first-child):hover {
-    background-color: var(--light-grey);
+    background-color: var(--grey-light);
     border-radius: 8px;
 
     transition: all 0.1s ease-in;
@@ -457,7 +458,7 @@ header img[src*="logo"] {
 #today-page .projects .project .options .drop-down {
     padding: 2px 8px;
     
-    background-color: var(--light-grey);
+    background-color: var(--grey-light);
     border-radius: 4px;
 
     display: flex;
@@ -487,6 +488,13 @@ header img[src*="logo"] {
 
     display: flex;
     justify-content: space-between;
+}
+
+#today-page .projects .project .task.checked .left,
+#today-page .projects .project .task.checked .right > :not(.buttons) {
+    color: var(--grey-dark);
+
+    opacity: 0.5;
 }
 
 #today-page .projects .project .task .left {
