@@ -565,15 +565,29 @@ header img[src*="logo"] {
 
     padding: 2px 10px;
 
-    color: white;
+    transition: all 0.1s ease-out;
+}
 
+#upcoming-page .filters button:nth-child(2) {
+    color: white;
+    
     background-color: var(--grey-orange-dark);
     border: none;
     border-radius: 32px;
 }
 
+#upcoming-page .filters button:nth-child(odd) {
+    background: none;
+    border: 1px solid var(--grey-orange-dark);
+    border-radius: 32px;
+}
+
 #upcoming-page .filters button:hover {
-    background-color: #ad9787;
+    color: white;
+
+    background-color: var(--grey-orange-dark);
+
+    transition: all 0.1s ease-in;
 }
 
 #upcoming-page .projects {
@@ -621,23 +635,6 @@ header img[src*="logo"] {
     gap: 8px;
 }
 
-#upcoming-page .projects .project .options button:first-child:hover {
-    background-color: var(--grey);
-}
-
-#upcoming-page .projects .project .options button:not(:first-child) {
-    padding: 4px;
-    
-    transition: all 0.1s ease-out;
-}
-
-#upcoming-page .projects .project .options button:not(:first-child):hover {
-    background-color: var(--grey-light);
-    border-radius: 8px;
-
-    transition: all 0.1s ease-in;
-}
-
 #upcoming-page .projects .project .options .drop-down {
     padding: 2px 8px;
     
@@ -646,6 +643,14 @@ header img[src*="logo"] {
 
     display: flex;
     align-items: center;
+
+    transition: all 0.1s ease-out;
+}
+
+#upcoming-page .projects .project .options .drop-down:first-child:hover {
+    background-color: var(--grey);
+
+    transition: all 0.1s ease-in;
 }
 
 #upcoming-page .projects .project .options .drop-down .input {
