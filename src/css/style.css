@@ -495,7 +495,7 @@ header img[src*="logo"] {
 }
 
 #today-page .projects .project .task.checked .left,
-#today-page .projects .project .task.checked .right > :not(.buttons) {
+#today-page .projects .project .task.checked .right > :not(.expand-task) {
     color: var(--grey-dark);
 
     opacity: 0.5;
@@ -513,18 +513,13 @@ header img[src*="logo"] {
     gap: 24px;
 }
 
-#today-page .projects .project .task .right .buttons {
-    display: flex;
-    gap: 8px;
-}
-
-#today-page .projects .project .task .right .buttons button {
+#today-page .projects .project .task .right .expand-task {
     padding: 4px;
 
     transition: all 0.1s ease-out;
 }
 
-#today-page .projects .project .task .right .buttons button:hover {
+#today-page .projects .project .task .right .expand-task:hover {
     background-color: #e0d4ca;
     border-radius: 8px;
 
@@ -683,7 +678,7 @@ header img[src*="logo"] {
 }
 
 #upcoming-page .projects .project .task.checked .left,
-#upcoming-page .projects .project .task.checked .right > :not(.buttons) {
+#upcoming-page .projects .project .task.checked .right > :not(.expand-task) {
     color: var(--grey-dark);
 
     opacity: 0.5;
@@ -701,18 +696,13 @@ header img[src*="logo"] {
     gap: 24px;
 }
 
-#upcoming-page .projects .project .task .right .buttons {
-    display: flex;
-    gap: 8px;
-}
-
-#upcoming-page .projects .project .task .right .buttons button {
+#upcoming-page .projects .project .task .right .expand-task {
     padding: 4px;
 
     transition: all 0.1s ease-out;
 }
 
-#upcoming-page .projects .project .task .right .buttons button:hover {
+#upcoming-page .projects .project .task .right .expand-task:hover {
     background-color: #e0d4ca;
     border-radius: 8px;
 
