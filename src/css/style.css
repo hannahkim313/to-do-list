@@ -206,7 +206,7 @@ header img[src*="logo"] {
 #home-page {
     min-height: 100%;
 
-    padding: 8px 16px 16px 16px;
+    padding: 16px;
     
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -357,7 +357,7 @@ header img[src*="logo"] {
 
     resize: none;
 
-    margin-left: 16px;
+    margin: 0 16px 0 16px;
     padding: 16px;
 
     background-color: var(--grey-orange-light);
@@ -374,7 +374,7 @@ header img[src*="logo"] {
 /******************************************************************************/
 
 #today-page {
-    padding: 8px 16px 16px 16px;
+    padding: 16px;
 
     overflow-y: auto;
     
@@ -531,7 +531,7 @@ header img[src*="logo"] {
 /******************************************************************************/
 
 #upcoming-page {
-    padding: 8px 16px 16px 16px;
+    padding: 16px;
 
     overflow-y: auto;
     
