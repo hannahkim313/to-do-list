@@ -651,7 +651,7 @@ header img[src*="logo"] {
     transition: all 0.1s ease-out;
 }
 
-#upcoming-page .projects .project .options .drop-down:first-child:hover {
+#upcoming-page .projects .project .options .drop-down:hover {
     background-color: var(--grey);
 
     transition: all 0.1s ease-in;
@@ -683,7 +683,7 @@ header img[src*="logo"] {
 }
 
 #upcoming-page .projects .project .task.checked .left,
-#today-page .projects .project .task.checked .right > :not(.buttons) {
+#upcoming-page .projects .project .task.checked .right > :not(.buttons) {
     color: var(--grey-dark);
 
     opacity: 0.5;
