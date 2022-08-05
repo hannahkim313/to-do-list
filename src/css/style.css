@@ -710,6 +710,167 @@ header img[src*="logo"] {
 }
 
 /******************************************************************************/
+/* Selectors for each project section start here.
+/******************************************************************************/
+
+#projects-page {
+    padding: 16px;
+
+    overflow-y: auto;
+    
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+#projects-page h2 {
+    padding: 16px 16px 16px 32px;
+
+    border-bottom: 1px solid var(--main-font-color);
+    
+    grid-row: 1 / 2;
+}
+
+#projects-page .project {
+    padding: 32px 32px 16px 32px;
+
+    grid-row: 2 / 3;
+    
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+}
+
+#projects-page .project button {
+    background: none;
+    border: none;
+}
+
+#projects-page .project img[src$="svg"] {
+    width: 1.3rem;
+}
+
+#projects-page .project h3 {
+    padding-bottom: 16px;
+    
+    grid-column: 1 / 2;
+}
+
+/* Selectors for the project options start here. */
+
+#projects-page .project .options {
+    padding-bottom: 16px;
+    
+    grid-column: 2 / 3;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#projects-page .project .options .drop-down {
+    padding: 2px 8px;
+    
+    background-color: var(--grey-light);
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+
+    transition: all 0.1s ease-out;
+}
+
+#projects-page .project .options .drop-down:hover {
+    background-color: var(--grey);
+
+    transition: all 0.1s ease-in;
+}
+
+#projects-page .project .options .drop-down .input {
+    display: flex;
+    align-items: center;
+}
+
+#projects-page .project .options button:not(.drop-down) {
+    padding: 4px;
+    
+    transition: all 0.1s ease-out;
+}
+
+#projects-page .project .options button:not(.drop-down):hover {
+    background-color: var(--grey-light);
+    border-radius: 8px;
+
+    transition: all 0.1s ease-in;
+}
+
+/* Selectors for the project tasks start here. */
+
+#projects-page .project .tasks {
+    grid-column: 1 / 3;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#projects-page .project .task {
+    padding: 16px 18px;
+
+    background-color: var(--grey-orange-light);
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#projects-page .project .task.checked .left,
+#projects-page .project .task.checked .right > :not(.expand-task) {
+    color: var(--grey-dark);
+
+    opacity: 0.5;
+}
+
+#projects-page .project .task .left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#projects-page .project .task .left .overdue {
+    font-size: 0.8rem;
+
+    margin-left: 16px;
+    padding: 2px 8px;
+
+    color: white;
+
+    background-color: var(--red);
+    border-radius: 16px;
+}
+
+#projects-page .project .task .right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+#projects-page .project .task .right .expand-task {
+    padding: 4px;
+    
+    transition: all 0.1s ease-out;
+}
+
+#projects-page .project .task .right .expand-task:hover {
+    background-color: #e0d4ca;
+    border-radius: 8px;
+
+    transition: all 0.1s ease-in;
+}
+
+/******************************************************************************/
 /* Selectors for the footer start here.
 /******************************************************************************/
 

@@ -147,14 +147,9 @@
                             <div class="right">
                                 <p>Jun 8, 2022</p>
                                 <img src="../src/img/circle-filled-yellow.svg" alt="Medium priority">
-                                <div class="buttons">
-                                    <button type="button">
-                                        <img src="../src/img/pencil.svg" alt="Edit task">
-                                    </button>
-                                    <button type="button">
-                                        <img src="../src/img/trash-can.svg" alt="Delete task">
-                                    </button>
-                                </div>
+                                <button type="button" class="expand-task">
+                                    <img src="../src/img/chevron-down.svg" alt="">
+                                </button>
                             </div>
                         </li>
                         <li class="task two">
@@ -167,14 +162,9 @@
                             <div class="right">
                                 <p>Jun 8, 2022</p>
                                 <img src="../src/img/circle-filled-blue.svg" alt="Low priority">
-                                <div class="buttons">
-                                    <button type="button">
-                                        <img src="../src/img/pencil.svg" alt="Edit task">
-                                    </button>
-                                    <button type="button">
-                                        <img src="../src/img/trash-can.svg" alt="Delete task">
-                                    </button>
-                                </div>
+                                <button type="button" class="expand-task">
+                                    <img src="../src/img/chevron-down.svg" alt="">
+                                </button>
                             </div>
                         </li>
                     </menu>
@@ -207,21 +197,16 @@
                             <div class="right">
                                 <p>Jun 8, 2022</p>
                                 <img src="../src/img/circle-filled-red.svg" alt="High priority">
-                                <div class="buttons">
-                                    <button type="button">
-                                        <img src="../src/img/pencil.svg" alt="Edit task">
-                                    </button>
-                                    <button type="button">
-                                        <img src="../src/img/trash-can.svg" alt="Delete task">
-                                    </button>
-                                </div>
+                                <button type="button" class="expand-task">
+                                    <img src="../src/img/chevron-down.svg" alt="">
+                                </button>
                             </div>
                         </article>
                     </div>
                 </article>
             </div>
         </main> -->
-        <main id="upcoming-page">
+        <!-- <main id="upcoming-page">
             <h2>Upcoming</h2>
             <div class="filters">
                 <button type="button" class="all">All</button>
@@ -251,14 +236,9 @@
                             <div class="right">
                                 <p>Jun 10, 2022</p>
                                 <img src="../src/img/circle-filled-red.svg" alt="High priority">
-                                <div class="buttons">
-                                    <button type="button">
-                                        <img src="../src/img/pencil.svg" alt="Edit task">
-                                    </button>
-                                    <button type="button">
-                                        <img src="../src/img/trash-can.svg" alt="Delete task">
-                                    </button>
-                                </div>
+                                <button type="button" class="expand-task">
+                                    <img src="../src/img/chevron-down.svg" alt="">
+                                </button>
                             </div>
                         </li>
                     </menu>
@@ -285,18 +265,68 @@
                             <div class="right">
                                 <p>Jun 11, 2022</p>
                                 <img src="../src/img/circle-filled-yellow.svg" alt="Medium priority">
-                                <div class="buttons">
-                                    <button type="button">
-                                        <img src="../src/img/pencil.svg" alt="Edit task">
-                                    </button>
-                                    <button type="button">
-                                        <img src="../src/img/trash-can.svg" alt="Delete task">
-                                    </button>
-                                </div>
+                                <button type="button" class="expand-task">
+                                    <img src="../src/img/chevron-down.svg" alt="">
+                                </button>
                             </div>
                         </li>
                     </menu>
                 </article>
+            </div>
+        </main> -->
+        <main id="projects-page">
+            <h2>Projects</h2>
+            <article class="project">
+                <h3>Errands</h3>
+                <div class="options">
+                    <button type="button" class="drop-down">
+                        <p class="input">
+                            Sort by: Priority
+                            <img src="../src/img/arrow-down.svg" alt="High to low">
+                        </p>
+                        <img src="../src/img/chevron-down.svg" alt="Click to expand sort by options">
+                    </button>
+                    <button type="button">
+                        <img src="../src/img/plus-dark.svg" alt="Add new task">
+                    </button>
+                    <button type="button">
+                        <img src="../src/img/dots-horizontal.svg" alt="Additional options for project">
+                    </button>
+                </div>
+                <menu class="tasks">
+                    <li class="task one checked">
+                        <div class="left">
+                            <button type="button">
+                                <img src="../src/img/checkbox.svg" alt="Checked box">
+                            </button>
+                            <p><s>Get groceries</s></p>
+                        </div>
+                        <div class="right">
+                            <p>Jun 8, 2022</p>
+                            <img src="../src/img/circle-filled-yellow.svg" alt="Medium priority">
+                            <button type="button" class="expand-task">
+                                <img src="../src/img/chevron-down.svg" alt="">
+                            </button>
+                        </div>
+                    </li>
+                    <li class="task two">
+                        <div class="left">
+                            <button type="button">
+                                <img src="../src/img/circle-outline.svg" alt="Unchecked box">
+                            </button>
+                            <p>Send out postcard</p>
+                            <p class="overdue">Overdue</p>
+                        </div>
+                        <div class="right">
+                            <p>Jun 4, 2022</p>
+                            <img src="../src/img/circle-filled-yellow.svg" alt="Medium priority">
+                            <button type="button" class="expand-task">
+                                <img src="../src/img/chevron-down.svg" alt="">
+                            </button>
+                        </div>
+                    </li>
+                </menu>
+            </article>
             </div>
         </main>
         <footer>
