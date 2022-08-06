@@ -60,7 +60,7 @@ header {
     gap: 16px;
 }
 
-header img[src*="logo"] {
+header .logo {
     width: 50px;
 }
 
