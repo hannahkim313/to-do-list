@@ -2,10 +2,10 @@ import { Img } from "../dom-creation/elements/img";
 import logoImg from "../../img/logo.svg";
 
 const createLogo = () => {
-    const img = Img({ src: logoImg, alt: "Bulleted list icon" });
-    const logo = img.get();
-    logo.setAttribute("class", "logo");
-    return logo;
+    const logo = Img();
+    logo.initialize({ src: logoImg, alt: "Bulleted list icon" });
+    logo.setClass("logo");
+    return logo.get();
 };
 
 const createHeading = () => {
