@@ -1,11 +1,14 @@
-const Img = ({ src, alt }) => {
+const Img = () => {
     const img = document.createElement("img");
-    img.src = src;
-    img.alt = alt;
+    const initialize = ({ src, alt }) => {
+        img.src = src;
+        img.alt = alt;
+    };
+    const setClass = (name) => img.setAttribute("class", name);
     const get = () => img;
-    return { get, };
+    return { initialize, setClass, get };
 };
 
 export {
-    Img,
+    Img
 };
