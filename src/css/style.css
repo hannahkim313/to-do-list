@@ -86,7 +86,7 @@ header .logo {
     list-style: none;
 }
 
-.sidebar li a {
+.sidebar li {
     padding: 8px;
 
     border-radius: 8px;
@@ -98,11 +98,19 @@ header .logo {
     transition: all 0.1s ease-out;
 }
 
-.sidebar li a:hover {
+.sidebar li:hover {
     background-color: var(--grey-orange-hover);
+
+    cursor: pointer;
 
     transition: all 0.1s ease-in;
 }
+
+.sidebar .sidebar-sections > li > img {
+    width: 1.5rem;
+}
+
+/* Selectors for the sidebar "Projects" section start here. */
 
 .sidebar .sidebar-sections .projects-section > a {
     display: flex;
@@ -113,12 +121,6 @@ header .logo {
     display: flex;
     gap: 8px;
 }
-
-.sidebar .sidebar-sections > li > a img[src*="svg"] {
-    width: 1.5rem;
-}
-
-/* Selectors for the sidebar "Projects" section start here. */
 
 .sidebar .projects {
     height: 350px;
@@ -195,7 +197,7 @@ header .logo {
     transition: all 0.2s ease-in-out;
 }
 
-.sidebar button img[src*="plus"] {
+.sidebar button .plus-light {
     width: 1rem;
 }
 
