@@ -1,12 +1,10 @@
-const Img = () => {
+import { setAttributesOf } from "../../helper-functions/set-attributes-of";
+
+const Img = (attributes) => {
     const img = document.createElement("img");
-    const initialize = ({ src, alt }) => {
-        img.src = src;
-        img.alt = alt;
-    };
-    const setClass = (name) => img.setAttribute("class", name);
-    const get = () => img;
-    return { initialize, setClass, get };
+    setAttributesOf(img, attributes);
+    const getImg = () => img;
+    return { getImg };
 };
 
 export {
