@@ -1,24 +1,27 @@
+import { appendChildren } from "../helper-functions/append-children";
 import { Img } from "../dom-creation/elements/img";
 import logoImg from "../../img/logo.svg";
 
-const createLogo = () => {
-    const logo = Img();
-    logo.initialize({ src: logoImg, alt: "Bulleted list icon" });
-    logo.setClass("logo");
-    return logo.get();
+const _createLogo = () => {
+    const attributes = {
+        src: logoImg,
+        alt: "Bulleted list icon",
+        class: "logo",
+    };
+    return Img(attributes).getImg();
 };
 
-const createHeading = () => {
+const _createHeading = () => {
     const heading = document.createElement("h1");
     heading.textContent = "To-Do Manager";
     return heading;
 };
 
 const createHeader = () => {
-    const logo = createLogo();
-    const heading = createHeading();
+    const logo = _createLogo();
+    const heading = _createHeading();
     const header = document.createElement("header");
-    header.append(logo, heading);
+    appendChildren(header, logo, heading);
     return header;
 };
 
