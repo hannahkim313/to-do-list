@@ -1,8 +1,8 @@
 import { appendChildren } from "../helper-functions/append-children";
-import { Para } from "./elements/p";
+import { Para } from "./elements/para";
 import { Button } from "./elements/button";
-import { SidebarSection } from "./features/sidebar-section";
-import { createPlusLightIcon } from "./features/plus-light-icon";
+import { SidebarSection } from "./page-components/sidebar-section";
+import { createPlusLightIcon } from "./page-components/plus-light-icon";
 import homeImg from "../../img/home.svg";
 import todayImg from "../../img/today.svg";
 import upcomingImg from "../../img/upcoming.svg";
