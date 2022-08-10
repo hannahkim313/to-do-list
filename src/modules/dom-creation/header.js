@@ -18,10 +18,12 @@ const _createHeading = () => {
 };
 
 const createHeader = () => {
-    const logo = _createLogo();
-    const heading = _createHeading();
+    const headerElements = [
+        _createLogo(),
+        _createHeading()
+    ];
     const header = document.createElement("header");
-    appendChildren(header, logo, heading);
+    appendChildren(header, headerElements);
     return header;
 };
 

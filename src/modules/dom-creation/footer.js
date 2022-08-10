@@ -14,18 +14,22 @@ const _createLogo = () => {
 const _createName = () => Para("Hannah Kim").getPara();
 
 const _createLink = () => {
-    const githubIcon = _createLogo();
-    const name = _createName();
+    const linkElements = [
+        _createLogo(),
+        _createName()
+    ];
     const link = document.createElement("a");
     link.setAttribute("href", "");
-    appendChildren(link, githubIcon, name);
+    appendChildren(link, linkElements);
     return link;
 };
 
 const createFooter = () => {
-    const link = _createLink();
+    const footerElements = [
+        _createLink()
+    ];
     const footer = document.createElement("footer");
-    appendChildren(footer, link);
+    appendChildren(footer, footerElements);
     return footer;
 };
 

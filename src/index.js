@@ -5,14 +5,11 @@ import { createFooter } from "./modules/dom-creation/footer";
 import "./css/style.css";
 import "./css/reset.css";
 
-const header = createHeader();
-const sidebar = createSidebar();
-const footer = createFooter();
+const bodyElements = [
+    createHeader(),
+    createSidebar(),
+    createFooter()
+];
 
 const body = document.querySelector("body");
-appendChildren(
-    body,
-    header,
-    sidebar,
-    footer
-);
+appendChildren(body, bodyElements);

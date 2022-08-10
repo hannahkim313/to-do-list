@@ -7,21 +7,25 @@ const _createIcon = (attributes) => Img(attributes).getImg();
 
 const _createName = (text) => Para(text).getPara();
 
-const _createSectionBtn = () => {
+const _createSectionBtn = (sectionInfo) => {
     const attributes = {
         type: "button",
     };
-    const btn = Button(attributes).getBtn();
-    return btn;
+    const sectionBtn = Button(attributes).getBtn();
+    const sectionBtnElements = [
+        _createIcon(sectionInfo.imgAttributes),
+        _createName(sectionInfo.paraText.text),
+    ];
+    appendChildren(sectionBtn, sectionBtnElements);
+    return sectionBtn;
 };
 
 const SidebarSection = (sectionInfo) => {
-    const icon = _createIcon(sectionInfo.imgAttributes);
-    const sectionName = _createName(sectionInfo.paraText.text);
-    const sectionBtn = _createSectionBtn();
-    appendChildren(sectionBtn, icon, sectionName);
+    const sectionElements = [
+        _createSectionBtn(sectionInfo),
+    ];
     const section = document.createElement("li");
-    appendChildren(section, sectionBtn);
+    appendChildren(section, sectionElements);
     const getSection = () => section;
     return { getSection };
 };

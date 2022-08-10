@@ -37,20 +37,20 @@ const _createSections = () => {
 const _createMenu = (sections) => {
     const menu = document.createElement("menu");
     menu.setAttribute("class", "sidebar-sections");
-    for (const section of sections) {
-        appendChildren(menu, section);
-    };
+    appendChildren(menu, sections);
     return menu;
 };
 
 const _createAddProjectBtn = () => {
-    const plusIcon = createPlusLightIcon();
-    const btnText = Para("Add project").getPara();
+    const btnElements = [
+        createPlusLightIcon(),
+        Para("Add project").getPara(),
+    ];
     const btnAttributes = {
         type: "button",
     };
     const btn = Button(btnAttributes).getBtn();
-    appendChildren(btn, plusIcon, btnText);
+    appendChildren(btn, btnElements);
     return btn;
 };
 
@@ -62,10 +62,12 @@ const _createNav = () => {
 
 const createSidebar = () => {
     const sections = _createSections();
-    const sectionMenu = _createMenu(sections);
-    const addProjectBtn = _createAddProjectBtn();
+    const sidebarElements = [
+        _createMenu(sections),
+        _createAddProjectBtn(),
+    ];
     const sidebar = _createNav();
-    appendChildren(sidebar, sectionMenu, addProjectBtn);
+    appendChildren(sidebar, sidebarElements);
     return sidebar;
 };
 
