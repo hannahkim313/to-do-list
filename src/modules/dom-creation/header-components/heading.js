@@ -1,8 +1,6 @@
-const createHeading = () => {
-    const heading = document.createElement("h1");
-    heading.textContent = "To-Do Manager";
-    return heading;
-};
+import { Heading } from "../elements/heading";
+
+const createHeading = () => Heading("1", "To-Do Manager").getHeading();
 
 export {
     createHeading,
