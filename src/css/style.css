@@ -259,7 +259,7 @@ header .logo {
     gap: 16px;
 }
 
-#home-page .overview .date-container .date {
+#home-page .overview .date-container .num-date {
     width: 75px;
     height: 75px;
 
@@ -275,13 +275,13 @@ header .logo {
     align-items: center;
 }
 
-#home-page .overview .date-container .day {
+#home-page .overview .date-container .full-date {
     font-size: 1.2rem;
 }
 
 /* Selectors for the tasks section start here. */
 
-#home-page .overview .tasks-overview {
+#home-page .overview .tasks {
     padding: 16px;
 
     display: flex;
@@ -290,7 +290,7 @@ header .logo {
     gap: 16px;
 }
 
-#home-page .overview .tasks-overview > * {
+#home-page .overview .tasks > * {
     width: 110px;
     height: 110px;
 
@@ -303,23 +303,23 @@ header .logo {
     justify-content: center;
 }
 
-#home-page .overview .tasks-overview h4 {
+#home-page .overview .tasks h4 {
     font-size: 1.2rem;
 }
 
-#home-page .overview .tasks-overview .tasks-completed {
+#home-page .overview .tasks .completed {
     border: 8px solid var(--green);
 }
 
-#home-page .overview .tasks-overview .tasks-remaining {
+#home-page .overview .tasks .remaining {
     border: 8px solid var(--yellow);
 }
 
-#home-page .overview .tasks-overview .tasks-overdue {
+#home-page .overview .tasks .overdue {
     border: 8px solid var(--red);
 }
 
-#home-page .overview .tasks-overview p {
+#home-page .overview .tasks p {
     font-size: 0.8rem;
 }
 
@@ -331,7 +331,7 @@ header .logo {
     overflow: hidden;
 }
 
-#home-page .overview img[src*="overview"] {
+#home-page .overview .img-container > img {
     width: 100%;
     height: 100%;
     
