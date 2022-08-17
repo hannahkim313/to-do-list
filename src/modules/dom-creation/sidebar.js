@@ -1,22 +1,93 @@
-import { appendChildren } from "../helper-functions/append-children";
-import { createSections } from "./sidebar-components/sections";
-import { createMenu } from "./sidebar-components/menu";
-import { createAddProjectBtn } from "./sidebar-components/add-project-btn";
+import { appendChildren, setAttributesOf } from "./helper-functions";
+import { createImg, createPara, createButton } from "./elements";
+import plusLightImg from "../../img/plus-light.svg";
+import homeImg from "../../img/home.svg";
+import todayImg from "../../img/today.svg";
+import upcomingImg from "../../img/upcoming.svg";
+import projectsImg from "../../img/folder.svg";
 
-const _createNav = () => {
-    const nav = document.createElement("nav");
-    nav.setAttribute("class", "sidebar");
-    return nav;
+const _createSection = (data) => {
+    const createSectionBtn = () => {
+        const attributes = { type: "button" };
+        const sectionBtn = createButton(attributes);
+        const elements = [
+            createImg({ src: data.src, alt: data.alt }),
+            createPara(data.text)
+        ];
+        appendChildren(sectionBtn, elements);
+
+        return sectionBtn;
+    };
+
+    const section = document.createElement("li");
+    const elements = [createSectionBtn()];
+    appendChildren(section, elements);
+
+    return section;
+};
+
+const _createSections = (sectionsData) => {
+    const sections = [];
+    for (const data of Object.values(sectionsData)) {
+        sections.push(_createSection(data));
+    };
+    
+    return sections;
+};
+
+const _createMenu = (sections) => {
+    const menu = document.createElement("menu");
+    const attributes = { class: "sidebar-sections" };
+    setAttributesOf(menu, attributes);
+    appendChildren(menu, sections);
+
+    return menu;
+};
+
+const _createAddProjectBtn = () => {
+    const attributes = { type: "button" };
+    const btn = createButton(attributes);
+    const elements = [
+        createImg({ src: plusLightImg, alt: "Plus icon" }),
+        createPara("Add project"),
+    ];
+    appendChildren(btn, elements);
+
+    return btn;
 };
 
 const createSidebar = () => {
-    const sections = createSections();
-    const sidebarElements = [
-        createMenu(sections),
-        createAddProjectBtn(),
+    const sidebar = document.createElement("nav");
+    const attributes = { class: "sidebar" };
+    setAttributesOf(sidebar, attributes);
+    const sectionsData = {
+        home: {
+            src: homeImg,
+            alt: "Home icon",
+            text: "Home"
+        },
+        today: {
+            src: todayImg,
+            alt: "Single day calendar icon",
+            text: "Today"
+        },
+        upcoming: {
+            src: upcomingImg,
+            alt: "Multiple days calendar icon",
+            text: "Upcoming"
+        },
+        projects: {
+            src: projectsImg,
+            alt: "Folder icon",
+            text: "Projects"
+        }
+    };
+    const elements = [
+        _createMenu(_createSections(sectionsData)),
+        _createAddProjectBtn(),
     ];
-    const sidebar = _createNav();
-    appendChildren(sidebar, sidebarElements);
+    appendChildren(sidebar, elements);
+
     return sidebar;
 };
 
