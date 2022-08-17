@@ -1,3 +1,9 @@
+const appendChildren = (parent, children) => {
+    for (const child of children) {
+        parent.appendChild(child);
+    };
+};
+
 const setAttributesOf = (el, attributes) => {
     for (const [key, value] of Object.entries(attributes)) {
         const attribute = key;
@@ -6,5 +12,6 @@ const setAttributesOf = (el, attributes) => {
 };
 
 export {
-    setAttributesOf,
+    appendChildren,
+    setAttributesOf
 };
