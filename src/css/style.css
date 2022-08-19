@@ -552,12 +552,12 @@ header .logo {
     padding: 16px 16px 16px 32px;
     
     grid-row: 1 / 2;
+
+    border-bottom: 1px solid var(--main-font-color);
 }
 
 #upcoming-page .filters {
-    padding: 0 16px 16px 32px;
-    
-    border-bottom: 1px solid var(--main-font-color);
+    padding: 24px 16px 16px 32px;
     
     grid-row: 2 / 3;
 
