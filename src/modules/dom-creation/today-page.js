@@ -9,16 +9,40 @@ const createTodayPage = () => {
             title: "Errands",
             taskOne: {
                 checked: true,
+                name: "Drop off package",
+                dueDate: "Jun 8, 2022",
+                priority: "high"
+            },
+            taskTwo: {
+                checked: true,
+                name: "Buy birthday gift",
+                dueDate: "Jun 8, 2022",
+                priority: "high"
+            },
+            taskThree: {
+                checked: true,
                 name: "Get groceries",
                 dueDate: "Jun 8, 2022",
                 priority: "medium"
             },
-            taskTwo: {
+            taskFour: {
                 checked: false,
                 name: "Meal prep",
                 dueDate: "Jun 8, 2022",
                 priority: "low"
-            }
+            },
+            taskFive: {
+                checked: false,
+                name: "Water plants",
+                dueDate: "Jun 8, 2022",
+                priority: "low"
+            },
+            taskSix: {
+                checked: true,
+                name: "Go to gym",
+                dueDate: "Jun 8, 2022",
+                priority: "low"
+            },
         },
         projectTwo: {
             title: "Work",
