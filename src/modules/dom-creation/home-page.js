@@ -31,8 +31,8 @@ const _createOverview = (taskStats) => {
     };
 
     const createTasksSection = () => {
-        const createTasks = () => {
-            const sections = [];
+        const createTaskCircles = () => {
+            const taskCircles = [];
             for (const [taskType, numTasks] of Object.entries(taskStats)) {
                 const attributes = { class: `${taskType}` };
                 const task = createArticle(attributes);
@@ -42,15 +42,15 @@ const _createOverview = (taskStats) => {
                     createPara(`${taskType}`)
                 ];
                 appendChildren(task, taskData);
-                sections.push(task);
+                taskCircles.push(task);
             };
 
-            return sections;
+            return taskCircles;
         };
 
         const attributes = { class: "tasks" };
         const tasksSection = createDiv(attributes);
-        appendChildren(tasksSection, createTasks());
+        appendChildren(tasksSection, createTaskCircles());
 
         return tasksSection;
     };
