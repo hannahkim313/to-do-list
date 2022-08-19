@@ -5,6 +5,7 @@ import homeImg from "../../img/home.svg";
 import todayImg from "../../img/today.svg";
 import upcomingImg from "../../img/upcoming.svg";
 import projectsImg from "../../img/folder.svg";
+import chevronDownImg from "../../img/chevron-down.svg";
 
 const _createSection = (data) => {
     const createSectionBtn = () => {
@@ -14,6 +15,10 @@ const _createSection = (data) => {
             createImg({ src: data.src, alt: data.alt }),
             createPara(data.text)
         ];
+        if (data.expandable) {
+            const attributes = { src: chevronDownImg, alt: "Click to expand", class: "expand-icon" };
+            elements.push(createImg(attributes));
+        };
         appendChildren(sectionBtn, elements);
 
         return sectionBtn;
@@ -79,7 +84,8 @@ const createSidebar = () => {
         projects: {
             src: projectsImg,
             alt: "Folder icon",
-            text: "Projects"
+            text: "Projects",
+            expandable: true
         }
     };
     const elements = [

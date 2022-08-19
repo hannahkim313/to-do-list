@@ -114,9 +114,15 @@ header .logo {
     transition: all 0.1s ease-in;
 }
 
+.sidebar .sidebar-sections .expand-icon {
+    margin-left: auto;
+}
+
 /* Selectors for the sidebar "Projects" section start here. */
 
-.sidebar .sidebar-sections .projects-section > a {
+/* Uncomment after implementing section expandable */
+
+/* .sidebar .sidebar-sections .projects-section > a {
     display: flex;
     justify-content: space-between;
 }
@@ -170,7 +176,7 @@ header .logo {
 
 .sidebar .projects > li > a .alerts .remaining {
     background-color: var(--grey-orange-dark);
-}
+} */
 
 /* Selectors for the "Add project" button start here. */
 
