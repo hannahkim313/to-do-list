@@ -28,9 +28,8 @@ const createHeading = (num, text) => {
     return heading;
 };
 
-const createImg = ({ src, alt } = {}) => {
+const createImg = (attributes) => {
     const img = document.createElement("img");
-    const attributes = { src: src, alt: alt };
     setAttributesOf(img, attributes);
     
     return img;
