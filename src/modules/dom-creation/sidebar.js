@@ -9,16 +9,13 @@ import chevronDownImg from "../../img/chevron-down.svg";
 
 const _createSection = (data) => {
     const createSectionBtn = () => {
-        const attributes = { type: "button" };
+        const attributes = data.expandable ? { type: "button", class: "expandable" } : { type: "button" };
         const sectionBtn = createButton(attributes);
         const elements = [
             createImg({ src: data.src, alt: data.alt }),
             createPara(data.text)
         ];
-        if (data.expandable) {
-            const attributes = { src: chevronDownImg, alt: "Click to expand", class: "expand-icon" };
-            elements.push(createImg(attributes));
-        };
+        if (data.expandable) elements.push(createImg({ src: chevronDownImg, alt: "Click to expand" }));
         appendChildren(sectionBtn, elements);
 
         return sectionBtn;
