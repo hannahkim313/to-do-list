@@ -47,6 +47,7 @@ const createUpcomingPage = () => {
         createProjectsSection(allProjectsData)
     ];
     appendChildren(upcomingPage, elements);
+    upcomingPage.style.display = "none";
 
     return upcomingPage;
 };

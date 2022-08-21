@@ -60,6 +60,7 @@ const createTodayPage = () => {
         createProjectsSection(allProjectsData)
     ];
     appendChildren(todayPage, elements);
+    todayPage.style.display = "none";
 
     return todayPage;
 };
