@@ -5,17 +5,23 @@ import { createHomePage } from "./modules/dom-creation/home-page";
 import { createTodayPage } from "./modules/dom-creation/today-page";
 import { createUpcomingPage } from "./modules/dom-creation/upcoming-page";
 import { createFooter } from "./modules/dom-creation/footer";
+import { displayPage } from "./modules/app-logic/display-page";
 import "./css/style.css";
 import "./css/reset.css";
 
 const bodyElements = [
     createHeader(),
     createSidebar(),
-    // createHomePage(),
-    // createTodayPage(),
+    createHomePage(),
+    createTodayPage(),
     createUpcomingPage(),
     createFooter()
 ];
 
 const body = document.querySelector("body");
 appendChildren(body, bodyElements);
+
+const sidebarSections = document.querySelectorAll(".sidebar-sections > li");
+for (const section of sidebarSections) {
+    section.addEventListener("click", () => displayPage(section));
+};

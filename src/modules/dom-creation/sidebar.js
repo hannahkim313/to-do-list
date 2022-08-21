@@ -7,7 +7,7 @@ import upcomingImg from "../../img/upcoming.svg";
 import projectsImg from "../../img/folder.svg";
 import chevronDownImg from "../../img/chevron-down.svg";
 
-const _createSection = (data) => {
+const _createSection = (sectionName, data) => {
     const createSectionBtn = () => {
         const attributes = data.expandable ? { type: "button", class: "expandable" } : { type: "button" };
         const sectionBtn = createButton(attributes);
@@ -22,6 +22,7 @@ const _createSection = (data) => {
     };
 
     const section = document.createElement("li");
+    setAttributesOf(section, { class: sectionName });
     const elements = [createSectionBtn()];
     appendChildren(section, elements);
 
@@ -30,8 +31,8 @@ const _createSection = (data) => {
 
 const _createSections = (sectionsData) => {
     const sections = [];
-    for (const data of Object.values(sectionsData)) {
-        sections.push(_createSection(data));
+    for (const [sectionName, data] of Object.entries(sectionsData)) {
+        sections.push(_createSection(sectionName, data));
     };
     
     return sections;
