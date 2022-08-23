@@ -22,7 +22,6 @@ const body = document.querySelector("body");
 appendChildren(body, bodyElements);
 
 const sidebarSections = document.querySelectorAll(".sidebar-sections > li:not(.projects)");
-console.log(sidebarSections)
 for (const section of sidebarSections) {
     section.addEventListener("click", () => displayPage(section));
 };
