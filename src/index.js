@@ -21,7 +21,15 @@ const bodyElements = [
 const body = document.querySelector("body");
 appendChildren(body, bodyElements);
 
-const sidebarSections = document.querySelectorAll(".sidebar-sections > li");
+const sidebarSections = document.querySelectorAll(".sidebar-sections > li:not(.projects)");
+console.log(sidebarSections)
 for (const section of sidebarSections) {
     section.addEventListener("click", () => displayPage(section));
 };
+
+// const expandableSections = document.querySelectorAll(".expandable");
+// for (const expandable of expandableSections) {
+//     expandable.addEventListener("click", () => {
+//         create
+//     });
+// };
