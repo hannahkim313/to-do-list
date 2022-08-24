@@ -21,30 +21,28 @@ const _createFilters = () => {
 
 const createUpcomingPage = () => {
     const allProjectsData = {
-        projectOne: {
-            title: "Errands",
-            taskOne: {
+        errands: {
+            taskBooking: {
                 checked: false,
                 name: "Book Airbnb",
                 dueDate: "Jun 11, 2022",
-                priority: "medium"
-            }
+                priority: "medium",
+            },
         },
-        projectTwo: {
-            title: "Work",
-            taskOne: {
+        work: {
+            taskAnalysis: {
                 checked: false,
                 name: "Gather end-of-week analysis",
                 dueDate: "Jun 10, 2022",
-                priority: "high"
-            }
-        }
+                priority: "high",
+            },
+        },
     };
     const upcomingPage = createPage("upcoming");
     const elements = [
         createHeading("2", "Upcoming"),
         _createFilters(),
-        createProjectsSection(allProjectsData)
+        createProjectsSection(allProjectsData),
     ];
     appendChildren(upcomingPage, elements);
     upcomingPage.style.display = "none";

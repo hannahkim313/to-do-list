@@ -5,8 +5,8 @@ import { createProjectContent } from "./project-content";
 const createProjectsSection = (allProjectsData) => {
     const createProjects = () => {
         const projects = [];
-        for (const projectData of Object.values(allProjectsData)) {
-            projects.push(createProjectContent(projectData));
+        for (const [projectName, projectData] of Object.entries(allProjectsData)) {
+            projects.push(createProjectContent(projectName, projectData));
         };
     
         return projects;

@@ -1,4 +1,4 @@
-import { appendChildren, setAttributesOf } from "../helper-functions";
+import { appendChildren, setAttributesOf, capitalize } from "../helper-functions";
 import { createArticle, createHeading, createButton, createImg, createPara, createDiv } from "../elements";
 import { createTask } from "./task";
 import chevronDownImg from "../../../img/chevron-down.svg";
@@ -57,10 +57,8 @@ const _createProjectOptions = () => {
 
 const _createTaskMenu = (projectData) => {
     const createProjectTasks = () => {
-        const taskData = Object.assign({}, projectData);
-        delete taskData.title;
         const tasks = [];
-        for (const data of Object.values(taskData)) {
+        for (const data of Object.values(projectData)) {
             tasks.push(createTask(data));
         };
 
@@ -75,11 +73,11 @@ const _createTaskMenu = (projectData) => {
     return menu;
 };
 
-const createProjectContent = (projectData) => {
+const createProjectContent = (projectName, projectData) => {
     const attributes = { class: "project" };
     const project = createArticle(attributes);
     const elements = [
-        createHeading("3", projectData.title),
+        createHeading("3", capitalize(projectName)),
         _createProjectOptions(),
         _createTaskMenu(projectData)
     ];

@@ -5,59 +5,57 @@ import { createProjectsSection } from "./general-components/projects-section";
 
 const createTodayPage = () => {
     const allProjectsData = {
-        projectOne: {
-            title: "Errands",
-            taskOne: {
+        errands: {
+            taskPackage: {
                 checked: true,
                 name: "Drop off package",
                 dueDate: "Jun 8, 2022",
-                priority: "high"
+                priority: "high",
             },
-            taskTwo: {
+            taskGift: {
                 checked: true,
                 name: "Buy birthday gift",
                 dueDate: "Jun 8, 2022",
-                priority: "high"
+                priority: "high",
             },
-            taskThree: {
+            taskGroceries: {
                 checked: true,
                 name: "Get groceries",
                 dueDate: "Jun 8, 2022",
-                priority: "medium"
+                priority: "medium",
             },
-            taskFour: {
+            taskMeal: {
                 checked: false,
                 name: "Meal prep",
                 dueDate: "Jun 8, 2022",
-                priority: "low"
+                priority: "low",
             },
-            taskFive: {
+            taskPlants: {
                 checked: false,
                 name: "Water plants",
                 dueDate: "Jun 8, 2022",
-                priority: "low"
+                priority: "low",
             },
-            taskSix: {
+            taskGym: {
                 checked: true,
                 name: "Go to gym",
                 dueDate: "Jun 8, 2022",
-                priority: "low"
+                priority: "low",
             },
         },
-        projectTwo: {
-            title: "Work",
-            taskOne: {
+        work: {
+            taskIntro: {
                 checked: false,
                 name: "Introduce new team members",
                 dueDate: "Jun 8, 2022",
-                priority: "high"
-            }
-        }
+                priority: "high",
+            },
+        },
     };
     const todayPage = createPage("today");
     const elements = [
         createHeading("2", "Today"),
-        createProjectsSection(allProjectsData)
+        createProjectsSection(allProjectsData),
     ];
     appendChildren(todayPage, elements);
     todayPage.style.display = "none";
