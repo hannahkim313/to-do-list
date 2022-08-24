@@ -69,7 +69,7 @@ const _createProjects = (projectsData) => {
         elements.push(createProject(data));
     };
     const projects = document.createElement("menu");
-    setAttributesOf(projects, { class: "projects-list" });
+    setAttributesOf(projects, { class: "sidebar-projects" });
     appendChildren(projects, elements);
 
     return projects;
@@ -120,7 +120,7 @@ const _createMenu = (sections) => {
 };
 
 const _createAddProjectBtn = () => {
-    const attributes = { type: "button" };
+    const attributes = { type: "button", class: "add-project-btn" };
     const btn = createButton(attributes);
     const elements = [
         createImg({ src: plusLightImg, alt: "Plus icon" }),

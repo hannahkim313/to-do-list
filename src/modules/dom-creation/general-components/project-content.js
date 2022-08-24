@@ -18,7 +18,7 @@ const _createProjectOptions = () => {
             return input;
         };
     
-        const attributes = { type: "button", class: "drop-down" };
+        const attributes = { type: "button", class: "dropdown" };
         const dropDown = createButton(attributes);
         const elements = [
             createInput(),

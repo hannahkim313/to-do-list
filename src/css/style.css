@@ -7,26 +7,29 @@
 /******************************************************************************/
 
 :root {
-    --main-font-color: #433929;
+    --color-text-1: #433929;
+    --color-text-1-inverted: #ffffff;
 
-    --grey: #e1e1e1;
-    --grey-light: #eaeaea;
-    --grey-dark: #867e72;
-    --main-brown: #cdb69b;
-    --main-brown-light: #eacfb1;
-    --grey-orange: #f0e3d8;
-    --grey-orange-light: #f3ede5;
-    --grey-orange-dark : #c4ac9a;
-    --grey-orange-hover: #e0d4ca;
-    --dark-orange: #cc890e;
-    --dark-orange-hover: #b4790c;
-    --red: #ac5f4e;
-    --yellow: #e8b24f;
-    --green: #9c8651;
+    --color-brand-1: #cdb69b;
+    --color-brand-1-light: #eacfb1;
+    --color-brand-2: #f0e3d8;
+    --color-brand-2-light: #f3ede5;
+    --color-brand-2-dark: #c4ac9a;
+    --color-brand-2-hover: #e0d4ca;
+    --color-brand-2-active: #cdc2b8;
+    --color-brand-3: #cc890e;
+    --color-brand-3-hover: #b4790c;
+
+    --color-ui-success: #9c9751;
+    --color-ui-warning: #e8b24f;
+    --color-ui-danger: #ac5f4e;
+
+    --color-dropdown-1: #eaeaea;
+    --color-dropdown-1-hover: #e1e1e1;
 }
 
 body {
-    color: var(--main-font-color);
+    color: var(--color-text-1);
     
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -36,7 +39,7 @@ body {
 a {
     text-decoration: none;
 
-    color: var(--main-font-color);
+    color: var(--color-text-1);
 }
 
 button:hover {
@@ -50,7 +53,7 @@ button:hover {
 header {
     padding: 16px;
 
-    background-color: var(--main-brown);
+    background-color: var(--color-brand-1);
 
     grid-column: 1 / 3;
     grid-row: 1 / 2;
@@ -71,7 +74,7 @@ header .logo {
 .sidebar {
     padding: 16px 16px 32px 16px;
 
-    background-color: var(--grey-orange);
+    background-color: var(--color-brand-2);
     
     grid-column: 1 / 2;
     grid-row: 2 / 3;
@@ -88,11 +91,11 @@ header .logo {
 
 /* Selectors for the sidebar sections start here. */
 
-.sidebar .sidebar-sections > li > img {
+.sidebar-sections > li > img {
     width: 1.5rem;
 }
 
-.sidebar .sidebar-sections > li > button {
+.sidebar-sections > li > button {
     width: 100%;
     
     padding: 8px;
@@ -105,89 +108,103 @@ header .logo {
     align-items: center;
     gap: 8px;
 
-    transition: all 0.1s ease-out;
+    transition: all 0.3s ease;
 }
 
-.sidebar .sidebar-sections > li > button:hover {
-    background-color: var(--grey-orange-hover);
-
-    transition: all 0.1s ease-in;
+.sidebar-sections > li > button:hover {
+    background-color: var(--color-brand-2-hover);
 }
 
-.sidebar .sidebar-sections .expandable img:last-child {
-    margin-left: auto;
+.sidebar-sections > li > button:active {
+    background-color: var(--color-brand-2-active);
 }
 
-/* Selectors for the sidebar "Projects" section start here. */
+/* Selectors for expandable sections start here. */
 
-/* Uncomment after implementing section expandable */
-
-/* .sidebar .sidebar-sections .projects-section > a {
+.expandable {
     display: flex;
     justify-content: space-between;
 }
 
-.sidebar .sidebar-sections .projects-section .section-title {
-    display: flex;
-    gap: 8px;
+.expandable img:last-child {
+    margin-left: auto;
 }
 
-.sidebar .projects {
+/* Selectors for the individual projects of the sidebar start here. */
+
+.sidebar-projects {
     height: 350px;
 
     overflow-y: auto;
 }
 
-.sidebar .projects > li > a {
-    padding-left: 40px;
+.sidebar-projects button {
+    width: 100%;
+
+    padding: 8px 8px 8px 40px;
+
+    background: none;
+    border: none;
+    border-radius: 8px;
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    transition: all 0.1s ease;
 }
 
-.sidebar .projects > li > a .project-name {
+.sidebar-projects button:hover {
+    background-color: var(--color-brand-2-hover);
+}
+
+.sidebar-projects button:active {
+    background-color: var(--color-brand-2-active);
+}
+
+.sidebar-projects .project-name {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.sidebar .projects > li > a img[src*="circle-filled"] {
+.sidebar-projects .project-name img {
     width: 0.8rem;
 }
 
-.sidebar .projects > li > a .alerts {
+.sidebar-projects .alerts {
     font-size: 0.8rem;
 
     display: flex;
     gap: 8px;
 }
 
-.sidebar .projects > li > a .alerts p {
+.sidebar-projects .alerts p {
     padding: 0 8px;
     
-    color: white;
+    color: var(--color-text-1-inverted);
 
     border-radius: 50%;
 }
 
-.sidebar .projects > li > a .alerts .overdue {
-    background-color: var(--red);
+.sidebar-projects .alerts .overdue {
+    background-color: var(--color-ui-danger);
 }
 
-.sidebar .projects > li > a .alerts .remaining {
-    background-color: var(--grey-orange-dark);
-} */
+.sidebar-projects .alerts .remaining {
+    background-color: var(--color-brand-2-dark);
+}
 
 /* Selectors for the "Add project" button start here. */
 
-.sidebar > button {
+.add-project-btn {
     width: 50%;
 
     padding: 8px;
 
-    color: white;
+    color: var(--color-text-1-inverted);
 
-    background-color: var(--dark-orange);
+    background-color: var(--color-brand-3);
     border: none;
     border-radius: 32px;
 
@@ -198,16 +215,14 @@ header .logo {
     align-items: center;
     gap: 4px;
 
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease;
 }
 
-.sidebar > button:hover {
-    background-color: var(--dark-orange-hover);
-
-    transition: all 0.2s ease-in-out;
+.add-project-btn:hover {
+    background-color: var(--color-brand-3-hover);
 }
 
-.sidebar > button .plus-light {
+.add-project-btn img {
     width: 1rem;
 }
 
@@ -231,7 +246,7 @@ header .logo {
 #home-page h2 {
     padding: 16px 16px 16px 32px;
 
-    border-bottom: 1px solid var(--main-font-color);
+    border-bottom: 1px solid var(--color-text-1);
 
     grid-column: 1 / 3;
     grid-row: 1 / 2;
@@ -239,7 +254,7 @@ header .logo {
 
 /* Selectors for the overview section start here. */
 
-#home-page .overview {
+.overview {
     min-height: 100%;
 
     padding: 16px;
@@ -251,13 +266,13 @@ header .logo {
     flex-direction: column;
 }
 
-#home-page .overview h3 {
+.overview h3 {
     padding: 16px;
 }
 
 /* Selectors for the date section start here. */
 
-#home-page .overview .date-container {
+.date-container {
     padding: 16px;
     
     display: flex;
@@ -265,13 +280,13 @@ header .logo {
     gap: 16px;
 }
 
-#home-page .overview .date-container .num-date {
+.date-container .num-date {
     width: 75px;
     height: 75px;
 
     font-size: 2rem;
 
-    background-color: var(--main-brown-light);
+    background-color: var(--color-brand-1-light);
     border-radius: 2px;
     border-top-left-radius: 50%;
     border-bottom-right-radius: 50%;
@@ -281,13 +296,13 @@ header .logo {
     align-items: center;
 }
 
-#home-page .overview .date-container .full-date {
+.date-container .full-date {
     font-size: 1.2rem;
 }
 
 /* Selectors for the tasks section start here. */
 
-#home-page .overview .tasks {
+.overview-tasks {
     padding: 16px;
 
     display: flex;
@@ -296,7 +311,7 @@ header .logo {
     gap: 16px;
 }
 
-#home-page .overview .tasks > * {
+.overview-tasks > * {
     width: 110px;
     height: 110px;
 
@@ -309,35 +324,35 @@ header .logo {
     justify-content: center;
 }
 
-#home-page .overview .tasks h4 {
+.overview-tasks h4 {
     font-size: 1.2rem;
 }
 
-#home-page .overview .tasks .completed {
-    border: 8px solid var(--green);
-}
-
-#home-page .overview .tasks .remaining {
-    border: 8px solid var(--yellow);
-}
-
-#home-page .overview .tasks .overdue {
-    border: 8px solid var(--red);
-}
-
-#home-page .overview .tasks p {
+.overview-tasks p {
     font-size: 0.8rem;
+}
+
+.overview-tasks .completed {
+    border: 8px solid var(--color-ui-success);
+}
+
+.overview-tasks .remaining {
+    border: 8px solid var(--color-ui-warning);
+}
+
+.overview-tasks .overdue {
+    border: 8px solid var(--color-ui-danger);
 }
 
 /* Selectors for the overview image start here. */
 
-#home-page .overview .img-container {
+.overview-img-wrapper {
     margin: 16px 0 0 16px;
 
     overflow: hidden;
 }
 
-#home-page .overview .img-container > img {
+.overview-img-wrapper img {
     width: 100%;
     height: 100%;
     
@@ -349,7 +364,7 @@ header .logo {
 
 /* Selectors for the notes section start here. */
 
-#home-page .notes {
+.notes {
     padding: 16px;
     
     grid-column: 2 / 3;
@@ -360,11 +375,11 @@ header .logo {
     gap: 16px;
 }
 
-#home-page .notes h3 {
+.notes h3 {
     padding: 16px;
 }
 
-#home-page .notes textarea {
+.notes textarea {
     height: 100%;
 
     resize: none;
@@ -372,13 +387,13 @@ header .logo {
     margin: 0 16px 0 16px;
     padding: 16px;
 
-    background-color: var(--grey-orange-light);
+    background-color: var(--color-brand-2-light);
     border: none;
     border-radius: 8px;
 }
 
-#home-page .notes textarea:focus {
-    outline: 2px solid var(--main-font-color);
+.notes textarea:focus {
+    outline: 2px solid var(--color-text-1);
 }
 
 /******************************************************************************/
@@ -400,10 +415,12 @@ header .logo {
 #today-page h2 {
     padding: 16px 16px 16px 32px;
 
-    border-bottom: 1px solid var(--main-font-color);
+    border-bottom: 1px solid var(--color-text-1);
 
     grid-row: 1 / 2;
 }
+
+/* Selectors for the grouped projects start here. */
 
 #today-page .projects {
     padding: 16px;
@@ -424,7 +441,9 @@ header .logo {
     width: 1.3rem;
 }
 
-#today-page .projects .project {
+/* Selectors for the individual projects starts here. */
+
+#today-page .project {
     padding: 16px;
     
     display: grid;
@@ -432,7 +451,7 @@ header .logo {
     grid-template-rows: auto 1fr;
 }
 
-#today-page .projects .project h3 {
+#today-page .project h3 {
     padding-bottom: 16px;
     
     grid-column: 1 / 2;
@@ -440,7 +459,7 @@ header .logo {
 
 /* Selectors for the project options start here. */
 
-#today-page .projects .project .options {
+#today-page .options {
     padding-bottom: 16px;
     
     grid-column: 2 / 3;
@@ -450,45 +469,41 @@ header .logo {
     gap: 8px;
 }
 
-#today-page .projects .project .options .drop-down {
+#today-page .options .dropdown {
     padding: 2px 8px;
     
-    background-color: var(--grey-light);
+    background-color: var(--color-dropdown-1);
     border-radius: 4px;
 
     display: flex;
     align-items: center;
 
-    transition: all 0.1s ease-out;
+    transition: all 0.1s ease;
 }
 
-#today-page .projects .project .options .drop-down:hover {
-    background-color: var(--grey);
-
-    transition: all 0.1s ease-in;
+#today-page .options .dropdown:hover {
+    background-color: var(--color-dropdown-1-hover);
 }
 
-#today-page .projects .project .options .drop-down .input {
+#today-page .options .dropdown .input {
     display: flex;
     align-items: center;
 }
 
-#today-page .projects .project .options button:not(.drop-down) {
+#today-page .options button:not(.dropdown) {
     padding: 4px;
     
-    transition: all 0.1s ease-out;
+    transition: all 0.1s ease;
 }
 
-#today-page .projects .project .options button:not(.drop-down):hover {
-    background-color: var(--grey-light);
+#today-page .options button:not(.dropdown):hover {
+    background-color: var(--color-dropdown-1);
     border-radius: 8px;
-
-    transition: all 0.1s ease-in;
 }
 
 /* Selectors for the project tasks start here. */
 
-#today-page .projects .project .tasks {
+#today-page .tasks {
     grid-column: 1 / 3;
 
     display: flex;
@@ -496,46 +511,42 @@ header .logo {
     gap: 16px;
 }
 
-#today-page .projects .project .task {
+#today-page .task {
     padding: 16px 18px;
 
-    background-color: var(--grey-orange-light);
+    background-color: var(--color-brand-2-light);
     border-radius: 20px;
 
     display: flex;
     justify-content: space-between;
 }
 
-#today-page .projects .project .task.checked .left,
-#today-page .projects .project .task.checked .right > :not(.expand-task) {
-    color: var(--grey-dark);
-
-    opacity: 0.5;
-}
-
-#today-page .projects .project .task .left {
+#today-page .task .left {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-#today-page .projects .project .task .right {
+#today-page .task .right {
     display: flex;
     align-items: center;
     gap: 24px;
 }
 
-#today-page .projects .project .task .right .expand-task {
-    padding: 4px;
-
-    transition: all 0.1s ease-out;
+#today-page .task.checked .left,
+#today-page .task.checked .right > :not(.expand-task) {
+    opacity: 0.5;
 }
 
-#today-page .projects .project .task .right .expand-task:hover {
+#today-page .task .right .expand-task {
+    padding: 4px;
+
+    transition: all 0.1s ease;
+}
+
+#today-page .task .right .expand-task:hover {
     background-color: #e0d4ca;
     border-radius: 8px;
-
-    transition: all 0.1s ease-in;
 }
 
 /******************************************************************************/
@@ -559,8 +570,10 @@ header .logo {
     
     grid-row: 1 / 2;
 
-    border-bottom: 1px solid var(--main-font-color);
+    border-bottom: 1px solid var(--color-text-1);
 }
+
+/* Selectors for the project filters start here. */
 
 #upcoming-page .filters {
     padding: 24px 16px 16px 32px;
@@ -576,30 +589,30 @@ header .logo {
 
     padding: 2px 10px;
 
-    transition: all 0.1s ease-out;
+    transition: all 0.1s ease;
 }
 
 #upcoming-page .filters button:nth-child(2) {
-    color: white;
+    color: var(--color-text-1-inverted);
     
-    background-color: var(--grey-orange-dark);
+    background-color: var(--color-brand-2-dark);
     border: none;
     border-radius: 32px;
 }
 
 #upcoming-page .filters button:nth-child(odd) {
     background: none;
-    border: 1px solid var(--grey-orange-dark);
+    border: 1px solid var(--color-brand-2-dark);
     border-radius: 32px;
 }
 
 #upcoming-page .filters button:hover {
-    color: white;
+    color: var(--color-text-1-inverted);
 
-    background-color: var(--grey-orange-dark);
-
-    transition: all 0.1s ease-in;
+    background-color: var(--color-brand-2-dark);
 }
+
+/* Selectors for the grouped projects start here. */
 
 #upcoming-page .projects {
     padding: 16px;
@@ -620,7 +633,9 @@ header .logo {
     width: 1.3rem;
 }
 
-#upcoming-page .projects .project {
+/* Selectors for the individual projects start here. */
+
+#upcoming-page .project {
     padding: 16px;
     
     display: grid;
@@ -628,7 +643,7 @@ header .logo {
     grid-template-rows: auto 1fr;
 }
 
-#upcoming-page .projects .project h3 {
+#upcoming-page .project h3 {
     padding-bottom: 16px;
     
     grid-column: 1 / 2;
@@ -636,7 +651,7 @@ header .logo {
 
 /* Selectors for the project options start here. */
 
-#upcoming-page .projects .project .options {
+#upcoming-page .options {
     padding-bottom: 16px;
     
     grid-column: 2 / 3;
@@ -646,32 +661,41 @@ header .logo {
     gap: 8px;
 }
 
-#upcoming-page .projects .project .options .drop-down {
+#upcoming-page .options .dropdown {
     padding: 2px 8px;
     
-    background-color: var(--grey-light);
+    background-color: var(--color-dropdown-1);
     border-radius: 4px;
 
     display: flex;
     align-items: center;
 
-    transition: all 0.1s ease-out;
+    transition: all 0.1s ease;
 }
 
-#upcoming-page .projects .project .options .drop-down:hover {
-    background-color: var(--grey);
-
-    transition: all 0.1s ease-in;
+#upcoming-page .options .dropdown:hover {
+    background-color: var(--color-dropdown-1-hover);
 }
 
-#upcoming-page .projects .project .options .drop-down .input {
+#upcoming-page .options .dropdown .input {
     display: flex;
     align-items: center;
 }
 
+#upcoming-page .options button:not(.dropdown) {
+    padding: 4px;
+    
+    transition: all 0.1s ease;
+}
+
+#upcoming-page .options button:not(.dropdown):hover {
+    background-color: var(--color-dropdown-1);
+    border-radius: 8px;
+}
+
 /* Selectors for the project tasks start here. */
 
-#upcoming-page .projects .project .tasks {
+#upcoming-page .tasks {
     grid-column: 1 / 3;
 
     display: flex;
@@ -679,53 +703,49 @@ header .logo {
     gap: 16px;
 }
 
-#upcoming-page .projects .project .task {
+#upcoming-page .task {
     padding: 16px 18px;
-
-    background-color: var(--grey-orange-light);
+    
+    background-color: var(--color-brand-2-light);
     border-radius: 20px;
-
+    
     display: flex;
     justify-content: space-between;
 }
 
-#upcoming-page .projects .project .task.checked .left,
-#upcoming-page .projects .project .task.checked .right > :not(.expand-task) {
-    color: var(--grey-dark);
-
-    opacity: 0.5;
-}
-
-#upcoming-page .projects .project .task .left {
+#upcoming-page .task .left {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-#upcoming-page .projects .project .task .right {
+#upcoming-page .task .right {
     display: flex;
     align-items: center;
     gap: 24px;
 }
 
-#upcoming-page .projects .project .task .right .expand-task {
+#upcoming-page .task.checked .left,
+#upcoming-page .projects .project .task.checked .right > :not(.expand-task) {
+    opacity: 0.5;
+}
+
+#upcoming-page .task .right .expand-task {
     padding: 4px;
 
-    transition: all 0.1s ease-out;
+    transition: all 0.1s ease;
 }
 
-#upcoming-page .projects .project .task .right .expand-task:hover {
+#upcoming-page .task .right .expand-task:hover {
     background-color: #e0d4ca;
     border-radius: 8px;
-
-    transition: all 0.1s ease-in;
 }
 
 /******************************************************************************/
-/* Selectors for each project section start here.
+/* Selectors for each project section start here. (Create dynamically in JS).
 /******************************************************************************/
 
-#projects-page {
+/* #projects-page {
     padding: 16px;
 
     overflow-y: auto;
@@ -740,7 +760,7 @@ header .logo {
 #projects-page h2 {
     padding: 16px 16px 16px 32px;
 
-    border-bottom: 1px solid var(--main-font-color);
+    border-bottom: 1px solid var(--color-text-1);
     
     grid-row: 1 / 2;
 }
@@ -768,11 +788,11 @@ header .logo {
     padding-bottom: 16px;
     
     grid-column: 1 / 2;
-}
+} */
 
 /* Selectors for the project options start here. */
 
-#projects-page .project .options {
+/* #projects-page .project .options {
     padding-bottom: 16px;
     
     grid-column: 2 / 3;
@@ -782,10 +802,10 @@ header .logo {
     gap: 8px;
 }
 
-#projects-page .project .options .drop-down {
+#projects-page .project .options .dropdown {
     padding: 2px 8px;
     
-    background-color: var(--grey-light);
+    background-color: var(--color-dropdown-1);
     border-radius: 4px;
 
     display: flex;
@@ -794,33 +814,33 @@ header .logo {
     transition: all 0.1s ease-out;
 }
 
-#projects-page .project .options .drop-down:hover {
-    background-color: var(--grey);
+#projects-page .project .options .dropdown:hover {
+    background-color: var(--color-dropdown-1-hover);
 
     transition: all 0.1s ease-in;
 }
 
-#projects-page .project .options .drop-down .input {
+#projects-page .project .options .dropdown .input {
     display: flex;
     align-items: center;
 }
 
-#projects-page .project .options button:not(.drop-down) {
+#projects-page .project .options button:not(.dropdown) {
     padding: 4px;
     
     transition: all 0.1s ease-out;
 }
 
-#projects-page .project .options button:not(.drop-down):hover {
-    background-color: var(--grey-light);
+#projects-page .project .options button:not(.dropdown):hover {
+    background-color: var(--color-dropdown-1);
     border-radius: 8px;
 
     transition: all 0.1s ease-in;
-}
+} */
 
 /* Selectors for the project tasks start here. */
 
-#projects-page .project .tasks {
+/* #projects-page .project .tasks {
     grid-column: 1 / 3;
 
     display: flex;
@@ -831,7 +851,7 @@ header .logo {
 #projects-page .project .task {
     padding: 16px 18px;
 
-    background-color: var(--grey-orange-light);
+    background-color: var(--color-brand-2-light);
     border-radius: 20px;
 
     display: flex;
@@ -840,8 +860,6 @@ header .logo {
 
 #projects-page .project .task.checked .left,
 #projects-page .project .task.checked .right > :not(.expand-task) {
-    color: var(--grey-dark);
-
     opacity: 0.5;
 }
 
@@ -857,9 +875,9 @@ header .logo {
     margin-left: 16px;
     padding: 2px 8px;
 
-    color: white;
+    color: var(--color-text-1-inverted);
 
-    background-color: var(--red);
+    background-color: var(--color-ui-danger);
     border-radius: 16px;
 }
 
@@ -880,7 +898,7 @@ header .logo {
     border-radius: 8px;
 
     transition: all 0.1s ease-in;
-}
+} */
 
 /******************************************************************************/
 /* Selectors for the footer start here.
@@ -889,7 +907,7 @@ header .logo {
 footer {
     padding: 16px;
 
-    background-color: var(--main-brown);
+    background-color: var(--color-brand-1);
 
     grid-column: 1 / 3;
     grid-row: 3 / 4;

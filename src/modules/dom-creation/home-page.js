@@ -48,7 +48,7 @@ const _createOverview = (taskStats) => {
             return taskCircles;
         };
 
-        const attributes = { class: "tasks" };
+        const attributes = { class: "overview-tasks" };
         const tasksSection = createDiv(attributes);
         appendChildren(tasksSection, createTaskCircles());
 
@@ -56,7 +56,7 @@ const _createOverview = (taskStats) => {
     };
 
     const createImgSection = () => {
-        const attributes = { class: "img-container" };
+        const attributes = { class: "overview-img-wrapper" };
         const section = createDiv(attributes);
         const elements = [createImg({ src: overviewImg, alt: "Foggy autumnal forest" })];
         appendChildren(section, elements);
