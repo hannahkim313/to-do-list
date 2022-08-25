@@ -4,22 +4,65 @@ import { createPage } from "./general-components/page";
 import { createProjectsSection } from "./general-components/projects-section";
 
 const _createFilters = () => {
-    const allBtn = createButton({ type: "button", class: "all" });
-    appendChildren(allBtn, [createPara("All")]);
-    const thisWeekBtn = createButton({ type: "button", class: "this-week" });
-    appendChildren(thisWeekBtn, [createPara("This week")]);
-    const thisMonthBtn = createButton({ type: "button", class: "this-month" });
-    appendChildren(thisMonthBtn, [createPara("This month")]);
+    const createAllBtn = () => {
+        const allBtnAttributes = {
+            type: "button",
+            class: "all",
+        };
+        const allBtn = createButton(allBtnAttributes);
+        const elements = [
+            createPara("All"),
+        ];
+        appendChildren(allBtn, elements);
+
+        return allBtn;
+    };
+
+    const createThisWeekBtn = () => {
+        const thisWeekBtnAttributes = {
+            type: "button",
+            class: "this-week",
+        };
+        const thisWeekBtn = createButton(thisWeekBtnAttributes);
+        const elements = [
+            createPara("This week"),
+        ];
+        appendChildren(thisWeekBtn, elements);
+
+        return thisWeekBtn;
+    };
+
+    const createThisMonthBtn = () => {
+        const thisMonthBtnAttributes = {
+            type: "button",
+            class: "this-month",
+        };
+        const thisMonthBtn = createButton(thisMonthBtnAttributes);
+        const elements = [
+            createPara("This month"),
+        ];
+        appendChildren(thisMonthBtn, elements);
+
+        return thisMonthBtn;
+    };
     
-    const attributes = { class: "filters" };
-    const filters = createDiv(attributes);
-    const elements = [allBtn, thisWeekBtn, thisMonthBtn];
+    const filtersAttributes = {
+        class: "filters",
+    };
+    const filters = createDiv(filtersAttributes);
+    const elements = [
+        createAllBtn(),
+        createThisWeekBtn(),
+        createThisMonthBtn(),
+    ];
     appendChildren(filters, elements);
 
     return filters;
 };
 
 const createUpcomingPage = () => {
+    const upcomingPage = createPage("upcoming");
+    upcomingPage.style.display = "none";
     const allProjectsData = {
         errands: {
             taskBooking: {
@@ -38,14 +81,12 @@ const createUpcomingPage = () => {
             },
         },
     };
-    const upcomingPage = createPage("upcoming");
     const elements = [
         createHeading("2", "Upcoming"),
         _createFilters(),
         createProjectsSection(allProjectsData),
     ];
     appendChildren(upcomingPage, elements);
-    upcomingPage.style.display = "none";
 
     return upcomingPage;
 };

@@ -12,11 +12,13 @@ const createProjectsSection = (allProjectsData) => {
         return projects;
     };
 
-    const attributes = { class: "projects" };
-    const projectsSection = createDiv(attributes);
-    appendChildren(projectsSection, createProjects(allProjectsData));
+    const sectionAttributes = {
+        class: "projects",
+    };
+    const section = createDiv(sectionAttributes);
+    appendChildren(section, createProjects(allProjectsData));
 
-    return projectsSection;
+    return section;
 };
 
 export {

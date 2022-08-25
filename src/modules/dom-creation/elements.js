@@ -48,5 +48,5 @@ export {
     createDiv,
     createHeading,
     createImg,
-    createPara
+    createPara,
 };

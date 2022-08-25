@@ -2,8 +2,10 @@ import { setAttributesOf } from "../helper-functions";
 
 const createPage = (name) => {
     const page = document.createElement("main");
-    const attributes = { id: `${name}-page` };
-    setAttributesOf(page, attributes);
+    const pageAttributes = {
+        id: `${name}-page`,
+    };
+    setAttributesOf(page, pageAttributes);
     
     return page;
 };

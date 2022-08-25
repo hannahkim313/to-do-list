@@ -1,55 +1,78 @@
 import { appendChildren, setAttributesOf, capitalize } from "../helper-functions";
-import { createArticle, createHeading, createButton, createImg, createPara, createDiv } from "../elements";
+import { createArticle, createHeading, createButton, createPara, createDiv } from "../elements";
 import { createTask } from "./task";
-import chevronDownImg from "../../../img/chevron-down.svg";
-import arrowDownImg from "../../../img/arrow-down.svg";
-import plusDarkImg from "../../../img/plus-dark.svg";
-import moreOptionsImg from "../../../img/dots-horizontal.svg";
+import {
+    createArrowDownIcon,
+    createExpandIcon,
+    createMoreOptionsIcon,
+    createPlusDarkIcon
+} from "../image-elements";
 
 const _createProjectOptions = () => {
-    const createDropDown = () => {
+    const createDropdown = () => {
         const createInput = () => {
-            const attributes = { class: "input" };
             const input = createPara("Sort by: Priority");
-            setAttributesOf(input, attributes);
-            const elements = [createImg({ src: arrowDownImg, alt: "High to low" })];
+            const inputAttributes = {
+                class: "input",
+            };
+            setAttributesOf(input, inputAttributes);
+            const elements = [
+                createArrowDownIcon(),
+            ];
             appendChildren(input, elements);
     
             return input;
         };
     
-        const attributes = { type: "button", class: "dropdown" };
-        const dropDown = createButton(attributes);
+        const dropdownAttributes = {
+            type: "button",
+            class: "dropdown",
+        };
+        const dropdown = createButton(dropdownAttributes);
         const elements = [
             createInput(),
-            createImg({ src: chevronDownImg, alt: "Click to expand sort by options" })
+            createExpandIcon(),
         ];
-        appendChildren(dropDown, elements);
+        appendChildren(dropdown, elements);
     
-        return dropDown;
+        return dropdown;
     };
     
     const createAddTaskBtn = () => {
-        const attributes = { type: "button" };
-        const btn = createButton(attributes);
-        const elements = [createImg({ src: plusDarkImg, alt: "Plus icon" })];
+        const btnAttributes = {
+            type: "button",
+        };
+        const btn = createButton(btnAttributes);
+        const elements = [
+            createPlusDarkIcon(),
+        ];
         appendChildren(btn, elements);
     
         return btn;
     };
     
     const createMoreOptionsBtn = () => {
-        const attributes = { type: "button" };
-        const btn = createButton(attributes);
-        const elements = [createImg({ src: moreOptionsImg, alt: "Click for more options" })];
+        const btnAttributes = {
+            type: "button",
+        };
+        const btn = createButton(btnAttributes);
+        const elements = [
+            createMoreOptionsIcon(),
+        ];
         appendChildren(btn, elements);
     
         return btn;
     };
 
-    const attributes = { class: "options" };
-    const options = createDiv(attributes);
-    const elements = [createDropDown(), createAddTaskBtn(), createMoreOptionsBtn()];
+    const optionsAttributes = {
+        class: "options",
+    };
+    const options = createDiv(optionsAttributes);
+    const elements = [
+        createDropdown(),
+        createAddTaskBtn(),
+        createMoreOptionsBtn(),
+    ];
     appendChildren(options, elements);
 
     return options;
@@ -66,20 +89,24 @@ const _createTaskMenu = (projectData) => {
     };
 
     const menu = document.createElement("menu");
-    const attributes = { class: "tasks" };
-    setAttributesOf(menu, attributes);
+    const menuAttributes = {
+        class: "tasks",
+    };
+    setAttributesOf(menu, menuAttributes);
     appendChildren(menu, createProjectTasks());
 
     return menu;
 };
 
 const createProjectContent = (projectName, projectData) => {
-    const attributes = { class: "project" };
-    const project = createArticle(attributes);
+    const projectAttributes = {
+        class: "project",
+    };
+    const project = createArticle(projectAttributes);
     const elements = [
         createHeading("3", capitalize(projectName)),
         _createProjectOptions(),
-        _createTaskMenu(projectData)
+        _createTaskMenu(projectData),
     ];
     appendChildren(project, elements);
 

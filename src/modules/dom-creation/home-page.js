@@ -1,30 +1,42 @@
 import { appendChildren, setAttributesOf } from "./helper-functions";
-import { createHeading, createPara, createDiv, createArticle, createImg } from "./elements";
+import { createHeading, createPara, createDiv, createArticle } from "./elements";
+import { createOverviewImg } from "./image-elements";
 import { createPage } from "./general-components/page";
-import overviewImg from "../../img/overview.jpg";
 
 const _createOverview = (taskStats) => {
     const createDateSection = () => {
         const createNumDate = () => {
             const numDate = createPara("8");
-            const attributes = { class: "num-date" };
-            setAttributesOf(numDate, attributes);
+            const numDateAttributes = {
+                class: "num-date",
+            };
+            setAttributesOf(numDate, numDateAttributes);
 
             return numDate;
         };
 
         const createFullDate = () => {
-            const attributes = { class: "full-date" };
-            const fullDate = createDiv(attributes);
-            const elements = [createPara("Wed,"), createPara("Jun 2022")];
+            const fullDateAttributes = {
+                class: "full-date",
+            };
+            const fullDate = createDiv(fullDateAttributes);
+            const elements = [
+                createPara("Wed,"),
+                createPara("Jun 2022"),
+            ];
             appendChildren(fullDate, elements);
 
             return fullDate;
         };
 
-        const attributes = { class: "date-container" };
-        const dateSection = createDiv(attributes);
-        const elements = [createNumDate(), createFullDate()];
+        const dateSectionAttributes = {
+            class: "date-container",
+        };
+        const dateSection = createDiv(dateSectionAttributes);
+        const elements = [
+            createNumDate(),
+            createFullDate(),
+        ];
         appendChildren(dateSection, elements);
 
         return dateSection;
@@ -34,12 +46,14 @@ const _createOverview = (taskStats) => {
         const createTaskCircles = () => {
             const taskCircles = [];
             for (const [taskType, numTasks] of Object.entries(taskStats)) {
-                const attributes = { class: `${taskType}` };
-                const task = createArticle(attributes);
+                const taskAttributes = {
+                    class: `${taskType}`,
+                };
+                const task = createArticle(taskAttributes);
                 const taskData = [
                     createHeading("4", `${numTasks}`),
                     createPara("Tasks"),
-                    createPara(`${taskType}`)
+                    createPara(`${taskType}`),
                 ];
                 appendChildren(task, taskData);
                 taskCircles.push(task);
@@ -48,24 +62,32 @@ const _createOverview = (taskStats) => {
             return taskCircles;
         };
 
-        const attributes = { class: "overview-tasks" };
-        const tasksSection = createDiv(attributes);
+        const tasksSectionAttributes = {
+            class: "overview-tasks",
+        };
+        const tasksSection = createDiv(tasksSectionAttributes);
         appendChildren(tasksSection, createTaskCircles());
 
         return tasksSection;
     };
 
     const createImgSection = () => {
-        const attributes = { class: "overview-img-wrapper" };
-        const section = createDiv(attributes);
-        const elements = [createImg({ src: overviewImg, alt: "Foggy autumnal forest" })];
+        const sectionAttributes = {
+            class: "overview-img-wrapper",
+        };
+        const section = createDiv(sectionAttributes);
+        const elements = [
+            createOverviewImg(),
+        ];
         appendChildren(section, elements);
 
         return section;
     };
 
-    const attributes = { class: "overview" };
-    const overview = createArticle(attributes);
+    const overviewAttributes = {
+        class: "overview",
+    };
+    const overview = createArticle(overviewAttributes);
     const elements = [
         createHeading("3", "Overview"),
         createDateSection(),
@@ -80,20 +102,25 @@ const _createOverview = (taskStats) => {
 const _createNotesSection = () => {
     const createTextArea = () => {
         const textArea = document.createElement("textarea");
-        const attributes = {
+        const textAreaAttributes = {
             name: "user-notes",
             id: "user-notes",
             cols: "30",
             rows: "10",
         };
-        setAttributesOf(textArea, attributes);
+        setAttributesOf(textArea, textAreaAttributes);
 
         return textArea;
     };
 
-    const attributes = { class: "notes" };
-    const notes = createArticle(attributes);
-    const elements = [createHeading("3", "Notes"), createTextArea()];
+    const notesAttributes = {
+        class: "notes",
+    };
+    const notes = createArticle(notesAttributes);
+    const elements = [
+        createHeading("3", "Notes"),
+        createTextArea(),
+    ];
     appendChildren(notes, elements);
 
     return notes;
@@ -101,7 +128,11 @@ const _createNotesSection = () => {
 
 const createHomePage = () => {
     const homePage = createPage("home");
-    const taskStats = { completed: "4", remaining: "3", overdue: "2" };
+    const taskStats = {
+        completed: "4",
+        remaining: "3",
+        overdue: "2",
+    };
     const elements = [
         createHeading("2", "Home"),
         _createOverview(taskStats),

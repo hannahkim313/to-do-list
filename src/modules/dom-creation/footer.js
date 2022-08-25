@@ -1,14 +1,16 @@
 import { appendChildren, setAttributesOf } from "./helper-functions";
-import { createImg, createPara } from "./elements";
-import githubImg from "../../img/github.svg";
+import { createPara } from "./elements";
+import { createGithubIcon } from "./image-elements";
 
 const _createLink = () => {
     const link = document.createElement("a");
-    const attributes = { href: "" };
-    setAttributesOf(link, attributes);
+    const linkAttributes = {
+        href: "",
+    };
+    setAttributesOf(link, linkAttributes);
     const elements = [
-        createImg({ src: githubImg, alt: "Github icon" }),
-        createPara("Hannah Kim")
+        createGithubIcon(),
+        createPara("Hannah Kim"),
     ];
     appendChildren(link, elements);
     
@@ -17,7 +19,9 @@ const _createLink = () => {
 
 const createFooter = () => {
     const footer = document.createElement("footer");
-    const elements = [_createLink()];
+    const elements = [
+        _createLink(),
+    ];
     appendChildren(footer, elements);
 
     return footer;

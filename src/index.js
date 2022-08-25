@@ -15,7 +15,7 @@ const bodyElements = [
     createHomePage(),
     createTodayPage(),
     createUpcomingPage(),
-    createFooter()
+    createFooter(),
 ];
 
 const body = document.querySelector("body");

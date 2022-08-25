@@ -1,45 +1,57 @@
 import { appendChildren, setAttributesOf } from "./helper-functions";
-import { createImg, createPara, createButton, createDiv } from "./elements";
-import plusLightImg from "../../img/plus-light.svg";
-import homeImg from "../../img/home.svg";
-import todayImg from "../../img/today.svg";
-import upcomingImg from "../../img/upcoming.svg";
-import projectsImg from "../../img/folder.svg";
-import chevronDownImg from "../../img/chevron-down.svg";
-import listImg from "../../img/circle-filled-dark-orange.svg";
+import { createPara, createButton, createDiv } from "./elements";
+import {
+    createExpandIcon,
+    createHomeIcon,
+    createListIcon,
+    createPlusLightIcon,
+    createProjectsIcon,
+    createTodayIcon,
+    createUpcomingIcon
+} from "./image-elements";
 
 const _createProjects = (projectsData) => {
     const createProject = (data) => {
         const createProjectName = () => {
-            const attributes = { class: "project-name" };
-            const container = createDiv(attributes);
+            const projectNameAttributes = {
+                class: "project-name",
+            };
+            const projectName = createDiv(projectNameAttributes);
             const elements = [
-                createImg({ src: listImg, alt: "Bullet list" }),
-                createPara(data.name)
+                createListIcon(),
+                createPara(data.name),
             ];
-            appendChildren(container, elements);
+            appendChildren(projectName, elements);
 
-            return container;
+            return projectName;
         };
     
         const createProjectAlerts = () => {
             const createOverdue = (num) => {
                 const overdue = createPara(num);
-                setAttributesOf(overdue, { class: "overdue" });
+                const overdueAttributes = {
+                    class: "overdue",
+                };
+                setAttributesOf(overdue, overdueAttributes);
 
                 return overdue;
             };
 
             const createRemaining = (num) => {
                 const remaining = createPara(num);
-                setAttributesOf(remaining, { class: "remaining" });
+                const remainingAttributes = {
+                    class: "remaining",
+                };
+                setAttributesOf(remaining, remainingAttributes);
 
                 return remaining;
             };
 
-            const attributes = { class: "alerts" };
+            const alertsAttributes = {
+                class: "alerts",
+            };
             const alerts = document.createElement("aside");
-            setAttributesOf(alerts, attributes);
+            setAttributesOf(alerts, alertsAttributes);
             const elements = [];
             if (data.overdue) elements.push(createOverdue(data.overdue));
             if (data.remaining) elements.push(createRemaining(data.remaining));
@@ -49,16 +61,23 @@ const _createProjects = (projectsData) => {
         };
         
         const createProjectBtn = () => {
-            const attributes = { type: "button" };
-            const btn = createButton(attributes);
-            const elements = [createProjectName(), createProjectAlerts()];
+            const btnAttributes = {
+                type: "button",
+            };
+            const btn = createButton(btnAttributes);
+            const elements = [
+                createProjectName(),
+                createProjectAlerts(),
+            ];
             appendChildren(btn, elements);
     
             return btn;
         };
 
         const project = document.createElement("li");
-        const elements = [createProjectBtn()];
+        const elements = [
+            createProjectBtn(),
+        ];
         appendChildren(project, elements);
 
         return project;
@@ -69,7 +88,10 @@ const _createProjects = (projectsData) => {
         elements.push(createProject(data));
     };
     const projects = document.createElement("menu");
-    setAttributesOf(projects, { class: "sidebar-projects" });
+    const projectsAttributes = {
+        class: "sidebar-projects",
+    };
+    setAttributesOf(projects, projectsAttributes);
     appendChildren(projects, elements);
 
     return projects;
@@ -77,21 +99,26 @@ const _createProjects = (projectsData) => {
 
 const _createSection = (sectionName, data) => {
     const createSectionBtn = () => {
-        const attributes = data.expandable ? { type: "button", class: "expandable" } : { type: "button" };
-        const sectionBtn = createButton(attributes);
+        const btnAttributes = data.expandable ? { type: "button", class: "expandable" } : { type: "button" };
+        const sectionBtn = createButton(btnAttributes);
         const elements = [
-            createImg({ src: data.src, alt: data.alt }),
-            createPara(data.text)
+            data.icon,
+            createPara(data.text),
         ];
-        if (data.expandable) elements.push(createImg({ src: chevronDownImg, alt: "Click to expand" }));
+        if (data.expandable) elements.push(createExpandIcon());
         appendChildren(sectionBtn, elements);
 
         return sectionBtn;
     };
 
     const section = document.createElement("li");
-    setAttributesOf(section, { class: sectionName });
-    const elements = [createSectionBtn()];
+    const sectionAttributes = {
+        class: sectionName,
+    };
+    setAttributesOf(section, sectionAttributes);
+    const elements = [
+        createSectionBtn(),
+    ];
     if (sectionName === "projects") {
         const projectsData = Object.values(data.projectsList);
         elements.push(_createProjects(projectsData));
@@ -110,20 +137,26 @@ const _createSections = (sectionsData) => {
     return sections;
 };
 
-const _createMenu = (sections) => {
+const _createMenu = (sectionsData) => {
     const menu = document.createElement("menu");
-    const attributes = { class: "sidebar-sections" };
-    setAttributesOf(menu, attributes);
-    appendChildren(menu, sections);
+    const menuAttributes = {
+        class: "sidebar-sections",
+    };
+    setAttributesOf(menu, menuAttributes);
+    const elements = _createSections(sectionsData);
+    appendChildren(menu, elements);
 
     return menu;
 };
 
 const _createAddProjectBtn = () => {
-    const attributes = { type: "button", class: "add-project-btn" };
-    const btn = createButton(attributes);
+    const btnAttributes = {
+        type: "button",
+        class: "add-project-btn",
+    };
+    const btn = createButton(btnAttributes);
     const elements = [
-        createImg({ src: plusLightImg, alt: "Plus icon" }),
+        createPlusLightIcon(),
         createPara("Add project"),
     ];
     appendChildren(btn, elements);
@@ -132,41 +165,50 @@ const _createAddProjectBtn = () => {
 };
 
 const createSidebar = () => {
+    const sidebar = document.createElement("nav");
+    const sidebarAttributes = {
+        class: "sidebar",
+    };
+    setAttributesOf(sidebar, sidebarAttributes);
     const sectionsData = {
         home: {
-            src: homeImg,
-            alt: "Home icon",
-            text: "Home"
+            icon: createHomeIcon(),
+            text: "Home",
         },
         today: {
-            src: todayImg,
-            alt: "Single day calendar icon",
-            text: "Today"
+            icon: createTodayIcon(),
+            text: "Today",
         },
         upcoming: {
-            src: upcomingImg,
-            alt: "Multiple days calendar icon",
-            text: "Upcoming"
+            icon: createUpcomingIcon(),
+            text: "Upcoming",
         },
         projects: {
-            src: projectsImg,
-            alt: "Folder icon",
+            icon: createProjectsIcon(),
             text: "Projects",
             expandable: true,
             projectsList: {
-                errands: { name: "Errands", overdue: "1", remaining: "2" },
-                roadTrip: { name: "Road Trip", remaining: "7" },
-                work: { name: "Work", overdue: "1", remaining: "2" }
-            }
-        }
+                errands: {
+                    name: "Errands",
+                    overdue: "1",
+                    remaining: "2",
+                },
+                roadTrip: {
+                    name: "Road Trip",
+                    remaining: "7",
+                },
+                work: {
+                    name: "Work",
+                    overdue: "1",
+                    remaining: "2",
+                },
+            },
+        },
     };
     const elements = [
-        _createMenu(_createSections(sectionsData)),
+        _createMenu(sectionsData),
         _createAddProjectBtn(),
     ];
-    const sidebar = document.createElement("nav");
-    const attributes = { class: "sidebar" };
-    setAttributesOf(sidebar, attributes);
     appendChildren(sidebar, elements);
 
     return sidebar;
