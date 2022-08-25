@@ -1,6 +1,6 @@
-import { appendChildren, setAttributesOf } from "./helper-functions";
-import { createHeading, createPara, createDiv, createArticle } from "./elements";
-import { createOverviewImg } from "./image-elements";
+import { appendChildren, setAttributesOf } from "./general-components/helper-functions";
+import { createHeading, createPara, createDiv, createArticle } from "./general-components/elements";
+import { createOverviewImg } from "./general-components/image-elements";
 import { createPage } from "./general-components/page";
 
 const _createOverview = (taskStats) => {

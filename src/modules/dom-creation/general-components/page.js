@@ -1,4 +1,4 @@
-import { setAttributesOf } from "../helper-functions";
+import { setAttributesOf } from "./helper-functions";
 
 const createPage = (name) => {
     const page = document.createElement("main");

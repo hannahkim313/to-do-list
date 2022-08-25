@@ -1,12 +1,12 @@
-import { appendChildren, setAttributesOf, capitalize } from "../helper-functions";
-import { createArticle, createHeading, createButton, createPara, createDiv } from "../elements";
+import { appendChildren, setAttributesOf, capitalize } from "./helper-functions";
+import { createArticle, createHeading, createButton, createPara, createDiv } from "./elements";
 import { createTask } from "./task";
 import {
     createArrowDownIcon,
     createExpandIcon,
     createMoreOptionsIcon,
     createPlusDarkIcon
-} from "../image-elements";
+} from "./image-elements";
 
 const _createProjectOptions = () => {
     const createDropdown = () => {

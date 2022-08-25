@@ -1,6 +1,6 @@
-import { appendChildren } from "./helper-functions";
-import { createHeading } from "./elements";
-import { createAppLogo } from "./image-elements";
+import { appendChildren } from "./general-components/helper-functions";
+import { createHeading } from "./general-components/elements";
+import { createAppLogo } from "./general-components/image-elements";
 
 const createHeader = () => {
     const elements = [

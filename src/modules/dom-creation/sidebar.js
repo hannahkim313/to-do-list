@@ -1,5 +1,5 @@
-import { appendChildren, setAttributesOf } from "./helper-functions";
-import { createPara, createButton, createDiv } from "./elements";
+import { appendChildren, setAttributesOf } from "./general-components/helper-functions";
+import { createPara, createButton, createDiv } from "./general-components/elements";
 import {
     createExpandIcon,
     createHomeIcon,
@@ -8,7 +8,7 @@ import {
     createProjectsIcon,
     createTodayIcon,
     createUpcomingIcon
-} from "./image-elements";
+} from "./general-components/image-elements";
 
 const _createProjects = (projectsData) => {
     const createProject = (data) => {

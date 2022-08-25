@@ -1,5 +1,5 @@
-import { appendChildren } from "./helper-functions";
-import { createHeading } from "./elements";
+import { appendChildren } from "./general-components/helper-functions";
+import { createHeading } from "./general-components/elements";
 import { createPage } from "./general-components/page";
 import { createProjectsSection } from "./general-components/projects-section";
 

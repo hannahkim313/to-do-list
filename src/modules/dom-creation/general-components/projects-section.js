@@ -1,5 +1,5 @@
-import { appendChildren } from "../helper-functions";
-import { createDiv } from "../elements";
+import { appendChildren } from "./helper-functions";
+import { createDiv } from "./elements";
 import { createProjectContent } from "./project-content";
 
 const createProjectsSection = (allProjectsData) => {

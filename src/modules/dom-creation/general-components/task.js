@@ -1,5 +1,5 @@
-import { appendChildren, setAttributesOf } from "../helper-functions";
-import { createButton, createDiv, createPara } from "../elements";
+import { appendChildren, setAttributesOf } from "./helper-functions";
+import { createButton, createDiv, createPara } from "./elements";
 import {
     createCheckedIcon,
     createExpandIcon,
@@ -7,7 +7,7 @@ import {
     createLowPriorityIcon,
     createMediumPriorityIcon,
     createUncheckedIcon
-} from "../image-elements";
+} from "./image-elements";
 
 const _createLeftInfo = (data) => {
     const createToDoBtn = () => {

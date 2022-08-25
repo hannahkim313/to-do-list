@@ -1,6 +1,6 @@
-import { appendChildren, setAttributesOf } from "./helper-functions";
-import { createPara } from "./elements";
-import { createGithubIcon } from "./image-elements";
+import { appendChildren, setAttributesOf } from "./general-components/helper-functions";
+import { createPara } from "./general-components/elements";
+import { createGithubIcon } from "./general-components/image-elements";
 
 const _createLink = () => {
     const link = document.createElement("a");
