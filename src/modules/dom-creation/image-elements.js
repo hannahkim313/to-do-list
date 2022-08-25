@@ -1,7 +1,7 @@
 import { createImg } from "./elements";
 import githubImg from "../../img/github.svg";
 import appLogoImg from "../../img/logo.svg";
-import overviewImg from "../../img/overview.svg";
+import overviewImg from "../../img/overview.jpg";
 import plusLightImg from "../../img/plus-light.svg";
 import plusDarkImg from "../../img/plus-dark.svg";
 import homeImg from "../../img/home.svg";
