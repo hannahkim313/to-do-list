@@ -230,7 +230,7 @@ header .logo {
 /* Selectors for the "Home" page start here.
 /******************************************************************************/
 
-#home-page {
+.home.page {
     min-height: 100%;
 
     padding: 16px;
@@ -243,7 +243,7 @@ header .logo {
     grid-template-rows: auto 1fr;
 }
 
-#home-page h2 {
+.home.page h2 {
     padding: 0 0 16px 0;
     margin: 16px 32px 16px 32px;
 
@@ -401,7 +401,7 @@ header .logo {
 /* Selectors for the "Today" page start here.
 /******************************************************************************/
 
-#today-page {
+.today.page {
     padding: 16px;
 
     overflow-y: overlay;
@@ -413,7 +413,7 @@ header .logo {
     grid-template-rows: auto 1fr;
 }
 
-#today-page h2 {
+.today.page h2 {
     padding: 0 0 16px 0;
     margin: 16px 32px 16px 32px;
 
@@ -424,7 +424,7 @@ header .logo {
 
 /* Selectors for the grouped projects start here. */
 
-#today-page .projects {
+.today.page .projects {
     padding: 16px;
 
     grid-row: 2 / 3;
@@ -434,18 +434,18 @@ header .logo {
     gap: 16px;
 }
 
-#today-page .projects button {
+.today.page .projects button {
     background: none;
     border: none;
 }
 
-#today-page .projects img[src$="svg"] {
+.today.page .projects img[src$="svg"] {
     width: 1.3rem;
 }
 
 /* Selectors for the individual projects starts here. */
 
-#today-page .project {
+.today.page .project {
     padding: 16px;
     
     display: grid;
@@ -453,7 +453,7 @@ header .logo {
     grid-template-rows: auto 1fr;
 }
 
-#today-page .project h3 {
+.today.page .project h3 {
     padding-bottom: 16px;
     
     grid-column: 1 / 2;
@@ -461,7 +461,7 @@ header .logo {
 
 /* Selectors for the project options start here. */
 
-#today-page .options {
+.today.page .options {
     padding-bottom: 16px;
     
     grid-column: 2 / 3;
@@ -471,7 +471,7 @@ header .logo {
     gap: 8px;
 }
 
-#today-page .options .dropdown {
+.today.page .options .dropdown {
     padding: 2px 8px;
     
     background-color: var(--color-dropdown-1);
@@ -483,29 +483,29 @@ header .logo {
     transition: all 0.1s ease;
 }
 
-#today-page .options .dropdown:hover {
+.today.page .options .dropdown:hover {
     background-color: var(--color-dropdown-1-hover);
 }
 
-#today-page .options .dropdown .input {
+.today.page .options .dropdown .input {
     display: flex;
     align-items: center;
 }
 
-#today-page .options button:not(.dropdown) {
+.today.page .options button:not(.dropdown) {
     padding: 4px;
     
     transition: all 0.1s ease;
 }
 
-#today-page .options button:not(.dropdown):hover {
+.today.page .options button:not(.dropdown):hover {
     background-color: var(--color-dropdown-1);
     border-radius: 8px;
 }
 
 /* Selectors for the project tasks start here. */
 
-#today-page .tasks {
+.today.page .tasks {
     grid-column: 1 / 3;
 
     display: flex;
@@ -513,7 +513,7 @@ header .logo {
     gap: 16px;
 }
 
-#today-page .task {
+.today.page .task {
     padding: 16px 18px;
 
     background-color: var(--color-brand-2-light);
@@ -523,30 +523,30 @@ header .logo {
     justify-content: space-between;
 }
 
-#today-page .task .left {
+.today.page .task .left {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-#today-page .task .right {
+.today.page .task .right {
     display: flex;
     align-items: center;
     gap: 24px;
 }
 
-#today-page .task.checked .left,
-#today-page .task.checked .right > :not(.expand-task) {
+.today.page .task.checked .left,
+.today.page .task.checked .right > :not(.expand-task) {
     opacity: 0.5;
 }
 
-#today-page .task .right .expand-task {
+.today.page .task .right .expand-task {
     padding: 4px;
 
     transition: all 0.1s ease;
 }
 
-#today-page .task .right .expand-task:hover {
+.today.page .task .right .expand-task:hover {
     background-color: #e0d4ca;
     border-radius: 8px;
 }
@@ -555,7 +555,7 @@ header .logo {
 /* Selectors for the "Upcoming" page start here.
 /******************************************************************************/
 
-#upcoming-page {
+.upcoming.page {
     padding: 16px;
 
     overflow-y: auto;
@@ -567,7 +567,7 @@ header .logo {
     grid-template-rows: auto auto 1fr;
 }
 
-#upcoming-page h2 {
+.upcoming.page h2 {
     padding: 0 0 16px 0;
     margin: 16px 32px 16px 32px;
     
@@ -578,7 +578,7 @@ header .logo {
 
 /* Selectors for the project filters start here. */
 
-#upcoming-page .filters {
+.upcoming.page .filters {
     padding: 24px 16px 16px 32px;
     
     grid-row: 2 / 3;
@@ -587,7 +587,7 @@ header .logo {
     gap: 8px;
 }
 
-#upcoming-page .filters button {
+.upcoming.page .filters button {
     font-size: 0.8rem;
 
     padding: 2px 10px;
@@ -595,7 +595,7 @@ header .logo {
     transition: all 0.1s ease;
 }
 
-#upcoming-page .filters button:nth-child(2) {
+.upcoming.page .filters button:nth-child(2) {
     color: var(--color-text-1-inverted);
     
     background-color: var(--color-brand-2-dark);
@@ -603,13 +603,13 @@ header .logo {
     border-radius: 32px;
 }
 
-#upcoming-page .filters button:nth-child(odd) {
+.upcoming.page .filters button:nth-child(odd) {
     background: none;
     border: 1px solid var(--color-brand-2-dark);
     border-radius: 32px;
 }
 
-#upcoming-page .filters button:hover {
+.upcoming.page .filters button:hover {
     color: var(--color-text-1-inverted);
 
     background-color: var(--color-brand-2-dark);
@@ -617,7 +617,7 @@ header .logo {
 
 /* Selectors for the grouped projects start here. */
 
-#upcoming-page .projects {
+.upcoming.page .projects {
     padding: 16px;
 
     grid-row: 3 / 4;
@@ -627,18 +627,18 @@ header .logo {
     gap: 16px;
 }
 
-#upcoming-page .projects button {
+.upcoming.page .projects button {
     background: none;
     border: none;
 }
 
-#upcoming-page .projects img[src$="svg"] {
+.upcoming.page .projects img[src$="svg"] {
     width: 1.3rem;
 }
 
 /* Selectors for the individual projects start here. */
 
-#upcoming-page .project {
+.upcoming.page .project {
     padding: 16px;
     
     display: grid;
@@ -646,7 +646,7 @@ header .logo {
     grid-template-rows: auto 1fr;
 }
 
-#upcoming-page .project h3 {
+.upcoming.page .project h3 {
     padding-bottom: 16px;
     
     grid-column: 1 / 2;
@@ -654,7 +654,7 @@ header .logo {
 
 /* Selectors for the project options start here. */
 
-#upcoming-page .options {
+.upcoming.page .options {
     padding-bottom: 16px;
     
     grid-column: 2 / 3;
@@ -664,7 +664,7 @@ header .logo {
     gap: 8px;
 }
 
-#upcoming-page .options .dropdown {
+.upcoming.page .options .dropdown {
     padding: 2px 8px;
     
     background-color: var(--color-dropdown-1);
@@ -676,29 +676,29 @@ header .logo {
     transition: all 0.1s ease;
 }
 
-#upcoming-page .options .dropdown:hover {
+.upcoming.page .options .dropdown:hover {
     background-color: var(--color-dropdown-1-hover);
 }
 
-#upcoming-page .options .dropdown .input {
+.upcoming.page .options .dropdown .input {
     display: flex;
     align-items: center;
 }
 
-#upcoming-page .options button:not(.dropdown) {
+.upcoming.page .options button:not(.dropdown) {
     padding: 4px;
     
     transition: all 0.1s ease;
 }
 
-#upcoming-page .options button:not(.dropdown):hover {
+.upcoming.page .options button:not(.dropdown):hover {
     background-color: var(--color-dropdown-1);
     border-radius: 8px;
 }
 
 /* Selectors for the project tasks start here. */
 
-#upcoming-page .tasks {
+.upcoming.page .tasks {
     grid-column: 1 / 3;
 
     display: flex;
@@ -706,7 +706,7 @@ header .logo {
     gap: 16px;
 }
 
-#upcoming-page .task {
+.upcoming.page .task {
     padding: 16px 18px;
     
     background-color: var(--color-brand-2-light);
@@ -716,30 +716,30 @@ header .logo {
     justify-content: space-between;
 }
 
-#upcoming-page .task .left {
+.upcoming.page .task .left {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-#upcoming-page .task .right {
+.upcoming.page .task .right {
     display: flex;
     align-items: center;
     gap: 24px;
 }
 
-#upcoming-page .task.checked .left,
-#upcoming-page .projects .project .task.checked .right > :not(.expand-task) {
+.upcoming.page .task.checked .left,
+.upcoming.page .projects .project .task.checked .right > :not(.expand-task) {
     opacity: 0.5;
 }
 
-#upcoming-page .task .right .expand-task {
+.upcoming.page .task .right .expand-task {
     padding: 4px;
 
     transition: all 0.1s ease;
 }
 
-#upcoming-page .task .right .expand-task:hover {
+.upcoming.page .task .right .expand-task:hover {
     background-color: #e0d4ca;
     border-radius: 8px;
 }
@@ -748,10 +748,10 @@ header .logo {
 /* Selectors for each project section start here.
 /******************************************************************************/
 
-.projects-page {
+.projects.page {
     padding: 16px;
 
-    overflow-y: auto;
+    overflow-y: overlay;
     
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -760,7 +760,7 @@ header .logo {
     grid-template-rows: auto 1fr;
 }
 
-.projects-page h2 {
+.projects.page h2 {
     padding: 0 0 16px 0;
     margin: 16px 32px 16px 32px;
 
@@ -771,7 +771,7 @@ header .logo {
 
 /* Selectors for the grouped projects start here. */
 
-.projects-page .projects {
+.projects.page .projects {
     padding: 16px;
 
     grid-row: 2 / 3;
@@ -781,18 +781,18 @@ header .logo {
     gap: 16px;
 }
 
-.projects-page .projects button {
+.projects.page .projects button {
     background: none;
     border: none;
 }
 
-.projects-page .projects img[src$="svg"] {
+.projects.page .projects img[src$="svg"] {
     width: 1.3rem;
 }
 
 /* Selectors for the individual projects starts here. */
 
-.projects-page .project {
+.projects.page .project {
     padding: 16px;
     
     display: grid;
@@ -800,7 +800,7 @@ header .logo {
     grid-template-rows: auto 1fr;
 }
 
-.projects-page .project h3 {
+.projects.page .project h3 {
     padding-bottom: 16px;
     
     grid-column: 1 / 2;
@@ -808,7 +808,7 @@ header .logo {
 
 /* Selectors for the project options start here. */
 
-.projects-page .options {
+.projects.page .options {
     padding-bottom: 16px;
     
     grid-column: 2 / 3;
@@ -818,7 +818,7 @@ header .logo {
     gap: 8px;
 }
 
-.projects-page .options .dropdown {
+.projects.page .options .dropdown {
     padding: 2px 8px;
     
     background-color: var(--color-dropdown-1);
@@ -830,29 +830,29 @@ header .logo {
     transition: all 0.1s ease;
 }
 
-.projects-page .options .dropdown:hover {
+.projects.page .options .dropdown:hover {
     background-color: var(--color-dropdown-1-hover);
 }
 
-.projects-page .options .dropdown .input {
+.projects.page .options .dropdown .input {
     display: flex;
     align-items: center;
 }
 
-.projects-page .options button:not(.dropdown) {
+.projects.page .options button:not(.dropdown) {
     padding: 4px;
     
     transition: all 0.1s ease;
 }
 
-.projects-page .options button:not(.dropdown):hover {
+.projects.page .options button:not(.dropdown):hover {
     background-color: var(--color-dropdown-1);
     border-radius: 8px;
 }
 
 /* Selectors for the project tasks start here. */
 
-.projects-page .tasks {
+.projects.page .tasks {
     grid-column: 1 / 3;
 
     display: flex;
@@ -860,7 +860,7 @@ header .logo {
     gap: 16px;
 }
 
-.projects-page .task {
+.projects.page .task {
     padding: 16px 18px;
 
     background-color: var(--color-brand-2-light);
@@ -870,30 +870,30 @@ header .logo {
     justify-content: space-between;
 }
 
-.projects-page .task .left {
+.projects.page .task .left {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.projects-page .task .right {
+.projects.page .task .right {
     display: flex;
     align-items: center;
     gap: 24px;
 }
 
-.projects-page .task.checked .left,
-.projects-page .task.checked .right > :not(.expand-task) {
+.projects.page .task.checked .left,
+.projects.page .task.checked .right > :not(.expand-task) {
     opacity: 0.5;
 }
 
-.projects-page .task .right .expand-task {
+.projects.page .task .right .expand-task {
     padding: 4px;
 
     transition: all 0.1s ease;
 }
 
-.projects-page .task .right .expand-task:hover {
+.projects.page .task .right .expand-task:hover {
     background-color: #e0d4ca;
     border-radius: 8px;
 }

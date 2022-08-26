@@ -75,6 +75,10 @@ const _createProjects = (projectsData) => {
         };
 
         const project = document.createElement("li");
+        const projectAttributes = {
+            class: data.name.toLowerCase().replaceAll(" ", "-"),
+        };
+        setAttributesOf(project, projectAttributes);
         const elements = [
             createProjectBtn(),
         ];
