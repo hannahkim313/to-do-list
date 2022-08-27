@@ -2,21 +2,21 @@ import { createImg } from "./elements";
 import githubImg from "../../../img/github.svg";
 import appLogoImg from "../../../img/logo.svg";
 import overviewImg from "../../../img/overview.jpg";
-import plusLightImg from "../../../img/plus-light.svg";
-import plusDarkImg from "../../../img/plus-dark.svg";
+import plusInvertedImg from "../../../img/plus-inverted.svg";
+import plusImg from "../../../img/plus.svg";
 import homeImg from "../../../img/home.svg";
 import todayImg from "../../../img/today.svg";
 import upcomingImg from "../../../img/upcoming.svg";
 import projectsImg from "../../../img/folder.svg";
 import chevronDownImg from "../../../img/chevron-down.svg";
-import listImg from "../../../img/circle-filled-dark-orange.svg";
+import listImg from "../../../img/bullet-list.svg";
 import arrowDownImg from "../../../img/arrow-down.svg";
 import moreOptionsImg from "../../../img/dots-horizontal.svg";
 import checkedImg from "../../../img/checkbox.svg";
 import uncheckedImg from "../../../img/circle-outline.svg";
-import lowPriorityImg from "../../../img/circle-filled-blue.svg";
-import mediumPriorityImg from "../../../img/circle-filled-yellow.svg";
-import highPriorityImg from "../../../img/circle-filled-red.svg";
+import lowPriorityImg from "../../../img/low-priority.svg";
+import mediumPriorityImg from "../../../img/medium-priority.svg";
+import highPriorityImg from "../../../img/high-priority.svg";
 
 const createGithubIcon = () => {
     const imgAttributes = {
@@ -40,27 +40,17 @@ const createAppLogo = () => {
 const createOverviewImg = () => {
     const imgAttributes = {
         src: overviewImg,
-        alt: "Foggy autumnal forest",
+        alt: "Aesthetic image",
     };
 
     return createImg(imgAttributes);
 };
 
-const createPlusLightIcon = () => {
+const createPlusIcon = (isInverted) => {
     const imgAttributes = {
-        src: plusLightImg,
         alt: "Plus icon",
     };
-
-    return createImg(imgAttributes);
-
-};
-
-const createPlusDarkIcon = () => {
-    const imgAttributes = {
-        src: plusDarkImg,
-        alt: "Plus icon",
-    };
+    imgAttributes.src = isInverted ? plusInvertedImg : plusImg;
 
     return createImg(imgAttributes);
 };
@@ -185,8 +175,7 @@ export {
     createGithubIcon,
     createAppLogo,
     createOverviewImg,
-    createPlusLightIcon,
-    createPlusDarkIcon,
+    createPlusIcon,
     createHomeIcon,
     createTodayIcon,
     createUpcomingIcon,
