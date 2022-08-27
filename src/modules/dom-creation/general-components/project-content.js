@@ -5,7 +5,7 @@ import {
     createArrowDownIcon,
     createExpandIcon,
     createMoreOptionsIcon,
-    createPlusDarkIcon
+    createPlusIcon
 } from "./image-elements";
 
 const _createProjectOptions = () => {
@@ -44,7 +44,7 @@ const _createProjectOptions = () => {
         };
         const btn = createButton(btnAttributes);
         const elements = [
-            createPlusDarkIcon(),
+            createPlusIcon(false),
         ];
         appendChildren(btn, elements);
     

@@ -4,7 +4,7 @@ import {
     createExpandIcon,
     createHomeIcon,
     createListIcon,
-    createPlusLightIcon,
+    createPlusIcon,
     createProjectsIcon,
     createTodayIcon,
     createUpcomingIcon
@@ -27,24 +27,20 @@ const _createProjects = (projectsData) => {
         };
     
         const createProjectAlerts = () => {
-            const createOverdue = (num) => {
-                const overdue = createPara(num);
-                const overdueAttributes = {
-                    class: "overdue",
+            const createAlert = (name, num) => {
+                const alert = createPara();
+                const alertAttributes = {
+                    class: name,
                 };
-                setAttributesOf(overdue, overdueAttributes);
+                setAttributesOf(alert, alertAttributes);
+                const strong = document.createElement("strong");
+                strong.textContent = num;
+                const elements = [
+                    strong,
+                ];
+                appendChildren(alert, elements);
 
-                return overdue;
-            };
-
-            const createRemaining = (num) => {
-                const remaining = createPara(num);
-                const remainingAttributes = {
-                    class: "remaining",
-                };
-                setAttributesOf(remaining, remainingAttributes);
-
-                return remaining;
+                return alert;
             };
 
             const alertsAttributes = {
@@ -53,8 +49,8 @@ const _createProjects = (projectsData) => {
             const alerts = document.createElement("aside");
             setAttributesOf(alerts, alertsAttributes);
             const elements = [];
-            if (data.overdue) elements.push(createOverdue(data.overdue));
-            if (data.remaining) elements.push(createRemaining(data.remaining));
+            if (data.overdue) elements.push(createAlert("overdue", data.overdue));
+            if (data.remaining) elements.push(createAlert("remaining", data.remaining));
             appendChildren(alerts, elements);
 
             return alerts;
@@ -160,7 +156,7 @@ const _createAddProjectBtn = () => {
     };
     const btn = createButton(btnAttributes);
     const elements = [
-        createPlusLightIcon(),
+        createPlusIcon(true),
         createPara("Add project"),
     ];
     appendChildren(btn, elements);

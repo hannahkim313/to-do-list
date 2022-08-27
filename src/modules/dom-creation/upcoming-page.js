@@ -1,59 +1,31 @@
-import { appendChildren } from "./general-components/helper-functions";
+import { appendChildren, capitalize } from "./general-components/helper-functions";
 import { createButton, createDiv, createHeading, createPara } from "./general-components/elements";
 import { createPage } from "./general-components/page";
 import { createProjectsSection } from "./general-components/projects-section";
 
 const _createFilters = () => {
-    const createAllBtn = () => {
-        const allBtnAttributes = {
+    const createFilterBtn = (name) => {
+        const btnAttributes = {
             type: "button",
-            class: "all",
+            class: name.replaceAll(" ", "-"),
         };
-        const allBtn = createButton(allBtnAttributes);
+        const btn = createButton(btnAttributes);
         const elements = [
-            createPara("All"),
+            createPara(capitalize(name)),
         ];
-        appendChildren(allBtn, elements);
+        appendChildren(btn, elements);
 
-        return allBtn;
+        return btn;
     };
 
-    const createThisWeekBtn = () => {
-        const thisWeekBtnAttributes = {
-            type: "button",
-            class: "this-week",
-        };
-        const thisWeekBtn = createButton(thisWeekBtnAttributes);
-        const elements = [
-            createPara("This week"),
-        ];
-        appendChildren(thisWeekBtn, elements);
-
-        return thisWeekBtn;
-    };
-
-    const createThisMonthBtn = () => {
-        const thisMonthBtnAttributes = {
-            type: "button",
-            class: "this-month",
-        };
-        const thisMonthBtn = createButton(thisMonthBtnAttributes);
-        const elements = [
-            createPara("This month"),
-        ];
-        appendChildren(thisMonthBtn, elements);
-
-        return thisMonthBtn;
-    };
-    
     const filtersAttributes = {
         class: "filters",
     };
     const filters = createDiv(filtersAttributes);
     const elements = [
-        createAllBtn(),
-        createThisWeekBtn(),
-        createThisMonthBtn(),
+        createFilterBtn("all"),
+        createFilterBtn("this week"),
+        createFilterBtn("this month"),
     ];
     appendChildren(filters, elements);
 
