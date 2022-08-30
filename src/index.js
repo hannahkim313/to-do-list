@@ -7,10 +7,12 @@ import { createUpcomingPage } from "./modules/dom-creation/upcoming-page";
 import { createProjectsPage } from "./modules/dom-creation/project-page";
 import { createFooter } from "./modules/dom-creation/footer";
 import { displayPage } from "./modules/app-logic/display-page";
+import { toggleCollapsible } from "./modules/app-logic/toggle-collapsible";
 import "./css/style.css";
 import "./css/reset.css";
 
-const bodyElements = [
+const body = document.querySelector("body");
+const elements = [
     createHeader(),
     createSidebar(),
     createHomePage(),
@@ -21,21 +23,11 @@ const bodyElements = [
     createProjectsPage("work"),
     createFooter(),
 ];
+appendChildren(body, elements);
 
-const body = document.querySelector("body");
-appendChildren(body, bodyElements);
-
-const sidebarSections = document.querySelectorAll(
-    `.sidebar-sections > li:not(.projects), 
-    .sidebar-projects > li`
-);
-for (const sidebarSection of sidebarSections) {
-    sidebarSection.addEventListener("click", () => displayPage(sidebarSection));
-};
-
-// const expandableSections = document.querySelectorAll(".expandable");
-// for (const expandable of expandableSections) {
-//     expandable.addEventListener("click", () => {
-//         create
-//     });
-// };
+const sidebarSections = document.querySelector(".sidebar-sections");
+sidebarSections.addEventListener("click", e => {
+    const section = e.target.closest("button");
+    if (section.classList.contains("collapsible")) toggleCollapsible(section);
+    else displayPage(section);
+});

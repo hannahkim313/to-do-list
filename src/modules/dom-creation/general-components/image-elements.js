@@ -90,10 +90,11 @@ const createProjectsIcon = () => {
     return createImg(imgAttributes);
 };
 
-const createExpandIcon = () => {
+const createCollapsibleIcon = () => {
     const imgAttributes = {
         src: chevronDownImg,
-        alt: "Click to expand",
+        alt: "Click to display content",
+        class: "collapsible icon",
     };
 
     return createImg(imgAttributes);
@@ -180,7 +181,7 @@ export {
     createTodayIcon,
     createUpcomingIcon,
     createProjectsIcon,
-    createExpandIcon,
+    createCollapsibleIcon,
     createArrowDownIcon,
     createMoreOptionsIcon,
     createListIcon,

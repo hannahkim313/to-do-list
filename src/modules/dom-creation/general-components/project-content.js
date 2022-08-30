@@ -3,7 +3,7 @@ import { createArticle, createHeading, createButton, createPara, createDiv } fro
 import { createTask } from "./task";
 import {
     createArrowDownIcon,
-    createExpandIcon,
+    createCollapsibleIcon,
     createMoreOptionsIcon,
     createPlusIcon
 } from "./image-elements";
@@ -31,7 +31,7 @@ const _createProjectOptions = () => {
         const dropdown = createButton(dropdownAttributes);
         const elements = [
             createInput(),
-            createExpandIcon(),
+            createCollapsibleIcon(),
         ];
         appendChildren(dropdown, elements);
     

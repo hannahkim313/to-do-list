@@ -77,10 +77,12 @@ header .logo {
     padding: 16px 16px 32px 16px;
 
     background-color: var(--color-brand-2);
+
+    overflow-y: auto;
     
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -121,23 +123,35 @@ header .logo {
     background-color: var(--color-brand-2-active);
 }
 
-/* Selectors for expandable sections start here. */
+/* Selectors for collapsible sections start here. */
 
-.expandable {
+.collapsible {
     display: flex;
     justify-content: space-between;
 }
 
-.expandable img:last-child {
+.collapsible .collapsible.icon {
     margin-left: auto;
+
+    transition: all 0.5s ease;
+}
+
+.collapsible.expanded .collapsible.icon {
+    transform: rotate(180deg);
 }
 
 /* Selectors for the individual projects of the sidebar start here. */
 
 .sidebar-projects {
-    height: 350px;
+    max-height: 0;
 
-    overflow-y: auto;
+    margin-top: -8px;
+
+    opacity: 0;
+
+    overflow: hidden;
+
+    transition: all 0.3s ease;
 }
 
 .sidebar-projects button {

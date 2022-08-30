@@ -2,7 +2,7 @@ import { appendChildren, setAttributesOf } from "./helper-functions";
 import { createButton, createDiv, createPara } from "./elements";
 import {
     createCheckedIcon,
-    createExpandIcon,
+    createCollapsibleIcon,
     createHighPriorityIcon,
     createLowPriorityIcon,
     createMediumPriorityIcon,
@@ -65,14 +65,14 @@ const _createRightInfo = (data) => {
         if (data.priority === "high") return createHighPriorityIcon();
     };
 
-    const createExpandTaskBtn = () => {
+    const createCollapsibleTaskBtn = () => {
         const btnAttributes = {
             type: "button",
             class: "expand-task",
         };
         const btn = createButton(btnAttributes);
         const elements = [
-            createExpandIcon(),
+            createCollapsibleIcon(),
         ];
         appendChildren(btn, elements);
 
@@ -86,7 +86,7 @@ const _createRightInfo = (data) => {
     const elements = [
         createPara(data.dueDate),
         createPriorityIcon(),
-        createExpandTaskBtn(),
+        createCollapsibleTaskBtn(),
     ];
     appendChildren(rightInfo, elements);
 

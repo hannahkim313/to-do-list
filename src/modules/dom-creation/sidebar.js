@@ -1,7 +1,7 @@
 import { appendChildren, setAttributesOf } from "./general-components/helper-functions";
 import { createPara, createButton, createDiv } from "./general-components/elements";
 import {
-    createExpandIcon,
+    createCollapsibleIcon,
     createHomeIcon,
     createListIcon,
     createPlusIcon,
@@ -59,6 +59,7 @@ const _createProjects = (projectsData) => {
         const createProjectBtn = () => {
             const btnAttributes = {
                 type: "button",
+                class: data.name.toLowerCase().replaceAll(" ", "-"),
             };
             const btn = createButton(btnAttributes);
             const elements = [
@@ -71,10 +72,6 @@ const _createProjects = (projectsData) => {
         };
 
         const project = document.createElement("li");
-        const projectAttributes = {
-            class: data.name.toLowerCase().replaceAll(" ", "-"),
-        };
-        setAttributesOf(project, projectAttributes);
         const elements = [
             createProjectBtn(),
         ];
@@ -99,23 +96,22 @@ const _createProjects = (projectsData) => {
 
 const _createSection = (sectionName, data) => {
     const createSectionBtn = () => {
-        const btnAttributes = data.expandable ? { type: "button", class: "expandable" } : { type: "button" };
+        const btnAttributes = {
+            type: "button",
+        };
+        btnAttributes.class = data.collapsible ? `${sectionName} collapsible` : sectionName;
         const sectionBtn = createButton(btnAttributes);
         const elements = [
             data.icon,
             createPara(data.text),
         ];
-        if (data.expandable) elements.push(createExpandIcon());
+        if (data.collapsible) elements.push(createCollapsibleIcon());
         appendChildren(sectionBtn, elements);
 
         return sectionBtn;
     };
 
     const section = document.createElement("li");
-    const sectionAttributes = {
-        class: sectionName,
-    };
-    setAttributesOf(section, sectionAttributes);
     const elements = [
         createSectionBtn(),
     ];
@@ -186,7 +182,7 @@ const createSidebar = () => {
         projects: {
             icon: createProjectsIcon(),
             text: "Projects",
-            expandable: true,
+            collapsible: true,
             projectsList: {
                 errands: {
                     name: "Errands",
