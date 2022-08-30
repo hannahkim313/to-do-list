@@ -34,7 +34,6 @@ const _createFilters = () => {
 
 const createUpcomingPage = () => {
     const upcomingPage = createPage("upcoming");
-    upcomingPage.style.display = "none";
     const allProjectsData = {
         errands: {
             taskBooking: {
@@ -59,6 +58,7 @@ const createUpcomingPage = () => {
         createProjectsSection(allProjectsData),
     ];
     appendChildren(upcomingPage, elements);
+    upcomingPage.style.display = "none";
 
     return upcomingPage;
 };

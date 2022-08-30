@@ -5,7 +5,6 @@ import { createProjectsSection } from "./general-components/projects-section";
 
 const createTodayPage = () => {
     const todayPage = createPage("today");
-    todayPage.style.display = "none";
     const allProjectsData = {
         errands: {
             taskPackage: {
@@ -59,6 +58,7 @@ const createTodayPage = () => {
         createProjectsSection(allProjectsData),
     ];
     appendChildren(todayPage, elements);
+    todayPage.style.display = "none";
 
     return todayPage;
 };

@@ -15,13 +15,13 @@ const createProjectsPage = (projectName) => {
     };
 
     const projectsPage = createPage();
-    projectsPage.style.display = "none";
     const projectData = ProjectsDataList().get(projectName);
     const elements = [
         createHeading("2", "Projects"),
         createProjectsSection(projectData),
     ];
     appendChildren(projectsPage, elements);
+    projectsPage.style.display = "none";
 
     return projectsPage;
 };
