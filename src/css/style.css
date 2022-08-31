@@ -244,9 +244,11 @@ header .logo {
 /******************************************************************************/
 
 .home.page {
-    min-height: 100%;
+    height: 100%;
 
     padding: 16px;
+
+    overflow-y: auto;
     
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -269,7 +271,7 @@ header .logo {
 /* Selectors for the overview section start here. */
 
 .overview {
-    min-height: 100%;
+    height: 100%;
 
     padding: 16px;
 
@@ -361,6 +363,8 @@ header .logo {
 /* Selectors for the overview image start here. */
 
 .overview-img-wrapper {
+    height: 100%;
+
     margin: 16px 0 0 16px;
 
     overflow: hidden;
@@ -417,7 +421,7 @@ header .logo {
 .today.page {
     padding: 16px;
 
-    overflow-y: overlay;
+    overflow-y: auto;
     
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -579,7 +583,7 @@ header .logo {
 .upcoming.page {
     padding: 16px;
 
-    overflow-y: overlay;
+    overflow-y: auto;
     
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -780,7 +784,7 @@ header .logo {
 .projects.page {
     padding: 16px;
 
-    overflow-y: overlay;
+    overflow-y: auto;
     
     grid-column: 2 / 3;
     grid-row: 2 / 3;
