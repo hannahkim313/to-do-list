@@ -1,3 +1,5 @@
+import { toCamelCase } from "./helper-functions";
+
 const ProjectsDataList = () => {
     const errandsData = {
         errands: {
@@ -53,7 +55,7 @@ const ProjectsDataList = () => {
         },
     };
     const roadTripData = {
-        ["road trip"]: {
+        roadTrip: {
             taskDog: {
                 checked: false,
                 name: "Schedule doggy daycare",
@@ -132,10 +134,29 @@ const ProjectsDataList = () => {
         workData,
     ];
 
-    const get = (projectName) => {
-        for (const projectData of projectsData) {
-            if (projectData[`${projectName}`]) return projectData;
+    const get = (projectName, filters) => {
+        const getProjectData = () => {
+            for (const projectData of projectsData) {
+                if (projectData[toCamelCase(projectName)]) return projectData;
+            };
         };
+
+        if (filters === undefined) return getProjectData(projectName);
+
+        const projectData = getProjectData();
+        const tasks = Object.assign({}, Object.values(projectData)[0]);
+        for (const [taskName, taskData] of Object.entries(tasks)) {
+            if (
+                filters.canDelete === false &&
+                taskData[toCamelCase(filters.type)] !== filters.value
+            ) {
+                delete tasks[taskName];
+            };
+        };
+        const name = Object.keys(projectData)[0];
+        projectData[name] = tasks;
+
+        return projectData;
     };
 
     return {

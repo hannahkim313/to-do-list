@@ -2,6 +2,7 @@ import { appendChildren, capitalize } from "./general-components/helper-function
 import { createButton, createDiv, createHeading, createPara } from "./general-components/elements";
 import { createPage } from "./general-components/page";
 import { createProjectsSection } from "./general-components/projects-section";
+import { ProjectsDataList } from "./general-components/projects-data";
 
 const _createFilters = () => {
     const createFilterBtn = (name) => {
@@ -34,24 +35,15 @@ const _createFilters = () => {
 
 const createUpcomingPage = () => {
     const upcomingPage = createPage("upcoming");
-    const allProjectsData = {
-        errands: {
-            taskBooking: {
-                checked: false,
-                name: "Book Airbnb",
-                dueDate: "Jun 11, 2022",
-                priority: "medium",
-            },
-        },
-        work: {
-            taskAnalysis: {
-                checked: false,
-                name: "Gather end-of-week analysis",
-                dueDate: "Jun 10, 2022",
-                priority: "high",
-            },
-        },
+    const filters = {
+        type: "due date",
+        value: "Jun 8, 2022",
+        canDelete: true,
     };
+    const allProjectsData = Object.assign(
+        ProjectsDataList().get("errands", filters),
+        ProjectsDataList().get("work", filters),
+    );
     const elements = [
         createHeading("2", "Upcoming"),
         _createFilters(),
