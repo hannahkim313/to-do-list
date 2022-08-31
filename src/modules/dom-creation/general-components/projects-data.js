@@ -57,7 +57,7 @@ const ProjectsDataList = () => {
     const roadTripData = {
         roadTrip: {
             taskDog: {
-                checked: false,
+                checked: true,
                 name: "Schedule doggy daycare",
                 dueDate: "Jun 9, 2022",
                 priority: "high",
@@ -108,16 +108,16 @@ const ProjectsDataList = () => {
                 dueDate: "Jun 8, 2022",
                 priority: "high",
             },
-            taskAnalysis: {
-                checked: false,
-                name: "Gather end-of-week analysis",
-                dueDate: "Jun 10, 2022",
-                priority: "high",
-            },
             taskConfirm: {
                 checked: true,
                 name: "Confirm vacation time",
                 dueDate: "Jun 9, 2022",
+                priority: "high",
+            },
+            taskAnalysis: {
+                checked: false,
+                name: "Gather end-of-week analysis",
+                dueDate: "Jun 10, 2022",
                 priority: "high",
             },
             taskVideo: {

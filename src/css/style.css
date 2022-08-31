@@ -890,12 +890,24 @@ header .logo {
     display: flex;
     align-items: center;
     gap: 8px;
+
 }
 
 .projects.page .task .right {
     display: flex;
     align-items: center;
     gap: 24px;
+}
+
+.projects.page .task .right .overdue {
+    font-size: 0.8rem;
+
+    padding: 2px 8px;
+
+    color: white;
+
+    background-color: var(--color-ui-danger);
+    border-radius: 8px;
 }
 
 .projects.page .task.checked .left,

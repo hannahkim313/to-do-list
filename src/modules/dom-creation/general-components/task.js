@@ -59,6 +59,16 @@ const _createLeftInfo = (data) => {
 };
 
 const _createRightInfo = (data) => {
+    const createOverdue = () => {
+        const overdue = createPara("Overdue");
+        const overdueAttributes = {
+            class: "overdue",
+        };
+        setAttributesOf(overdue, overdueAttributes);
+    
+        return overdue;
+    };
+
     const createPriorityIcon = () => {
         if (data.priority === "low") return createLowPriorityIcon();
         if (data.priority === "medium") return createMediumPriorityIcon();
@@ -88,6 +98,7 @@ const _createRightInfo = (data) => {
         createPriorityIcon(),
         createCollapsibleTaskBtn(),
     ];
+    if (data.overdue) elements.unshift(createOverdue());
     appendChildren(rightInfo, elements);
 
     return rightInfo;
