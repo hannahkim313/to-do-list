@@ -25,13 +25,13 @@ const ProjectsDataList = () => {
             taskGroceries: {
                 checked: true,
                 name: "Get groceries",
-                checked: false,
                 dueDate: "Jun 8, 2022",
                 priority: "medium",
             },
             taskBooking: {
+                checked: true,
                 name: "Book Airbnb",
-                dueDate: "Jun 11, 2022",
+                dueDate: "Jun 9, 2022",
                 priority: "medium",
             },
             taskMeal: {
@@ -123,8 +123,9 @@ const ProjectsDataList = () => {
             taskVideo: {
                 checked: false,
                 name: "Video call Joe",
-                dueDate: "Jun 9, 2022",
+                dueDate: "Jun 5, 2022",
                 priority: "medium",
+                overdue: true,
             },
         },
     };
@@ -147,8 +148,11 @@ const ProjectsDataList = () => {
         const tasks = Object.assign({}, Object.values(projectData)[0]);
         for (const [taskName, taskData] of Object.entries(tasks)) {
             if (
-                filters.canDelete === false &&
-                taskData[toCamelCase(filters.type)] !== filters.value
+                taskData.overdue ||
+                !filters.canDelete &&
+                taskData[toCamelCase(filters.type)] !== filters.value ||
+                filters.canDelete &&
+                taskData[toCamelCase(filters.type)] === filters.value
             ) {
                 delete tasks[taskName];
             };

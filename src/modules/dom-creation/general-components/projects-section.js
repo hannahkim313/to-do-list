@@ -6,7 +6,9 @@ const createProjectsSection = (allProjectsData) => {
     const createProjects = () => {
         const projects = [];
         for (const [projectName, projectData] of Object.entries(allProjectsData)) {
-            projects.push(createProjectContent(undoCamelCase(projectName), projectData));
+            if (Object.keys(projectData).length > 0) {
+                projects.push(createProjectContent(undoCamelCase(projectName), projectData));
+            };
         };
     
         return projects;

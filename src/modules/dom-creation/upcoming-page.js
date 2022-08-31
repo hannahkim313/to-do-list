@@ -42,6 +42,7 @@ const createUpcomingPage = () => {
     };
     const allProjectsData = Object.assign(
         ProjectsDataList().get("errands", filters),
+        ProjectsDataList().get("road trip", filters),
         ProjectsDataList().get("work", filters),
     );
     const elements = [
