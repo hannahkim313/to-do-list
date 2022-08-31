@@ -11,21 +11,18 @@
     --color-text-1-inverted: #ffffff;
 
     --color-brand-1: #847fca;
-    --color-brand-1-light-a: #9490c9;
-    --color-brand-1-light-b: #E2E4F6;
-    --color-brand-2: #f1f1f1;
-    --color-brand-2-dark: #d0d0d0;
-    --color-brand-2-hover: #dcdcdc;
-    --color-brand-2-active: #cac9c9;
+    --color-brand-1-a: #9490c9;
+    --color-brand-1-b: #E2E4F6;
+    --color-brand-2: #D4E09B;
     --color-brand-3: #F4D179;
-    --color-brand-3-hover: #e7c46b;
-
-    --color-ui-success: #D4E09B;
-    --color-ui-warning: #f4d179;
-    --color-ui-danger: #e67a6b;
-
-    --color-dropdown-1: #eaeaea;
-    --color-dropdown-1-hover: #e1e1e1;
+    --color-brand-3-a: #e7c46b;
+    --color-brand-4: #e67a6b;
+    
+    --color-neutral-1: #f1f1f1;
+    --color-neutral-2: #eaeaea;
+    --color-neutral-3: #e3e3e3;
+    --color-neutral-4: #dbdbdb;
+    --color-neutral-5: #c6c6c6;
 }
 
 body {
@@ -76,7 +73,7 @@ header .logo {
 .sidebar {
     padding: 16px 16px 32px 16px;
 
-    background-color: var(--color-brand-2);
+    background-color: var(--color-neutral-1);
 
     overflow-y: auto;
     
@@ -116,11 +113,11 @@ header .logo {
 }
 
 .sidebar-sections > li > button:hover {
-    background-color: var(--color-brand-2-hover);
+    background-color: var(--color-neutral-3);
 }
 
 .sidebar-sections > li > button:active {
-    background-color: var(--color-brand-2-active);
+    background-color: var(--color-neutral-4);
 }
 
 /* Selectors for collapsible sections start here. */
@@ -171,11 +168,11 @@ header .logo {
 }
 
 .sidebar-projects button:hover {
-    background-color: var(--color-brand-2-hover);
+    background-color: var(--color-neutral-3);
 }
 
 .sidebar-projects button:active {
-    background-color: var(--color-brand-2-active);
+    background-color: var(--color-neutral-4);
 }
 
 .sidebar-projects .project-name {
@@ -204,11 +201,11 @@ header .logo {
 }
 
 .sidebar-projects .alerts .overdue {
-    background-color: var(--color-ui-danger);
+    background-color: var(--color-brand-4);
 }
 
 .sidebar-projects .alerts .remaining {
-    background-color: var(--color-brand-1-light-a);
+    background-color: var(--color-brand-1-a);
 }
 
 /* Selectors for the "Add project" button start here. */
@@ -235,7 +232,7 @@ header .logo {
 }
 
 .add-project-btn:hover {
-    background-color: var(--color-brand-3-hover);
+    background-color: var(--color-brand-3-a);
 }
 
 .add-project-btn img {
@@ -303,7 +300,7 @@ header .logo {
 
     font-size: 2rem;
 
-    background-color: var(--color-brand-1-light-b);
+    background-color: var(--color-brand-1-b);
     border-radius: 2px;
     border-top-left-radius: 50%;
     border-bottom-right-radius: 50%;
@@ -350,15 +347,15 @@ header .logo {
 }
 
 .overview-tasks .completed {
-    border: 8px solid var(--color-ui-success);
+    border: 8px solid var(--color-brand-2);
 }
 
 .overview-tasks .remaining {
-    border: 8px solid var(--color-ui-warning);
+    border: 8px solid var(--color-brand-3);
 }
 
 .overview-tasks .overdue {
-    border: 8px solid var(--color-ui-danger);
+    border: 8px solid var(--color-brand-4);
 }
 
 /* Selectors for the overview image start here. */
@@ -404,7 +401,7 @@ header .logo {
     margin: 0 16px 0 16px;
     padding: 16px;
 
-    background-color: var(--color-brand-2);
+    background-color: var(--color-neutral-1);
     border: none;
     border-radius: 8px;
 }
@@ -490,7 +487,7 @@ header .logo {
 .today.page .options .dropdown {
     padding: 2px 8px;
     
-    background-color: var(--color-dropdown-1);
+    background-color: var(--color-neutral-1);
     border-radius: 4px;
 
     display: flex;
@@ -500,7 +497,11 @@ header .logo {
 }
 
 .today.page .options .dropdown:hover {
-    background-color: var(--color-dropdown-1-hover);
+    background-color: var(--color-neutral-2);
+}
+
+.today.page .options .dropdown:active {
+    background-color: var(--color-neutral-3);
 }
 
 .today.page .options .dropdown .input {
@@ -515,8 +516,12 @@ header .logo {
 }
 
 .today.page .options button:not(.dropdown):hover {
-    background-color: var(--color-dropdown-1);
+    background-color: var(--color-neutral-1);
     border-radius: 8px;
+}
+
+.today.page .options button:not(.dropdown):active {
+    background-color: var(--color-neutral-2);
 }
 
 /* Selectors for the project tasks start here. */
@@ -532,7 +537,7 @@ header .logo {
 .today.page .task {
     padding: 16px 18px;
 
-    background-color: var(--color-brand-2);
+    background-color: var(--color-neutral-1);
     border-radius: 20px;
 
     display: flex;
@@ -563,7 +568,7 @@ header .logo {
 }
 
 .today.page .task .right .expand-task:hover {
-    background-color: var(--color-brand-2-hover);
+    background-color: var(--color-neutral-3);
     border-radius: 8px;
 }
 
@@ -574,7 +579,7 @@ header .logo {
 .upcoming.page {
     padding: 16px;
 
-    overflow-y: auto;
+    overflow-y: overlay;
     
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -614,21 +619,21 @@ header .logo {
 .upcoming.page .filters button:first-child {
     color: var(--color-text-1-inverted);
     
-    background-color: var(--color-brand-2-dark);
+    background-color: var(--color-neutral-5);
     border: none;
     border-radius: 32px;
 }
 
 .upcoming.page .filters button:not(:first-child) {
     background: none;
-    border: 1px solid var(--color-brand-2-dark);
+    border: 1px solid var(--color-neutral-5);
     border-radius: 32px;
 }
 
 .upcoming.page .filters button:hover {
     color: var(--color-text-1-inverted);
 
-    background-color: var(--color-brand-2-dark);
+    background-color: var(--color-neutral-5);
 }
 
 /* Selectors for the grouped projects start here. */
@@ -683,7 +688,7 @@ header .logo {
 .upcoming.page .options .dropdown {
     padding: 2px 8px;
     
-    background-color: var(--color-dropdown-1);
+    background-color: var(--color-neutral-1);
     border-radius: 4px;
 
     display: flex;
@@ -693,7 +698,11 @@ header .logo {
 }
 
 .upcoming.page .options .dropdown:hover {
-    background-color: var(--color-dropdown-1-hover);
+    background-color: var(--color-neutral-2);
+
+}
+.upcoming.page .options .dropdown:active {
+    background-color: var(--color-neutral-3);
 }
 
 .upcoming.page .options .dropdown .input {
@@ -708,8 +717,12 @@ header .logo {
 }
 
 .upcoming.page .options button:not(.dropdown):hover {
-    background-color: var(--color-dropdown-1);
+    background-color: var(--color-neutral-1);
     border-radius: 8px;
+}
+
+.upcoming.page .options button:not(.dropdown):active {
+    background-color: var(--color-neutral-2);
 }
 
 /* Selectors for the project tasks start here. */
@@ -725,7 +738,7 @@ header .logo {
 .upcoming.page .task {
     padding: 16px 18px;
     
-    background-color: var(--color-brand-2);
+    background-color: var(--color-neutral-1);
     border-radius: 20px;
     
     display: flex;
@@ -756,7 +769,7 @@ header .logo {
 }
 
 .upcoming.page .task .right .expand-task:hover {
-    background-color: var(--color-brand-2-hover);
+    background-color: var(--color-neutral-3);
     border-radius: 8px;
 }
 
@@ -837,7 +850,7 @@ header .logo {
 .projects.page .options .dropdown {
     padding: 2px 8px;
     
-    background-color: var(--color-dropdown-1);
+    background-color: var(--color-neutral-1);
     border-radius: 4px;
 
     display: flex;
@@ -847,7 +860,11 @@ header .logo {
 }
 
 .projects.page .options .dropdown:hover {
-    background-color: var(--color-dropdown-1-hover);
+    background-color: var(--color-neutral-2);
+
+}
+.projects.page .options .dropdown:active {
+    background-color: var(--color-neutral-3);
 }
 
 .projects.page .options .dropdown .input {
@@ -862,8 +879,12 @@ header .logo {
 }
 
 .projects.page .options button:not(.dropdown):hover {
-    background-color: var(--color-dropdown-1);
+    background-color: var(--color-neutral-1);
     border-radius: 8px;
+
+}
+.projects.page .options button:not(.dropdown):active {
+    background-color: var(--color-neutral-2);
 }
 
 /* Selectors for the project tasks start here. */
@@ -879,7 +900,7 @@ header .logo {
 .projects.page .task {
     padding: 16px 18px;
 
-    background-color: var(--color-brand-2);
+    background-color: var(--color-neutral-1);
     border-radius: 20px;
 
     display: flex;
@@ -906,7 +927,7 @@ header .logo {
 
     color: white;
 
-    background-color: var(--color-ui-danger);
+    background-color: var(--color-brand-4);
     border-radius: 8px;
 }
 
@@ -922,8 +943,9 @@ header .logo {
 }
 
 .projects.page .task .right .expand-task:hover {
-    background-color: var(--color-brand-2-hover);
+    background-color: var(--color-neutral-3);
     border-radius: 8px;
+
 }
 
 /******************************************************************************/
