@@ -1,12 +1,15 @@
-import { appendChildren, setAttributesOf } from "./general-components/helper-functions";
+import { appendChildren, setAttributesOf, dayToString, monthToString } from "./general-components/helper-functions";
 import { createHeading, createPara, createDiv, createArticle } from "./general-components/elements";
 import { createOverviewImg } from "./general-components/image-elements";
 import { createPage } from "./general-components/page";
 
 const _createOverview = (taskStats) => {
     const createDateSection = () => {
+        const dateObj = new Date();
+
         const createNumDate = () => {
-            const numDate = createPara("8");
+            const date = dateObj.getDate();
+            const numDate = createPara(date);
             const numDateAttributes = {
                 class: "num-date",
             };
@@ -20,9 +23,12 @@ const _createOverview = (taskStats) => {
                 class: "full-date",
             };
             const fullDate = createDiv(fullDateAttributes);
+            const day = dayToString(dateObj.getDay());
+            const month = monthToString(dateObj.getMonth());
+            const year = dateObj.getFullYear();
             const elements = [
-                createPara("Wed,"),
-                createPara("Jun 2022"),
+                createPara(`${day},`),
+                createPara(`${month} ${year}`),
             ];
             appendChildren(fullDate, elements);
 
