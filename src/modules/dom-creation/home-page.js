@@ -1,15 +1,15 @@
-import { appendChildren, setAttributesOf, dayToString, monthToString } from "./general-components/helper-functions";
+import { appendChildren, setAttributesOf } from "./general-components/helper-functions";
 import { createHeading, createPara, createDiv, createArticle } from "./general-components/elements";
 import { createOverviewImg } from "./general-components/image-elements";
 import { createPage } from "./general-components/page";
+import { format } from "date-fns";
 
 const _createOverview = (taskStats) => {
     const createDateSection = () => {
         const dateObj = new Date();
 
         const createNumDate = () => {
-            const date = dateObj.getDate();
-            const numDate = createPara(date);
+            const numDate = createPara(format(dateObj, "d"));
             const numDateAttributes = {
                 class: "num-date",
             };
@@ -23,9 +23,9 @@ const _createOverview = (taskStats) => {
                 class: "full-date",
             };
             const fullDate = createDiv(fullDateAttributes);
-            const day = dayToString(dateObj.getDay());
-            const month = monthToString(dateObj.getMonth());
-            const year = dateObj.getFullYear();
+            const day = format(dateObj, "EEE");
+            const month = format(dateObj, "LLL");
+            const year = format(dateObj, "yyyy");
             const elements = [
                 createPara(`${day},`),
                 createPara(`${month} ${year}`),

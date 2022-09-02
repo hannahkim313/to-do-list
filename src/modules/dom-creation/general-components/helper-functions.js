@@ -41,24 +41,10 @@ const undoCamelCase = (str) => {
     return letters.join("");
 };
 
-const dayToString = (day) => {
-    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    
-    return days[day];
-};
-
-const monthToString = (month) => {
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    
-    return months[month];
-};
-
 export {
     appendChildren,
     setAttributesOf,
     capitalize,
     toCamelCase,
     undoCamelCase,
-    dayToString,
-    monthToString,
 };
