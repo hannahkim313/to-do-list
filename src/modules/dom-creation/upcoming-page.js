@@ -3,6 +3,7 @@ import { createButton, createDiv, createHeading, createPara } from "./general-co
 import { createPage } from "./general-components/page";
 import { createProjectsSection } from "./general-components/projects-section";
 import { ProjectsDataList } from "./general-components/projects-data";
+import { FullDate } from "./general-components/full-date";
 
 const _createFilters = () => {
     const createFilterBtn = (name) => {
@@ -37,7 +38,7 @@ const createUpcomingPage = () => {
     const upcomingPage = createPage("upcoming");
     const filters = {
         type: "due date",
-        value: "Jun 8, 2022",
+        value: FullDate().getToday(),
         canDelete: true,
     };
     const allProjectsData = Object.assign(

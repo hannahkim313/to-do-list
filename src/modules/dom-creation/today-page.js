@@ -3,12 +3,13 @@ import { createHeading } from "./general-components/elements";
 import { createPage } from "./general-components/page";
 import { createProjectsSection } from "./general-components/projects-section";
 import { ProjectsDataList } from "./general-components/projects-data";
+import { FullDate } from "./general-components/full-date";
 
 const createTodayPage = () => {
     const todayPage = createPage("today");
     const filters = {
         type: "due date",
-        value: "Jun 8, 2022",
+        value: FullDate().getToday(),
         canDelete: false,
     };
     const allProjectsData = Object.assign(
