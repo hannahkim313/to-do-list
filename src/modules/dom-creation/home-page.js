@@ -135,9 +135,9 @@ const _createNotesSection = () => {
 const createHomePage = () => {
     const homePage = createPage("home");
     const taskStats = {
-        completed: "4",
-        remaining: "3",
-        overdue: "2",
+        completed: "0",
+        remaining: "0",
+        overdue: "0",
     };
     const elements = [
         createHeading("2", "Home"),

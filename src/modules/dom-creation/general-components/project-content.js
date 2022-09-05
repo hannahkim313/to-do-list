@@ -1,6 +1,6 @@
 import { appendChildren, setAttributesOf, capitalize } from "./helper-functions";
 import { createArticle, createHeading, createButton, createPara, createDiv } from "./elements";
-import { createTask } from "./task";
+import { createTask } from "./task-element";
 import {
     createArrowDownIcon,
     createCollapsibleIcon,

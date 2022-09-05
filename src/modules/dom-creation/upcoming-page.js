@@ -1,9 +1,7 @@
 import { appendChildren, capitalize } from "./general-components/helper-functions";
 import { createButton, createDiv, createHeading, createPara } from "./general-components/elements";
 import { createPage } from "./general-components/page";
-import { createProjectsSection } from "./general-components/projects-section";
-import { ProjectsDataList } from "./general-components/projects-data";
-import { FullDate } from "./general-components/full-date";
+import { createEmptyMessage } from "./general-components/ui-elements";
 
 const _createFilters = () => {
     const createFilterBtn = (name) => {
@@ -36,20 +34,10 @@ const _createFilters = () => {
 
 const createUpcomingPage = () => {
     const upcomingPage = createPage("upcoming");
-    const filters = {
-        type: "due date",
-        value: FullDate().getToday(),
-        canDelete: true,
-    };
-    const allProjectsData = Object.assign(
-        ProjectsDataList().get("errands", filters),
-        ProjectsDataList().get("road trip", filters),
-        ProjectsDataList().get("work", filters),
-    );
     const elements = [
         createHeading("2", "Upcoming"),
         _createFilters(),
-        createProjectsSection(allProjectsData),
+        createEmptyMessage("There are no upcoming tasks."),
     ];
     appendChildren(upcomingPage, elements);
     upcomingPage.style.display = "none";

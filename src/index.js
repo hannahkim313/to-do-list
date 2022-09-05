@@ -18,9 +18,6 @@ const elements = [
     createHomePage(),
     createTodayPage(),
     createUpcomingPage(),
-    createProjectsPage("errands"),
-    createProjectsPage("road trip"),
-    createProjectsPage("work"),
     createFooter(),
 ];
 appendChildren(body, elements);
@@ -29,5 +26,5 @@ const sidebarSections = document.querySelector(".sidebar-sections");
 sidebarSections.addEventListener("click", e => {
     const section = e.target.closest("button");
     if (section.classList.contains("collapsible")) toggleCollapsible(section);
-    else displayPage(section);
+    else if (!section.classList.contains("no-projects-created")) displayPage(section);
 });

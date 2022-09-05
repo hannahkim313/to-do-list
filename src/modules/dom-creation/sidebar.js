@@ -184,19 +184,8 @@ const createSidebar = () => {
             text: "Projects",
             collapsible: true,
             projectsList: {
-                errands: {
-                    name: "Errands",
-                    overdue: "1",
-                    remaining: "2",
-                },
-                roadTrip: {
-                    name: "Road Trip",
-                    remaining: "7",
-                },
-                work: {
-                    name: "Work",
-                    overdue: "1",
-                    remaining: "2",
+                default: {
+                    name: "No projects created",
                 },
             },
         },

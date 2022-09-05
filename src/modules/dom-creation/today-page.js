@@ -1,25 +1,13 @@
 import { appendChildren } from "./general-components/helper-functions";
 import { createHeading } from "./general-components/elements";
 import { createPage } from "./general-components/page";
-import { createProjectsSection } from "./general-components/projects-section";
-import { ProjectsDataList } from "./general-components/projects-data";
-import { FullDate } from "./general-components/full-date";
+import { createEmptyMessage } from "./general-components/ui-elements";
 
 const createTodayPage = () => {
     const todayPage = createPage("today");
-    const filters = {
-        type: "due date",
-        value: FullDate().getToday(),
-        canDelete: false,
-    };
-    const allProjectsData = Object.assign(
-        ProjectsDataList().get("errands", filters),
-        ProjectsDataList().get("road trip", filters),
-        ProjectsDataList().get("work", filters),
-    );
     const elements = [
         createHeading("2", "Today"),
-        createProjectsSection(allProjectsData),
+        createEmptyMessage("There are no tasks to do today."),
     ];
     appendChildren(todayPage, elements);
     todayPage.style.display = "none";
