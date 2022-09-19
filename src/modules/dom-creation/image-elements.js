@@ -1,22 +1,22 @@
-import { createImg } from "./elements";
-import githubImg from "../../../img/github.svg";
-import appLogoImg from "../../../img/logo.svg";
-import overviewImg from "../../../img/overview.jpg";
-import plusInvertedImg from "../../../img/plus-inverted.svg";
-import plusImg from "../../../img/plus.svg";
-import homeImg from "../../../img/home.svg";
-import todayImg from "../../../img/today.svg";
-import upcomingImg from "../../../img/upcoming.svg";
-import projectsImg from "../../../img/folder.svg";
-import chevronDownImg from "../../../img/chevron-down.svg";
-import listImg from "../../../img/bullet-list.svg";
-import arrowDownImg from "../../../img/arrow-down.svg";
-import moreOptionsImg from "../../../img/dots-horizontal.svg";
-import checkedImg from "../../../img/checkbox.svg";
-import uncheckedImg from "../../../img/circle-outline.svg";
-import lowPriorityImg from "../../../img/low-priority.svg";
-import mediumPriorityImg from "../../../img/medium-priority.svg";
-import highPriorityImg from "../../../img/high-priority.svg";
+import * as element from "./html-elements";
+import githubImg from "../../img/github.svg";
+import appLogoImg from "../../img/logo.svg";
+import overviewImg from "../../img/overview.jpg";
+import plusInvertedImg from "../../img/plus-inverted.svg";
+import plusImg from "../../img/plus.svg";
+import homeImg from "../../img/home.svg";
+import todayImg from "../../img/today.svg";
+import upcomingImg from "../../img/upcoming.svg";
+import projectsImg from "../../img/folder.svg";
+import chevronDownImg from "../../img/chevron-down.svg";
+import listImg from "../../img/bullet-list.svg";
+import arrowDownImg from "../../img/arrow-down.svg";
+import moreOptionsImg from "../../img/dots-horizontal.svg";
+import checkedImg from "../../img/checkbox.svg";
+import uncheckedImg from "../../img/circle-outline.svg";
+import lowPriorityImg from "../../img/low-priority.svg";
+import mediumPriorityImg from "../../img/medium-priority.svg";
+import highPriorityImg from "../../img/high-priority.svg";
 
 const createGithubIcon = () => {
     const imgAttributes = {
@@ -24,7 +24,7 @@ const createGithubIcon = () => {
         alt: "Github icon",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createAppLogo = () => {
@@ -34,7 +34,7 @@ const createAppLogo = () => {
         class: "logo",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createOverviewImg = () => {
@@ -43,7 +43,7 @@ const createOverviewImg = () => {
         alt: "Aesthetic image",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createPlusIcon = (isInverted) => {
@@ -52,7 +52,7 @@ const createPlusIcon = (isInverted) => {
     };
     imgAttributes.src = isInverted ? plusInvertedImg : plusImg;
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createHomeIcon = () => {
@@ -61,7 +61,7 @@ const createHomeIcon = () => {
         alt: "Home icon",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createTodayIcon = () => {
@@ -70,7 +70,7 @@ const createTodayIcon = () => {
         alt: "Single day calendar icon",
     };
     
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createUpcomingIcon = () => {
@@ -79,7 +79,7 @@ const createUpcomingIcon = () => {
         alt: "Multiple days calendar icon",
     };
     
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 const createProjectsIcon = () => {
     const imgAttributes = {
@@ -87,7 +87,7 @@ const createProjectsIcon = () => {
         alt: "Folder icon",
     };
     
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createCollapsibleIcon = () => {
@@ -97,7 +97,7 @@ const createCollapsibleIcon = () => {
         class: "collapsible icon",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createListIcon = () => {
@@ -106,7 +106,7 @@ const createListIcon = () => {
         alt: "Bullet list",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createArrowDownIcon = () => {
@@ -115,7 +115,7 @@ const createArrowDownIcon = () => {
         alt: "Down arrow icon",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createMoreOptionsIcon = () => {
@@ -124,7 +124,7 @@ const createMoreOptionsIcon = () => {
         alt: "Click for more options",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createCheckedIcon = () => {
@@ -133,7 +133,7 @@ const createCheckedIcon = () => {
         alt: "Checked box",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createUncheckedIcon = () => {
@@ -142,7 +142,7 @@ const createUncheckedIcon = () => {
         alt: "Unchecked box",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createLowPriorityIcon = () => {
@@ -151,7 +151,7 @@ const createLowPriorityIcon = () => {
         alt: "Low priority",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createMediumPriorityIcon = () => {
@@ -160,7 +160,7 @@ const createMediumPriorityIcon = () => {
         alt: "Medium priority",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 const createHighPriorityIcon = () => {
@@ -169,7 +169,7 @@ const createHighPriorityIcon = () => {
         alt: "High priority",
     };
 
-    return createImg(imgAttributes);
+    return element.createImg(imgAttributes);
 };
 
 export {

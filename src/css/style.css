@@ -16,7 +16,10 @@
     --color-brand-2: #D4E09B;
     --color-brand-3: #F4D179;
     --color-brand-3-a: #e7c46b;
+    --color-brand-3-b: #dbb966;
     --color-brand-4: #e67a6b;
+
+    --color-modal-1: #4d4d4d50;
     
     --color-neutral-1: #f1f1f1;
     --color-neutral-2: #eaeaea;
@@ -41,6 +44,82 @@ a {
 
 button:hover {
     cursor: pointer;
+}
+
+/******************************************************************************/
+/* Selectors for the "Add Project" modal start here.
+/******************************************************************************/
+
+.add-project.modal {
+    margin: auto;
+    
+    border: none;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px #4d4d4d50, -3px 3px 5px #4d4d4d50;
+
+    top: 0;
+    left: 0;
+}
+
+.add-project.modal::backdrop {
+    background-color: #4d4d4d50;
+}
+
+.add-project.modal form {
+    width: 300px;
+    height: 165px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.add-project.modal .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.add-project.modal input {
+    padding: 0 0 0 4px;
+
+    background-color: var(--color-neutral-1);
+    border: 1.5px solid transparent;
+    border-radius: 2px;
+}
+
+.add-project.modal input:focus {
+    outline: none;
+    border: 1.5px solid var(--color-text-1);
+    border-radius: 2px;
+
+}
+
+.add-project.modal .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+}
+
+.add-project.modal button {
+    padding: 2px 8px;
+
+    background-color: var(--color-neutral-2);
+    border: none;
+    border-radius: 4px;
+
+    transition: all 0.2s ease;
+}
+
+.add-project.modal button:hover {
+    background-color: var(--color-neutral-3);
+}
+
+.add-project.modal button:active {
+    background-color: var(--color-neutral-4);
 }
 
 /******************************************************************************/
@@ -139,7 +218,7 @@ header .logo {
 
 /* Selectors for the individual projects of the sidebar start here. */
 
-.sidebar-projects {
+.content {
     max-height: 0;
 
     margin-top: -8px;
@@ -151,7 +230,7 @@ header .logo {
     transition: all 0.3s ease;
 }
 
-.sidebar-projects button {
+.content button {
     width: 100%;
 
     padding: 8px 8px 8px 40px;
@@ -167,32 +246,32 @@ header .logo {
     transition: all 0.2s ease;
 }
 
-.sidebar-projects button:hover {
+.content button:hover {
     background-color: var(--color-neutral-3);
 }
 
-.sidebar-projects button:active {
+.content button:active {
     background-color: var(--color-neutral-4);
 }
 
-.sidebar-projects .project-name {
+.content-item {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.sidebar-projects .project-name img {
+.content-item img {
     width: 0.6rem;
 }
 
-.sidebar-projects .alerts {
+.content .alerts {
     font-size: 0.8rem;
 
     display: flex;
     gap: 8px;
 }
 
-.sidebar-projects .alerts p {
+.content .alerts p {
     padding: 0 8px;
     
     color: var(--color-text-1-inverted);
@@ -200,11 +279,11 @@ header .logo {
     border-radius: 50%;
 }
 
-.sidebar-projects .alerts .overdue {
+.content .alerts .overdue {
     background-color: var(--color-brand-4);
 }
 
-.sidebar-projects .alerts .remaining {
+.content .alerts .remaining {
     background-color: var(--color-brand-1-a);
 }
 
@@ -233,6 +312,10 @@ header .logo {
 
 .add-project-btn:hover {
     background-color: var(--color-brand-3-a);
+
+}
+.add-project-btn:active {
+    background-color: var(--color-brand-3-b);
 }
 
 .add-project-btn img {
@@ -439,6 +522,24 @@ header .logo {
     grid-row: 1 / 2;
 }
 
+/* Selectors for empty projects/tasks start here. */
+
+.today.page .empty {
+    height: 56px;
+
+    padding: 16px;
+    margin: 32px 32px 0 32px;
+
+    background-color: var(--color-neutral-1);
+    border-radius: 20px;
+
+    grid-row: 2 / 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Selectors for the grouped projects start here. */
 
 .today.page .projects {
@@ -604,7 +705,7 @@ header .logo {
 /* Selectors for the project filters start here. */
 
 .upcoming.page .filters {
-    padding: 16px 16px 16px 32px;
+    padding: 32px 16px 16px 32px;
     
     grid-row: 2 / 3;
 
@@ -638,6 +739,24 @@ header .logo {
     color: var(--color-text-1-inverted);
 
     background-color: var(--color-neutral-5);
+}
+
+/* Selectors for empty projects/tasks start here. */
+
+.upcoming.page .empty {
+    height: 56px;
+
+    padding: 16px;
+    margin: 32px 32px 0 32px;
+
+    background-color: var(--color-neutral-1);
+    border-radius: 20px;
+
+    grid-row: 3 / 4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Selectors for the grouped projects start here. */
@@ -800,6 +919,22 @@ header .logo {
     border-bottom: 1px solid var(--color-text-1);
 
     grid-row: 1 / 2;
+}
+
+/* Selectors for empty projects/tasks start here. */
+
+.projects.page .empty.nested {
+    height: 56px;
+
+    padding: 16px;
+    margin: 16px 0 0 0;
+
+    background-color: var(--color-neutral-1);
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Selectors for the grouped projects start here. */
