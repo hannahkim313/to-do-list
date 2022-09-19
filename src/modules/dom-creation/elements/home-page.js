@@ -1,19 +1,19 @@
-import { appendChildren, setAttributesOf } from "./general-components/helper-functions";
-import { createHeading, createPara, createDiv, createArticle } from "./general-components/elements";
-import { createOverviewImg } from "./general-components/image-elements";
-import { createPage } from "./general-components/page";
-import { format } from "date-fns";
+import * as element from "../html-elements";
+import * as page from "../page-elements";
+import * as method from "../helper-functions";
+import * as image from "../image-elements";
+import * as date from "date-fns";
 
-const _createOverview = (taskStats) => {
+const _createOverview = () => {
     const createDateSection = () => {
         const dateObj = new Date();
 
         const createNumDate = () => {
-            const numDate = createPara(format(dateObj, "d"));
+            const numDate = element.createPara(date.format(dateObj, "d"));
             const numDateAttributes = {
                 class: "num-date",
             };
-            setAttributesOf(numDate, numDateAttributes);
+            method.setAttributesOf(numDate, numDateAttributes);
 
             return numDate;
         };
@@ -22,15 +22,15 @@ const _createOverview = (taskStats) => {
             const fullDateAttributes = {
                 class: "full-date",
             };
-            const fullDate = createDiv(fullDateAttributes);
-            const day = format(dateObj, "EEE");
-            const month = format(dateObj, "LLL");
-            const year = format(dateObj, "yyyy");
+            const fullDate = element.createDiv(fullDateAttributes);
+            const day = date.format(dateObj, "EEE");
+            const month = date.format(dateObj, "LLL");
+            const year = date.format(dateObj, "yyyy");
             const elements = [
-                createPara(`${day},`),
-                createPara(`${month} ${year}`),
+                element.createPara(day),
+                element.createPara(`${month} ${year}`),
             ];
-            appendChildren(fullDate, elements);
+            method.appendChildren(fullDate, elements);
 
             return fullDate;
         };
@@ -38,12 +38,12 @@ const _createOverview = (taskStats) => {
         const dateSectionAttributes = {
             class: "date-container",
         };
-        const dateSection = createDiv(dateSectionAttributes);
+        const dateSection = element.createDiv(dateSectionAttributes);
         const elements = [
             createNumDate(),
             createFullDate(),
         ];
-        appendChildren(dateSection, elements);
+        method.appendChildren(dateSection, elements);
 
         return dateSection;
     };
@@ -51,17 +51,20 @@ const _createOverview = (taskStats) => {
     const createTasksSection = () => {
         const createTaskCircles = () => {
             const taskCircles = [];
-            for (const [taskType, numTasks] of Object.entries(taskStats)) {
+
+            const taskTypes = ["completed", "remaining", "overdue"];
+            for (const taskType of taskTypes) {
                 const taskAttributes = {
-                    class: `${taskType}`,
+                    class: taskType,
                 };
-                const task = createArticle(taskAttributes);
+                const task = element.createArticle(taskAttributes);
                 const taskData = [
-                    createHeading("4", `${numTasks}`),
-                    createPara("Tasks"),
-                    createPara(`${taskType}`),
+                    element.createHeading("4", "0"),
+                    element.createPara("Tasks"),
+                    element.createPara(taskType),
                 ];
-                appendChildren(task, taskData);
+                method.appendChildren(task, taskData);
+                
                 taskCircles.push(task);
             };
 
@@ -71,8 +74,8 @@ const _createOverview = (taskStats) => {
         const tasksSectionAttributes = {
             class: "overview-tasks",
         };
-        const tasksSection = createDiv(tasksSectionAttributes);
-        appendChildren(tasksSection, createTaskCircles());
+        const tasksSection = element.createDiv(tasksSectionAttributes);
+        method.appendChildren(tasksSection, createTaskCircles());
 
         return tasksSection;
     };
@@ -81,11 +84,11 @@ const _createOverview = (taskStats) => {
         const sectionAttributes = {
             class: "overview-img-wrapper",
         };
-        const section = createDiv(sectionAttributes);
+        const section = element.createDiv(sectionAttributes);
         const elements = [
-            createOverviewImg(),
+            image.createOverviewImg(),
         ];
-        appendChildren(section, elements);
+        method.appendChildren(section, elements);
 
         return section;
     };
@@ -93,14 +96,14 @@ const _createOverview = (taskStats) => {
     const overviewAttributes = {
         class: "overview",
     };
-    const overview = createArticle(overviewAttributes);
+    const overview = element.createArticle(overviewAttributes);
     const elements = [
-        createHeading("3", "Overview"),
+        element.createHeading("3", "Overview"),
         createDateSection(),
         createTasksSection(),
         createImgSection(),
     ];
-    appendChildren(overview, elements);
+    method.appendChildren(overview, elements);
 
     return overview;
 };
@@ -114,7 +117,7 @@ const _createNotesSection = () => {
             cols: "30",
             rows: "10",
         };
-        setAttributesOf(textArea, textAreaAttributes);
+        method.setAttributesOf(textArea, textAreaAttributes);
 
         return textArea;
     };
@@ -122,29 +125,24 @@ const _createNotesSection = () => {
     const notesAttributes = {
         class: "notes",
     };
-    const notes = createArticle(notesAttributes);
+    const notes = element.createArticle(notesAttributes);
     const elements = [
-        createHeading("3", "Notes"),
+        element.createHeading("3", "Notes"),
         createTextArea(),
     ];
-    appendChildren(notes, elements);
+    method.appendChildren(notes, elements);
 
     return notes;
 };
 
 const createHomePage = () => {
-    const homePage = createPage("home");
-    const taskStats = {
-        completed: "0",
-        remaining: "0",
-        overdue: "0",
-    };
     const elements = [
-        createHeading("2", "Home"),
-        _createOverview(taskStats),
+        element.createHeading("2", "Home"),
+        _createOverview(),
         _createNotesSection(),
     ];
-    appendChildren(homePage, elements);
+    const homePage = page.createPage("home", elements);
+    homePage.style.display = "grid";
 
     return homePage;
 };

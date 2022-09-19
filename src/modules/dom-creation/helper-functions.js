@@ -41,10 +41,13 @@ const undoCamelCase = (str) => {
     return letters.join("");
 };
 
+const toKebabCase = (str) => str.replaceAll(" ", "-");
+
 export {
     appendChildren,
     setAttributesOf,
     capitalize,
     toCamelCase,
     undoCamelCase,
+    toKebabCase,
 };

@@ -1,22 +1,22 @@
-import { setAttributesOf } from "./helper-functions";
+import * as method from "./helper-functions";
 
 const createArticle = (attributes) => {
     const article = document.createElement("article");
-    setAttributesOf(article, attributes);
+    method.setAttributesOf(article, attributes);
     
     return article;
 };
 
 const createButton = (attributes) => {
     const btn = document.createElement("button");
-    setAttributesOf(btn, attributes);
+    method.setAttributesOf(btn, attributes);
     
     return btn;
 };
 
 const createDiv = (attributes) => {
     const div = document.createElement("div");
-    setAttributesOf(div, attributes);
+    method.setAttributesOf(div, attributes);
     
     return div;  
 };
@@ -30,7 +30,7 @@ const createHeading = (num, text) => {
 
 const createImg = (attributes) => {
     const img = document.createElement("img");
-    setAttributesOf(img, attributes);
+    method.setAttributesOf(img, attributes);
     
     return img;
 };
