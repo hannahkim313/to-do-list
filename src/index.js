@@ -9,6 +9,7 @@ import * as today from "./modules/dom-creation/elements/today-page";
 import * as upcoming from "./modules/dom-creation/elements/upcoming-page";
 import * as footer from "./modules/dom-creation/elements/footer";
 import * as modals from "./modules/dom-creation/elements/modals";
+import * as defaultContent from "./modules/dom-creation/default-elements";
 import "./css/style.css";
 import "./css/reset.css";
 
@@ -23,6 +24,8 @@ const elements = [
     modals.createAddProjectModal(),
 ];
 method.appendChildren(body, elements);
+
+defaultContent.populate();
 
 const sidebarSections = document.querySelector(".sidebar-sections");
 sidebarSections.addEventListener("click", e => {
@@ -45,10 +48,11 @@ addProjectModal.addEventListener("click", e => {
 
     if (btn.classList.contains("confirm-btn")) {
         const input = modalElement.querySelector("input");
-        if (!modalFunc.isValid(input)) {
+        if (modalFunc.isValid(input)) modalFunc.submit(modalElement);
+        else {
             e.preventDefault();
             modalFunc.displayInvalid(input);
-        } else modalFunc.submit(modalElement);
+        };
     };
 });
 

@@ -2,36 +2,6 @@ import * as method from "../helper-functions";
 import * as element from "../html-elements";
 import * as image from "../image-elements";
 
-const _createAlerts = () => {
-    const createAlert = (name, num) => {
-        const alert = element.createPara();
-        const alertAttributes = {
-            class: name,
-        };
-        method.setAttributesOf(alert, alertAttributes);
-        const strong = document.createElement("strong");
-        strong.textContent = num;
-        const elements = [
-            strong,
-        ];
-        method.appendChildren(alert, elements);
-
-        return alert;
-    };
-
-    const alertsAttributes = {
-        class: "alerts",
-    };
-    const alerts = document.createElement("aside");
-    method.setAttributesOf(alerts, alertsAttributes);
-    const elements = [];
-    if (data.overdue) elements.push(createAlert("overdue", data.overdue));
-    if (data.remaining) elements.push(createAlert("remaining", data.remaining));
-    method.appendChildren(alerts, elements);
-
-    return alerts;
-};
-
 const createCollapsibleContent = (name) => {
     if (name === undefined) name = "empty";
 

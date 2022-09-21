@@ -1,15 +1,13 @@
-const Project = (projectName) => {
-    const getProjectName = () => projectName;
+import * as method from "../../dom-creation/helper-functions";
 
-    const getTask = (taskName) => {
-        for (const task of tasks) {
-            // If name of task === taskName, return task
-        };
-    };
+const Project = (projectName, tasks) => {
+    const getProjectName = () => method.capitalize(projectName);
+
+    const getTasks = () => tasks;
 
     return {
         getProjectName,
-        getTask,
+        getTasks,
     };
 };
 

@@ -1,14 +1,15 @@
-import * as method from "../general-components/helper-functions";
-import * as element from "../html-elements";
-import * as image from "../image-elements";
+import * as factories from "../app-logic/factories/task";
+import * as method from "./helper-functions";
+import * as element from "./html-elements";
+import * as image from "./image-elements";
 
-const _createLeftInfo = (data) => {
+const _createLeftInfo = (task) => {
     const createToDoBtn = () => {
         const createBtnImg = () => {
-            if (data.checked) return image.createCheckedIcon();
+            if (task.getChecked()) return image.createCheckedIcon();
             else return image.createUncheckedIcon();
         };
-
+    
         const btnAttributes = {
             type: "button",
         };
@@ -17,14 +18,14 @@ const _createLeftInfo = (data) => {
             createBtnImg(),
         ];
         method.appendChildren(btn, elements);
-
+    
         return btn;
     };
-
+    
     const createTaskName = () => {
         const createStrikethrough = () => {
             const strikeName = document.createElement("s");
-            strikeName.textContent = data.name;
+            strikeName.textContent = task.getTitle();
             const elements = [
                 strikeName,
             ];
@@ -33,9 +34,9 @@ const _createLeftInfo = (data) => {
     
             return taskName;
         };
-
-        if (data.checked) return createStrikethrough();
-        else return element.createPara(data.name);
+    
+        if (task.getChecked()) return createStrikethrough();
+        else return element.createPara(task.getTitle());
     };
 
     const leftInfoAttributes = {
@@ -51,7 +52,7 @@ const _createLeftInfo = (data) => {
     return leftInfo;
 };
 
-const _createRightInfo = (data) => {
+const _createRightInfo = (task) => {
     const createOverdue = () => {
         const overdue = element.createPara("Overdue");
         const overdueAttributes = {
@@ -63,9 +64,9 @@ const _createRightInfo = (data) => {
     };
 
     const createPriorityIcon = () => {
-        if (data.priority === "low") return image.createLowPriorityIcon();
-        if (data.priority === "medium") return image.createMediumPriorityIcon();
-        if (data.priority === "high") return image.createHighPriorityIcon();
+        if (task.getPriority() === "low") return image.createLowPriorityIcon();
+        if (task.getPriority() === "medium") return image.createMediumPriorityIcon();
+        if (task.getPriority() === "high") return image.createHighPriorityIcon();
     };
 
     const createCollapsibleTaskBtn = () => {
@@ -87,30 +88,39 @@ const _createRightInfo = (data) => {
     };
     const rightInfo = element.createDiv(rightInfoAttributes);
     const elements = [
-        element.createPara(data.dueDate),
+        element.createPara(task.getDueDate()),
         createPriorityIcon(),
         createCollapsibleTaskBtn(),
     ];
-    if (data.overdue) elements.unshift(createOverdue());
+    if (task.getOverdue()) elements.unshift(createOverdue());
     method.appendChildren(rightInfo, elements);
 
     return rightInfo;
 };
 
 const createTask = (data) => {
-    const task = document.createElement("li");
-    const classText = data.checked ? "task checked" : "task";
+    const task = factories.Task();
+    task.setTitle(data.title);
+    task.setDescription(data.description);
+    task.setDueDate(data.dueDate);
+    task.setPriority(data.priority);
+    task.setOverdue(data.overdue);
+    task.setChecked(data.checked);
+    task.setProject(data.project);
+
+    const taskElement = document.createElement("li");
+    const classText = task.getChecked() ? "task checked" : "task";
     const taskAttributes = {
         class: classText,
     };
-    method.setAttributesOf(task, taskAttributes);
+    method.setAttributesOf(taskElement, taskAttributes);
     const elements = [
-        _createLeftInfo(data),
-        _createRightInfo(data),
+        _createLeftInfo(task),
+        _createRightInfo(task),
     ];
-    method.appendChildren(task, elements);
+    method.appendChildren(taskElement, elements);
 
-    return task;
+    return taskElement;
 };
 
 export {
