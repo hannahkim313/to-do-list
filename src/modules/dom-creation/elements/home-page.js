@@ -1,15 +1,13 @@
+import * as dateFunc from "../../app-logic/date-logic";
 import * as element from "../html-elements";
 import * as page from "../page-elements";
 import * as method from "../helper-functions";
 import * as image from "../image-elements";
-import * as date from "date-fns";
 
 const _createOverview = () => {
     const createDateSection = () => {
-        const dateObj = new Date();
-
         const createNumDate = () => {
-            const numDate = element.createPara(date.format(dateObj, "d"));
+            const numDate = element.createPara(dateFunc.getDate());
             const numDateAttributes = {
                 class: "num-date",
             };
@@ -23,9 +21,9 @@ const _createOverview = () => {
                 class: "full-date",
             };
             const fullDate = element.createDiv(fullDateAttributes);
-            const day = date.format(dateObj, "EEE");
-            const month = date.format(dateObj, "LLL");
-            const year = date.format(dateObj, "yyyy");
+            const day = dateFunc.getDay();
+            const month = dateFunc.getMonth();
+            const year = dateFunc.getYear();
             const elements = [
                 element.createPara(day),
                 element.createPara(`${month} ${year}`),
