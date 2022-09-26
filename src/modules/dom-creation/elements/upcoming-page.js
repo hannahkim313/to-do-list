@@ -2,7 +2,7 @@ import * as element from "../html-elements";
 import * as pageComp from "../page-elements";
 import * as projectComp from "../general-components/project-components";
 
-const createUpcomingPage = () => {
+const create = () => {
     const elements = [
         element.createHeading("2", "Upcoming"),
         // projectComp.createFilters(),
@@ -14,5 +14,5 @@ const createUpcomingPage = () => {
 };
 
 export {
-    createUpcomingPage,
+    create,
 };

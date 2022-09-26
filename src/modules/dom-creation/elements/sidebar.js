@@ -43,7 +43,7 @@ const createCollapsibleContent = (name) => {
     return item;
 };
 
-const createSidebar = () => {
+const create = () => {
     const createCollapsible = () => {
         const projects = document.createElement("menu");
         const projectsAttributes = {
@@ -151,5 +151,5 @@ const createSidebar = () => {
 
 export {
     createCollapsibleContent,
-    createSidebar,
+    create,
 };

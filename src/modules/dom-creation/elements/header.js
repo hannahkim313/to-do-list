@@ -2,7 +2,7 @@ import * as method from "../helper-functions";
 import * as element from "../html-elements";
 import * as image from "../image-elements";
 
-const createHeader = () => {
+const create = () => {
     const elements = [
         image.createAppLogo(),
         element.createHeading("1", "To-Do Manager"),
@@ -14,5 +14,5 @@ const createHeader = () => {
 };
 
 export {
-    createHeader,
+    create,
 };

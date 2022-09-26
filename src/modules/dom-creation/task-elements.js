@@ -1,4 +1,4 @@
-import * as factories from "../app-logic/factories/task";
+import { Task } from "../app-logic/factories/task";
 import * as method from "./helper-functions";
 import * as element from "./html-elements";
 import * as image from "./image-elements";
@@ -99,7 +99,7 @@ const _createRightInfo = (task) => {
 };
 
 const createTask = (data) => {
-    const task = factories.Task();
+    const task = Task();
     task.setTitle(data.title);
     task.setDescription(data.description);
     task.setDueDate(data.dueDate);

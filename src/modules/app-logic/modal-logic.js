@@ -1,10 +1,10 @@
+import { Project } from "../app-logic/factories/project";
 import * as library from "../app-logic/project-library";
 import * as pageFunc from "../app-logic/page-logic";
 import * as sidebarFunc from "../app-logic/sidebar-logic";
-import * as factories from "../app-logic/factories/project";
 import * as method from "../dom-creation/helper-functions";
 import * as element from "../dom-creation/html-elements";
-import * as project from "../dom-creation/elements/project-page";
+import * as projectPage from "../dom-creation/elements/project-page";
 
 const _clearInputs = (modal) => {
     const inputs = modal.querySelectorAll("input");
@@ -65,12 +65,12 @@ const displayInvalid = (input) => {
 const submit = (modal) => {
     const input = modal.querySelector("input");
     const value = input.value.toLowerCase().trim();
-    const newProject = factories.Project(method.capitalize(value));
+    const newProject = Project(method.capitalize(value));
     library.add(newProject);
     
     sidebarFunc.addSubsection(newProject.getProjectName(), "projects");
 
-    const newProjectPage = project.createProjectPage(value);
+    const newProjectPage = projectPage.create(value);
     pageFunc.addToDOM(newProjectPage);
     pageFunc.display(newProjectPage);
 

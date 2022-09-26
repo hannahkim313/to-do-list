@@ -2,7 +2,7 @@ import * as method from "../helper-functions";
 import * as element from "../html-elements";
 import * as image from "../image-elements";
 
-const createFooter = () => {
+const create = () => {
     const createLink = () => {
         const link = document.createElement("a");
         const linkAttributes = {
@@ -28,5 +28,5 @@ const createFooter = () => {
 };
 
 export {
-    createFooter,
+    create,
 };

@@ -3,7 +3,7 @@ import * as element from "../html-elements";
 import * as page from "../page-elements";
 import * as projectComp from "../general-components/project-components";
 
-const createProjectPage = (name) => {
+const create = (name) => {
     const message = projectComp.createEmptyMessage("This project has no tasks.", true);
     const elements = [
         element.createHeading("2", "Projects"),
@@ -16,5 +16,5 @@ const createProjectPage = (name) => {
 };
 
 export {
-    createProjectPage,
+    create,
 };

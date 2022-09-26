@@ -1,12 +1,12 @@
+import { Project } from "../app-logic/factories/project";
 import * as library from "../app-logic/project-library";
-import * as factories from "../app-logic/factories/project";
-import * as pageFunc from "../app-logic/page-logic";
 import * as dateFunc from "../app-logic/date-logic";
+import * as pageFunc from "../app-logic/page-logic";
 import * as sidebarFunc from "../app-logic/sidebar-logic";
-import * as project from "./elements/project-page";
-import * as task from "./task-elements";
-import * as element from "./html-elements";
 import * as method from "./helper-functions";
+import * as element from "./html-elements";
+import * as projectPage from "./elements/project-page";
+import * as task from "./task-elements";
 
 const _errandsTasks = [
     {
@@ -163,12 +163,13 @@ const _workTasks = [
 const _createDefaultProject = (taskGroup) => {
     const projectName = taskGroup[0].project;
 
-    const projectElement = factories.Project(projectName, taskGroup);
+    const projectElement = Project(projectName, taskGroup);
     library.add(projectElement);
+    console.log(library.get("errands"))
     sidebarFunc.addSubsection(projectElement.getProjectName(), "projects");
 
-    const projectPage = project.createProjectPage(projectName);
-    pageFunc.addToDOM(projectPage);
+    const page = projectPage.create(projectName);
+    pageFunc.addToDOM(page);
 };
 
 const _createDefaultTasks = (taskGroup) => {
@@ -229,6 +230,8 @@ const _createDefaultAlerts = (taskGroup) => {
 
     return alerts;
 };
+
+// Call logic function that populates "Today" and "Upcoming" pages based on library
 
 const populate = () => {
     const taskGroups = [

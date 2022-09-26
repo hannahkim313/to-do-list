@@ -1,8 +1,8 @@
 import * as dateFunc from "../../app-logic/date-logic";
-import * as element from "../html-elements";
-import * as page from "../page-elements";
 import * as method from "../helper-functions";
+import * as element from "../html-elements";
 import * as image from "../image-elements";
+import * as page from "../page-elements";
 
 const _createOverview = () => {
     const createDateSection = () => {
@@ -133,7 +133,7 @@ const _createNotesSection = () => {
     return notes;
 };
 
-const createHomePage = () => {
+const create = () => {
     const elements = [
         element.createHeading("2", "Home"),
         _createOverview(),
@@ -146,5 +146,5 @@ const createHomePage = () => {
 };
 
 export {
-    createHomePage,
+    create,
 };

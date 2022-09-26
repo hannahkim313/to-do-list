@@ -4,9 +4,9 @@ import * as featuresFunc from "./modules/app-logic/features-logic";
 import * as modalFunc from "./modules/app-logic/modal-logic";
 import * as header from "./modules/dom-creation/elements/header";
 import * as sidebar from "./modules/dom-creation/elements/sidebar";
-import * as home from "./modules/dom-creation/elements/home-page";
-import * as today from "./modules/dom-creation/elements/today-page";
-import * as upcoming from "./modules/dom-creation/elements/upcoming-page";
+import * as homePage from "./modules/dom-creation/elements/home-page";
+import * as todayPage from "./modules/dom-creation/elements/today-page";
+import * as upcomingPage from "./modules/dom-creation/elements/upcoming-page";
 import * as footer from "./modules/dom-creation/elements/footer";
 import * as modals from "./modules/dom-creation/elements/modals";
 import * as defaultContent from "./modules/dom-creation/default-elements";
@@ -15,12 +15,12 @@ import "./css/reset.css";
 
 const body = document.querySelector("body");
 const elements = [
-    header.createHeader(),
-    sidebar.createSidebar(),
-    home.createHomePage(),
-    today.createTodayPage(),
-    upcoming.createUpcomingPage(),
-    footer.createFooter(),
+    header.create(),
+    sidebar.create(),
+    homePage.create(),
+    todayPage.create(),
+    upcomingPage.create(),
+    footer.create(),
     modals.createAddProjectModal(),
 ];
 method.appendChildren(body, elements);
