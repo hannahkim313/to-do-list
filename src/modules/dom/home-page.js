@@ -1,13 +1,13 @@
-import * as dateFunc from "../../app-logic/date-logic";
+import * as date from "../logic/functions/date-functions";
+import * as element from "./html-elements";
+import * as image from "./image-elements";
 import * as method from "../helper-functions";
-import * as element from "../html-elements";
-import * as image from "../image-elements";
-import * as page from "../page-elements";
+import * as page from "./page";
 
 const _createOverview = () => {
     const createDateSection = () => {
         const createNumDate = () => {
-            const numDate = element.createPara(dateFunc.getDate());
+            const numDate = element.createPara(date.getDate());
             const numDateAttributes = {
                 class: "num-date",
             };
@@ -21,9 +21,9 @@ const _createOverview = () => {
                 class: "full-date",
             };
             const fullDate = element.createDiv(fullDateAttributes);
-            const day = dateFunc.getDay();
-            const month = dateFunc.getMonth();
-            const year = dateFunc.getYear();
+            const day = date.getDay();
+            const month = date.getMonth();
+            const year = date.getYear();
             const elements = [
                 element.createPara(day),
                 element.createPara(`${month} ${year}`),
@@ -49,8 +49,11 @@ const _createOverview = () => {
     const createTasksSection = () => {
         const createTaskCircles = () => {
             const taskCircles = [];
-
-            const taskTypes = ["completed", "remaining", "overdue"];
+            const taskTypes = [
+                "completed",
+                "remaining",
+                "overdue"
+            ];
             for (const taskType of taskTypes) {
                 const taskAttributes = {
                     class: taskType,
@@ -62,7 +65,6 @@ const _createOverview = () => {
                     element.createPara(taskType),
                 ];
                 method.appendChildren(task, taskData);
-                
                 taskCircles.push(task);
             };
 
@@ -73,7 +75,8 @@ const _createOverview = () => {
             class: "overview-tasks",
         };
         const tasksSection = element.createDiv(tasksSectionAttributes);
-        method.appendChildren(tasksSection, createTaskCircles());
+        const elements = createTaskCircles();
+        method.appendChildren(tasksSection, elements);
 
         return tasksSection;
     };
@@ -139,7 +142,7 @@ const create = () => {
         _createOverview(),
         _createNotesSection(),
     ];
-    const homePage = page.createPage("home", elements);
+    const homePage = page.create("home", elements);
     homePage.style.display = "grid";
 
     return homePage;

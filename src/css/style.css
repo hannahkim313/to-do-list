@@ -218,7 +218,7 @@ header .logo {
 
 /* Selectors for the individual projects of the sidebar start here. */
 
-.content {
+.subsections {
     max-height: 0;
 
     margin-top: -8px;
@@ -230,7 +230,7 @@ header .logo {
     transition: all 0.3s ease;
 }
 
-.content button {
+.subsections button {
     width: 100%;
 
     padding: 8px 8px 8px 40px;
@@ -246,32 +246,32 @@ header .logo {
     transition: all 0.2s ease;
 }
 
-.content button:hover {
+.subsections button:hover {
     background-color: var(--color-neutral-3);
 }
 
-.content button:active {
+.subsections button:active {
     background-color: var(--color-neutral-4);
 }
 
-.content-item {
+.subsection {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.content-item img {
+.subsection img {
     width: 0.6rem;
 }
 
-.content .alerts {
+.subsections .alerts {
     font-size: 0.8rem;
 
     display: flex;
     gap: 8px;
 }
 
-.content .alerts p {
+.subsections .alerts p {
     padding: 0 8px;
     
     color: var(--color-text-1-inverted);
@@ -279,11 +279,11 @@ header .logo {
     border-radius: 50%;
 }
 
-.content .alerts .overdue {
+.subsections .alerts .overdue {
     background-color: var(--color-brand-4);
 }
 
-.content .alerts .remaining {
+.subsections .alerts .remaining {
     background-color: var(--color-brand-1-a);
 }
 

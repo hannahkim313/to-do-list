@@ -1,4 +1,4 @@
-import * as method from "./helper-functions";
+import * as method from "../helper-functions";
 
 const createArticle = (attributes) => {
     const article = document.createElement("article");

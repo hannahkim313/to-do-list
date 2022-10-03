@@ -4,13 +4,6 @@ const appendChildren = (parent, children) => {
     };
 };
 
-const setAttributesOf = (el, attributes) => {
-    for (const [key, value] of Object.entries(attributes)) {
-        const attribute = key;
-        el.setAttribute(attribute, value);
-    };
-};
-
 const capitalize = (str) => {
     const words = str.split(" ");
     for (let i = 0; i < words.length; i++) {
@@ -20,34 +13,47 @@ const capitalize = (str) => {
     return words.join(" ");
 };
 
+const setAttributesOf = (el, attributes) => {
+    for (const [key, value] of Object.entries(attributes)) {
+        const attribute = key;
+        el.setAttribute(attribute, value);
+    };
+};
+
 const toCamelCase = (str) => {
     const letters = Array.from(str);
     for (let i = 0; i < letters.length - 1; i++) {
         if (letters[i + 1] === undefined) break;
-        if (letters[i] === " ") letters[i + 1] = letters[i + 1].toUpperCase();
+
+        if (letters[i] === " ") {
+            letters[i + 1] = letters[i + 1].toUpperCase();
+        };
     };
+
     return letters.filter(el => el !== " ").join("");
 };
+
+const toKebabCase = (str) => str.replaceAll(" ", "-");
 
 const undoCamelCase = (str) => {
     const letters = Array.from(str);
     for (let i = 0; i < letters.length - 1; i++) {
         if (letters[i] === " ") continue;
+
         if (letters[i] === letters[i].toUpperCase()) {
             letters[i] = letters[i].toLowerCase();
             letters.splice(i, 0, " ");
         };
     };
+    
     return letters.join("");
 };
 
-const toKebabCase = (str) => str.replaceAll(" ", "-");
-
 export {
     appendChildren,
-    setAttributesOf,
     capitalize,
+    setAttributesOf,
     toCamelCase,
-    undoCamelCase,
     toKebabCase,
+    undoCamelCase,
 };

@@ -1,6 +1,6 @@
+import * as element from "./html-elements";
+import * as image from "./image-elements";
 import * as method from "../helper-functions";
-import * as element from "../html-elements";
-import * as image from "../image-elements";
 
 const create = () => {
     const elements = [
