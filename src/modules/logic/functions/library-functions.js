@@ -1,4 +1,5 @@
 import * as date from "./date-functions";
+import * as method from "../../helper-functions";
 
 const _library = [];
 
@@ -12,20 +13,51 @@ const get = (projectName) => {
     };
 };
 
-// Get this week
+const _getToday = (tasks) => {
+    if (tasks) {
+        return tasks.filter(task => task.dueDate === date.getToday());
+    };
+};
 
-// Get this month
+const _getAll = (tasks) => tasks;
 
-const _getToday = (tasks) => tasks.filter(task => task.dueDate === date.getToday());
+const _getThisWeek = (tasks) => {
+    if (tasks) {
+        return tasks.filter(task => date.isThisWeek(task.dueDate));
+    };
+};
 
-const _getUpcoming = (tasks) => tasks.filter(task => date.isUpcoming(task.dueDate));
+const _getThisMonth = (tasks) => {
+    if (tasks) {
+        return tasks.filter(task => date.isThisMonth(task.dueDate));
+    };
+};
+
+const _getUpcoming = (tasks) => {
+    if (tasks) {
+        return tasks.filter(task => date.isUpcoming(task.dueDate));
+    };
+};
+
+const _filterFns = {
+    today: _getToday,
+    all: _getAll,
+    thisWeek: _getThisWeek,
+    thisMonth: _getThisMonth,
+    upcoming: _getUpcoming,
+};
 
 const filterBy = (sectionName) => {
+    sectionName = method.toCamelCase(sectionName);
+    
     const filteredProjects = [];
     for (const project of _library) {
         const tasks = project.getTasks();
-        const result = sectionName === "today" ? _getToday(tasks) : _getUpcoming(tasks);
-        filteredProjects.push(result);
+        for (const key of Object.keys(_filterFns)) {
+            if (key === sectionName) {
+                filteredProjects.push(_filterFns[key](tasks));
+            };
+        }
     };
 
     return filteredProjects;

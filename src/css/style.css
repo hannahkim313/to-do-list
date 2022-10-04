@@ -323,12 +323,10 @@ header .logo {
 }
 
 /******************************************************************************/
-/* Selectors for the "Home" page start here.
+/* Selectors for all pages start here.
 /******************************************************************************/
 
-.home.page {
-    height: 100%;
-
+.page {
     padding: 16px;
 
     overflow-y: auto;
@@ -337,13 +335,12 @@ header .logo {
     grid-row: 2 / 3;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
 }
 
-.home.page h2 {
+.page h2 {
     padding: 0 0 16px 0;
-    margin: 16px 32px 16px 32px;
+    margin: 16px 32px;
 
     border-bottom: 1px solid var(--color-text-1);
 
@@ -351,11 +348,227 @@ header .logo {
     grid-row: 1 / 2;
 }
 
+/* Selectors for the project filters start here. */
+
+.filters {
+    padding: 32px 16px 16px 32px;
+    
+    grid-row: 2 / 3;
+
+    display: flex;
+    gap: 8px;
+}
+
+.filters button {
+    font-size: 0.8rem;
+
+    padding: 2px 10px;
+
+    background: none;
+    border: 1px solid var(--color-neutral-5);
+    border-radius: 32px;
+
+    transition: all 0.2s ease;
+}
+
+.filters button:hover {
+    color: var(--color-text-1-inverted);
+
+    background-color: var(--color-neutral-5);
+}
+
+.filters .selected {
+    color: var(--color-text-1-inverted);
+    
+    background-color: var(--color-neutral-5);
+    border: 1px solid transparent;
+    border-radius: 32px;
+}
+
+/* Selectors for the grouped projects start here. */
+
+.page .projects {
+    padding: 16px;
+
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.page .projects button {
+    background: none;
+    border: none;
+}
+
+.page .projects img[src$="svg"] {
+    width: 1.3rem;
+}
+
+/* Selectors for the individual projects starts here. */
+
+.page .project {
+    padding: 16px;
+    
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+}
+
+.page .project h3 {
+    padding-bottom: 16px;
+    
+    grid-column: 1 / 2;
+}
+
+/* Selectors for the project options start here. */
+
+.page .options {
+    padding-bottom: 16px;
+    
+    grid-column: 2 / 3;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.page .options .dropdown {
+    padding: 2px 8px;
+    
+    background-color: var(--color-neutral-1);
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+
+    transition: all 0.2s ease;
+}
+
+.page .options .dropdown:hover {
+    background-color: var(--color-neutral-2);
+}
+
+.page .options .dropdown:active {
+    background-color: var(--color-neutral-3);
+}
+
+.page .options .dropdown .input {
+    display: flex;
+    align-items: center;
+}
+
+.page .options button:not(.dropdown) {
+    padding: 4px;
+    
+    transition: all 0.2s ease;
+}
+
+.page .options button:not(.dropdown):hover {
+    background-color: var(--color-neutral-1);
+    border-radius: 8px;
+}
+
+.page .options button:not(.dropdown):active {
+    background-color: var(--color-neutral-2);
+}
+
+/* Selectors for the project tasks start here. */
+
+.page .tasks {
+    grid-column: 1 / 3;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.page .task {
+    padding: 16px 18px;
+
+    background-color: var(--color-neutral-1);
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.page .task .left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.page .task .right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.page .task .right .overdue {
+    font-size: 0.8rem;
+
+    padding: 2px 8px;
+
+    color: white;
+
+    background-color: var(--color-brand-4);
+    border-radius: 8px;
+}
+
+.page .task.checked .left,
+.page .task.checked .right > :not(.expand-task) {
+    opacity: 0.5;
+}
+
+.page .task .right .expand-task {
+    padding: 4px;
+
+    transition: all 0.2s ease;
+}
+
+.page .task .right .expand-task:hover {
+    background-color: var(--color-neutral-3);
+    border-radius: 8px;
+}
+
+/* Selectors for empty projects/tasks start here. */
+
+.empty {
+    height: 56px;
+
+    padding: 16px;
+    margin: 32px 32px 0 32px;
+
+    background-color: var(--color-neutral-1);
+    border-radius: 20px;
+
+    grid-row: 2 / 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/******************************************************************************/
+/* Selectors for the "Home" page start here.
+/******************************************************************************/
+
+.home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+.home h3 {
+    padding: 16px;
+}
+
 /* Selectors for the overview section start here. */
 
 .overview {
-    height: 100%;
-
     padding: 16px;
 
     grid-column: 1 / 2;
@@ -363,10 +576,6 @@ header .logo {
 
     display: flex;
     flex-direction: column;
-}
-
-.overview h3 {
-    padding: 16px;
 }
 
 /* Selectors for the date section start here. */
@@ -476,16 +685,12 @@ header .logo {
     gap: 16px;
 }
 
-.notes h3 {
-    padding: 16px;
-}
-
 .notes textarea {
     height: 100%;
 
     resize: none;
 
-    margin: 0 16px 0 16px;
+    margin: 0 16px;
     padding: 16px;
 
     background-color: var(--color-neutral-1);
@@ -498,593 +703,23 @@ header .logo {
 }
 
 /******************************************************************************/
-/* Selectors for the "Today" page start here.
-/******************************************************************************/
-
-.today.page {
-    padding: 16px;
-
-    overflow-y: auto;
-    
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-
-    display: grid;
-    grid-template-rows: auto 1fr;
-}
-
-.today.page h2 {
-    padding: 0 0 16px 0;
-    margin: 16px 32px 16px 32px;
-
-    border-bottom: 1px solid var(--color-text-1);
-
-    grid-row: 1 / 2;
-}
-
-/* Selectors for empty projects/tasks start here. */
-
-.today.page .empty {
-    height: 56px;
-
-    padding: 16px;
-    margin: 32px 32px 0 32px;
-
-    background-color: var(--color-neutral-1);
-    border-radius: 20px;
-
-    grid-row: 2 / 3;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Selectors for the grouped projects start here. */
-
-.today.page .projects {
-    padding: 16px;
-
-    grid-row: 2 / 3;
-    
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.today.page .projects button {
-    background: none;
-    border: none;
-}
-
-.today.page .projects img[src$="svg"] {
-    width: 1.3rem;
-}
-
-/* Selectors for the individual projects starts here. */
-
-.today.page .project {
-    padding: 16px;
-    
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto 1fr;
-}
-
-.today.page .project h3 {
-    padding-bottom: 16px;
-    
-    grid-column: 1 / 2;
-}
-
-/* Selectors for the project options start here. */
-
-.today.page .options {
-    padding-bottom: 16px;
-    
-    grid-column: 2 / 3;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.today.page .options .dropdown {
-    padding: 2px 8px;
-    
-    background-color: var(--color-neutral-1);
-    border-radius: 4px;
-
-    display: flex;
-    align-items: center;
-
-    transition: all 0.2s ease;
-}
-
-.today.page .options .dropdown:hover {
-    background-color: var(--color-neutral-2);
-}
-
-.today.page .options .dropdown:active {
-    background-color: var(--color-neutral-3);
-}
-
-.today.page .options .dropdown .input {
-    display: flex;
-    align-items: center;
-}
-
-.today.page .options button:not(.dropdown) {
-    padding: 4px;
-    
-    transition: all 0.2s ease;
-}
-
-.today.page .options button:not(.dropdown):hover {
-    background-color: var(--color-neutral-1);
-    border-radius: 8px;
-}
-
-.today.page .options button:not(.dropdown):active {
-    background-color: var(--color-neutral-2);
-}
-
-/* Selectors for the project tasks start here. */
-
-.today.page .tasks {
-    grid-column: 1 / 3;
-
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.today.page .task {
-    padding: 16px 18px;
-
-    background-color: var(--color-neutral-1);
-    border-radius: 20px;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.today.page .task .left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.today.page .task .right {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.today.page .task.checked .left,
-.today.page .task.checked .right > :not(.expand-task) {
-    opacity: 0.5;
-}
-
-.today.page .task .right .expand-task {
-    padding: 4px;
-
-    transition: all 0.2s ease;
-}
-
-.today.page .task .right .expand-task:hover {
-    background-color: var(--color-neutral-3);
-    border-radius: 8px;
-}
-
-/******************************************************************************/
 /* Selectors for the "Upcoming" page start here.
 /******************************************************************************/
-
-.upcoming.page {
-    padding: 16px;
-
-    overflow-y: auto;
-    
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-}
-
-.upcoming.page h2 {
-    padding: 0 0 16px 0;
-    margin: 16px 32px 16px 32px;
-    
-    grid-row: 1 / 2;
-
-    border-bottom: 1px solid var(--color-text-1);
-}
-
-/* Selectors for the project filters start here. */
-
-.upcoming.page .filters {
-    padding: 32px 16px 16px 32px;
-    
-    grid-row: 2 / 3;
-
-    display: flex;
-    gap: 8px;
-}
-
-.upcoming.page .filters button {
-    font-size: 0.8rem;
-
-    padding: 2px 10px;
-
-    transition: all 0.2s ease;
-}
-
-.upcoming.page .filters button:first-child {
-    color: var(--color-text-1-inverted);
-    
-    background-color: var(--color-neutral-5);
-    border: none;
-    border-radius: 32px;
-}
-
-.upcoming.page .filters button:not(:first-child) {
-    background: none;
-    border: 1px solid var(--color-neutral-5);
-    border-radius: 32px;
-}
-
-.upcoming.page .filters button:hover {
-    color: var(--color-text-1-inverted);
-
-    background-color: var(--color-neutral-5);
-}
-
-/* Selectors for empty projects/tasks start here. */
-
-.upcoming.page .empty {
-    height: 56px;
-
-    padding: 16px;
-    margin: 32px 32px 0 32px;
-
-    background-color: var(--color-neutral-1);
-    border-radius: 20px;
-
-    grid-row: 3 / 4;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /* Selectors for the grouped projects start here. */
 
 .upcoming.page .projects {
-    padding: 16px;
-
     grid-row: 3 / 4;
-    
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.upcoming.page .projects button {
-    background: none;
-    border: none;
-}
-
-.upcoming.page .projects img[src$="svg"] {
-    width: 1.3rem;
-}
-
-/* Selectors for the individual projects start here. */
-
-.upcoming.page .project {
-    padding: 16px;
-    
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto 1fr;
-}
-
-.upcoming.page .project h3 {
-    padding-bottom: 16px;
-    
-    grid-column: 1 / 2;
-}
-
-/* Selectors for the project options start here. */
-
-.upcoming.page .options {
-    padding-bottom: 16px;
-    
-    grid-column: 2 / 3;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.upcoming.page .options .dropdown {
-    padding: 2px 8px;
-    
-    background-color: var(--color-neutral-1);
-    border-radius: 4px;
-
-    display: flex;
-    align-items: center;
-
-    transition: all 0.2s ease;
-}
-
-.upcoming.page .options .dropdown:hover {
-    background-color: var(--color-neutral-2);
-
-}
-.upcoming.page .options .dropdown:active {
-    background-color: var(--color-neutral-3);
-}
-
-.upcoming.page .options .dropdown .input {
-    display: flex;
-    align-items: center;
-}
-
-.upcoming.page .options button:not(.dropdown) {
-    padding: 4px;
-    
-    transition: all 0.2s ease;
-}
-
-.upcoming.page .options button:not(.dropdown):hover {
-    background-color: var(--color-neutral-1);
-    border-radius: 8px;
-}
-
-.upcoming.page .options button:not(.dropdown):active {
-    background-color: var(--color-neutral-2);
-}
-
-/* Selectors for the project tasks start here. */
-
-.upcoming.page .tasks {
-    grid-column: 1 / 3;
-
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.upcoming.page .task {
-    padding: 16px 18px;
-    
-    background-color: var(--color-neutral-1);
-    border-radius: 20px;
-    
-    display: flex;
-    justify-content: space-between;
-}
-
-.upcoming.page .task .left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.upcoming.page .task .right {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.upcoming.page .task.checked .left,
-.upcoming.page .projects .project .task.checked .right > :not(.expand-task) {
-    opacity: 0.5;
-}
-
-.upcoming.page .task .right .expand-task {
-    padding: 4px;
-
-    transition: all 0.2s ease;
-}
-
-.upcoming.page .task .right .expand-task:hover {
-    background-color: var(--color-neutral-3);
-    border-radius: 8px;
 }
 
 /******************************************************************************/
 /* Selectors for each project section start here.
 /******************************************************************************/
 
-.projects.page {
-    padding: 16px;
-
-    overflow-y: auto;
-    
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-
-    display: grid;
-    grid-template-rows: auto 1fr;
-}
-
-.projects.page h2 {
-    padding: 0 0 16px 0;
-    margin: 16px 32px 16px 32px;
-
-    border-bottom: 1px solid var(--color-text-1);
-
-    grid-row: 1 / 2;
-}
-
 /* Selectors for empty projects/tasks start here. */
 
-.projects.page .empty.nested {
-    height: 56px;
-
-    padding: 16px;
-    margin: 16px 0 0 0;
-
-    background-color: var(--color-neutral-1);
-    border-radius: 20px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Selectors for the grouped projects start here. */
-
-.projects.page .projects {
-    padding: 16px;
-
-    grid-row: 2 / 3;
-    
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.projects.page .projects button {
-    background: none;
-    border: none;
-}
-
-.projects.page .projects img[src$="svg"] {
-    width: 1.3rem;
-}
-
-/* Selectors for the individual projects starts here. */
-
-.projects.page .project {
-    padding: 16px;
-    
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto 1fr;
-}
-
-.projects.page .project h3 {
-    padding-bottom: 16px;
-    
-    grid-column: 1 / 2;
-}
-
-/* Selectors for the project options start here. */
-
-.projects.page .options {
-    padding-bottom: 16px;
-    
-    grid-column: 2 / 3;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.projects.page .options .dropdown {
-    padding: 2px 8px;
-    
-    background-color: var(--color-neutral-1);
-    border-radius: 4px;
-
-    display: flex;
-    align-items: center;
-
-    transition: all 0.2s ease;
-}
-
-.projects.page .options .dropdown:hover {
-    background-color: var(--color-neutral-2);
-
-}
-.projects.page .options .dropdown:active {
-    background-color: var(--color-neutral-3);
-}
-
-.projects.page .options .dropdown .input {
-    display: flex;
-    align-items: center;
-}
-
-.projects.page .options button:not(.dropdown) {
-    padding: 4px;
-    
-    transition: all 0.2s ease;
-}
-
-.projects.page .options button:not(.dropdown):hover {
-    background-color: var(--color-neutral-1);
-    border-radius: 8px;
-
-}
-.projects.page .options button:not(.dropdown):active {
-    background-color: var(--color-neutral-2);
-}
-
-/* Selectors for the project tasks start here. */
-
-.projects.page .tasks {
-    grid-column: 1 / 3;
-
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.projects.page .task {
-    padding: 16px 18px;
-
-    background-color: var(--color-neutral-1);
-    border-radius: 20px;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.projects.page .task .left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-}
-
-.projects.page .task .right {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.projects.page .task .right .overdue {
-    font-size: 0.8rem;
-
-    padding: 2px 8px;
-
-    color: white;
-
-    background-color: var(--color-brand-4);
-    border-radius: 8px;
-}
-
-.projects.page .task.checked .left,
-.projects.page .task.checked .right > :not(.expand-task) {
-    opacity: 0.5;
-}
-
-.projects.page .task .right .expand-task {
-    padding: 4px;
-
-    transition: all 0.2s ease;
-}
-
-.projects.page .task .right .expand-task:hover {
-    background-color: var(--color-neutral-3);
-    border-radius: 8px;
-
+.empty.nested {
+    margin-top: 16px;
 }
 
 /******************************************************************************/

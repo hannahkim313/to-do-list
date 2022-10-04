@@ -176,7 +176,9 @@ const _createFilteredContent = (sections) => {
     for (const section of sections) {
         const filteredTaskSets = library.filterBy(section);
         for (const taskSet of filteredTaskSets) {
-            if (taskSet.length === 0) continue;
+            if (taskSet.length === 0) {
+                continue;
+            };
             
             const projectElement = project.create(taskSet);
             projectMenu.addTo(section, projectElement);
@@ -204,7 +206,7 @@ const _createSidebarContent = () => {
         const projectName = method.capitalize(taskSet[0].project);
         sidebar.addSubsection(projectName, "projects");
 
-        const sectionName = projectName.toLowerCase().replaceAll(" ", "-");
+        const sectionName = method.toKebabCase(projectName.toLowerCase());
         const section = document.querySelector(`[data-page-name='${sectionName}']`);
         const alerts = sidebar.createAlerts(taskSet);
         section.appendChild(alerts);

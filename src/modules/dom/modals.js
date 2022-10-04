@@ -9,7 +9,7 @@ import * as sidebar from "./sidebar";
 const _isEmpty = (input) => input.value === "" ? true : false;
 
 const _isPresent = (input) => {
-    const value = input.value.toLowerCase().trim().replaceAll(" ", "-");
+    const value = method.toKebabCase(input.value.toLowerCase().trim());
 
     const projectSections = document.querySelectorAll(".projects + .subsections button");
     for (const project of projectSections) {
@@ -54,7 +54,7 @@ const displayInvalid = (input) => {
 };
 
 const display = (name) => {
-    name = name.replaceAll(" ", "-");
+    name = method.toKebabCase(name);
     const modal = document.querySelector(`.${name}.modal`);
     modal.showModal();
 };

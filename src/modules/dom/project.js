@@ -84,7 +84,7 @@ const create = (tasks) => {
         _createProjectOptions(),
         taskMenu.create(),
     ];
-    projectElement.dataset.projectName = projectName.replaceAll(" ", "-");
+    projectElement.dataset.projectName = method.toKebabCase(projectName);
     method.appendChildren(projectElement, elements);
 
     return projectElement;

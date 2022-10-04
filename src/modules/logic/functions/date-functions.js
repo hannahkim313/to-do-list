@@ -60,11 +60,11 @@ const getPreviousDay = (day, weeks) => {
     };
 };
 
-const _stringToDate = (formattedDate) => {
-    const chars = Array.from(formattedDate);
+const _stringToDate = (date) => {
+    const chars = Array.from(date);
     const commaIndex = chars.findIndex(element => element === ",");
     chars.splice(commaIndex, 1)
-    formattedDate = chars.join("").split(" ");
+    date = chars.join("").split(" ");
     
     const getMonthIndex = () => {
         const months = [
@@ -82,14 +82,26 @@ const _stringToDate = (formattedDate) => {
             "Dec",
         ];
         
-        return months.findIndex(month => month === formattedDate[0]);
+        return months.findIndex(month => month === date[0]);
     };
     
     const month = getMonthIndex();
-    const day = formattedDate[1];
-    const year = formattedDate[2];
+    const day = date[1];
+    const year = date[2];
 
     return new Date(year, month, day);
+};
+
+const isThisWeek = (date) => {
+    date = _stringToDate(date);
+
+    return dateAPI.isThisWeek(date);
+
+};
+const isThisMonth = (date) => {
+    date = _stringToDate(date);
+
+    return dateAPI.isThisMonth(date);
 };
 
 const isUpcoming = (upcomingDate) => {
@@ -108,5 +120,7 @@ export {
     getDayBehind,
     getNextDay,
     getPreviousDay,
+    isThisWeek,
+    isThisMonth,
     isUpcoming,
 };

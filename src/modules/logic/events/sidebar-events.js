@@ -15,7 +15,9 @@ const _emitAddProjectBtn = () => modal.display("add project");
 const emitEvents = (e) => {
     const btn = e.target.closest("button");
 
-    if (btn === null) return;
+    if (!btn) {
+        return;
+    };
 
     if (btn.classList.contains("add-project-btn")) {
         _emitAddProjectBtn();

@@ -23,7 +23,9 @@ const setAttributesOf = (el, attributes) => {
 const toCamelCase = (str) => {
     const letters = Array.from(str);
     for (let i = 0; i < letters.length - 1; i++) {
-        if (letters[i + 1] === undefined) break;
+        if (!letters[i + 1]) {
+            break;
+        };
 
         if (letters[i] === " ") {
             letters[i + 1] = letters[i + 1].toUpperCase();
@@ -38,7 +40,9 @@ const toKebabCase = (str) => str.replaceAll(" ", "-");
 const undoCamelCase = (str) => {
     const letters = Array.from(str);
     for (let i = 0; i < letters.length - 1; i++) {
-        if (letters[i] === " ") continue;
+        if (letters[i] === " ") {
+            continue;
+        };
 
         if (letters[i] === letters[i].toUpperCase()) {
             letters[i] = letters[i].toLowerCase();
@@ -49,6 +53,8 @@ const undoCamelCase = (str) => {
     return letters.join("");
 };
 
+const undoKebabCase = (str) => str.replaceAll("-", " ");
+
 export {
     appendChildren,
     capitalize,
@@ -56,4 +62,5 @@ export {
     toCamelCase,
     toKebabCase,
     undoCamelCase,
+    undoKebabCase,
 };

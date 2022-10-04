@@ -7,8 +7,14 @@ const _createFilters = () => {
     const createFilterBtn = (name) => {
         const btnAttributes = {
             type: "button",
-            class: name.replaceAll(" ", "-"),
         };
+
+        if (name === "all") {
+            btnAttributes.class = `${method.toKebabCase(name)} selected`;
+        } else {
+            btnAttributes.class = method.toKebabCase(name);
+        };
+
         const btn = element.createButton(btnAttributes);
         const elements = [
             element.createPara(method.capitalize(name)),

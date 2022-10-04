@@ -3,7 +3,7 @@ import * as element from "./html-elements";
 import * as image from "./image-elements";
 
 const _createSubsection = (name) => {
-    if (name === undefined) {
+    if (!name) {
         name = "empty";
     };
 
@@ -32,7 +32,7 @@ const _createSubsection = (name) => {
             type: "button",
         };
         const btn = element.createButton(btnAttributes);
-        btn.dataset.pageName = name.toLowerCase().replaceAll(" ", "-");
+        btn.dataset.pageName = method.toKebabCase(name.toLowerCase());
         const elements = [
             createItemName(),
         ];
@@ -81,7 +81,7 @@ const create = () => {
             };
 
             const sectionBtn = element.createButton(btnAttributes);
-            sectionBtn.dataset.pageName = section.name.replaceAll(" ", "-");
+            sectionBtn.dataset.pageName = method.toKebabCase(section.name);
             method.appendChildren(sectionBtn, elements);
     
             return sectionBtn;

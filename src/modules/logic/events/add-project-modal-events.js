@@ -4,7 +4,7 @@ const _emitButtons = (e) => {
     const dialog = e.target.closest("dialog");
     const btn = e.target.closest("button");
 
-    if (btn === null) {
+    if (!btn) {
         return;
     };
 
@@ -28,7 +28,9 @@ const _emitButtons = (e) => {
 const _emitInputs = (e) => {
     const form = e.target.closest("form");
 
-    if (form === null) return;
+    if (!form) {
+        return;
+    };
 
     const inputs = form.querySelectorAll("input");
     for (const input of inputs) {
