@@ -1,3 +1,4 @@
+import * as library from "../logic/functions/library-functions";
 import * as method from "../helper-functions";
 import * as element from "./html-elements";
 import * as image from "./image-elements";
@@ -193,31 +194,7 @@ const addSubsection = (name, section) => {
     subsections.appendChild(subsection);
 };
 
-const createAlerts = (tasks) => {
-    const getTotalOverdue = () => {
-        let count = 0;
-        for (const taskData of tasks) {
-            if (taskData.overdue) {
-                count++;
-            };
-        };
-
-        return count;
-    };
-
-    const getTotalChecked = () => {
-        let count = 0;
-        for (const taskData of tasks) {
-            if (taskData.checked) {
-                count++;
-            };
-        };
-
-        return count;
-    };
-
-    const getTotalRemaining = () => tasks.length - getTotalChecked();
-
+const createAlerts = (projectName) => {
     const createAlert = (name, num) => {
         const alert = element.createPara();
         const alertAttributes = {
@@ -239,14 +216,16 @@ const createAlerts = (tasks) => {
     };
     const alerts = document.createElement("aside");
     method.setAttributesOf(alerts, alertsAttributes);
+    const numOverdue = library.getTaskStats(projectName, "overdue");
+    const numRemaining = library.getTaskStats(projectName, "remaining");
     const elements = [];
 
-    if (getTotalOverdue() > 0) {
-        elements.push(createAlert("overdue", getTotalOverdue()));
+    if (numOverdue > 0) {
+        elements.push(createAlert("overdue", numOverdue));
     };
 
-    if (getTotalRemaining() > 0) {
-        elements.push(createAlert("remaining", getTotalRemaining()));
+    if (numRemaining > 0) {
+        elements.push(createAlert("remaining", numRemaining));
     };
     
     method.appendChildren(alerts, elements);

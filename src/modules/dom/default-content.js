@@ -1,4 +1,5 @@
 import * as date from "../logic/functions/date-functions";
+import * as homePage from "./home-page";
 import * as library from "../logic/functions/library-functions";
 import * as method from "../helper-functions";
 import * as page from "./page";
@@ -203,12 +204,12 @@ const _createProjectsContent = () => {
 
 const _createSidebarContent = () => {
     for (const taskSet of _taskSets) {
-        const projectName = method.capitalize(taskSet[0].project);
-        sidebar.addSubsection(projectName, "projects");
+        const projectName = taskSet[0].project;
+        sidebar.addSubsection(method.capitalize(projectName), "projects");
 
-        const sectionName = method.toKebabCase(projectName.toLowerCase());
+        const sectionName = method.toKebabCase(projectName);
         const section = document.querySelector(`[data-page-name='${sectionName}']`);
-        const alerts = sidebar.createAlerts(taskSet);
+        const alerts = sidebar.createAlerts(method.toKebabCase(projectName));
         section.appendChild(alerts);
     };
 };
@@ -223,6 +224,7 @@ const create = () => {
     _createFilteredContent(sections);
     _createProjectsContent();
     _createSidebarContent();
+    homePage.updateTasksOverview();
 };
 
 export {

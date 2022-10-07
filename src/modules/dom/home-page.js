@@ -1,6 +1,7 @@
 import * as date from "../logic/functions/date-functions";
 import * as element from "./html-elements";
 import * as image from "./image-elements";
+import * as library from "../logic/functions/library-functions";
 import * as method from "../helper-functions";
 import * as page from "./page";
 
@@ -25,7 +26,7 @@ const _createOverview = () => {
             const month = date.getMonth();
             const year = date.getYear();
             const elements = [
-                element.createPara(day),
+                element.createPara(`${day},`),
                 element.createPara(`${month} ${year}`),
             ];
             method.appendChildren(fullDate, elements);
@@ -136,6 +137,20 @@ const _createNotesSection = () => {
     return notes;
 };
 
+const updateTasksOverview = () => {
+    const numCompleted = library.getTaskStats(null, "completed");
+    const currentCompleted = document.querySelector(".overview-tasks .completed h4");
+    currentCompleted.textContent = numCompleted;
+    
+    const numOverdue = library.getTaskStats(null, "overdue");
+    const currentOverdue = document.querySelector(".overview-tasks .overdue h4");
+    currentOverdue.textContent = numOverdue;
+    
+    const numRemaining = library.getTaskStats(null, "remaining");
+    const currentRemaining = document.querySelector(".overview-tasks .remaining h4");
+    currentRemaining.textContent = numRemaining;
+};
+
 const create = () => {
     const elements = [
         element.createHeading("2", "Home"),
@@ -150,4 +165,5 @@ const create = () => {
 
 export {
     create,
+    updateTasksOverview,
 };
