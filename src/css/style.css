@@ -537,10 +537,9 @@ header .logo {
 /* Selectors for empty projects/tasks start here. */
 
 .empty {
-    height: 56px;
+    height: 60px;
 
     padding: 16px;
-    margin: 32px 32px 0 32px;
 
     background-color: var(--color-neutral-1);
     border-radius: 20px;
@@ -710,16 +709,6 @@ header .logo {
 
 .upcoming.page .projects {
     grid-row: 3 / 4;
-}
-
-/******************************************************************************/
-/* Selectors for each project section start here.
-/******************************************************************************/
-
-/* Selectors for empty projects/tasks start here. */
-
-.empty.nested {
-    margin-top: 16px;
 }
 
 /******************************************************************************/

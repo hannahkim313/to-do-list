@@ -3,8 +3,11 @@ import * as library from "../logic/functions/library-functions";
 import * as method from "../helper-functions";
 import * as page from "./page";
 import { Project } from "../logic/factories/project-factory";
+import * as project from "./project";
+import * as projectMenu from "./project-menu";
 import * as projectPage from "./project-page";
 import * as sidebar from "./sidebar";
+import * as taskMenu from "./task-menu";
 
 const _isEmpty = (input) => input.value === "" ? true : false;
 
@@ -84,11 +87,17 @@ const submit = (modal) => {
     newProject.setName(value)
     library.add(newProject);
     
-    const projectName = method.capitalize(newProject.getName());
-    sidebar.addSubsection(projectName, "projects");
+    const projectName = newProject.getName();
+    sidebar.addSubsection(method.capitalize(projectName), "projects");
 
     const newProjectPage = projectPage.create(value);
     page.addToDOM(newProjectPage);
+
+    const projectElement = project.create();
+    projectMenu.addTo(projectName, projectElement);
+
+    taskMenu.addTo(projectName);
+
     page.display(newProjectPage);
 
     _clearInputs(modal);

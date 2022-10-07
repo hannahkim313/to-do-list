@@ -1,3 +1,4 @@
+import * as element from "./html-elements";
 import * as method from "../helper-functions";
 
 const display = (element) => {
@@ -25,19 +26,16 @@ const addToDOM = (page) => {
     body.insertBefore(page, footer);
 };
 
-// Uncomment when implementing add/remove features so an empty message
-// is displayed when there are no projects/tasks available.
+const createEmptyMessage = (text, isNested) => {
+    const message = element.createPara(text);
+    const className = isNested ? "empty nested" : "empty";
+    const messageAttributes = {
+        class: className,
+    };
+    method.setAttributesOf(message, messageAttributes);
 
-// const createEmptyMessage = (text, isNested) => {
-//     const message = element.createPara(text);
-//     const className = isNested ? "empty nested" : "empty";
-//     const messageAttributes = {
-//         class: className,
-//     };
-//     method.setAttributesOf(message, messageAttributes);
-
-//     return message;
-// };
+    return message;
+};
 
 const create = (name, elements) => {
     const kebabName = method.toKebabCase(name.toLowerCase());
@@ -56,5 +54,6 @@ const create = (name, elements) => {
 export {
     display,
     addToDOM,
+    createEmptyMessage,
     create,
 };

@@ -74,7 +74,15 @@ const _createProjectOptions = () => {
 };
 
 const create = (tasks) => {
-    const projectName = tasks[0].project;
+    const getProjectName = () => {
+        if (tasks) {
+            return tasks[0].project;
+        } else {
+            return document.querySelector("footer").previousElementSibling.dataset.pageName;
+        };
+    }
+
+    const projectName = getProjectName();
     const projectElementAttributes = {
         class: "project",
     };
