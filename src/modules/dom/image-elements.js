@@ -1,7 +1,8 @@
 import * as element from "./html-elements";
 import appLogoImg from "../../img/logo.svg";
 import arrowDownImg from "../../img/arrow-down.svg";
-import checkedImg from "../../img/checkbox.svg";
+import checkedHoverImg from "../../img/checked-hover.svg";
+import checkedImg from "../../img/checked.svg";
 import chevronDownImg from "../../img/chevron-down.svg";
 import githubImg from "../../img/github.svg";
 import highPriorityImg from "../../img/high-priority.svg";
@@ -15,7 +16,8 @@ import plusImg from "../../img/plus.svg";
 import plusInvertedImg from "../../img/plus-inverted.svg";
 import projectsImg from "../../img/folder.svg";
 import todayImg from "../../img/today.svg";
-import uncheckedImg from "../../img/circle-outline.svg";
+import uncheckedImg from "../../img/unchecked.svg";
+import uncheckedHoverImg from "../../img/unchecked-hover.svg";
 import upcomingImg from "../../img/upcoming.svg";
 
 const createAppLogo = () => {
@@ -32,6 +34,15 @@ const createArrowDownIcon = () => {
     const imgAttributes = {
         src: arrowDownImg,
         alt: "Down arrow icon",
+    };
+
+    return element.createImg(imgAttributes);
+};
+
+const createCheckedHoverIcon = () => {
+    const imgAttributes = {
+        src: checkedHoverImg,
+        alt: "Checked box hovered",
     };
 
     return element.createImg(imgAttributes);
@@ -164,6 +175,15 @@ const createUncheckedIcon = () => {
     return element.createImg(imgAttributes);
 };
 
+const createUncheckedHoverIcon = () => {
+    const imgAttributes = {
+        src: uncheckedHoverImg,
+        alt: "Unchecked box hovered",
+    };
+
+    return element.createImg(imgAttributes);
+};
+
 const createUpcomingIcon = () => {
     const imgAttributes = {
         src: upcomingImg,
@@ -174,21 +194,23 @@ const createUpcomingIcon = () => {
 };
 
 export {
-    createGithubIcon,
     createAppLogo,
+    createArrowDownIcon,
+    createCheckedIcon,
+    createCheckedHoverIcon,
+    createCollapsibleIcon,
+    createHighPriorityIcon,
+    createHomeIcon,
+    createGithubIcon,
+    createListIcon,
+    createMediumPriorityIcon,
+    createLowPriorityIcon,
+    createMoreOptionsIcon,
     createOverviewImg,
     createPlusIcon,
-    createHomeIcon,
-    createTodayIcon,
-    createUpcomingIcon,
     createProjectsIcon,
-    createCollapsibleIcon,
-    createArrowDownIcon,
-    createMoreOptionsIcon,
-    createListIcon,
-    createCheckedIcon,
+    createTodayIcon,
     createUncheckedIcon,
-    createLowPriorityIcon,
-    createMediumPriorityIcon,
-    createHighPriorityIcon,
+    createUncheckedHoverIcon,
+    createUpcomingIcon,
 };

@@ -518,7 +518,7 @@ header .logo {
     border-radius: 8px;
 }
 
-.page .task.checked .left,
+.page .task.checked .left > :not(button),
 .page .task.checked .right > :not(.expand-task) {
     opacity: 0.5;
 }
