@@ -1,7 +1,7 @@
 import * as element from "./html-elements";
 import appLogoImg from "../../img/logo.svg";
 import arrowDownImg from "../../img/arrow-down.svg";
-import checkedHoverImg from "../../img/checked-hover.svg";
+// import checkedHoverImg from "../../img/checked-hover.svg";
 import checkedImg from "../../img/checked.svg";
 import chevronDownImg from "../../img/chevron-down.svg";
 import githubImg from "../../img/github.svg";
@@ -17,7 +17,7 @@ import plusInvertedImg from "../../img/plus-inverted.svg";
 import projectsImg from "../../img/folder.svg";
 import todayImg from "../../img/today.svg";
 import uncheckedImg from "../../img/unchecked.svg";
-import uncheckedHoverImg from "../../img/unchecked-hover.svg";
+// import uncheckedHoverImg from "../../img/unchecked-hover.svg";
 import upcomingImg from "../../img/upcoming.svg";
 
 const createAppLogo = () => {
@@ -39,22 +39,24 @@ const createArrowDownIcon = () => {
     return element.createImg(imgAttributes);
 };
 
-const createCheckedHoverIcon = () => {
-    const imgAttributes = {
-        src: checkedHoverImg,
-        alt: "Checked box hovered",
-    };
+// const createCheckedHoverIcon = () => {
+//     const imgAttributes = {
+//         src: checkedHoverImg,
+//         alt: "Checked box hovered",
+//     };
 
-    return element.createImg(imgAttributes);
-};
+//     return element.createImg(imgAttributes);
+// };
 
 const createCheckedIcon = () => {
     const imgAttributes = {
         src: checkedImg,
         alt: "Checked box",
     };
+    const img = element.createImg(imgAttributes);
+    img.dataset.isChecked = "true";
 
-    return element.createImg(imgAttributes);
+    return img;
 };
 
 const createCollapsibleIcon = () => {
@@ -171,18 +173,20 @@ const createUncheckedIcon = () => {
         src: uncheckedImg,
         alt: "Unchecked box",
     };
+    const img = element.createImg(imgAttributes);
+    img.dataset.isChecked = "false";
 
-    return element.createImg(imgAttributes);
+    return img;
 };
 
-const createUncheckedHoverIcon = () => {
-    const imgAttributes = {
-        src: uncheckedHoverImg,
-        alt: "Unchecked box hovered",
-    };
+// const createUncheckedHoverIcon = () => {
+//     const imgAttributes = {
+//         src: uncheckedHoverImg,
+//         alt: "Unchecked box hovered",
+//     };
 
-    return element.createImg(imgAttributes);
-};
+//     return element.createImg(imgAttributes);
+// };
 
 const createUpcomingIcon = () => {
     const imgAttributes = {
@@ -197,7 +201,7 @@ export {
     createAppLogo,
     createArrowDownIcon,
     createCheckedIcon,
-    createCheckedHoverIcon,
+    // createCheckedHoverIcon,
     createCollapsibleIcon,
     createHighPriorityIcon,
     createHomeIcon,
@@ -211,6 +215,6 @@ export {
     createProjectsIcon,
     createTodayIcon,
     createUncheckedIcon,
-    createUncheckedHoverIcon,
+    // createUncheckedHoverIcon,
     createUpcomingIcon,
 };
