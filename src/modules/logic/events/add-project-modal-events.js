@@ -2,10 +2,11 @@ import * as modal from "../../dom/modals";
 
 const _cancelModal = (dialog) => modal.cancel(dialog);
 
-const _validateModal = (e, dialog) => {
+const _validateModal = (e) => {
     const inputs = dialog.querySelectorAll("input");
     for (const input of inputs) {
         if (modal.isValid(input)) {
+            const dialog = e.target.closest("dialog");
             modal.submit(dialog);
         } else {
             e.preventDefault();
@@ -15,19 +16,17 @@ const _validateModal = (e, dialog) => {
 };
 
 const _emitClickEvents = (e) => {
-    const btn = e.target.closest("button");
-    const dialog = e.target.closest("dialog");
-
-    if (!btn) {
+    if (!e.target.closest("button")) {
         return;
     };
     
-    if (btn.classList.contains("cancel-btn")) {
+    if (e.target.closest("button").classList.contains("cancel-btn")) {
+        const dialog = e.target.closest("dialog");
         _cancelModal(dialog);
     };
     
-    if (btn.classList.contains("confirm-btn")) {
-        _validateModal(e, dialog);
+    if (e.target.closest("button").classList.contains("confirm-btn")) {
+        _validateModal(e);
     };
 };
 
@@ -69,7 +68,7 @@ const _events = {
 const emitEvents = (e) => {
     const eventType = e.type;
     for (const event of Object.keys(_events)) {
-        if (eventType === event) {
+        if (event === eventType) {
             _events[event](e);
         };
     };

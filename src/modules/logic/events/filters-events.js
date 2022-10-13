@@ -6,43 +6,20 @@ const _deselectCurrentFilter = () => {
     selectedBtn.classList.remove("selected");
 };
 
-const _displayAll = (pageName) => {
-    const allBtn = document.querySelector(`.${pageName} .filters .all`);
-    allBtn.classList.add("selected");
+const _selectFilter = (btn) => {
+    btn.classList.add("selected");
 
-    projectMenu.display("all");
-};
-
-const _displayThisWeek = (pageName) => {
-    const thisWeekBtn = document.querySelector(`.${pageName} .filters .this-week`);
-    thisWeekBtn.classList.add("selected");
-
-    projectMenu.display("this week");
-};
-
-const _displayThisMonth = (pageName) => {
-    const thisMonthBtn = document.querySelector(`.${pageName} .filters .this-month`);
-    thisMonthBtn.classList.add("selected");
-
-    projectMenu.display("this month");
-};
-
-const _emitFns = {
-    all: _displayAll,
-    thisWeek: _displayThisWeek,
-    thisMonth: _displayThisMonth,
+    const filter = btn.getAttribute("class");
+    projectMenu.display(method.undoKebabCase(filter));
 };
 
 const _changeFilter = (btn) => {
-    const filter = method.toCamelCase(method.undoKebabCase(btn.getAttribute("class")));
-    for (const key of Object.keys(_emitFns)) {
-        if (key === filter) {
-            _deselectCurrentFilter();
-            const pageName = btn.closest("main").dataset.pageName;
-            projectMenu.removeProjects(pageName);
-            _emitFns[filter](pageName);
-        };
-    };
+    _deselectCurrentFilter();
+
+    const pageName = btn.closest("main").dataset.pageName;
+    projectMenu.removeProjects(pageName);
+    
+    _selectFilter(btn);
 };
 
 const _emitClickEvents = (e) => {
@@ -64,7 +41,7 @@ const _events = {
 const emitEvents = (e) => {
     const eventType = e.type;
     for (const event of Object.keys(_events)) {
-        if (eventType === event) {
+        if (event === eventType) {
             _events[event](e);
         };
     };

@@ -12,7 +12,7 @@ const display = (element) => {
     for (const page of pages) {
         const pageName = page.dataset.pageName;
         
-        if (elementName === pageName) {
+        if (pageName === elementName) {
             page.style.display = "grid";
         } else {
             page.style.display = "none";

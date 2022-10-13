@@ -28,23 +28,6 @@ const emitEvents = () => {
             task.emitEvents(e);
         };
     });
-    // body.addEventListener("mouseover", e => {
-    //     if (
-    //         e.target.nodeName === "IMG" &&
-    //         e.target.closest("div") &&
-    //         e.target.closest("div").classList.contains("left")
-    //     ) {
-    //         task.emitEvents(e);
-    //     };
-    // });
-    // body.addEventListener("mouseout", e => {
-    //     if (
-    //         e.target.classList.contains("left") ||
-    //         e.target.classList.contains("task")
-    //     ) {
-    //         task.emitEvents(e);
-    //     };
-    // });
 };
 
 export {
