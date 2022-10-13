@@ -7,10 +7,10 @@ const _deselectCurrentFilter = () => {
 };
 
 const _selectFilter = (btn) => {
-    btn.classList.add("selected");
-
     const filter = btn.getAttribute("class");
     projectMenu.display(method.undoKebabCase(filter));
+    
+    btn.classList.add("selected");
 };
 
 const _changeFilter = (btn) => {
