@@ -3,10 +3,10 @@ import * as modal from "../../dom/modals";
 const _cancelModal = (dialog) => modal.cancel(dialog);
 
 const _validateModal = (e) => {
+    const dialog = e.target.closest("dialog");
     const inputs = dialog.querySelectorAll("input");
     for (const input of inputs) {
         if (modal.isValid(input)) {
-            const dialog = e.target.closest("dialog");
             modal.submit(dialog);
         } else {
             e.preventDefault();
