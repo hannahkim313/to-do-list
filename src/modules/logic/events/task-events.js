@@ -1,9 +1,11 @@
 import * as image from "../../dom/image-elements";
+import * as library from "../functions/library-functions";
+import * as method from "../../helper-functions";
 
 const _toggleCheckbox = (checkboxImg) => {
     const isChecked = checkboxImg.dataset.isChecked;
     const newImg = isChecked === "true" ? image.createUncheckedIcon() : image.createCheckedIcon();
-    const parent = checkboxImg.parentElement
+    const parent = checkboxImg.parentElement;
     parent.replaceChild(newImg, checkboxImg);
 };
 
@@ -24,14 +26,32 @@ const _toggleStrikethrough = (para) => {
 
 const _toggleOpacity = (task) => task.classList.toggle("checked");
 
-const _toggleTask = (checkboxImg) => {
-    const para = checkboxImg.parentElement.nextElementSibling;
-    const task = para.closest("li");
-    
-    _toggleCheckbox(checkboxImg);
-    _toggleStrikethrough(para);
+const _toggleVisuals = (task) => {
+    _toggleCheckbox(task.querySelector(".left img"));
+    _toggleStrikethrough(task.querySelector(".left p"));
     _toggleOpacity(task);
-    // Update library
+};
+
+const _toggleTask = (checkboxImg) => {
+    const isChecked = checkboxImg.dataset.isChecked === "true" ? true : false;
+    const paraEl = checkboxImg.parentElement.nextElementSibling;
+    const taskTitle = isChecked ? paraEl.firstElementChild.textContent : paraEl.textContent;
+    const taskProject = method.toKebabCase(checkboxImg.closest(".project").firstElementChild.textContent.toLowerCase());
+
+    library.updateStatus(taskTitle);
+
+    const sections = document.querySelectorAll(`[data-project-name="${taskProject}"]`);
+    for (const section of sections) {
+        const tasks = isChecked ? section.querySelectorAll(".task.checked") : section.querySelectorAll(".task");
+        for (const task of tasks) {
+            if (
+                task.querySelector(".left p s") && task.querySelector(".left p s").textContent === taskTitle ||
+                task.querySelector(".left p") && task.querySelector(".left p ").textContent === taskTitle
+            ) {
+                _toggleVisuals(task);
+            };
+        };
+    };
 };
 
 const _expandTaskDetails = (btn) => {

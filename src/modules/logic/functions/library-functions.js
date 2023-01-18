@@ -140,9 +140,22 @@ const filterBy = (sectionName) => {
     return filteredProjects;
 };
 
+const updateStatus = (taskTitle) => {
+    for (const project of _library) {
+        const tasks = project.getTasks();
+        for (const task of tasks) {
+            if (task.title === taskTitle) {
+                const isChecked = task.checked;
+                task.checked = isChecked ? false : true;
+            };
+        };
+    };
+};
+
 export {
     add,
     get,
     getTaskStats,
     filterBy,
+    updateStatus,
 };
