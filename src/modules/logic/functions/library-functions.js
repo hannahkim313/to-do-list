@@ -96,29 +96,27 @@ const _getToday = (tasks) => {
     };
 };
 
-const _getAll = (tasks) => tasks;
+const _getUpcoming = (tasks) => {
+    if (tasks) {
+        return tasks.filter(task => task.overdue === false);
+    };
+};
 
 const _getThisWeek = (tasks) => {
     if (tasks) {
-        return tasks.filter(task => date.isThisWeek(task.dueDate));
+        return tasks.filter(task => task.overdue === false && date.isThisWeek(task.dueDate));
     };
 };
 
 const _getThisMonth = (tasks) => {
     if (tasks) {
-        return tasks.filter(task => date.isThisMonth(task.dueDate));
-    };
-};
-
-const _getUpcoming = (tasks) => {
-    if (tasks) {
-        return tasks.filter(task => date.isUpcoming(task.dueDate));
+        return tasks.filter(task => task.overdue === false && date.isThisMonth(task.dueDate));
     };
 };
 
 const _filterFns = {
     today: _getToday,
-    all: _getAll,
+    all: _getUpcoming,
     thisWeek: _getThisWeek,
     thisMonth: _getThisMonth,
     upcoming: _getUpcoming,

@@ -104,12 +104,6 @@ const isThisMonth = (date) => {
     return dateAPI.isThisMonth(date);
 };
 
-const isUpcoming = (upcomingDate) => {
-    upcomingDate = _stringToDate(upcomingDate);
-    
-    return dateAPI.isAfter(upcomingDate, _date);
-};
-
 export {
     getDate,
     getDay,
@@ -122,5 +116,4 @@ export {
     getPreviousDay,
     isThisWeek,
     isThisMonth,
-    isUpcoming,
 };
