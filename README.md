@@ -2,9 +2,24 @@
 
 ## Project Summary
 This project exercise, created by The Odin Project, is a to-do list manager
-that allows the user to create and manage projects and individual tasks.
+that allows a user to create and manage projects and individual tasks.
+
+## Features to Implement/Improve
+* Update the number of tasks remaining and overdue for each project on the sidebar
+
+* Update the number of tasks completed, remaining, and overdue on the home page
+
+* Implement filter button for each project's set of tasks
+
+* Implement the ability to add a new task
+
+* Implement the ability to display additional options for each project's set of tasks
+  such as deleting all tasks
+
+* Expand each task that displays additional details such as a description and the
+  ability to edit the task
 
 ## Credits
-* [Forest image](https://www.freepik.com/free-photo/landscape-trees-with-colorful-leaves-forest-covered-fog_11697880.htm#query=yellow%20aesthetic&position=9&from_view=search) by [wirestock](https://www.freepik.com/author/wirestock) on Freepik
+* [Sky image](https://www.freepik.com/free-photo/colorful-cloudy-sky-sunset-gradient-color-sky-texture-abstract-nature-background-very-peri_22756562.htm#&position=10&from_view=author) by [user14908974](https://www.freepik.com/author/user14908974) on Freepik
 
 * Miscellaneous icons provided by [Material Design Icons](https://materialdesignicons.com/)
