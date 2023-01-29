@@ -227,10 +227,17 @@ const createAlerts = (projectName) => {
     if (numRemaining > 0) {
         elements.push(createAlert("remaining", numRemaining));
     };
-    
-    method.appendChildren(alerts, elements);
 
+    method.appendChildren(alerts, elements);
+    
     return alerts;
+};
+
+const updateAlerts = (projectName) => {
+    const currentAlerts = document.querySelector(`[data-page-name="${projectName}"] .alerts`);
+    const newAlerts = createAlerts(projectName);
+    currentAlerts.after(newAlerts);
+    currentAlerts.remove();
 };
 
 export {
@@ -238,4 +245,5 @@ export {
     toggleCollapsible,
     addSubsection,
     createAlerts,
+    updateAlerts,
 };

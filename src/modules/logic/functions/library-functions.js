@@ -17,6 +17,10 @@ const _getTotalTasks = (projectName) => {
     let count = 0;
     for (const project of _library) {
         const tasks = project.getTasks();
+
+        if (!tasks) {
+            return count;
+        };
         
         if (tasks[0].project === projectName) {
             return count += tasks.length;
@@ -34,6 +38,10 @@ const _getNumCompleted = (projectName) => {
     let count = 0;
     for (const project of _library) {
         const tasks = project.getTasks();
+
+        if (!tasks) {
+            return count;
+        };
         
         if (tasks[0].project === projectName) {
             return count += tasks.filter(task => task.checked).length;
@@ -51,13 +59,17 @@ const _getNumOverdue = (projectName) => {
     let count = 0;
     for (const project of _library) {
         const tasks = project.getTasks();
+
+        if (!tasks) {
+            return count;
+        };
         
         if (tasks[0].project === projectName) {
-            return count += tasks.filter(task => task.overdue).length;
+            return count += tasks.filter(task => task.overdue && !task.checked).length;
         };
 
         if (!projectName) {
-            count += tasks.filter(task => task.overdue).length;
+            count += tasks.filter(task => task.overdue && !task.checked).length;
         };
     };
 
@@ -66,13 +78,13 @@ const _getNumOverdue = (projectName) => {
 
 const _getNumRemaining = (projectName) => {
     if (!projectName) {
-        return _getTotalTasks() - (_getNumCompleted() + _getNumOverdue());
+        return _getTotalTasks() - _getNumCompleted();
     } else {
-        return _getTotalTasks(projectName) - (_getNumCompleted(projectName) + _getNumOverdue(projectName));
+        return _getTotalTasks(projectName) - _getNumCompleted(projectName);
     };
 };
 
-const _taskStatsFns = {
+const _taskStatsGetFns = {
     completed: _getNumCompleted,
     overdue: _getNumOverdue,
     remaining: _getNumRemaining,
@@ -83,9 +95,9 @@ const getTaskStats = (projectName, stat) => {
         projectName = method.undoKebabCase(projectName);
     };
 
-    for (const key of Object.keys(_taskStatsFns)) {
+    for (const key of Object.keys(_taskStatsGetFns)) {
         if (key === stat) {
-            return _taskStatsFns[key](projectName);
+            return _taskStatsGetFns[key](projectName);
         };
     };
 };
@@ -138,9 +150,14 @@ const filterBy = (sectionName) => {
     return filteredProjects;
 };
 
-const updateStatus = (taskTitle) => {
+const updateCheckedStatus = (taskTitle) => {
     for (const project of _library) {
         const tasks = project.getTasks();
+
+        if (!tasks) {
+            return;
+        };
+
         for (const task of tasks) {
             if (task.title === taskTitle) {
                 const isChecked = task.checked;
@@ -155,5 +172,5 @@ export {
     get,
     getTaskStats,
     filterBy,
-    updateStatus,
+    updateCheckedStatus,
 };

@@ -1,4 +1,6 @@
+import * as homePage from "../../dom/home-page";
 import * as image from "../../dom/image-elements";
+import * as sidebar from "../../dom/sidebar";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
 
@@ -32,21 +34,14 @@ const _toggleVisuals = (task) => {
     _toggleOpacity(task);
 };
 
-const _toggleTask = (checkboxImg) => {
-    const isChecked = checkboxImg.dataset.isChecked === "true" ? true : false;
-    const paraEl = checkboxImg.parentElement.nextElementSibling;
-    const taskTitle = isChecked ? paraEl.firstElementChild.textContent : paraEl.textContent;
-    const taskProject = method.toKebabCase(checkboxImg.closest(".project").firstElementChild.textContent.toLowerCase());
-
-    library.updateStatus(taskTitle);
-
-    const sections = document.querySelectorAll(`[data-project-name="${taskProject}"]`);
+const _toggleTask = (data) => {
+    const sections = document.querySelectorAll(`[data-project-name="${data.project}"]`);
     for (const section of sections) {
-        const tasks = isChecked ? section.querySelectorAll(".task.checked") : section.querySelectorAll(".task");
+        const tasks = data.isChecked ? section.querySelectorAll(".task.checked") : section.querySelectorAll(".task");
         for (const task of tasks) {
             if (
-                task.querySelector(".left p s") && task.querySelector(".left p s").textContent === taskTitle ||
-                task.querySelector(".left p") && task.querySelector(".left p ").textContent === taskTitle
+                task.querySelector(".left p s") && task.querySelector(".left p s").textContent === data.title ||
+                task.querySelector(".left p") && task.querySelector(".left p ").textContent === data.title
             ) {
                 _toggleVisuals(task);
             };
@@ -64,7 +59,20 @@ const _emitClickEvents = (e) => {
         e.target.closest("div").classList.contains("left")
     ) {
         const checkboxImg = e.target;
-        _toggleTask(checkboxImg);
+        const isChecked = checkboxImg.dataset.isChecked === "true" ? true : false;
+        const paraEl = checkboxImg.parentElement.nextElementSibling;
+        const taskTitle = isChecked ? paraEl.firstElementChild.textContent : paraEl.textContent;
+        const taskProject = method.toKebabCase(checkboxImg.closest(".project").firstElementChild.textContent.toLowerCase());
+        const data = {
+            isChecked: isChecked,
+            title: taskTitle,
+            project: taskProject,
+        };
+        
+        library.updateCheckedStatus(taskTitle);
+        sidebar.updateAlerts(taskProject);
+        homePage.updateTasksOverview();
+        _toggleTask(data);
     };
 
     // If chevron button is clicked, call _expandTaskDetails()
