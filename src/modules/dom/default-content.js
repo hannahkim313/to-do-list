@@ -243,7 +243,7 @@ const create = () => {
     _createFilteredContent(sections);
     _createProjectsContent();
     _createSidebarContent();
-    homePage.updateTasksOverview();
+    homePage.updateOverviewTasks();
 };
 
 export {

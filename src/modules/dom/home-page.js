@@ -137,7 +137,20 @@ const _createNotesSection = () => {
     return notes;
 };
 
-const updateTasksOverview = () => {
+const create = () => {
+    const elements = [
+        element.createHeading("2", "Home"),
+        _createOverview(),
+        _createNotesSection(),
+    ];
+    const homePage = page.create("home", elements);
+    homePage.style.display = "grid";
+
+    return homePage;
+};
+
+
+const updateOverviewTasks = () => {
     const numCompleted = library.getTaskStats(null, "completed");
     const currentCompleted = document.querySelector(".overview-tasks .completed h4");
     currentCompleted.textContent = numCompleted;
@@ -151,19 +164,7 @@ const updateTasksOverview = () => {
     currentRemaining.textContent = numRemaining;
 };
 
-const create = () => {
-    const elements = [
-        element.createHeading("2", "Home"),
-        _createOverview(),
-        _createNotesSection(),
-    ];
-    const homePage = page.create("home", elements);
-    homePage.style.display = "grid";
-
-    return homePage;
-};
-
 export {
     create,
-    updateTasksOverview,
+    updateOverviewTasks,
 };

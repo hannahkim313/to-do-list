@@ -1,23 +1,42 @@
-import * as modal from "../../dom/modals";
 import * as page from "../../dom/page";
-import * as sidebar from "../../dom/sidebar";
 
-const _displayAddProjectModal = () => modal.display("add project");
+const _displayAddProjectModal = () => document.querySelector(".add-project.modal").showModal();
+
+const _toggleCollapsible = (collapsible) => {
+    collapsible.classList.toggle("expanded");
+    const subsections = collapsible.nextElementSibling;
+    
+    if (window.getComputedStyle(subsections).getPropertyValue("max-height") === "0px") {
+        subsections.style.maxHeight = "100%";
+        subsections.style.opacity = "1";
+        subsections.style.marginTop = "0";
+    } else {
+        subsections.style.maxHeight = "0";
+        subsections.style.opacity = "0";
+        subsections.style.marginTop = "-8px";
+    };
+};
 
 const _toggleSection = (section) => {
     if (section.classList.contains("collapsible")) {
-        sidebar.toggleCollapsible(section);
+        _toggleCollapsible(section);
     } else if (!section.classList.contains("no-projects-created")) {
         page.display(section);
     };
 };
 
 const _emitClickEvents = (e) => {
-    if (e.target.closest("button").classList.contains("add-project-btn")) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("add-project-btn")
+    ) {
         _displayAddProjectModal();
     };
 
-    if (e.target.closest("button").dataset.pageName) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").dataset.pageName
+    ) {
         const section = e.target.closest("button");
         _toggleSection(section);
     };

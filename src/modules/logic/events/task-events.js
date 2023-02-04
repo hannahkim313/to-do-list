@@ -1,8 +1,17 @@
 import * as homePage from "../../dom/home-page";
 import * as image from "../../dom/image-elements";
-import * as sidebar from "../../dom/sidebar";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
+import * as sidebar from "../../dom/sidebar";
+
+const _updateTaskCount = (projectName) => {
+    const currentAlerts = document.querySelector(`[data-page-name="${projectName}"] .alerts`);
+    const newAlerts = sidebar.createAlerts(projectName);
+    currentAlerts.after(newAlerts);
+    currentAlerts.remove();
+
+    homePage.updateOverviewTasks();
+};
 
 const _toggleCheckbox = (checkboxImg) => {
     const isChecked = checkboxImg.dataset.isChecked;
@@ -70,8 +79,7 @@ const _emitClickEvents = (e) => {
         };
         
         library.updateCheckedStatus(taskTitle);
-        sidebar.updateAlerts(taskProject);
-        homePage.updateTasksOverview();
+        _updateTaskCount(taskProject);
         _toggleTask(data);
     };
 

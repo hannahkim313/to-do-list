@@ -167,21 +167,6 @@ const create = () => {
     return sidebarElement;
 };
 
-const toggleCollapsible = (collapsible) => {
-    collapsible.classList.toggle("expanded");
-    const subsections = collapsible.nextElementSibling;
-    
-    if (window.getComputedStyle(subsections).getPropertyValue("max-height") === "0px") {
-        subsections.style.maxHeight = "100%";
-        subsections.style.opacity = "1";
-        subsections.style.marginTop = "0";
-    } else {
-        subsections.style.maxHeight = "0";
-        subsections.style.opacity = "0";
-        subsections.style.marginTop = "-8px";
-    };
-};
-
 const addSubsection = (name, section) => {
     const subsections = document.querySelector(`.${section} + .subsections`);
     const firstSubsection = subsections.querySelector("li");
@@ -233,17 +218,8 @@ const createAlerts = (projectName) => {
     return alerts;
 };
 
-const updateAlerts = (projectName) => {
-    const currentAlerts = document.querySelector(`[data-page-name="${projectName}"] .alerts`);
-    const newAlerts = createAlerts(projectName);
-    currentAlerts.after(newAlerts);
-    currentAlerts.remove();
-};
-
 export {
     create,
-    toggleCollapsible,
     addSubsection,
     createAlerts,
-    updateAlerts,
 };

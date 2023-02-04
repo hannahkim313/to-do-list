@@ -5,10 +5,6 @@ This project exercise, created by The Odin Project, is a to-do list manager
 that allows a user to create and manage projects and individual tasks.
 
 ## Features to Implement/Improve
-* Update the number of tasks remaining and overdue for each project on the sidebar
-
-* Update the number of tasks completed, remaining, and overdue on the home page
-
 * Implement filter button for each project's set of tasks
 
 * Implement the ability to add a new task
