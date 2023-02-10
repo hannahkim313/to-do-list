@@ -1,6 +1,5 @@
 import * as element from "./html-elements";
 import appLogoImg from "../../img/logo.svg";
-import arrowDownImg from "../../img/arrow-down.svg";
 // import checkedHoverImg from "../../img/checked-hover.svg";
 import checkedImg from "../../img/checked.svg";
 import chevronDownImg from "../../img/chevron-down.svg";
@@ -27,15 +26,6 @@ const createAppLogo = () => {
         class: "logo",
     };
     
-    return element.createImg(imgAttributes);
-};
-
-const createArrowDownIcon = () => {
-    const imgAttributes = {
-        src: arrowDownImg,
-        alt: "Down arrow icon",
-    };
-
     return element.createImg(imgAttributes);
 };
 
@@ -199,7 +189,6 @@ const createUpcomingIcon = () => {
 
 export {
     createAppLogo,
-    createArrowDownIcon,
     createCheckedIcon,
     // createCheckedHoverIcon,
     createCollapsibleIcon,

@@ -4,33 +4,85 @@ import * as method from "../helper-functions";
 import * as taskMenu from "./task-menu";
 
 const _createProjectOptions = () => {
-    const createDropdown = () => {
+    const createDropdownContainer = () => {
         const createInput = () => {
-            const input = element.createPara("Sort by: Priority");
+            const input = element.createPara("Priority: High to low");
             const inputAttributes = {
                 class: "input",
             };
             method.setAttributesOf(input, inputAttributes);
-            const elements = [
-                image.createArrowDownIcon(),
-            ];
-            method.appendChildren(input, elements);
     
             return input;
         };
     
-        const dropdownAttributes = {
-            type: "button",
-            class: "dropdown",
+        const createDropdownBtn = () => {
+            const dropdownAttributes = {
+                type: "button",
+                class: "dropdown collapsible",
+            };
+            const dropdown = element.createButton(dropdownAttributes);
+            const elements = [
+                createInput(),
+                image.createCollapsibleIcon(),
+            ];
+            method.appendChildren(dropdown, elements);
+        
+            return dropdown;
         };
-        const dropdown = element.createButton(dropdownAttributes);
+
+        const createDropdownFilters = (filterNames) => {
+            const filters = [];
+            for (const name of filterNames) {
+                const filterAttributes = {
+                    type: "button",
+                    class: "sort-by-filter",
+                };
+                const filter = element.createButton(filterAttributes);
+
+                const para = element.createPara(name);
+                filter.appendChild(para);
+
+                const li = document.createElement("li");
+                li.appendChild(filter);
+
+                filters.push(li);
+            };
+
+            return filters;
+        };
+
+        const createDropdownMenu = () => {
+            const menu = document.createElement("menu");
+            const menuAttributes = {
+                class: "dropdown-menu",
+            };
+            method.setAttributesOf(menu, menuAttributes);
+
+            const filterNames = [
+                "Priority: Low to high",
+                "Date: High to low",
+                "Date: Low to high",
+            ];
+            const filters = createDropdownFilters(filterNames);
+            method.appendChildren(menu, filters);
+
+            menu.style.visibility = "hidden";
+            menu.style.opacity = "0";
+
+            return menu;
+        };
+
+        const containerAttributes = {
+            class: "dropdown-container",
+        };
+        const dropdownContainer = element.createDiv(containerAttributes);
         const elements = [
-            createInput(),
-            image.createCollapsibleIcon(),
+            createDropdownBtn(),
+            createDropdownMenu(),
         ];
-        method.appendChildren(dropdown, elements);
-    
-        return dropdown;
+        method.appendChildren(dropdownContainer, elements);
+
+        return dropdownContainer;
     };
     
     const createAddTaskBtn = () => {
@@ -64,7 +116,7 @@ const _createProjectOptions = () => {
     };
     const options = element.createDiv(optionsAttributes);
     const elements = [
-        createDropdown(),
+        createDropdownContainer(),
         createAddTaskBtn(),
         createMoreOptionsBtn(),
     ];

@@ -23,7 +23,7 @@ const addTo = (pageName, tasks) => {
 
     pageName = method.toKebabCase(pageName);
     const projectName = method.toKebabCase(tasks[0].project);
-    const taskMenu = document.querySelector(`.${pageName} [data-project-name='${projectName}'] menu`);
+    const taskMenu = document.querySelector(`.${pageName} [data-project-name='${projectName}'] .tasks`);
     
     for (const taskData of tasks) {
         const taskElement = task.create(taskData);

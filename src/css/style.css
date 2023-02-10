@@ -6,6 +6,10 @@
 /*
 /******************************************************************************/
 
+/******************************************************************************/
+/* Selectors for general elements start here.
+/******************************************************************************/
+
 :root {
     --color-text-1: #4d4d4d;
     --color-text-1-inverted: #ffffff;
@@ -42,8 +46,29 @@ a {
     color: var(--color-text-1);
 }
 
+li {
+    list-style: none;
+}
+
 button:hover {
     cursor: pointer;
+}
+
+/* Selectors for collapsible sections start here. */
+
+.collapsible {
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapsible .collapsible.icon {
+    margin-left: auto;
+
+    transition: all 0.5s ease;
+}
+
+.collapsible.expanded .collapsible.icon {
+    transform: rotate(180deg);
 }
 
 /******************************************************************************/
@@ -165,10 +190,6 @@ header .logo {
     gap: 16px;
 }
 
-.sidebar li {
-    list-style: none;
-}
-
 /* Selectors for the sidebar sections start here. */
 
 .sidebar-sections > li > img {
@@ -197,23 +218,6 @@ header .logo {
 
 .sidebar-sections > li > button:active {
     background-color: var(--color-neutral-4);
-}
-
-/* Selectors for collapsible sections start here. */
-
-.collapsible {
-    display: flex;
-    justify-content: space-between;
-}
-
-.collapsible .collapsible.icon {
-    margin-left: auto;
-
-    transition: all 0.5s ease;
-}
-
-.collapsible.expanded .collapsible.icon {
-    transform: rotate(180deg);
 }
 
 /* Selectors for the individual projects of the sidebar start here. */
@@ -435,6 +439,44 @@ header .logo {
     gap: 8px;
 }
 
+.page .options .dropdown-container {
+    position: relative;
+}
+
+.page .options .dropdown-menu {
+    width: 100%;
+    height: auto;
+
+    padding: 4px 0px;
+
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px var(--color-neutral-5);
+
+    position: absolute;
+    top: 30px;
+    z-index: 1;
+
+    transition: all 0.2s ease;
+}
+
+.page .options .dropdown-menu button {
+    width: 100%;
+
+    padding: 4px 8px;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.page .options .dropdown-menu button:hover {
+    background-color: var(--color-neutral-1);
+
+}
+.page .options .dropdown-menu button:active {
+    background-color: var(--color-neutral-2);
+}
+
 .page .options .dropdown {
     padding: 2px 8px;
     
@@ -443,6 +485,7 @@ header .logo {
 
     display: flex;
     align-items: center;
+    gap: 0.5rem;
 
     transition: all 0.2s ease;
 }
@@ -460,18 +503,18 @@ header .logo {
     align-items: center;
 }
 
-.page .options button:not(.dropdown) {
+.page .options button:not(.dropdown, .sort-by-filter) {
     padding: 4px;
     
     transition: all 0.2s ease;
 }
 
-.page .options button:not(.dropdown):hover {
+.page .options button:not(.dropdown, .sort-by-filter):hover {
     background-color: var(--color-neutral-1);
     border-radius: 8px;
 }
 
-.page .options button:not(.dropdown):active {
+.page .options button:not(.dropdown, .sort-by-filter):active {
     background-color: var(--color-neutral-2);
 }
 
