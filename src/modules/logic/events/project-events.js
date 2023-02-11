@@ -13,7 +13,7 @@ const _toggleDropdownMenu = (dropdown) => {
 };
 
 const _changeFilters = (newFilter) => {
-    const currentFilter = document.querySelector(".dropdown-menu .selected");
+    const currentFilter = newFilter.closest("menu").querySelector(".selected");
     currentFilter.classList.toggle("selected");
     newFilter.classList.toggle("selected");
 
