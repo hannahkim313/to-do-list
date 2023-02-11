@@ -477,6 +477,10 @@ header .logo {
     background-color: var(--color-neutral-2);
 }
 
+.page .options .dropdown-menu .selected {
+    background: var(--color-brand-1-b);
+}
+
 .page .options .dropdown {
     padding: 2px 8px;
     

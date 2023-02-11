@@ -48,6 +48,8 @@ const _createProjectOptions = () => {
                 filters.push(li);
             };
 
+            filters[0].firstElementChild.classList.add("selected");
+
             return filters;
         };
 
@@ -59,6 +61,7 @@ const _createProjectOptions = () => {
             method.setAttributesOf(menu, menuAttributes);
 
             const filterNames = [
+                "Priority: High to low",
                 "Priority: Low to high",
                 "Date: High to low",
                 "Date: Low to high",

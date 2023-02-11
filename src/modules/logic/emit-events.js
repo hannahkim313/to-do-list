@@ -35,7 +35,9 @@ const emitEvents = () => {
 
         if (
             e.target.closest("button") &&
-            e.target.closest("button").classList.contains("dropdown")
+            e.target.closest("button").classList.contains("dropdown") ||
+            e.target.closest("menu") &&
+            e.target.closest("menu").classList.contains("dropdown-menu")
         ) {
             project.emitEvents(e);
         };
