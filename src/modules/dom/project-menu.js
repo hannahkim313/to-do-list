@@ -26,22 +26,92 @@ const removeProjects = (pageName) => {
     };
 };
 
-const display = (filter) => {
-    const filteredTaskSets = library.filterBy(filter);
+const _getFilterNames = (selectedFilter) => {
+    const filterNames = [];
+    
+    const filter = selectedFilter.closest("button").firstElementChild.textContent;
+
+    if (filter === "Priority: High to low") {
+        filterNames.push("priorityDesc");
+    };
+
+    if (filter === "Priority: Low to high") {
+        filterNames.push("priorityAsc");
+    };
+
+    if (filter === "Date: Newest to oldest") {
+        filterNames.push("dateDesc");
+    };
+
+    if (filter === "Date: Oldest to newest") {
+        filterNames.push("dateAsc");
+    };
+
+    const pageName = selectedFilter.closest("main").dataset.pageName;
+
+    if (pageName === "today") {
+        filterNames.push("today");
+    };
+
+    if (pageName === "upcoming") {
+        const selectedUpcomingFilter = selectedFilter
+            .closest("main")
+            .querySelector(".filters .selected")
+            .firstElementChild
+            .textContent
+            .toLowerCase()
+        ;
+        filterNames.push(method.toCamelCase(selectedUpcomingFilter));
+    };
+
+    return filterNames;
+};
+
+const sortUpcomingTasks = (selectedFilter) => {
+    const filters = _getFilterNames(selectedFilter);
+    filters.unshift("priorityDesc");
+    const filteredTaskSets = library.filterBy(filters);
+
+    const projectMenus = document.querySelectorAll(".upcoming.page .project");
+    for (const menu of projectMenus) {
+        menu.remove();
+    };
+
+    for (const taskSet of filteredTaskSets) {
+        if (taskSet.length === 0) {
+            continue;
+        };
+
+        const projectElement = project.create(taskSet);
+        addTo("upcoming", projectElement);
+
+        taskMenu.addTo("upcoming", taskSet);
+    };
+};
+
+const sortProjectTasks = (selectedFilter) => {
+    const filters = _getFilterNames(selectedFilter);
+    const filteredTaskSets = library.filterBy(filters);
+
+    const pageName = method.toKebabCase(selectedFilter.closest("main").firstElementChild.textContent.toLowerCase());
+    const projectName = method.toKebabCase(selectedFilter.closest("article").firstElementChild.textContent.toLowerCase());
+    
+    const selectedTaskMenu = document.querySelector(`.${pageName}.page [data-project-name="${projectName}"] .tasks`);
+
+    if (!selectedTaskMenu.firstElementChild.classList.contains("empty")) {
+        method.removeChildren(selectedTaskMenu);
+    };
 
     for (const taskSet of filteredTaskSets) {
         if (!taskSet) {
             return;
         };
-        
-        if (taskSet.length === 0) {
-            continue;
+
+        if (taskSet[0].project === method.undoKebabCase(projectName)) {
+            taskMenu.addTo(pageName, taskSet);
+
+            break;
         };
-            
-        const projectElement = project.create(taskSet);
-        addTo("upcoming", projectElement);
-        
-        taskMenu.addTo("upcoming", taskSet);
     };
 };
 
@@ -49,5 +119,6 @@ export {
     create,
     addTo,
     removeProjects,
-    display,
+    sortProjectTasks,
+    sortUpcomingTasks,
 };

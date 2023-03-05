@@ -1,4 +1,3 @@
-import * as method from "../../helper-functions";
 import * as projectMenu from "../../dom/project-menu";
 
 const _deselectCurrentFilter = () => {
@@ -7,18 +6,12 @@ const _deselectCurrentFilter = () => {
 };
 
 const _selectFilter = (btn) => {
-    const filter = btn.getAttribute("class");
-    projectMenu.display(method.undoKebabCase(filter));
-    
     btn.classList.add("selected");
+    projectMenu.sortUpcomingTasks(btn);
 };
 
 const _changeFilter = (btn) => {
     _deselectCurrentFilter();
-
-    const pageName = btn.closest("main").dataset.pageName;
-    projectMenu.removeProjects(pageName);
-    
     _selectFilter(btn);
 };
 

@@ -21,9 +21,9 @@ const addTo = (pageName, tasks) => {
         return;
     };
 
-    pageName = method.toKebabCase(pageName);
+    pageName = method.toKebabCase(pageName).toLowerCase();
     const projectName = method.toKebabCase(tasks[0].project);
-    const taskMenu = document.querySelector(`.${pageName} [data-project-name='${projectName}'] .tasks`);
+    const taskMenu = document.querySelector(`.${pageName}.page [data-project-name="${projectName}"] .tasks`);
     
     for (const taskData of tasks) {
         const taskElement = task.create(taskData);

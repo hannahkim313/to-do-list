@@ -55,6 +55,12 @@ const undoCamelCase = (str) => {
 
 const undoKebabCase = (str) => str.replaceAll("-", " ");
 
+const removeChildren = (parent) => {
+    while (parent.firstElementChild) {
+        parent.removeChild(parent.firstElementChild);
+    };
+};
+
 export {
     appendChildren,
     capitalize,
@@ -63,4 +69,5 @@ export {
     toKebabCase,
     undoCamelCase,
     undoKebabCase,
+    removeChildren,
 };

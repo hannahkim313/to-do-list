@@ -63,8 +63,8 @@ const _createProjectOptions = () => {
             const filterNames = [
                 "Priority: High to low",
                 "Priority: Low to high",
-                "Date: High to low",
-                "Date: Low to high",
+                "Date: Newest to oldest",
+                "Date: Oldest to newest",
             ];
             const filters = createDropdownFilters(filterNames);
             method.appendChildren(menu, filters);
@@ -147,6 +147,7 @@ const create = (tasks) => {
         _createProjectOptions(),
         taskMenu.create(),
     ];
+
     projectElement.dataset.projectName = method.toKebabCase(projectName);
     method.appendChildren(projectElement, elements);
 

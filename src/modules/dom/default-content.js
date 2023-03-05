@@ -15,7 +15,7 @@ const _errandsTasks = [
         title: "Drop off package",
         description: "Store opens at 10AM",
         dueDate: date.getToday(),
-        priority: "high",
+        priority: 3,
         overdue: false,
         checked: true,
         project: "errands",
@@ -23,7 +23,7 @@ const _errandsTasks = [
     {
         title: "Buy birthday gift",
         dueDate: date.getToday(),
-        priority: "high",
+        priority: 3,
         overdue: false,
         checked: true,
         project: "errands",
@@ -31,7 +31,7 @@ const _errandsTasks = [
     {
         title: "Send out postcard",
         dueDate: date.getPreviousDay("sunday", 0),
-        priority: "medium",
+        priority: 2,
         overdue: true,
         overdue: true,
         checked: false,
@@ -40,7 +40,7 @@ const _errandsTasks = [
     {
         title: "Get groceries",
         dueDate: date.getToday(),
-        priority: "medium",
+        priority: 2,
         overdue: false,
         checked: true,
         project: "errands",
@@ -48,7 +48,7 @@ const _errandsTasks = [
     {
         title: "Meal prep",
         dueDate: date.getToday(),
-        priority: "low",
+        priority: 1,
         overdue: false,
         checked: false,
         project: "errands",
@@ -56,7 +56,7 @@ const _errandsTasks = [
     {
         title: "Water plants",
         dueDate: date.getToday(),
-        priority: "low",
+        priority: 1,
         overdue: false,
         checked: false,
         project: "errands",
@@ -69,7 +69,7 @@ const _errandsTasks = [
             rear delt fly/pull, overhead shoulder presses, chest presses
         `,
         dueDate: date.getToday(),
-        priority: "low",
+        priority: 1,
         overdue: false,
         checked: true,
         project: "errands",
@@ -80,7 +80,7 @@ const _roadTripTasks = [
         title: "Book Airbnb",
         description: "Check cancellation policy before booking",
         dueDate: date.getToday(),
-        priority: "high",
+        priority: 3,
         overdue: false,
         checked: true,
         project: "road trip",
@@ -88,7 +88,7 @@ const _roadTripTasks = [
     {
         title: "Schedule doggy daycare",
         dueDate: date.getDayAhead({ days: 4, }),
-        priority: "high",
+        priority: 3,
         overdue: false,
         checked: true,
         project: "road trip",
@@ -96,7 +96,7 @@ const _roadTripTasks = [
     {
         title: "Get car checked",
         dueDate: date.getNextDay("saturday", 1),
-        priority: "high",
+        priority: 3,
         overdue: false,
         checked: false,
         project: "road trip",
@@ -104,7 +104,7 @@ const _roadTripTasks = [
     {
         title: "Finish packing",
         dueDate: date.getNextDay("thursday", 3),
-        priority: "high",
+        priority: 3,
         overdue: false,
         checked: false,
         project: "road trip",
@@ -112,7 +112,7 @@ const _roadTripTasks = [
     {
         title: "Turn off all electronics and lock all doors",
         dueDate: date.getNextDay("friday", 3),
-        priority: "high",
+        priority: 3,
         overdue: false,
         checked: false,
         project: "road trip",
@@ -120,7 +120,7 @@ const _roadTripTasks = [
     {
         title: "Make dinner reservations for the day we arrive",
         dueDate: date.getToday(),
-        priority: "medium",
+        priority: 2,
         overdue: false,
         checked: false,
         project: "road trip",
@@ -128,7 +128,7 @@ const _roadTripTasks = [
     {
         title: "Buy parking pass for national parks/viewpoints",
         dueDate: date.getDayAhead({ days: 4, }),
-        priority: "medium",
+        priority: 2,
         overdue: false,
         checked: true,
         project: "road trip",
@@ -136,7 +136,7 @@ const _roadTripTasks = [
     {
         title: "Buy travel items",
         dueDate: date.getDayAhead({ days: 6, }),
-        priority: "low",
+        priority: 1,
         overdue: false,
         checked: true,
         project: "road trip",
@@ -146,7 +146,7 @@ const _workTasks = [
     {
         title: "Confirm vacation time",
         dueDate: date.getNextDay("tuesday", 0),
-        priority: "high",
+        priority: 3,
         overdue: false,
         checked: true,
         project: "work",
@@ -154,7 +154,7 @@ const _workTasks = [
     {
         title: "Introduce new team members",
         dueDate: date.getNextDay("monday", 2),
-        priority: "high",
+        priority: 3,
         overdue: false,
         checked: false,
         project: "work",
@@ -162,7 +162,7 @@ const _workTasks = [
     {
         title: "Gather end-of-week analysis",
         dueDate: date.getNextDay("friday", 2),
-        priority: "high",
+        priority: 3,
         overdue: false,
         checked: false,
         project: "work",
@@ -171,7 +171,7 @@ const _workTasks = [
         title: "Video call Joe",
         description: "Go over team dynamic and discuss possible changes",
         dueDate: date.getPreviousDay("wednesday", 0),
-        priority: "medium",
+        priority: 2,
         overdue: true,
         overdue: true,
         checked: false,
@@ -187,6 +187,7 @@ const _taskSets = [
 const _populateLibrary = () => {
     for (const taskSet of _taskSets) {
         const project = Project();
+        project.setName(taskSet[0].project);
         project.setTasks(taskSet);
         library.add(project);
     };
@@ -194,7 +195,10 @@ const _populateLibrary = () => {
 
 const _createFilteredContent = (sections) => {
     for (const section of sections) {
-        const filteredTaskSets = library.filterBy(section);
+        const filters = [
+            section,
+        ];
+        const filteredTaskSets = library.filterBy(filters);
         for (const taskSet of filteredTaskSets) {
             if (taskSet.length === 0) {
                 continue;
@@ -227,7 +231,7 @@ const _createSidebarContent = () => {
         sidebar.addSubsection(method.capitalize(projectName), "projects");
 
         const sectionName = method.toKebabCase(projectName);
-        const section = document.querySelector(`[data-page-name='${sectionName}']`);
+        const section = document.querySelector(`[data-page-name="${sectionName}"]`);
         const alerts = sidebar.createAlerts(method.toKebabCase(projectName));
         section.appendChild(alerts);
     };

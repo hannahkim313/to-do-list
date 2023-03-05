@@ -60,7 +60,7 @@ const getPreviousDay = (day, weeks) => {
     };
 };
 
-const _stringToDate = (date) => {
+const stringToDate = (date) => {
     const chars = Array.from(date);
     const commaIndex = chars.findIndex(element => element === ",");
     chars.splice(commaIndex, 1)
@@ -93,13 +93,13 @@ const _stringToDate = (date) => {
 };
 
 const isThisWeek = (date) => {
-    date = _stringToDate(date);
+    date = stringToDate(date);
 
     return dateAPI.isThisWeek(date);
 
 };
 const isThisMonth = (date) => {
-    date = _stringToDate(date);
+    date = stringToDate(date);
 
     return dateAPI.isThisMonth(date);
 };
@@ -114,6 +114,7 @@ export {
     getDayBehind,
     getNextDay,
     getPreviousDay,
+    stringToDate,
     isThisWeek,
     isThisMonth,
 };

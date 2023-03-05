@@ -1,3 +1,5 @@
+import * as projectMenu from "../../dom/project-menu";
+
 const _toggleDropdownMenu = (dropdown) => {
     dropdown.classList.toggle("expanded");
 
@@ -35,7 +37,9 @@ const _emitClickEvents = (e) => {
     ) {
         _changeFilters(e.target.closest("button"));
         _toggleDropdownMenu(e.target.closest("div").querySelector(".dropdown"));
-        // Create a function that sorts the tasks based on the selected filter
+
+        const selectedFilter = e.target.closest("button");
+        projectMenu.sortProjectTasks(selectedFilter);
     };
 
     if (e.target.closest("button").className === "add-task") {

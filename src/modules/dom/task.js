@@ -71,15 +71,15 @@ const create = (data) => {
         };
     
         const createPriorityIcon = () => {
-            if (priority === "low") {
+            if (priority === 1) {
                 return image.createLowPriorityIcon();
             };
             
-            if (priority === "medium") {
+            if (priority === 2) {
                 return image.createMediumPriorityIcon();
             };
             
-            if (priority === "high") {
+            if (priority === 3) {
                 return image.createHighPriorityIcon();
             };
         };

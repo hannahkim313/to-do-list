@@ -126,25 +126,106 @@ const _getThisMonth = (tasks) => {
     };
 };
 
+const _getPriorityDesc = (tasks) => {
+    if (tasks) {
+        const isHigherPriority = (currentTask, nextTask) => {
+            const currentTaskDate = date.stringToDate(currentTask.dueDate);
+            const nextTaskDate = date.stringToDate(nextTask.dueDate);
+
+            if (currentTask.priority === nextTask.priority) {
+                return currentTaskDate < nextTaskDate ? -1 : 1;
+            } else {
+                return nextTask.priority - currentTask.priority;
+            };
+        };
+
+        tasks.sort((currentTask, nextTask) => isHigherPriority(currentTask, nextTask));
+
+        return tasks;
+    };
+};
+
+const _getPriorityAsc = (tasks) => {
+    if (tasks) {
+        const isLowerPriority = (currentTask, nextTask) => {
+            const currentTaskDate = date.stringToDate(currentTask.dueDate);
+            const nextTaskDate = date.stringToDate(nextTask.dueDate);
+
+            if (currentTask.priority === nextTask.priority) {
+                return currentTaskDate < nextTaskDate ? -1 : 1;
+            } else {
+                return currentTask.priority - nextTask.priority;
+            };
+        };
+
+        tasks.sort((currentTask, nextTask) => isLowerPriority(currentTask, nextTask));
+
+        return tasks;
+    };
+};
+
+const _getDateDesc = (tasks) => {
+    if (tasks) {
+        const isHigherDate = (currentTask, nextTask) => {
+            const currentTaskDate = date.stringToDate(currentTask.dueDate);
+            const nextTaskDate = date.stringToDate(nextTask.dueDate);
+
+            if (currentTask.dueDate === nextTask.dueDate) {
+                return currentTask.priority > nextTask.priority ? -1 : 1;
+            } else {
+                return nextTaskDate - currentTaskDate;
+            };
+        };
+
+        tasks.sort((currentTask, nextTask) => isHigherDate(currentTask, nextTask));
+
+        return tasks;
+    };
+};
+
+const _getDateAsc = (tasks) => {
+    if (tasks) {
+        const isLowerDate = (currentTask, nextTask) => {
+            const currentTaskDate = date.stringToDate(currentTask.dueDate);
+            const nextTaskDate = date.stringToDate(nextTask.dueDate);
+
+            if (currentTask.dueDate === nextTask.dueDate) {
+                return currentTask.priority > nextTask.priority ? -1 : 1;
+            } else {
+                return currentTaskDate - nextTaskDate;
+            };
+        };
+
+        tasks.sort((currentTask, nextTask) => isLowerDate(currentTask, nextTask));
+
+        return tasks;
+    };
+};
+
 const _filterFns = {
     today: _getToday,
+    upcoming: _getUpcoming,
     all: _getUpcoming,
     thisWeek: _getThisWeek,
     thisMonth: _getThisMonth,
-    upcoming: _getUpcoming,
+    priorityAsc: _getPriorityAsc,
+    priorityDesc: _getPriorityDesc,
+    dateAsc: _getDateAsc,
+    dateDesc: _getDateDesc,
 };
 
-const filterBy = (sectionName) => {
-    sectionName = method.toCamelCase(sectionName);
-    
+const filterBy = (filters) => {
     const filteredProjects = [];
+    
     for (const project of _library) {
         const tasks = project.getTasks();
-        for (const key of Object.keys(_filterFns)) {
-            if (key === sectionName) {
-                filteredProjects.push(_filterFns[key](tasks));
-            };
-        }
+
+        let filteredProject;
+        for (const filter of filters) {
+            filteredProject = _filterFns[filter](tasks);
+        };
+
+        filteredProjects.push(filteredProject);
     };
 
     return filteredProjects;
