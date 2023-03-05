@@ -5,8 +5,6 @@ This project exercise, created by The Odin Project, is a to-do list manager
 that allows a user to create and manage projects and individual tasks.
 
 ## Features to Implement/Improve
-* Implement filter button for each project's set of tasks
-
 * Implement the ability to add a new task
 
 * Implement the ability to display additional options for each project's set of tasks
