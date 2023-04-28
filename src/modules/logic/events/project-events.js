@@ -1,3 +1,4 @@
+import * as addTaskModal from "./add-task-modal-events";
 import * as projectMenu from "../../dom/project-menu";
 
 const _toggleDropdownMenu = (dropdown) => {
@@ -14,7 +15,7 @@ const _toggleDropdownMenu = (dropdown) => {
     };
 };
 
-const _changeFilters = (newFilter) => {
+const _changeSortByFilters = (newFilter) => {
     const currentFilter = newFilter.closest("menu").querySelector(".selected");
     currentFilter.classList.toggle("selected");
     newFilter.classList.toggle("selected");
@@ -35,18 +36,21 @@ const _emitClickEvents = (e) => {
         e.target.closest("button") &&
         e.target.closest("button").classList.contains("sort-by-filter")
     ) {
-        _changeFilters(e.target.closest("button"));
+        _changeSortByFilters(e.target.closest("button"));
         _toggleDropdownMenu(e.target.closest("div").querySelector(".dropdown"));
 
         const selectedFilter = e.target.closest("button");
         projectMenu.sortProjectTasks(selectedFilter);
     };
 
-    if (e.target.closest("button").className === "add-task") {
-        //_displayAddTaskModal();
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("add-task-btn")
+    ) {
+        addTaskModal.emitEvents(e);
     };
 
-    if (e.target.closest("button").className === "more-options") {
+    if (e.target.closest("button").classList.contains("more-options-btn")) {
         //_displayMoreOptions();
     };
 };

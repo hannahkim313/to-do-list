@@ -35,7 +35,7 @@ const _createOverview = () => {
         };
 
         const dateSectionAttributes = {
-            class: "date-container",
+            class: "date-wrapper",
         };
         const dateSection = element.createDiv(dateSectionAttributes);
         const elements = [

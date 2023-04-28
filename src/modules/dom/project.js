@@ -4,7 +4,7 @@ import * as method from "../helper-functions";
 import * as taskMenu from "./task-menu";
 
 const _createProjectOptions = () => {
-    const createDropdownContainer = () => {
+    const createDropdownWrapper = () => {
         const createInput = () => {
             const input = element.createPara("Priority: High to low");
             const inputAttributes = {
@@ -75,22 +75,23 @@ const _createProjectOptions = () => {
             return menu;
         };
 
-        const containerAttributes = {
-            class: "dropdown-container",
+        const wrapperAttributes = {
+            class: "dropdown-wrapper",
         };
-        const dropdownContainer = element.createDiv(containerAttributes);
+        const dropdownWrapper = element.createDiv(wrapperAttributes);
         const elements = [
             createDropdownBtn(),
             createDropdownMenu(),
         ];
-        method.appendChildren(dropdownContainer, elements);
+        method.appendChildren(dropdownWrapper, elements);
 
-        return dropdownContainer;
+        return dropdownWrapper;
     };
     
     const createAddTaskBtn = () => {
         const btnAttributes = {
             type: "button",
+            class: "add-task-btn",
         };
         const btn = element.createButton(btnAttributes);
         const elements = [
@@ -119,7 +120,7 @@ const _createProjectOptions = () => {
     };
     const options = element.createDiv(optionsAttributes);
     const elements = [
-        createDropdownContainer(),
+        createDropdownWrapper(),
         createAddTaskBtn(),
         createMoreOptionsBtn(),
     ];

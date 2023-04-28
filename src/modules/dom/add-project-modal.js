@@ -1,7 +1,7 @@
 import * as element from "./html-elements";
 import * as method from "../helper-functions";
 
-const createAddProjectModal = () => {
+const create = () => {
     const createForm = () => {
         const createInputWrapper = () => {
             const createLabel = () => {
@@ -19,6 +19,7 @@ const createAddProjectModal = () => {
                 const input = document.createElement("input");
                 const inputAttributes = {
                     type: "text",
+                    name: "project-name",
                     id: "project-name",
                     maxlength: "20",
                 };
@@ -110,5 +111,5 @@ const createAddProjectModal = () => {
 };
 
 export {
-    createAddProjectModal,
+    create,
 };

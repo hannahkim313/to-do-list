@@ -112,14 +112,13 @@ button:hover {
 
     background-color: var(--color-neutral-1);
     border: 1.5px solid transparent;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .add-project.modal input:focus {
     outline: none;
     border: 1.5px solid var(--color-text-1);
     border-radius: 2px;
-
 }
 
 .add-project.modal .buttons {
@@ -145,6 +144,190 @@ button:hover {
 
 .add-project.modal button:active {
     background-color: var(--color-neutral-4);
+}
+
+/******************************************************************************/
+/* Selectors for the "Add Task" modal start here.
+/******************************************************************************/
+
+.add-task.modal {
+    margin: auto;
+
+    border: none;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px var(--color-modal-1), -3px 3px 5px var(--color-modal-1);
+
+    top: 0;
+    left: 0;
+}
+
+.add-task.modal form {
+    width: 350px;
+    height: 485px;
+
+    padding: 32px 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.add-task.modal button {
+    padding: 2px 8px;
+
+    background-color: var(--color-neutral-2);
+    border: none;
+    border-radius: 4px;
+
+    transition: all 0.2s ease;
+}
+
+.add-task.modal button:hover {
+    background-color: var(--color-neutral-3);
+}
+
+.add-task.modal button:active {
+    background-color: var(--color-neutral-4);
+}
+
+.add-task.modal .form-title {
+    font-size: 1.1rem;
+}
+
+/* Selectors for the "Title" input start here. */
+
+.add-task.modal .task-title-wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.add-task.modal .task-title-wrapper input {
+    padding: 0 0 0 4px;
+
+    background-color: var(--color-neutral-1);
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+}
+
+.add-task.modal .task-title-wrapper input:focus {
+    outline: none;
+    border: 1.5px solid var(--color-text-1);
+    border-radius: 2px;
+}
+
+/* Selectors for the "Description" input start here. */
+
+.add-task.modal .task-description-wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.add-task.modal .task-description-wrapper textarea {
+    width: 100%;
+
+    padding: 0 0 0 4px;
+
+    background-color: var(--color-neutral-1);
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+
+    resize: none;
+}
+
+.add-task.modal .task-description-wrapper textarea:focus {
+    outline: none;
+    border: 1.5px solid var(--color-text-1);
+    border-radius: 2px;
+}
+
+.add-task.modal .task-grouped-options-wrapper {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* Selectors for the "Priority" input start here. */
+
+.add-task.modal .task-priority-wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+}
+
+.add-task.modal .task-priority-wrapper .task-priority-btn {
+    width: 100%;
+
+    background-color: var(--color-neutral-1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+}
+
+.add-task.modal .task-priority-wrapper .task-priority-btn:hover {
+    background-color: var(--color-neutral-2);
+}
+
+.add-task.modal .task-priority-wrapper .task-priority-btn:active {
+    background-color: var(--color-neutral-3);
+}
+
+.add-task.modal .task-priority-wrapper img[src$="svg"] {
+    width: 1rem;
+}
+
+/* Selectors for the "Due Date" input start here. */
+
+.add-task.modal .task-due-date-wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.add-task.modal .task-due-date-wrapper input {
+    padding: 0 0 0 4px;
+
+    background-color: var(--color-neutral-1);
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+}
+
+.add-task.modal .task-due-date-wrapper input:focus {
+    outline: none;
+    border: 1.5px solid var(--color-text-1);
+    border-radius: 2px;
+}
+
+.add-task.modal .task-due-date-wrapper input:hover {
+    cursor: pointer;
+}
+
+/* Selectors for the Confirm/Cancel buttons start here. */
+
+.add-task.modal .buttons {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 /******************************************************************************/
@@ -439,7 +622,7 @@ header .logo {
     gap: 8px;
 }
 
-.page .options .dropdown-container {
+.page .options .dropdown-wrapper {
     position: relative;
 }
 
@@ -626,7 +809,7 @@ header .logo {
 
 /* Selectors for the date section start here. */
 
-.date-container {
+.date-wrapper {
     padding: 16px;
     
     display: flex;
@@ -634,7 +817,7 @@ header .logo {
     gap: 16px;
 }
 
-.date-container .num-date {
+.date-wrapper .num-date {
     width: 75px;
     height: 75px;
 
@@ -650,7 +833,7 @@ header .logo {
     align-items: center;
 }
 
-.date-container .full-date {
+.date-wrapper .full-date {
     font-size: 1.2rem;
 }
 

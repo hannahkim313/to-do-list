@@ -4,6 +4,7 @@ const _displayAddProjectModal = () => document.querySelector(".add-project.modal
 
 const _toggleCollapsible = (collapsible) => {
     collapsible.classList.toggle("expanded");
+    
     const subsections = collapsible.nextElementSibling;
     
     if (window.getComputedStyle(subsections).getPropertyValue("max-height") === "0px") {

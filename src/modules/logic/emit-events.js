@@ -1,4 +1,5 @@
 import * as addProjectModal from "./events/add-project-modal-events";
+import * as addTaskModal from "./events/add-task-modal-events";
 import * as filter from "./events/filters-events";
 import * as project from "./events/project-events";
 import * as sidebar from "./events/sidebar-events";
@@ -9,6 +10,11 @@ const emitEvents = () => {
     addProjectModalElement.addEventListener("click", e => addProjectModal.emitEvents(e));
     addProjectModalElement.addEventListener("focusin", e => addProjectModal.emitEvents(e));
     addProjectModalElement.addEventListener("focusout", e => addProjectModal.emitEvents(e));
+
+    const addTaskModalElement = document.querySelector(".add-task.modal");
+    addTaskModalElement.addEventListener("click", e => addTaskModal.emitEvents(e));
+    addTaskModalElement.addEventListener("focusin", e => addTaskModal.emitEvents(e));
+    addTaskModalElement.addEventListener("focusout", e => addTaskModal.emitEvents(e));
 
     const body = document.querySelector("body");
     body.addEventListener("click", e => {
@@ -34,10 +40,8 @@ const emitEvents = () => {
         };
 
         if (
-            e.target.closest("button") &&
-            e.target.closest("button").classList.contains("dropdown") ||
-            e.target.closest("menu") &&
-            e.target.closest("menu").classList.contains("dropdown-menu")
+            e.target.closest("article") &&
+            e.target.closest("article").classList.contains("project")
         ) {
             project.emitEvents(e);
         };
