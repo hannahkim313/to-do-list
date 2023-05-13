@@ -538,7 +538,7 @@ header .logo {
 /* Selectors for the project filters start here. */
 
 .filters {
-    padding: 32px 16px 16px 32px;
+    padding: 16px 16px 16px 32px;
     
     grid-row: 2 / 3;
 
@@ -694,6 +694,8 @@ header .logo {
     padding: 4px;
     
     transition: all 0.2s ease;
+
+    flex-shrink: 0;
 }
 
 .page .options button:not(.dropdown, .sort-by-filter):hover {
@@ -757,10 +759,65 @@ header .logo {
     padding: 4px;
 
     transition: all 0.2s ease;
+
+    flex-shrink: 0;
 }
 
 .page .task .right .expand-task:hover {
     background-color: var(--color-neutral-3);
+    border-radius: 8px;
+}
+
+/* Selectors for a task's expanded details start here. */
+
+.task-details {
+    padding: 16px 18px;
+
+    background-color: var(--color-neutral-1);
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.task-details .description-wrapper {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.task-details .description-wrapper .task-description {
+    min-height: 100px;
+
+    text-align: justify;
+
+    padding: 16px;
+
+    background-color: white;
+    border-radius: 4px;
+}
+
+.task-details .task-options-wrapper {
+    min-width: 9%;
+    height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.task-details .task-options-wrapper button {
+    padding: 4px;
+
+    background-color: white;
     border-radius: 8px;
 }
 
