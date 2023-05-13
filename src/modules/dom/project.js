@@ -144,7 +144,7 @@ const create = (tasks) => {
     };
     const projectElement = element.createArticle(projectElementAttributes);
     const elements = [
-        element.createHeading("3", method.capitalize(projectName)),
+        element.createHeading("3", method.capitalize(method.undoKebabCase(projectName))),
         _createProjectOptions(),
         taskMenu.create(),
     ];
