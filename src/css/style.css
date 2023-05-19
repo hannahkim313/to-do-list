@@ -308,6 +308,8 @@ button:hover {
     background-color: var(--color-neutral-1);
     border: 1.5px solid transparent;
     border-radius: 4px;
+
+    transition: all 0.2s ease;
 }
 
 .add-task.modal .task-due-date-wrapper input:focus {
@@ -317,7 +319,13 @@ button:hover {
 }
 
 .add-task.modal .task-due-date-wrapper input:hover {
+    background-color: var(--color-neutral-2);
+    
     cursor: pointer;
+}
+
+.add-task.modal .task-due-date-wrapper input:active {
+    background-color: var(--color-neutral-3);
 }
 
 /* Selectors for the Confirm/Cancel buttons start here. */
