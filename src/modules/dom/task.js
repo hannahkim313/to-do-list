@@ -129,7 +129,7 @@ const create = (data) => {
     const taskElement = document.createElement("li");
     const classText = task.getChecked() ? "task checked" : "task";
     const taskElementAttributes = {
-        class: classText,
+        class: `collapsible ${classText}`,
     };
     method.setAttributesOf(taskElement, taskElementAttributes);
     const elements = [

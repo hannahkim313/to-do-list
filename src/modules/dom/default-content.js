@@ -13,7 +13,7 @@ import * as taskMenu from "./task-menu";
 const _errandsTasks = [
     {
         title: "Drop off package",
-        description: "Store opens at 10AM",
+        description: "Store opens at 10 AM",
         dueDate: date.getToday(),
         priority: 3,
         overdue: false,
@@ -128,6 +128,7 @@ const _roadTripTasks = [
     {
         title: "Buy parking pass for national parks/viewpoints",
         dueDate: date.getDayAhead({ days: 4, }),
+        description: "Save copies of tickets",
         priority: 2,
         overdue: false,
         checked: true,

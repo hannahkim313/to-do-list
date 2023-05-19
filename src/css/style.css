@@ -459,7 +459,7 @@ header .logo {
 }
 
 .subsections .alerts p {
-    padding: 0 8px;
+    padding: 1px 9px 0 9px;
     
     color: var(--color-text-1-inverted);
 
@@ -630,11 +630,11 @@ header .logo {
     width: 100%;
     height: auto;
 
-    padding: 4px 0px;
+    padding: 4px 0;
 
     background-color: white;
     border-radius: 4px;
-    box-shadow: 0px 2px 5px var(--color-neutral-5);
+    box-shadow: 0 2px 5px var(--color-neutral-5);
 
     position: absolute;
     top: 30px;
@@ -758,6 +758,8 @@ header .logo {
 .page .task .right .expand-task {
     padding: 4px;
 
+    border-radius: 8px;
+
     transition: all 0.2s ease;
 
     flex-shrink: 0;
@@ -765,7 +767,10 @@ header .logo {
 
 .page .task .right .expand-task:hover {
     background-color: var(--color-neutral-3);
-    border-radius: 8px;
+
+}
+.page .task .right .expand-task:active {
+    background-color: var(--color-neutral-4);
 }
 
 /* Selectors for a task's expanded details start here. */
@@ -780,6 +785,12 @@ header .logo {
     justify-content: space-between;
     align-items: flex-end;
     gap: 16px;
+
+    animation: slide-up 0.3s ease;
+}
+
+.task-details.expanded {
+    animation: slide-down 0.3s ease;
 }
 
 .task-details .description-wrapper {
@@ -795,7 +806,7 @@ header .logo {
 .task-details .description-wrapper .task-description {
     min-height: 100px;
 
-    text-align: justify;
+    text-align: left;
 
     padding: 16px;
 
@@ -817,8 +828,17 @@ header .logo {
 .task-details .task-options-wrapper button {
     padding: 4px;
 
-    background-color: white;
     border-radius: 8px;
+
+    transition: all 0.2s ease;
+}
+
+.task-details .task-options-wrapper button:hover {
+    background-color: var(--color-neutral-3);
+}
+
+.task-details .task-options-wrapper button:active {
+    background-color: var(--color-neutral-4);
 }
 
 /* Selectors for empty projects/tasks start here. */
@@ -1025,4 +1045,32 @@ footer a {
 
 footer img[src*="github"] {
     width: 1rem;
+}
+
+/******************************************************************************/
+/* Animation keyframes start here.
+/******************************************************************************/
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY( 0);
+    }
+
+}
+@keyframes slide-up {
+    from {
+        opacity: 1;
+        transform: translateY( 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-1 0);
+    }
 }

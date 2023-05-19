@@ -3,6 +3,7 @@ import * as image from "../../dom/image-elements";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
 import * as sidebar from "../../dom/sidebar";
+import * as taskDetails from "../../dom/task-details";
 
 const _updateTaskCount = (projectName) => {
     const currentAlerts = document.querySelector(`[data-page-name="${projectName}"] .alerts`);
@@ -58,8 +59,21 @@ const _toggleTask = (data) => {
     };
 };
 
-const _expandTaskDetails = (btn) => {
-    // If chevron button is clicked, open task details
+const _toggleTaskDetails = (btn) => {
+    const task = btn.closest("li");
+    task.classList.toggle("expanded");
+
+    if (
+        task.nextElementSibling &&
+        task.nextElementSibling.classList.contains("task-details")
+    ) {
+        task.nextElementSibling.addEventListener("animationend", () => task.nextElementSibling.remove());
+    } else {
+        const taskDetailsElement = taskDetails.create(task);
+        task.insertAdjacentElement("afterend", taskDetailsElement);
+    };
+    
+    task.nextElementSibling.classList.toggle("expanded");
 };
 
 const _emitClickEvents = (e) => {
@@ -83,7 +97,12 @@ const _emitClickEvents = (e) => {
         _toggleTask(data);
     };
 
-    // If chevron button is clicked, call _expandTaskDetails()
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("expand-task")
+    ) {
+        _toggleTaskDetails(e.target.closest("button"));
+    };
 };
 
 const _events = {

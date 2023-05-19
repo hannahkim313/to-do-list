@@ -11,10 +11,12 @@ import lowPriorityImg from "../../img/low-priority.svg";
 import mediumPriorityImg from "../../img/medium-priority.svg";
 import moreOptionsImg from "../../img/dots-horizontal.svg";
 import overviewImg from "../../img/overview.jpg";
+import pencilImg from "../../img/pencil.svg";
 import plusImg from "../../img/plus.svg";
 import plusInvertedImg from "../../img/plus-inverted.svg";
 import projectsImg from "../../img/folder.svg";
 import todayImg from "../../img/today.svg";
+import trashCanImg from "../../img/trash-can.svg";
 import uncheckedImg from "../../img/unchecked.svg";
 // import uncheckedHoverImg from "../../img/unchecked-hover.svg";
 import upcomingImg from "../../img/upcoming.svg";
@@ -131,6 +133,15 @@ const createOverviewImg = () => {
     return element.createImg(imgAttributes);
 };
 
+const createPencilIcon = () => {
+    const imgAttributes = {
+        src: pencilImg,
+        alt: "Pencil icon",
+    };
+
+    return element.createImg(imgAttributes);
+};
+
 const createPlusIcon = (isInverted) => {
     const imgAttributes = {
         alt: "Plus icon",
@@ -153,6 +164,15 @@ const createTodayIcon = () => {
     const imgAttributes = {
         src: todayImg,
         alt: "Single day calendar icon",
+    };
+    
+    return element.createImg(imgAttributes);
+};
+
+const createTrashCanIcon = () => {
+    const imgAttributes = {
+        src: trashCanImg,
+        alt: "Trash can icon",
     };
     
     return element.createImg(imgAttributes);
@@ -200,9 +220,11 @@ export {
     createLowPriorityIcon,
     createMoreOptionsIcon,
     createOverviewImg,
+    createPencilIcon,
     createPlusIcon,
     createProjectsIcon,
     createTodayIcon,
+    createTrashCanIcon,
     createUncheckedIcon,
     // createUncheckedHoverIcon,
     createUpcomingIcon,
