@@ -10,8 +10,7 @@ that allows a user to create and manage projects and individual tasks.
 * Implement the ability to display additional options for each project's set of tasks
   such as deleting all tasks
 
-* Expand each task that displays additional details such as a description and the
-  ability to edit the task
+* Implement the ability to edit a task's details and the option to delete the task itself
 
 * When adding a new task, if there are no projects created, display a message
   that tells the user to create a new project first
