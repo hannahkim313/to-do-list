@@ -98,11 +98,11 @@ const _submit = (modal) => {
 };
 
 const _validateModal = (e) => {
-    const dialog = e.target.closest("dialog");
-    const inputs = dialog.querySelectorAll("input");
+    const modal = e.target.closest("dialog");
+    const inputs = modal.querySelectorAll("input");
     for (const input of inputs) {
         if (_isValid(input)) {
-            _submit(dialog);
+            _submit(modal);
         } else {
             e.preventDefault();
             _displayInvalid(input);
@@ -116,8 +116,8 @@ const _emitClickEvents = (e) => {
     };
     
     if (e.target.closest("button").classList.contains("cancel-btn")) {
-        const dialog = e.target.closest("dialog");
-        _cancel(dialog);
+        const modal = e.target.closest("dialog");
+        _cancel(modal);
     };
     
     if (e.target.closest("button").classList.contains("confirm-btn")) {

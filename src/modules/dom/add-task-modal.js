@@ -250,28 +250,6 @@ const create = () => {
     return modal;
 };
 
-// Create form
-    // Create form title
-    // Create title wrapper
-        // Create label
-        // Create input
-    // Create description wrapper
-        // Create label
-        // Create input
-    // Create other options wrapper
-        // Create due date wrapper
-            // Create label
-            // Create input
-        // Create priority wrapper
-            // Create label
-            // Create input
-        // Create project wrapper
-            // Create label
-            // Create input
-    // Create buttons wrapper
-        // Create confirm button
-        // Create cancel button
-
 export {
     create,
 };

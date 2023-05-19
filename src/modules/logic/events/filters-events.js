@@ -10,8 +10,10 @@ const _selectFilter = (btn) => {
     projectMenu.sortUpcomingTasks(btn);
 };
 
-const _changeFilter = (btn) => {
+const _changeFilter = (e) => {
     _deselectCurrentFilter();
+    
+    const btn = e.target.closest("button");
     _selectFilter(btn);
 };
 
@@ -22,8 +24,7 @@ const _emitClickEvents = (e) => {
     ) {
         return;
     } else {
-        const btn = e.target.closest("button");
-        _changeFilter(btn);
+        _changeFilter(e);
     };
 };
 

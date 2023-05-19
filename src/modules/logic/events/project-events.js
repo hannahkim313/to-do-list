@@ -25,28 +25,27 @@ const _changeSortByFilters = (newFilter) => {
 };
 
 const _emitClickEvents = (e) => {
-    if (
-        e.target.closest("button") &&
-        e.target.closest("button").classList.contains("dropdown")
-    ) {
-        _toggleDropdownMenu(e.target.closest("button"));
+    if (!e.target.closest("button")) {
+        return;
     };
 
-    if (
-        e.target.closest("button") &&
-        e.target.closest("button").classList.contains("sort-by-filter")
-    ) {
-        _changeSortByFilters(e.target.closest("button"));
-        _toggleDropdownMenu(e.target.closest("div").querySelector(".dropdown"));
+    if (e.target.closest("button").classList.contains("dropdown")) {
+        const dropdown = e.target.closest("button");
+        _toggleDropdownMenu(dropdown);
+    };
+
+    if (e.target.closest("button").classList.contains("sort-by-filter")) {
+        const newFilter = e.target.closest("button");
+        _changeSortByFilters(newFilter);
+        
+        const dropdown = e.target.closest("div").querySelector(".dropdown");
+        _toggleDropdownMenu(dropdown);
 
         const selectedFilter = e.target.closest("button");
         projectMenu.sortProjectTasks(selectedFilter);
     };
 
-    if (
-        e.target.closest("button") &&
-        e.target.closest("button").classList.contains("add-task-btn")
-    ) {
+    if (e.target.closest("button").classList.contains("add-task-btn")) {
         addTaskModal.emitEvents(e);
     };
 

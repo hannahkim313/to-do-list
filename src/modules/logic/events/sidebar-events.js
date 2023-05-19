@@ -27,17 +27,15 @@ const _toggleSection = (section) => {
 };
 
 const _emitClickEvents = (e) => {
-    if (
-        e.target.closest("button") &&
-        e.target.closest("button").classList.contains("add-project-btn")
-    ) {
+    if (!e.target.closest("button")) {
+        return;
+    };
+    
+    if (e.target.closest("button").classList.contains("add-project-btn")) {
         _displayAddProjectModal();
     };
 
-    if (
-        e.target.closest("button") &&
-        e.target.closest("button").dataset.pageName
-    ) {
+    if (e.target.closest("button").dataset.pageName) {
         const section = e.target.closest("button");
         _toggleSection(section);
     };

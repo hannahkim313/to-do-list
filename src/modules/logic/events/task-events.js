@@ -77,6 +77,10 @@ const _toggleTaskDetails = (btn) => {
 };
 
 const _emitClickEvents = (e) => {
+    if (!e.target.closest("button")) {
+        return;
+    };
+
     if (
         e.target.nodeName === "IMG" &&
         e.target.closest("div").classList.contains("left")
@@ -97,11 +101,9 @@ const _emitClickEvents = (e) => {
         _toggleTask(data);
     };
 
-    if (
-        e.target.closest("button") &&
-        e.target.closest("button").classList.contains("expand-task")
-    ) {
-        _toggleTaskDetails(e.target.closest("button"));
+    if (e.target.closest("button").classList.contains("expand-task")) {
+        const btn = e.target.closest("button");
+        _toggleTaskDetails(btn);
     };
 };
 
