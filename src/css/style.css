@@ -1079,6 +1079,6 @@ footer img[src*="github"] {
 
     to {
         opacity: 0;
-        transform: translateY(-1 0);
+        transform: translateY(-10px);
     }
 }
