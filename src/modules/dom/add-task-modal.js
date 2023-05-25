@@ -19,6 +19,7 @@ const create = () => {
             const createInput = () => {
                 const input = document.createElement("input");
                 const inputAttributes = {
+                    class: "input",
                     type: "text",
                     name: "task-title",
                     id: "task-title",
@@ -72,7 +73,7 @@ const create = () => {
             const taskDescriptionAttributes = {
                 class: "task-description-wrapper",
             };
-            const taskDescription = element.createArticle(taskDescriptionAttributes);
+            const taskDescription = element.createDiv(taskDescriptionAttributes);
             const elements = [
                 createLabel(),
                 createTextArea(),
@@ -143,6 +144,7 @@ const create = () => {
 
                     const input = document.createElement("input");
                     const inputAttributes = {
+                        class: "input",
                         type: "date",
                         name: "task-due-date",
                         id: "task-due-date",
