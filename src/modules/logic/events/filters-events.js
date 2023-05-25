@@ -18,10 +18,9 @@ const _changeFilter = (e) => {
 };
 
 const _emitClickEvents = (e) => {
-    if (
-        !e.target.closest("button") ||
-        e.target.closest("button").classList.contains("selected")
-    ) {
+    const isBtn = e.target.closest("button") ? true : false;
+
+    if (!isBtn || e.target.closest("button").classList.contains("selected")) {
         return;
     } else {
         _changeFilter(e);

@@ -11,7 +11,7 @@ import * as taskMenu from "../../dom/task-menu";
 
 const _isEmpty = (input) => input.value === "" ? true : false;
 
-const _isPresent = (input) => {
+const _isDuplicate = (input) => {
     const value = method.toKebabCase(input.value.toLowerCase().trim());
 
     const projectSections = document.querySelectorAll(".projects + .subsections button");
@@ -24,7 +24,7 @@ const _isPresent = (input) => {
     return false;
 };
 
-const _isValid = (input) => _isEmpty(input) || _isPresent(input) ? false : true;
+const _isValid = (input) => _isEmpty(input) || _isDuplicate(input) ? false : true;
 
 const _displayInvalid = (input) => {
     const inputWrapper = input.closest(".input-wrapper");
@@ -35,7 +35,7 @@ const _displayInvalid = (input) => {
                 return element.createPara("Please enter a project name.");
             };
 
-            if (_isPresent(input)) {
+            if (_isDuplicate(input)) {
                 return element.createPara("This project already exists.");
             };
         };
@@ -63,7 +63,7 @@ const _clearInputs = (modal) => {
             input.nextElementSibling.remove();
         };
         
-        input.value = "";
+        input.value = null;
         input.style.borderColor = "var(--color-text-1)";
         input.closest("form").style.gap = "16px";
     };
@@ -111,16 +111,14 @@ const _validateModal = (e) => {
 };
 
 const _emitClickEvents = (e) => {
-    if (!e.target.closest("button")) {
-        return;
-    };
+    const isBtn = e.target.closest("button") ? true : false;
     
-    if (e.target.closest("button").classList.contains("cancel-btn")) {
+    if (isBtn && e.target.closest("button").classList.contains("cancel-btn")) {
         const modal = e.target.closest("dialog");
         _cancel(modal);
     };
     
-    if (e.target.closest("button").classList.contains("confirm-btn")) {
+    if (isBtn && e.target.closest("button").classList.contains("confirm-btn")) {
         _validateModal(e);
     };
 };
