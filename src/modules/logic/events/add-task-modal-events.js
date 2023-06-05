@@ -26,7 +26,7 @@ const _addFormTitle = (project) => {
 
 const _displayAddTaskModal = () => document.querySelector(".add-task.modal").showModal();
 
-const _changeBtnValue = (btn) => {
+const _changePriorityBtn = (btn) => {
     btn.lastElementChild.remove();
     
     const priority = btn.firstElementChild.textContent;
@@ -63,6 +63,9 @@ const _clearInputs = (modal) => {
             input.nextElementSibling.remove();
         };
     };
+
+    const description = modal.querySelector("#task-description");
+    description.value = null;
 };
 
 const _cancel = (modal) => {
@@ -254,7 +257,7 @@ const _emitClickEvents = (e) => {
         e.target.closest("button").classList.contains("task-priority-btn")
     ) {
         const btn = e.target.closest("button");
-        _changeBtnValue(btn);
+        _changePriorityBtn(btn);
     };
 
     if (
