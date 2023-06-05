@@ -3,7 +3,7 @@ import * as element from "../../dom/html-elements";
 import * as image from "../../dom/image-elements";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
-import * as projectMenu from "../../dom/project-menu";
+import * as sidebar from "../../dom/sidebar";
 import { Task } from "../factories/task-factory";
 import * as taskMenu from "../../dom/task-menu";
 
@@ -110,6 +110,13 @@ const _updateAllTaskMenus = (projectName) => {
     };
 };
 
+const _updateSidebarAlerts = (projectName) => {
+    const currentAlerts = document.querySelector(`[data-page-name="${projectName}"] .alerts`);
+    const newAlerts = sidebar.createAlerts(projectName);
+    currentAlerts.after(newAlerts);
+    currentAlerts.remove();
+};
+
 const _submit = (modal) => {
     const task = Task();
 
@@ -141,6 +148,7 @@ const _submit = (modal) => {
     project.addTask(task);
 
     _updateAllTaskMenus(projectName);
+    _updateSidebarAlerts(projectName);
 
     _clearInputs(modal);
     modal.close();
