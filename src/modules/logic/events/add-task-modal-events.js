@@ -1,5 +1,6 @@
 import * as date from "../functions/date-functions";
 import * as element from "../../dom/html-elements";
+import * as homePage from "../../dom/home-page";
 import * as image from "../../dom/image-elements";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
@@ -152,6 +153,7 @@ const _submit = (modal) => {
 
     _updateAllTaskMenus(projectName);
     _updateSidebarAlerts(projectName);
+    homePage.updateOverviewTasks();
 
     _clearInputs(modal);
     modal.close();
