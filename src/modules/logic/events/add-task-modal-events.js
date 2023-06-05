@@ -1,7 +1,11 @@
+import * as date from "../functions/date-functions";
 import * as element from "../../dom/html-elements";
 import * as image from "../../dom/image-elements";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
+import * as projectMenu from "../../dom/project-menu";
+import { Task } from "../factories/task-factory";
+import * as taskMenu from "../../dom/task-menu";
 
 const _addFormTitle = (project) => {
     const projectName = method.capitalize(method.undoKebabCase(project.dataset.projectName));
@@ -53,6 +57,11 @@ const _clearInputs = (modal) => {
     const inputs = modal.querySelectorAll(".input");
     for (const input of inputs) {
         input.value = null;
+        input.style.borderColor = "transparent";
+        
+        if (input.nextElementSibling) {
+            input.nextElementSibling.remove();
+        };
     };
 };
 
@@ -61,8 +70,77 @@ const _cancel = (modal) => {
     modal.close();
 };
 
+const _updateAllTaskMenus = (projectName) => {
+    const pageNames = ["today", "upcoming", "projects"];
+    
+    for (const pageName of pageNames) {
+        const filters = [];
+        pageName === "projects" ? filters.push("all") : filters.push(pageName);
+
+        const sortByFilter = document.querySelector(`.page.${pageName} [data-project-name="${method.toKebabCase(projectName)}"] .dropdown p`).textContent;
+    
+        if (sortByFilter === "Priority: High to low") {
+            filters.unshift("priorityDesc");
+        };
+    
+        if (sortByFilter === "Priority: Low to high") {
+            filters.unshift("priorityAsc");
+        };
+    
+        if (sortByFilter === "Date: Newest to oldest") {
+            filters.unshift("dateDesc");
+        };
+    
+        if (sortByFilter === "Date: Oldest to newest") {
+            filters.unshift("dateAsc");
+        };
+
+        const filteredTaskSets = library.filterBy(filters);
+        for (const taskSet of filteredTaskSets) {
+            if (taskSet.length === 0) {
+                continue;
+            };
+
+            if (taskSet[0].getProject() === projectName) {
+                taskMenu.update(pageName, taskSet);
+                
+                break;
+            };
+        };
+    };
+};
+
 const _submit = (modal) => {
-    // Create a new task object for the library and an element to append to page
+    const task = Task();
+
+    const title = modal.querySelector("#task-title").value.toLowerCase();
+    task.setTitle(title.charAt(0).toUpperCase() + title.slice(1));
+
+    const description = modal.querySelector("#task-description").value.toLowerCase();
+    task.setDescription(description);
+
+    const dueDate = modal.querySelector("#task-due-date").value;
+    const dateArray = dueDate.split("-");
+    const year = dateArray[0];
+    const month = dateArray[1].charAt(0) === "0" ? dateArray[1].slice(1) : dateArray[1];
+    const day = dateArray[2].charAt(0) === "0" ? dateArray[2].slice(1) : dateArray[2];
+    const dueDateFormatted = `${date.getMonthFromIndex(month)} ${day}, ${year}`;
+    task.setDueDate(dueDateFormatted);
+
+    const priority = modal.querySelector(".task-priority-btn p").textContent.toLowerCase();
+    task.setPriority(priority);
+
+    task.setOverdue(false);
+
+    task.setChecked(false);
+
+    const projectName = modal.querySelector(".form-title").textContent.toLowerCase().slice(12);
+    task.setProject(projectName);
+
+    const project = library.get(projectName);
+    project.addTask(task);
+
+    _updateAllTaskMenus(projectName);
 
     _clearInputs(modal);
     modal.close();
@@ -77,7 +155,7 @@ const _isDuplicateTitle = (input) => {
         
         const tasks = library.get(projectName).getTasks();
         for (const task of tasks) {
-            if (task.title.toLowerCase() === input.value.toLowerCase()) {
+            if (task.getTitle().toLowerCase() === input.value.toLowerCase()) {
                 return true;
             };
         };
@@ -153,25 +231,35 @@ const _validateModal = (e) => {
 };
 
 const _emitClickEvents = (e) => {
-    const isBtn = e.target.closest("button") ? true : false;
-
-    if (isBtn && e.target.closest("button").classList.contains("add-task-btn")) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("add-task-btn")
+    ) {
         const project = e.target.closest("article");
         _addFormTitle(project);
 
         _displayAddTaskModal();
     };
 
-    if (isBtn && e.target.closest("button").classList.contains("task-priority-btn")) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("task-priority-btn")
+    ) {
         const btn = e.target.closest("button");
         _changeBtnValue(btn);
     };
 
-    if (isBtn && e.target.closest("button").classList.contains("confirm-btn")) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("confirm-btn")
+    ) {
         _validateModal(e);
     };
 
-    if (isBtn && e.target.closest("button").classList.contains("cancel-btn")) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("cancel-btn")
+    ) {
         const modal = e.target.closest("dialog");
         _cancel(modal);
     };

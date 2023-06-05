@@ -77,8 +77,6 @@ const _toggleTaskDetails = (btn) => {
 };
 
 const _emitClickEvents = (e) => {
-    const isBtn = e.target.closest("button") ? true : false;
-
     if (
         e.target.nodeName === "IMG" &&
         e.target.closest("div").classList.contains("left")
@@ -99,7 +97,10 @@ const _emitClickEvents = (e) => {
         _toggleTask(data);
     };
 
-    if (isBtn && e.target.closest("button").classList.contains("expand-task")) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("expand-task")
+    ) {
         const btn = e.target.closest("button");
         _toggleTaskDetails(btn);
     };

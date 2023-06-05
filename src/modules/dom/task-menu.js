@@ -22,9 +22,25 @@ const addTo = (pageName, tasks) => {
     };
 
     pageName = method.toKebabCase(pageName).toLowerCase();
-    const projectName = method.toKebabCase(tasks[0].project);
+    const projectName = method.toKebabCase(tasks[0].getProject());
     const taskMenu = document.querySelector(`.${pageName}.page [data-project-name="${projectName}"] .tasks`);
     
+    for (const taskData of tasks) {
+        const taskElement = task.create(taskData);
+        taskMenu.appendChild(taskElement);
+    };
+};
+
+const update = (pageName, tasks) => {
+    pageName = method.toKebabCase(pageName).toLowerCase();
+    const projectName = method.toKebabCase(tasks[0].getProject());
+    const taskMenu = document.querySelector(`.${pageName}.page [data-project-name="${projectName}"] .tasks`);
+    
+    const taskElements = taskMenu.querySelectorAll(".task");
+    for (const element of taskElements) {
+        element.remove();
+    };
+
     for (const taskData of tasks) {
         const taskElement = task.create(taskData);
         taskMenu.appendChild(taskElement);
@@ -34,4 +50,5 @@ const addTo = (pageName, tasks) => {
 export {
     create,
     addTo,
+    update,
 };

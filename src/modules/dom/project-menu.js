@@ -61,7 +61,12 @@ const _getFilterNames = (selectedFilter) => {
             .textContent
             .toLowerCase()
         ;
-        filterNames.push(method.toCamelCase(selectedUpcomingFilter));
+
+        if (selectedUpcomingFilter === "all") {
+            filterNames.push("upcoming");
+        } else {
+            filterNames.push(method.toCamelCase(selectedUpcomingFilter));
+        };
     };
 
     return filterNames;
@@ -103,11 +108,11 @@ const sortProjectTasks = (selectedFilter) => {
     };
 
     for (const taskSet of filteredTaskSets) {
-        if (!taskSet) {
+        if (taskSet.length === 0) {
             return;
         };
 
-        if (taskSet[0].project === method.undoKebabCase(projectName)) {
+        if (taskSet[0].getProject() === method.undoKebabCase(projectName)) {
             taskMenu.addTo(pageName, taskSet);
 
             break;

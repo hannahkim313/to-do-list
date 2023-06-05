@@ -132,11 +132,11 @@ const _createProjectOptions = () => {
 const create = (tasks) => {
     const getProjectName = () => {
         if (tasks) {
-            return tasks[0].project;
+            return tasks[0].getProject();
         } else {
             return document.querySelector("footer").previousElementSibling.dataset.pageName;
         };
-    }
+    };
 
     const projectName = getProjectName();
     const projectElementAttributes = {

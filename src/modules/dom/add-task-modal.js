@@ -85,16 +85,7 @@ const create = () => {
 
         const createGroupedOptionsWrapper = () => {
             const createTaskPriorityWrapper = () => {
-                const createLabel = () => {
-                    const label = document.createElement("label");
-                    const labelAttributes = {
-                        for: "task-priority",
-                    }
-                    method.setAttributesOf(label, labelAttributes);
-                    label.textContent = "Priority";
-                    
-                    return label;
-                };
+                const createLabel = () => element.createPara("Priority");
 
                 const createTaskPriorityBtn = () => {
                     const btnAttributes = {
@@ -138,8 +129,8 @@ const create = () => {
                 
                 const createInput = () => {
                     const dateObj = new Date();
-                    const month = dateObj.getMonth();
-                    const date = dateObj.getDate();
+                    const month = dateObj.getMonth() + 1 < 10 ? `0${dateObj.getMonth() + 1}` : dateObj.getMonth() + 1;
+                    const date = dateObj.getDate() < 10 ? `0${dateObj.getDate()}` : dateObj.getDate();
                     const year = dateObj.getFullYear();
 
                     const input = document.createElement("input");

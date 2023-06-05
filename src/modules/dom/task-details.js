@@ -13,8 +13,8 @@ const create = (task) => {
 
             const projectTasks = library.get(projectName).getTasks();
             for (const task of projectTasks) {
-                if (task.title === taskName) {
-                    return task.description;
+                if (task.getTitle() === taskName) {
+                    return task.getDescription();
                 };
             };
         };

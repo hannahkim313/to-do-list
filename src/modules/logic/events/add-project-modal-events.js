@@ -111,14 +111,18 @@ const _validateModal = (e) => {
 };
 
 const _emitClickEvents = (e) => {
-    const isBtn = e.target.closest("button") ? true : false;
-    
-    if (isBtn && e.target.closest("button").classList.contains("cancel-btn")) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("cancel-btn")
+    ) {
         const modal = e.target.closest("dialog");
         _cancel(modal);
     };
     
-    if (isBtn && e.target.closest("button").classList.contains("confirm-btn")) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("confirm-btn")
+    ) {
         _validateModal(e);
     };
 };

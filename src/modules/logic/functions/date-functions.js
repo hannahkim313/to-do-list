@@ -60,6 +60,25 @@ const getPreviousDay = (day, weeks) => {
     };
 };
 
+const getMonthFromIndex = (index) => {
+    const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ];
+
+    return months[index - 1];
+};
+
 const stringToDate = (date) => {
     const chars = Array.from(date);
     const commaIndex = chars.findIndex(element => element === ",");
@@ -114,6 +133,7 @@ export {
     getDayBehind,
     getNextDay,
     getPreviousDay,
+    getMonthFromIndex,
     stringToDate,
     isThisWeek,
     isThisMonth,

@@ -1,12 +1,11 @@
 import * as element from "./html-elements";
 import * as image from "./image-elements";
 import * as method from "../helper-functions";
-import { Task } from "../logic/factories/task-factory";
 
 const create = (data) => {
-    const createLeftInfo = (task) => {
-        const isChecked = task.getChecked();
-        const title = task.getTitle();
+    const createLeftInfo = () => {
+        const isChecked = data.getChecked();
+        const title = data.getTitle().charAt(0).toUpperCase() + data.getTitle().slice(1);
 
         const createToDoBtn = () => {
             const btnAttributes = {
@@ -55,10 +54,10 @@ const create = (data) => {
         return leftInfo;
     };
     
-    const createRightInfo = (task) => {
-        const priority = task.getPriority();
-        const dueDate = task.getDueDate();
-        const isOverdue = task.getOverdue();
+    const createRightInfo = () => {
+        const priority = data.getPriority();
+        const dueDate = data.getDueDate();
+        const isOverdue = data.getOverdue();
 
         const createOverdue = () => {
             const overdue = element.createPara("Overdue");
@@ -71,15 +70,15 @@ const create = (data) => {
         };
     
         const createPriorityIcon = () => {
-            if (priority === 1) {
+            if (priority === "low") {
                 return image.createLowPriorityIcon();
             };
             
-            if (priority === 2) {
+            if (priority === "medium") {
                 return image.createMediumPriorityIcon();
             };
             
-            if (priority === 3) {
+            if (priority === "high") {
                 return image.createHighPriorityIcon();
             };
         };
@@ -117,24 +116,15 @@ const create = (data) => {
         return rightInfo;
     };
 
-    const task = Task();
-    task.setTitle(data.title);
-    task.setDescription(data.description);
-    task.setDueDate(data.dueDate);
-    task.setPriority(data.priority);
-    task.setOverdue(data.overdue);
-    task.setChecked(data.checked);
-    task.setProject(data.project);
-
     const taskElement = document.createElement("li");
-    const classText = task.getChecked() ? "task checked" : "task";
+    const classText = data.getChecked() ? "task checked" : "task";
     const taskElementAttributes = {
         class: `collapsible ${classText}`,
     };
     method.setAttributesOf(taskElement, taskElementAttributes);
     const elements = [
-        createLeftInfo(task),
-        createRightInfo(task),
+        createLeftInfo(),
+        createRightInfo(),
     ];
     method.appendChildren(taskElement, elements);
 

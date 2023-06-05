@@ -22,12 +22,12 @@ const _getTotalTasks = (projectName) => {
             return count;
         };
         
-        if (tasks[0].project === projectName) {
-            return count += tasks.length;
-        };
-
         if (!projectName) {
             count += tasks.length;
+        };
+        
+        if (tasks[0].getProject() === projectName) {
+            return count += tasks.length;
         };
     };
 
@@ -43,12 +43,12 @@ const _getNumCompleted = (projectName) => {
             return count;
         };
         
-        if (tasks[0].project === projectName) {
-            return count += tasks.filter(task => task.checked).length;
-        };
-
         if (!projectName) {
-            count += tasks.filter(task => task.checked).length;
+            count += tasks.filter(task => task.getChecked()).length;
+        };
+        
+        if (tasks[0].getProject() === projectName) {
+            return count += tasks.filter(task => task.getChecked()).length;
         };
     };
 
@@ -64,12 +64,12 @@ const _getNumOverdue = (projectName) => {
             return count;
         };
         
-        if (tasks[0].project === projectName) {
-            return count += tasks.filter(task => task.overdue && !task.checked).length;
+        if (!projectName) {
+            count += tasks.filter(task => task.getOverdue() && !task.getChecked()).length;
         };
 
-        if (!projectName) {
-            count += tasks.filter(task => task.overdue && !task.checked).length;
+        if (tasks[0].getProject() === projectName) {
+            return count += tasks.filter(task => task.getOverdue() && !task.getChecked()).length;
         };
     };
 
@@ -104,38 +104,60 @@ const getTaskStats = (projectName, stat) => {
 
 const _getToday = (tasks) => {
     if (tasks) {
-        return tasks.filter(task => task.dueDate === date.getToday());
+        return tasks.filter(task => task.getDueDate() === date.getToday());
     };
 };
 
 const _getUpcoming = (tasks) => {
     if (tasks) {
-        return tasks.filter(task => task.overdue === false);
+        return tasks.filter(task => task.getOverdue() === false);
+    };
+};
+
+const _getAll = (tasks) => {
+    if (tasks) {
+        return tasks;
     };
 };
 
 const _getThisWeek = (tasks) => {
     if (tasks) {
-        return tasks.filter(task => task.overdue === false && date.isThisWeek(task.dueDate));
+        return tasks.filter(task => task.getOverdue() === false && date.isThisWeek(task.getDueDate()));
     };
 };
 
 const _getThisMonth = (tasks) => {
     if (tasks) {
-        return tasks.filter(task => task.overdue === false && date.isThisMonth(task.dueDate));
+        return tasks.filter(task => task.getOverdue() === false && date.isThisMonth(task.getDueDate()));
+    };
+};
+
+const _getPriorityNum = (priority) => {
+    if (priority === "low") {
+        return 1;
+    };
+
+    if (priority === "medium") {
+        return 2;
+    };
+
+    if (priority === "high") {
+        return 3;
     };
 };
 
 const _getPriorityDesc = (tasks) => {
     if (tasks) {
         const isHigherPriority = (currentTask, nextTask) => {
-            const currentTaskDate = date.stringToDate(currentTask.dueDate);
-            const nextTaskDate = date.stringToDate(nextTask.dueDate);
+            const currentTaskDate = date.stringToDate(currentTask.getDueDate());
+            const nextTaskDate = date.stringToDate(nextTask.getDueDate());
+            const currentTaskPriority = _getPriorityNum(currentTask.getPriority());
+            const nextTaskPriority = _getPriorityNum(nextTask.getPriority());
 
-            if (currentTask.priority === nextTask.priority) {
+            if (currentTaskPriority === nextTaskPriority) {
                 return currentTaskDate < nextTaskDate ? -1 : 1;
             } else {
-                return nextTask.priority - currentTask.priority;
+                return nextTaskPriority - currentTaskPriority;
             };
         };
 
@@ -148,13 +170,15 @@ const _getPriorityDesc = (tasks) => {
 const _getPriorityAsc = (tasks) => {
     if (tasks) {
         const isLowerPriority = (currentTask, nextTask) => {
-            const currentTaskDate = date.stringToDate(currentTask.dueDate);
-            const nextTaskDate = date.stringToDate(nextTask.dueDate);
+            const currentTaskDate = date.stringToDate(currentTask.getDueDate());
+            const nextTaskDate = date.stringToDate(nextTask.getDueDate());
+            const currentTaskPriority = _getPriorityNum(currentTask.getPriority());
+            const nextTaskPriority = _getPriorityNum(nextTask.getPriority());
 
-            if (currentTask.priority === nextTask.priority) {
+            if (currentTaskPriority === nextTaskPriority) {
                 return currentTaskDate < nextTaskDate ? -1 : 1;
             } else {
-                return currentTask.priority - nextTask.priority;
+                return currentTaskPriority - nextTaskPriority;
             };
         };
 
@@ -167,11 +191,13 @@ const _getPriorityAsc = (tasks) => {
 const _getDateDesc = (tasks) => {
     if (tasks) {
         const isHigherDate = (currentTask, nextTask) => {
-            const currentTaskDate = date.stringToDate(currentTask.dueDate);
-            const nextTaskDate = date.stringToDate(nextTask.dueDate);
+            const currentTaskDate = date.stringToDate(currentTask.getDueDate());
+            const nextTaskDate = date.stringToDate(nextTask.getDueDate());
+            const currentTaskPriority = _getPriorityNum(currentTask.getPriority());
+            const nextTaskPriority = _getPriorityNum(nextTask.getPriority());
 
-            if (currentTask.dueDate === nextTask.dueDate) {
-                return currentTask.priority > nextTask.priority ? -1 : 1;
+            if (currentTask.getDueDate() === nextTask.getDueDate()) {
+                return currentTaskPriority > nextTaskPriority ? -1 : 1;
             } else {
                 return nextTaskDate - currentTaskDate;
             };
@@ -186,11 +212,13 @@ const _getDateDesc = (tasks) => {
 const _getDateAsc = (tasks) => {
     if (tasks) {
         const isLowerDate = (currentTask, nextTask) => {
-            const currentTaskDate = date.stringToDate(currentTask.dueDate);
-            const nextTaskDate = date.stringToDate(nextTask.dueDate);
+            const currentTaskDate = date.stringToDate(currentTask.getDueDate());
+            const nextTaskDate = date.stringToDate(nextTask.getDueDate());
+            const currentTaskPriority = _getPriorityNum(currentTask.getPriority());
+            const nextTaskPriority = _getPriorityNum(nextTask.getPriority());
 
-            if (currentTask.dueDate === nextTask.dueDate) {
-                return currentTask.priority > nextTask.priority ? -1 : 1;
+            if (currentTask.getDueDate() === nextTask.getDueDate()) {
+                return currentTaskPriority > nextTaskPriority ? -1 : 1;
             } else {
                 return currentTaskDate - nextTaskDate;
             };
@@ -205,7 +233,7 @@ const _getDateAsc = (tasks) => {
 const _filterFns = {
     today: _getToday,
     upcoming: _getUpcoming,
-    all: _getUpcoming,
+    all: _getAll,
     thisWeek: _getThisWeek,
     thisMonth: _getThisMonth,
     priorityAsc: _getPriorityAsc,
@@ -240,9 +268,9 @@ const updateCheckedStatus = (taskTitle) => {
         };
 
         for (const task of tasks) {
-            if (task.title === taskTitle) {
-                const isChecked = task.checked;
-                task.checked = isChecked ? false : true;
+            if (task.getTitle() === taskTitle) {
+                const isChecked = task.getChecked();
+                isChecked ? task.setChecked(false) : task.setChecked(true);
             };
         };
     };

@@ -2,21 +2,27 @@ import * as addTaskModal from "./add-task-modal-events";
 import * as projectFilter from "./project-filter-events";
 
 const _emitClickEvents = (e) => {
-    const isBtn = e.target.closest("button") ? true : false;
-
     if (
-        isBtn &&
-        e.target.closest("button").classList.contains("dropdown") ||
-        e.target.closest("button").classList.contains("sort-by-filter")
+        e.target.closest("button") &&
+        (
+            e.target.closest("button").classList.contains("dropdown") ||
+            e.target.closest("button").classList.contains("sort-by-filter")
+        )
     ) {
         projectFilter.emitEvents(e);
     };
 
-    if (isBtn && e.target.closest("button").classList.contains("add-task-btn")) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("add-task-btn")
+    ) {
         addTaskModal.emitEvents(e);
     };
 
-    if (isBtn && e.target.closest("button").classList.contains("more-options-btn")) {
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("more-options-btn")
+    ) {
         //_displayMoreOptions();
     };
 };

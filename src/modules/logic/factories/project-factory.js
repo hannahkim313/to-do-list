@@ -1,6 +1,6 @@
 const Project = () => {
     let _projectName;
-    let _tasks;
+    let _tasks = [];
 
     const getName = () => _projectName;
 
@@ -8,13 +8,13 @@ const Project = () => {
 
     const setName = (name) => _projectName = name;
 
-    const setTasks = (tasks) => _tasks = tasks;
+    const addTask = (task) => _tasks.push(task);
 
     return {
         getName,
         getTasks,
         setName,
-        setTasks,
+        addTask,
     };
 };
 
