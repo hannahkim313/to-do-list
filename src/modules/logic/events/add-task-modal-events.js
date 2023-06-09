@@ -4,6 +4,8 @@ import * as homePage from "../../dom/home-page";
 import * as image from "../../dom/image-elements";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
+import * as project from "../../dom/project";
+import * as projectMenu from "../../dom/project-menu";
 import * as sidebar from "../../dom/sidebar";
 import { Task } from "../factories/task-factory";
 import * as taskMenu from "../../dom/task-menu";
@@ -74,35 +76,70 @@ const _cancel = (modal) => {
     modal.close();
 };
 
-const _updateAllTaskMenus = (projectName) => {
+const _getFilters = (pageName) => {
+    if (pageName === "today") {
+        return "today";
+    };
+
+    if (pageName === "upcoming") {
+        const selectedFilter = method.toCamelCase(document.querySelector(".page.upcoming .filters .selected p").textContent.toLowerCase());
+
+        return selectedFilter;
+    };
+
+    if (pageName === "projects") {
+        return "all";
+    }
+};
+
+const _isProjectNeeded = (task, pageName) => {
+    const projectName = method.toKebabCase(task.getProject());
+
+    if (document.querySelector(`.page.${pageName} .project[data-project-name="${projectName}"]`)) {
+        return false;
+    };
+
+    return true;
+};
+
+const _updateAllTaskMenus = (task) => {
     const pageNames = ["today", "upcoming", "projects"];
     
     for (const pageName of pageNames) {
         const filters = [];
-        pageName === "projects" ? filters.push("all") : filters.push(pageName);
+        filters.push(_getFilters(pageName));
 
-        const sortByFilter = document.querySelector(`.page.${pageName} [data-project-name="${method.toKebabCase(projectName)}"] .dropdown p`).textContent;
-    
-        if (sortByFilter === "Priority: High to low") {
-            filters.unshift("priorityDesc");
-        };
-    
-        if (sortByFilter === "Priority: Low to high") {
-            filters.unshift("priorityAsc");
-        };
-    
-        if (sortByFilter === "Date: Newest to oldest") {
-            filters.unshift("dateDesc");
-        };
-    
-        if (sortByFilter === "Date: Oldest to newest") {
-            filters.unshift("dateAsc");
+        const projectName = task.getProject();
+
+        if (document.querySelector(`.page.${pageName} [data-project-name="${method.toKebabCase(projectName)}"]`)) {
+            const sortByFilter = document.querySelector(`.page.${pageName} [data-project-name="${method.toKebabCase(projectName)}"] .dropdown p`).textContent;
+        
+            if (sortByFilter === "Priority: High to low") {
+                filters.unshift("priorityDesc");
+            };
+        
+            if (sortByFilter === "Priority: Low to high") {
+                filters.unshift("priorityAsc");
+            }
+        
+            if (sortByFilter === "Date: Newest to oldest") {
+                filters.unshift("dateDesc");
+            };
+        
+            if (sortByFilter === "Date: Oldest to newest") {
+                filters.unshift("dateAsc");
+            };
         };
 
         const filteredTaskSets = library.filterBy(filters);
         for (const taskSet of filteredTaskSets) {
             if (taskSet.length === 0) {
                 continue;
+            };
+
+            if (_isProjectNeeded(task, pageName) && taskSet[0].getProject() === task.getProject()) {
+                const projectElement = project.create(taskSet);
+                projectMenu.addTo(pageName, projectElement);
             };
 
             if (taskSet[0].getProject() === projectName) {
@@ -115,10 +152,16 @@ const _updateAllTaskMenus = (projectName) => {
 };
 
 const _updateSidebarAlerts = (projectName) => {
-    const currentAlerts = document.querySelector(`[data-page-name="${projectName}"] .alerts`);
+    const currentAlerts = document.querySelector(`[data-page-name="${method.toKebabCase(projectName)}"] .alerts`);
     const newAlerts = sidebar.createAlerts(projectName);
-    currentAlerts.after(newAlerts);
-    currentAlerts.remove();
+
+    if (currentAlerts) {
+        currentAlerts.after(newAlerts);
+        currentAlerts.remove();
+    } else {
+        const projectElement = document.querySelector(`.sidebar [data-page-name="${method.toKebabCase(projectName)}"]`);
+        projectElement.appendChild(newAlerts);
+    };
 };
 
 const _submit = (modal) => {
@@ -151,7 +194,7 @@ const _submit = (modal) => {
     const project = library.get(projectName);
     project.addTask(task);
 
-    _updateAllTaskMenus(projectName);
+    _updateAllTaskMenus(task);
     _updateSidebarAlerts(projectName);
     homePage.updateOverviewTasks();
 

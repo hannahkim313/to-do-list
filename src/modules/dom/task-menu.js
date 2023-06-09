@@ -36,7 +36,12 @@ const update = (pageName, tasks) => {
     const projectName = method.toKebabCase(tasks[0].getProject());
     const taskMenu = document.querySelector(`.${pageName}.page [data-project-name="${projectName}"] .tasks`);
     
-    const taskElements = taskMenu.querySelectorAll(".task");
+    const taskElements = Array.from(taskMenu.querySelectorAll(".task"));
+
+    if (taskMenu.querySelector(".empty")) {
+        taskElements.push(taskMenu.querySelector(".empty"));
+    };
+
     for (const element of taskElements) {
         element.remove();
     };

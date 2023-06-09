@@ -117,10 +117,17 @@ const isThisWeek = (date) => {
     return dateAPI.isThisWeek(date);
 
 };
+
 const isThisMonth = (date) => {
     date = stringToDate(date);
 
     return dateAPI.isThisMonth(date);
+};
+
+const isToday = (date) => {
+    date = stringToDate(date);
+    
+    return dateAPI.isToday(date);
 };
 
 export {
@@ -137,4 +144,5 @@ export {
     stringToDate,
     isThisWeek,
     isThisMonth,
+    isToday,
 };

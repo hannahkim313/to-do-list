@@ -6,7 +6,7 @@ import * as sidebar from "../../dom/sidebar";
 import * as taskDetails from "../../dom/task-details";
 
 const _updateTaskCount = (projectName) => {
-    const currentAlerts = document.querySelector(`[data-page-name="${projectName}"] .alerts`);
+    const currentAlerts = document.querySelector(`[data-page-name="${method.toKebabCase(projectName)}"] .alerts`);
     const newAlerts = sidebar.createAlerts(projectName);
     currentAlerts.after(newAlerts);
     currentAlerts.remove();
