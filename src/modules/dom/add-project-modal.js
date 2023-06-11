@@ -101,7 +101,6 @@ const create = () => {
         class: "add-project modal",
     };
     method.setAttributesOf(modal, modalAttributes);
-    modal.dataset.for = "add-project-btn";
     const elements = [
         createForm(),
     ];
