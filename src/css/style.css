@@ -161,6 +161,10 @@ button:hover {
     left: 0;
 }
 
+.add-task.modal::backdrop {
+    background-color: #4d4d4d50;
+}
+
 .add-task.modal form {
     width: 350px;
     height: 485px;
