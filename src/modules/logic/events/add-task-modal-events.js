@@ -103,13 +103,12 @@ const _isProjectNeeded = (task, pageName) => {
 };
 
 const _updateAllTaskMenus = (task) => {
-    const pageNames = ["today", "upcoming", "projects"];
+    const projectName = task.getProject();
     
+    const pageNames = ["today", "upcoming", "projects"];
     for (const pageName of pageNames) {
         const filters = [];
         filters.push(_getFilters(pageName));
-
-        const projectName = task.getProject();
 
         if (document.querySelector(`.page.${pageName} [data-project-name="${method.toKebabCase(projectName)}"]`)) {
             const sortByFilter = document.querySelector(`.page.${pageName} [data-project-name="${method.toKebabCase(projectName)}"] .dropdown p`).textContent;
@@ -199,7 +198,6 @@ const _submit = (modal) => {
     homePage.updateOverviewTasks();
 
     _clearInputs(modal);
-    modal.close();
 };
 
 const _isEmpty = (input) => input.value === "" ? true : false;
