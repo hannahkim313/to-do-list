@@ -5,7 +5,7 @@ import * as method from "../helper-functions";
 const create = (data) => {
     const createLeftInfo = () => {
         const isChecked = data.getChecked();
-        const title = data.getTitle().charAt(0).toUpperCase() + data.getTitle().slice(1);
+        const title = data.getTitle();
 
         const createToDoBtn = () => {
             const btnAttributes = {

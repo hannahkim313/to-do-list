@@ -167,8 +167,8 @@ const _updateSidebarAlerts = (projectName) => {
 const _submit = (modal) => {
     const task = Task();
 
-    const title = modal.querySelector("#task-title").value.toLowerCase();
-    task.setTitle(title.charAt(0).toUpperCase() + title.slice(1));
+    const title = modal.querySelector("#task-title").value;
+    task.setTitle(title);
 
     const description = modal.querySelector("#task-description").value.toLowerCase();
     task.setDescription(description);
