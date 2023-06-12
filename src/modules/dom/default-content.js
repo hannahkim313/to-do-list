@@ -76,6 +76,7 @@ const _errandsTasks = [
         project: "errands",
     },
 ];
+
 const _roadTripTasks = [
     {
         title: "Book Airbnb",
@@ -144,6 +145,7 @@ const _roadTripTasks = [
         project: "road trip",
     },
 ];
+
 const _workTasks = [
     {
         title: "Confirm vacation time",
@@ -179,6 +181,7 @@ const _workTasks = [
         project: "work",
     },
 ];
+
 const _taskSets = [
     _errandsTasks,
     _roadTripTasks,
