@@ -169,7 +169,7 @@ const _submit = (modal) => {
     const title = modal.querySelector("#task-title").value;
     task.setTitle(title);
 
-    const description = modal.querySelector("#task-description").value.toLowerCase();
+    const description = modal.querySelector("#task-description").value;
     task.setDescription(description);
 
     const dueDate = modal.querySelector("#task-due-date").value;
@@ -184,7 +184,6 @@ const _submit = (modal) => {
     task.setPriority(priority);
 
     task.setOverdue(false);
-
     task.setChecked(false);
 
     const projectName = modal.querySelector(".form-title").textContent.toLowerCase().slice(12);

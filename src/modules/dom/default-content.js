@@ -23,6 +23,7 @@ const _errandsTasks = [
     },
     {
         title: "Buy birthday gift",
+        description: "",
         dueDate: date.getToday(),
         priority: "high",
         overdue: false,
@@ -31,6 +32,7 @@ const _errandsTasks = [
     },
     {
         title: "Send out postcard",
+        description: "",
         dueDate: date.getPreviousDay("sunday", 0),
         priority: "medium",
         overdue: true,
@@ -40,6 +42,7 @@ const _errandsTasks = [
     },
     {
         title: "Get groceries",
+        description: "",
         dueDate: date.getToday(),
         priority: "medium",
         overdue: false,
@@ -48,6 +51,7 @@ const _errandsTasks = [
     },
     {
         title: "Meal prep",
+        description: "",
         dueDate: date.getToday(),
         priority: "low",
         overdue: false,
@@ -56,6 +60,7 @@ const _errandsTasks = [
     },
     {
         title: "Water plants",
+        description: "",
         dueDate: date.getToday(),
         priority: "low",
         overdue: false,
@@ -89,6 +94,7 @@ const _roadTripTasks = [
     },
     {
         title: "Schedule doggy daycare",
+        description: "",
         dueDate: date.getDayAhead({ days: 4, }),
         priority: "high",
         overdue: false,
@@ -97,6 +103,7 @@ const _roadTripTasks = [
     },
     {
         title: "Get car checked",
+        description: "",
         dueDate: date.getNextDay("saturday", 1),
         priority: "high",
         overdue: false,
@@ -105,6 +112,7 @@ const _roadTripTasks = [
     },
     {
         title: "Finish packing",
+        description: "",
         dueDate: date.getNextDay("thursday", 3),
         priority: "high",
         overdue: false,
@@ -113,6 +121,7 @@ const _roadTripTasks = [
     },
     {
         title: "Turn off all electronics and lock all doors",
+        description: "",
         dueDate: date.getNextDay("friday", 3),
         priority: "high",
         overdue: false,
@@ -121,6 +130,7 @@ const _roadTripTasks = [
     },
     {
         title: "Make dinner reservations for the day we arrive",
+        description: "",
         dueDate: date.getToday(),
         priority: "medium",
         overdue: false,
@@ -129,6 +139,7 @@ const _roadTripTasks = [
     },
     {
         title: "Buy parking pass for national parks/viewpoints",
+        description: "",
         dueDate: date.getDayAhead({ days: 4, }),
         description: "Save copies of tickets",
         priority: "medium",
@@ -138,6 +149,7 @@ const _roadTripTasks = [
     },
     {
         title: "Buy travel items",
+        description: "",
         dueDate: date.getDayAhead({ days: 6, }),
         priority: "low",
         overdue: false,
@@ -149,6 +161,7 @@ const _roadTripTasks = [
 const _workTasks = [
     {
         title: "Confirm vacation time",
+        description: "",
         dueDate: date.getNextDay("tuesday", 0),
         priority: "high",
         overdue: false,
@@ -157,6 +170,7 @@ const _workTasks = [
     },
     {
         title: "Introduce new team members",
+        description: "",
         dueDate: date.getNextDay("monday", 2),
         priority: "high",
         overdue: false,
@@ -165,6 +179,7 @@ const _workTasks = [
     },
     {
         title: "Gather end-of-week analysis",
+        description: "",
         dueDate: date.getNextDay("friday", 2),
         priority: "high",
         overdue: false,
@@ -230,8 +245,10 @@ const _createFilteredContent = (sections) => {
 };
 
 const _createProjectsContent = () => {
-    for (const taskSet of _taskSets) {
-        const projectName = taskSet[0].project;
+    const filteredTaskSets = library.filterBy(["all"]);
+    for (const taskSet of filteredTaskSets) {
+
+        const projectName = taskSet[0].getProject();
         const pageElement = projectPage.create(projectName);
         page.addToDOM(pageElement);
 

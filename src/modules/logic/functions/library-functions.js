@@ -13,12 +13,18 @@ const get = (projectName) => {
     };
 };
 
+const deleteTask = (taskProperties) => {
+    const projectTasks = get(taskProperties.projectName).getTasks();
+    const indexToRemove = projectTasks.findIndex(task => task.getTitle() === taskProperties.title);
+    projectTasks.splice(indexToRemove, 1);
+};
+
 const _getTotalTasks = (projectName) => {
     let count = 0;
     for (const project of _library) {
         const tasks = project.getTasks();
 
-        if (!tasks) {
+        if (tasks.length === 0) {
             return count;
         };
         
@@ -39,7 +45,7 @@ const _getNumCompleted = (projectName) => {
     for (const project of _library) {
         const tasks = project.getTasks();
 
-        if (!tasks) {
+        if (tasks.length === 0) {
             return count;
         };
         
@@ -60,7 +66,7 @@ const _getNumOverdue = (projectName) => {
     for (const project of _library) {
         const tasks = project.getTasks();
 
-        if (!tasks) {
+        if (tasks.length === 0) {
             return count;
         };
         
@@ -279,6 +285,7 @@ const updateCheckedStatus = (taskTitle) => {
 export {
     add,
     get,
+    deleteTask,
     getTaskStats,
     filterBy,
     updateCheckedStatus,

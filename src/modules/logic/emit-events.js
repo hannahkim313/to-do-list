@@ -1,9 +1,11 @@
 import * as addProjectModal from "./events/add-project-modal-events";
 import * as addTaskModal from "./events/add-task-modal-events";
+import * as deleteTaskModal from "./events/delete-task-modal-events";
 import * as filter from "./events/filters-events";
 import * as project from "./events/project-events";
 import * as sidebar from "./events/sidebar-events";
 import * as task from "./events/task-events";
+import * as taskDetails from "./events/task-details-events";
 
 const emitEvents = () => {
     const addProjectModalElement = document.querySelector(".add-project.modal");
@@ -13,8 +15,9 @@ const emitEvents = () => {
 
     const addTaskModalElement = document.querySelector(".add-task.modal");
     addTaskModalElement.addEventListener("click", e => addTaskModal.emitEvents(e));
-    addTaskModalElement.addEventListener("focusin", e => addTaskModal.emitEvents(e));
-    addTaskModalElement.addEventListener("focusout", e => addTaskModal.emitEvents(e));
+
+    const deleteTaskModalElement = document.querySelector(".delete-task.modal");
+    deleteTaskModalElement.addEventListener("click", e => deleteTaskModal.emitEvents(e));
 
     const body = document.querySelector("body");
     body.addEventListener("click", e => {
@@ -37,6 +40,13 @@ const emitEvents = () => {
             e.target.closest("li").classList.contains("task")
         ) {
             task.emitEvents(e);
+        };
+
+        if (
+            e.target.closest("div") &&
+            e.target.closest("div").classList.contains("task-options-wrapper")
+        ) {
+            taskDetails.emitEvents(e);
         };
 
         if (

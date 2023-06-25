@@ -81,10 +81,11 @@ const create = (task) => {
         return wrapper;
     };
 
+    const taskDetails = document.createElement("li");
     const taskDetailsAttributes = {
         class: "task-details",
     };
-    const taskDetails = element.createDiv(taskDetailsAttributes);
+    method.setAttributesOf(taskDetails, taskDetailsAttributes);
     const elements = [
         createDescriptionWrapper(),
         createTaskOptionsWrapper(),
