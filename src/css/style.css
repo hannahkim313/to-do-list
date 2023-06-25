@@ -343,6 +343,70 @@ button:hover {
 }
 
 /******************************************************************************/
+/* Selectors for the "Delete Task" modal start here.
+/******************************************************************************/
+
+.delete-task.modal {
+    margin: auto;
+    
+    border: none;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px #4d4d4d50, -3px 3px 5px #4d4d4d50;
+
+    top: 0;
+    left: 0;
+}
+
+.delete-task.modal::backdrop {
+    background-color: #4d4d4d50;
+}
+
+.delete-task.modal form {
+    width: 300px;
+    height: 165px;
+    
+    padding: 8px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.delete-task.modal .message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.delete-task.modal .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+}
+
+.delete-task.modal button {
+    padding: 2px 8px;
+
+    background-color: var(--color-neutral-2);
+    border: none;
+    border-radius: 4px;
+
+    transition: all 0.2s ease;
+}
+
+.delete-task.modal button:hover {
+    background-color: var(--color-neutral-3);
+}
+
+.delete-task.modal button:active {
+    background-color: var(--color-neutral-4);
+}
+
+/******************************************************************************/
 /* Selectors for the header start here.
 /******************************************************************************/
 
@@ -849,7 +913,7 @@ header .logo {
     background-color: var(--color-neutral-3);
 }
 
-.task-details .task-options-wrapper button:active {
+.task-details .task-options-wrapper button.active {
     background-color: var(--color-neutral-4);
 }
 
