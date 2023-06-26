@@ -203,8 +203,20 @@ const _isEmpty = (input) => input.value === "" ? true : false;
 
 const _isDuplicateTitle = (input) => {
     if (input.id === "task-title") {
-        const formTitle = input.closest("form").querySelector(".form-title").textContent;
-        const projectName = formTitle.toLowerCase().slice(12);
+        const getProjectName = () => {
+            const pageElements = document.querySelectorAll(".page");
+            for (const page of pageElements) {
+                const styles = window.getComputedStyle(page);
+                
+                if (styles.getPropertyValue("display") !== "none") {
+                    const taskElement = page.querySelector(".task-options-wrapper .active").closest("li").previousElementSibling;
+
+                    return method.undoKebabCase(taskElement.closest("article").dataset.projectName);
+                };
+            };
+        };
+
+        const projectName = getProjectName();
         
         const tasks = library.get(projectName).getTasks();
         for (const task of tasks) {
