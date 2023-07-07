@@ -1,3 +1,4 @@
+import * as date from "../logic/functions/date-functions";
 import * as element from "./html-elements";
 import * as image from "./image-elements";
 import * as method from "../helper-functions";
@@ -128,18 +129,13 @@ const create = () => {
                 };
                 
                 const createInput = () => {
-                    const dateObj = new Date();
-                    const month = dateObj.getMonth() + 1 < 10 ? `0${dateObj.getMonth() + 1}` : dateObj.getMonth() + 1;
-                    const date = dateObj.getDate() < 10 ? `0${dateObj.getDate()}` : dateObj.getDate();
-                    const year = dateObj.getFullYear();
-
                     const input = document.createElement("input");
                     const inputAttributes = {
                         class: "input",
                         type: "date",
                         name: "task-due-date",
                         id: "task-due-date",
-                        min: `${year}-${month}-${date}`,
+                        min: date.stringToValue(),
                     };
                     method.setAttributesOf(input, inputAttributes);
                     

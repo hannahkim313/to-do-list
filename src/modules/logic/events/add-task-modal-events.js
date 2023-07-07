@@ -8,6 +8,7 @@ import * as project from "../../dom/project";
 import * as projectMenu from "../../dom/project-menu";
 import * as sidebar from "../../dom/sidebar";
 import { Task } from "../factories/task-factory";
+import * as task from "../../dom/task";
 import * as taskMenu from "../../dom/task-menu";
 
 const _addFormTitle = (project) => {
@@ -84,6 +85,10 @@ const _getFilters = (pageName) => {
     if (pageName === "upcoming") {
         const selectedFilter = method.toCamelCase(document.querySelector(".page.upcoming .filters .selected p").textContent.toLowerCase());
 
+        if (selectedFilter === "all") {
+            return "upcoming";
+        };
+        
         return selectedFilter;
     };
 
@@ -102,8 +107,8 @@ const _isProjectNeeded = (task, pageName) => {
     return true;
 };
 
-const _updateAllTaskMenus = (task) => {
-    const projectName = task.getProject();
+const _updateAllTaskMenus = (newTask) => {
+    const projectName = newTask.getProject();
     
     const pageNames = ["today", "upcoming", "projects"];
     for (const pageName of pageNames) {
@@ -136,13 +141,40 @@ const _updateAllTaskMenus = (task) => {
                 continue;
             };
 
-            if (_isProjectNeeded(task, pageName) && taskSet[0].getProject() === task.getProject()) {
+            if (_isProjectNeeded(newTask, pageName) && taskSet[0].getProject() === newTask.getProject()) {
                 const projectElement = project.create(taskSet);
                 projectMenu.addTo(pageName, projectElement);
             };
 
             if (taskSet[0].getProject() === projectName) {
-                taskMenu.update(pageName, taskSet);
+                const taskPosition = taskSet.findIndex(task => newTask.getTitle() === task.getTitle());
+
+                if (taskPosition < 0) {
+                    break;
+                };
+
+                const taskMenu = document.querySelector(`.${pageName}.page [data-project-name="${method.toKebabCase(projectName)}"] .tasks`);
+                
+                if (taskMenu.childElementCount === 0) {
+                    const newTaskElement = task.create(newTask);
+                    taskMenu.appendChild(newTaskElement);
+
+                    break;
+                };
+
+                if (taskMenu.firstElementChild.classList.contains("empty")) {
+                    taskMenu.firstElementChild.remove();
+
+                    const newTaskElement = task.create(newTask);
+                    taskMenu.appendChild(newTaskElement);
+
+                    break;
+                };
+
+                const taskElements = taskMenu.querySelectorAll(".task");
+                const refTaskElement = taskElements[taskPosition - 1];
+                const newTaskElement = task.create(newTask);
+                refTaskElement.insertAdjacentElement("afterend", newTaskElement);
                 
                 break;
             };
@@ -204,16 +236,9 @@ const _isEmpty = (input) => input.value === "" ? true : false;
 const _isDuplicateTitle = (input) => {
     if (input.id === "task-title") {
         const getProjectName = () => {
-            const pageElements = document.querySelectorAll(".page");
-            for (const page of pageElements) {
-                const styles = window.getComputedStyle(page);
-                
-                if (styles.getPropertyValue("display") !== "none") {
-                    const taskElement = page.querySelector(".task-options-wrapper .active").closest("li").previousElementSibling;
+            const formTitle = input.closest("form").querySelector(".form-title").textContent;
 
-                    return method.undoKebabCase(taskElement.closest("article").dataset.projectName);
-                };
-            };
+            return formTitle.slice(12).toLowerCase();
         };
 
         const projectName = getProjectName();
