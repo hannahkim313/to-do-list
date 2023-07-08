@@ -174,7 +174,13 @@ const _updateAllTaskMenus = (newTask) => {
                 const taskElements = taskMenu.querySelectorAll(".task");
                 const refTaskElement = taskElements[taskPosition - 1];
                 const newTaskElement = task.create(newTask);
-                refTaskElement.insertAdjacentElement("afterend", newTaskElement);
+
+                if (refTaskElement.classList.contains("expanded")) {
+                    const taskDetailsElement = refTaskElement.nextElementSibling;
+                    taskDetailsElement.insertAdjacentElement("afterend", newTaskElement);
+                } else {
+                    refTaskElement.insertAdjacentElement("afterend", newTaskElement);
+                };
                 
                 break;
             };
