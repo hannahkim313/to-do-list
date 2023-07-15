@@ -894,6 +894,10 @@ header .logo {
     gap: 8px;
 }
 
+.page .options > button {
+    border-radius: 8px;
+}
+
 .page .options .dropdown-wrapper {
     position: relative;
 }
@@ -960,6 +964,10 @@ header .logo {
 .page .options .dropdown .input {
     display: flex;
     align-items: center;
+}
+
+.page .options button.active {
+    background-color: var(--color-neutral-2);
 }
 
 .page .options button:not(.dropdown, .sort-by-filter) {

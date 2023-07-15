@@ -10,6 +10,8 @@ import * as sidebar from "../../dom/sidebar";
 import { Task } from "../factories/task-factory";
 import * as taskMenu from "../../dom/task-menu";
 
+const _toggleBtnBackgroundColor = (btn) => btn.classList.toggle("active");
+
 const _addFormTitle = (project) => {
     const projectName = method.capitalize(method.undoKebabCase(project.dataset.projectName));
     const title = element.createPara(`Add task to ${projectName}`);
@@ -297,6 +299,8 @@ const _emitClickEvents = (e) => {
         e.target.closest("button") &&
         e.target.closest("button").classList.contains("add-task-btn")
     ) {
+        _toggleBtnBackgroundColor(e.target.closest("button"));
+
         const project = e.target.closest("article");
         _addFormTitle(project);
 
@@ -316,6 +320,9 @@ const _emitClickEvents = (e) => {
         e.target.closest("button").classList.contains("confirm-btn")
     ) {
         _validateModal(e);
+
+        const btn = document.querySelector(".add-task-btn.active");
+        _toggleBtnBackgroundColor(btn);
     };
 
     if (
@@ -324,6 +331,9 @@ const _emitClickEvents = (e) => {
     ) {
         const modal = e.target.closest("dialog");
         _cancel(modal);
+
+        const btn = document.querySelector(".add-task-btn.active");
+        _toggleBtnBackgroundColor(btn);
     };
 };
 
