@@ -1,6 +1,7 @@
 import * as addProjectModal from "./events/add-project-modal-events";
 import * as addTaskModal from "./events/add-task-modal-events";
 import * as deleteTaskModal from "./events/delete-task-modal-events";
+import * as editTaskModal from "./events/edit-task-modal-events";
 import * as filter from "./events/filters-events";
 import * as project from "./events/project-events";
 import * as sidebar from "./events/sidebar-events";
@@ -18,6 +19,9 @@ const emitEvents = () => {
 
     const deleteTaskModalElement = document.querySelector(".delete-task.modal");
     deleteTaskModalElement.addEventListener("click", e => deleteTaskModal.emitEvents(e));
+
+    const editTaskModalElement = document.querySelector(".edit-task.modal");
+    editTaskModalElement.addEventListener("click", e => editTaskModal.emitEvents(e));
 
     const body = document.querySelector("body");
     body.addEventListener("click", e => {

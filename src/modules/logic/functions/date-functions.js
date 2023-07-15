@@ -111,6 +111,25 @@ const stringToDate = (date) => {
     return new Date(year, month, day);
 };
 
+const stringToValue = (str) => {
+    const dateObj = str ? stringToDate(str) : new Date();
+
+    const month = dateObj.getMonth() + 1 < 10 ? `0${dateObj.getMonth() + 1}` : dateObj.getMonth() + 1;
+    const date = dateObj.getDate() < 10 ? `0${dateObj.getDate()}` : dateObj.getDate();
+    const year = dateObj.getFullYear();
+    
+    return `${year}-${month}-${date}`;
+};
+
+const valueToString = (value) => {
+    const dateArray = value.split("-");
+    const month = dateArray[1].charAt(0) === "0" ? dateArray[1].slice(1) : dateArray[1];
+    const day = dateArray[2].charAt(0) === "0" ? dateArray[2].slice(1) : dateArray[2];
+    const year = dateArray[0];
+    
+    return `${getMonthFromIndex(month)} ${day}, ${year}`;
+};
+
 const isThisWeek = (date) => {
     date = stringToDate(date);
 
@@ -142,6 +161,8 @@ export {
     getPreviousDay,
     getMonthFromIndex,
     stringToDate,
+    stringToValue,
+    valueToString,
     isThisWeek,
     isThisMonth,
     isToday,

@@ -343,6 +343,202 @@ button:hover {
 }
 
 /******************************************************************************/
+/* Selectors for the "Edit Task" modal start here.
+/******************************************************************************/
+
+.edit-task.modal {
+    margin: auto;
+
+    border: none;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px var(--color-modal-1), -3px 3px 5px var(--color-modal-1);
+
+    top: 0;
+    left: 0;
+}
+
+.edit-task.modal::backdrop {
+    background-color: #4d4d4d50;
+}
+
+.edit-task.modal form {
+    width: 350px;
+    height: 485px;
+
+    padding: 32px 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.edit-task.modal button {
+    padding: 2px 8px;
+
+    background-color: var(--color-neutral-2);
+    border: none;
+    border-radius: 4px;
+
+    transition: all 0.2s ease;
+}
+
+.edit-task.modal button:hover {
+    background-color: var(--color-neutral-3);
+}
+
+.edit-task.modal button:active {
+    background-color: var(--color-neutral-4);
+}
+
+.edit-task.modal .form-title {
+    font-size: 1.1rem;
+}
+
+/* Selectors for the "Title" input start here. */
+
+.edit-task.modal .task-title-wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.edit-task.modal .task-title-wrapper input {
+    padding: 0 0 0 4px;
+
+    background-color: var(--color-neutral-1);
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+}
+
+.edit-task.modal .task-title-wrapper input:focus {
+    outline: none;
+    border: 1.5px solid var(--color-text-1);
+    border-radius: 2px;
+}
+
+/* Selectors for the "Description" input start here. */
+
+.edit-task.modal .task-description-wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.edit-task.modal .task-description-wrapper textarea {
+    width: 100%;
+
+    padding: 0 0 0 4px;
+
+    background-color: var(--color-neutral-1);
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+
+    resize: none;
+}
+
+.edit-task.modal .task-description-wrapper textarea:focus {
+    outline: none;
+    border: 1.5px solid var(--color-text-1);
+    border-radius: 2px;
+}
+
+.edit-task.modal .task-grouped-options-wrapper {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* Selectors for the "Priority" input start here. */
+
+.edit-task.modal .task-priority-wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+}
+
+.edit-task.modal .task-priority-wrapper .task-priority-btn {
+    width: 100%;
+
+    background-color: var(--color-neutral-1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+}
+
+.edit-task.modal .task-priority-wrapper .task-priority-btn:hover {
+    background-color: var(--color-neutral-2);
+}
+
+.edit-task.modal .task-priority-wrapper .task-priority-btn:active {
+    background-color: var(--color-neutral-3);
+}
+
+.edit-task.modal .task-priority-wrapper img[src$="svg"] {
+    width: 1rem;
+}
+
+/* Selectors for the "Due Date" input start here. */
+
+.edit-task.modal .task-due-date-wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.edit-task.modal .task-due-date-wrapper input {
+    padding: 0 0 0 4px;
+
+    background-color: var(--color-neutral-1);
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+
+    transition: all 0.2s ease;
+}
+
+.edit-task.modal .task-due-date-wrapper input:focus {
+    outline: none;
+    border: 1.5px solid var(--color-text-1);
+    border-radius: 2px;
+}
+
+.edit-task.modal .task-due-date-wrapper input:hover {
+    background-color: var(--color-neutral-2);
+    
+    cursor: pointer;
+}
+
+.edit-task.modal .task-due-date-wrapper input:active {
+    background-color: var(--color-neutral-3);
+}
+
+/* Selectors for the Confirm/Cancel buttons start here. */
+
+.edit-task.modal .buttons {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/******************************************************************************/
 /* Selectors for the "Delete Task" modal start here.
 /******************************************************************************/
 

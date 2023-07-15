@@ -31,7 +31,35 @@ const addTo = (pageName, tasks) => {
     };
 };
 
+const update = (pageName, tasks) => {
+    const projectName = method.toKebabCase(tasks[0].getProject());
+    const taskMenu = document.querySelector(`.${pageName}.page [data-project-name="${projectName}"] .tasks`);
+
+    const taskElements = Array.from(taskMenu.querySelectorAll(".task"));
+
+    if (taskMenu.querySelector(".empty")) {
+        taskElements.push(taskMenu.querySelector(".empty"));
+    };
+
+    for (const element of taskElements) {
+        if (
+            element.nextElementSibling &&
+            element.nextElementSibling.classList.contains("task-details")
+        ) {
+            element.nextElementSibling.remove();
+        };
+
+        element.remove();
+    };
+
+    for (const taskData of tasks) {
+        const taskElement = task.create(taskData);
+        taskMenu.appendChild(taskElement);
+    };
+};
+
 export {
     create,
     addTo,
+    update,
 };

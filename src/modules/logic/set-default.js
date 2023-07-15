@@ -2,6 +2,7 @@ import * as addProjectModal from "../dom/add-project-modal";
 import * as addTaskModal from "../dom/add-task-modal";
 import * as defaultContent from "../dom/default-content";
 import * as deleteTaskModal from "../dom/delete-task-modal";
+import * as editTaskModal from "../dom/edit-task-modal";
 import * as footer from "../dom/footer";
 import * as header from "../dom/header";
 import * as homePage from "../dom/home-page";
@@ -21,6 +22,7 @@ const setDefault = () => {
         footer.create(),
         addProjectModal.create(),
         addTaskModal.create(),
+        editTaskModal.create(),
         deleteTaskModal.create(),
     ];
     method.appendChildren(body, elements);

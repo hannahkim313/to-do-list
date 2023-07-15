@@ -8,7 +8,6 @@ import * as project from "../../dom/project";
 import * as projectMenu from "../../dom/project-menu";
 import * as sidebar from "../../dom/sidebar";
 import { Task } from "../factories/task-factory";
-import * as task from "../../dom/task";
 import * as taskMenu from "../../dom/task-menu";
 
 const _addFormTitle = (project) => {
@@ -147,41 +146,8 @@ const _updateAllTaskMenus = (newTask) => {
             };
 
             if (taskSet[0].getProject() === projectName) {
-                const taskPosition = taskSet.findIndex(task => newTask.getTitle() === task.getTitle());
+                taskMenu.update(pageName, taskSet);
 
-                if (taskPosition < 0) {
-                    break;
-                };
-
-                const taskMenu = document.querySelector(`.${pageName}.page [data-project-name="${method.toKebabCase(projectName)}"] .tasks`);
-                
-                if (taskMenu.childElementCount === 0) {
-                    const newTaskElement = task.create(newTask);
-                    taskMenu.appendChild(newTaskElement);
-
-                    break;
-                };
-
-                if (taskMenu.firstElementChild.classList.contains("empty")) {
-                    taskMenu.firstElementChild.remove();
-
-                    const newTaskElement = task.create(newTask);
-                    taskMenu.appendChild(newTaskElement);
-
-                    break;
-                };
-
-                const taskElements = taskMenu.querySelectorAll(".task");
-                const refTaskElement = taskElements[taskPosition - 1];
-                const newTaskElement = task.create(newTask);
-
-                if (refTaskElement.classList.contains("expanded")) {
-                    const taskDetailsElement = refTaskElement.nextElementSibling;
-                    taskDetailsElement.insertAdjacentElement("afterend", newTaskElement);
-                } else {
-                    refTaskElement.insertAdjacentElement("afterend", newTaskElement);
-                };
-                
                 break;
             };
         };
