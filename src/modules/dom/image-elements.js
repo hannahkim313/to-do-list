@@ -1,6 +1,5 @@
 import * as element from "./html-elements";
 import appLogoImg from "../../img/logo.svg";
-// import checkedHoverImg from "../../img/checked-hover.svg";
 import checkedImg from "../../img/checked.svg";
 import chevronDownImg from "../../img/chevron-down.svg";
 import githubImg from "../../img/github.svg";
@@ -18,7 +17,6 @@ import projectsImg from "../../img/folder.svg";
 import todayImg from "../../img/today.svg";
 import trashCanImg from "../../img/trash-can.svg";
 import uncheckedImg from "../../img/unchecked.svg";
-// import uncheckedHoverImg from "../../img/unchecked-hover.svg";
 import upcomingImg from "../../img/upcoming.svg";
 
 const createAppLogo = () => {
@@ -30,15 +28,6 @@ const createAppLogo = () => {
     
     return element.createImg(imgAttributes);
 };
-
-// const createCheckedHoverIcon = () => {
-//     const imgAttributes = {
-//         src: checkedHoverImg,
-//         alt: "Checked box hovered",
-//     };
-
-//     return element.createImg(imgAttributes);
-// };
 
 const createCheckedIcon = () => {
     const imgAttributes = {
@@ -189,15 +178,6 @@ const createUncheckedIcon = () => {
     return img;
 };
 
-// const createUncheckedHoverIcon = () => {
-//     const imgAttributes = {
-//         src: uncheckedHoverImg,
-//         alt: "Unchecked box hovered",
-//     };
-
-//     return element.createImg(imgAttributes);
-// };
-
 const createUpcomingIcon = () => {
     const imgAttributes = {
         src: upcomingImg,
@@ -210,7 +190,6 @@ const createUpcomingIcon = () => {
 export {
     createAppLogo,
     createCheckedIcon,
-    // createCheckedHoverIcon,
     createCollapsibleIcon,
     createHighPriorityIcon,
     createHomeIcon,
@@ -226,6 +205,5 @@ export {
     createTodayIcon,
     createTrashCanIcon,
     createUncheckedIcon,
-    // createUncheckedHoverIcon,
     createUpcomingIcon,
 };
