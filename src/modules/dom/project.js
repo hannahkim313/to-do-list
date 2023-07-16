@@ -102,13 +102,28 @@ const _createProjectOptions = () => {
         return btn;
     };
     
-    const createMoreOptionsBtn = () => {
+    const createEditBtn = () => {
         const btnAttributes = {
             type: "button",
+            class: "edit-project-btn"
         };
         const btn = element.createButton(btnAttributes);
         const elements = [
-            image.createMoreOptionsIcon(),
+            image.createPencilIcon(),
+        ];
+        method.appendChildren(btn, elements);
+    
+        return btn;
+    };
+
+    const createDeleteBtn = () => {
+        const btnAttributes = {
+            type: "button",
+            class: "delete-project-btn"
+        };
+        const btn = element.createButton(btnAttributes);
+        const elements = [
+            image.createTrashCanIcon(),
         ];
         method.appendChildren(btn, elements);
     
@@ -122,7 +137,8 @@ const _createProjectOptions = () => {
     const elements = [
         createDropdownWrapper(),
         createAddTaskBtn(),
-        createMoreOptionsBtn(),
+        createEditBtn(),
+        createDeleteBtn(),
     ];
     method.appendChildren(options, elements);
 
