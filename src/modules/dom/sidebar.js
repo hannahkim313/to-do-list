@@ -226,6 +226,8 @@ const updateSubsectionName = (newName) => {
         if (subsectionName.textContent === currentProjectName) {
             subsectionName.textContent = newName;
 
+            subsectionName.closest("button").dataset.pageName = method.toKebabCase(newName.toLowerCase());
+
             break;
         };
     };

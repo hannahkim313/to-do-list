@@ -65,24 +65,29 @@ const _clearModal = (modal) => {
 };
 
 const _submit = (modal) => {
-    const currentProjectName = document.querySelector(".options .active").closest("article").querySelector("h3").textContent;
-    const newProjectName = modal.querySelector("#new-project-name").value;
+    const currentProjectName = document.querySelector(".options .active").closest("article").querySelector("h3").textContent.toLowerCase();
+    const newProjectName = modal.querySelector("#new-project-name").value.toLowerCase();
 
     sidebar.updateSubsectionName(method.capitalize(newProjectName));
 
-    const project = library.get(method.toKebabCase(currentProjectName.toLowerCase()));
-    project.setName(method.toKebabCase(newProjectName.toLowerCase()));
+    const project = library.get(method.toKebabCase(currentProjectName));
+    project.setName(method.undoKebabCase(newProjectName));
+
+    const projectPage = document.querySelector(`.page[data-page-name="${method.toKebabCase(currentProjectName)}"]`);
+    projectPage.dataset.pageName = method.toKebabCase(newProjectName);
 
     const tasks = project.getTasks();
     for (const task of tasks) {
-        task.setProject(method.toKebabCase(newProjectName.toLowerCase()));
+        task.setProject(method.undoKebabCase(newProjectName));
     };
 
     const projectMenus = document.querySelectorAll(".project");
     for (const menu of projectMenus) {
+        menu.dataset.projectName = method.toKebabCase(newProjectName);
+
         const projectElement = menu.querySelector("h3");
 
-        if (projectElement.textContent === currentProjectName) {
+        if (projectElement.textContent === method.capitalize(currentProjectName)) {
             projectElement.textContent = method.capitalize(newProjectName);
         };
     };
