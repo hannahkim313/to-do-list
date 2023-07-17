@@ -1,6 +1,8 @@
 import * as addProjectModal from "./events/add-project-modal-events";
 import * as addTaskModal from "./events/add-task-modal-events";
+// import * as deleteProjectModal from "./events/delete-project-events";
 import * as deleteTaskModal from "./events/delete-task-modal-events";
+import * as editProjectModal from "./events/edit-project-events";
 import * as editTaskModal from "./events/edit-task-modal-events";
 import * as filter from "./events/filters-events";
 import * as project from "./events/project-events";
@@ -22,6 +24,14 @@ const emitEvents = () => {
 
     const editTaskModalElement = document.querySelector(".edit-task.modal");
     editTaskModalElement.addEventListener("click", e => editTaskModal.emitEvents(e));
+
+    const editProjectModalElement = document.querySelector(".edit-project.modal");
+    editProjectModalElement.addEventListener("click", e => editProjectModal.emitEvents(e));
+    editProjectModalElement.addEventListener("focusin", e => editProjectModal.emitEvents(e));
+    editProjectModalElement.addEventListener("focusout", e => editProjectModal.emitEvents(e));
+
+    // const deleteProjectModalElement = document.querySelector(".delete-project.modal");
+    // deleteProjectModalElement.addEventListener("click", e => deleteProjectModal.emitEvents(e));
 
     const body = document.querySelector("body");
     body.addEventListener("click", e => {

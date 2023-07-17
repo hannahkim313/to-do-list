@@ -218,8 +218,22 @@ const createAlerts = (projectName) => {
     return alerts;
 };
 
+const updateSubsectionName = (newName) => {
+    const currentProjectName = document.querySelector(".options .active").closest("article").querySelector("h3").textContent;
+
+    const subsectionNames = document.querySelectorAll(".subsection p");
+    for (const subsectionName of subsectionNames) {
+        if (subsectionName.textContent === currentProjectName) {
+            subsectionName.textContent = newName;
+
+            break;
+        };
+    };
+};
+
 export {
     create,
     addSubsection,
     createAlerts,
+    updateSubsectionName,
 };
