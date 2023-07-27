@@ -24,7 +24,9 @@ const _isDuplicate = (input) => {
     return false;
 };
 
-const _isValid = (input) => _isEmpty(input) || _isDuplicate(input) ? false : true;
+const _isCorrectPattern = (input) => /^[a-zA-Z\s]*$/.test(input.value) ? false : true;
+
+const _isValid = (input) => _isEmpty(input) || _isDuplicate(input) || _isCorrectPattern(input) ? false : true;
 
 const _displayInvalid = (input) => {
     const inputWrapper = input.closest(".input-wrapper");
@@ -38,6 +40,10 @@ const _displayInvalid = (input) => {
             if (_isDuplicate(input)) {
                 return element.createPara("This project already exists.");
             };
+
+            if (_isCorrectPattern(input)) {
+                return element.createPara("The name should only include letters.")
+            }
         };
         
         if (inputWrapper.childElementCount === 3) {

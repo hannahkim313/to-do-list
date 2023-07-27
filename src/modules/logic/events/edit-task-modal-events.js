@@ -333,5 +333,3 @@ const emitEvents = (e) => {
 export {
     emitEvents,
 };
-
-// Fix to prevent naming projects with symbols
