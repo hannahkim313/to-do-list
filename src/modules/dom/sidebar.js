@@ -219,7 +219,7 @@ const createAlerts = (projectName) => {
 };
 
 const updateSubsectionName = (newName) => {
-    const currentProjectName = document.querySelector(".options .active").closest("article").querySelector("h3").textContent;
+    const currentProjectName = document.querySelector(".active").closest("article").querySelector("h3").textContent;
 
     const subsectionNames = document.querySelectorAll(".subsection p");
     for (const subsectionName of subsectionNames) {
@@ -233,9 +233,49 @@ const updateSubsectionName = (newName) => {
     };
 };
 
+const _createEmptyMessage = () => {
+    const listIcon = image.createListIcon();
+    
+    const messageAttributes = {
+        class: "empty",
+    };
+    const message = element.createPara("There are no projects.");
+    method.setAttributesOf(message, messageAttributes);
+    
+    const elements = [
+        listIcon,
+        message,
+    ];
+
+    const subsectionAttributes = {
+        class: "subsection",
+    };
+    const subsection = element.createDiv(subsectionAttributes);
+    method.setAttributesOf(subsection, subsectionAttributes);
+    subsection.dataset.pageName = "empty";
+    method.appendChildren(subsection, elements);
+    
+    const li = document.createElement("li");
+    li.appendChild(subsection);
+    
+    const subsections = document.querySelector(".subsections");
+    subsections.appendChild(li);
+};
+
+const deleteSubsection = (projectName) => {
+    const subsections = document.querySelector(".subsections");
+    const subsection = subsections.querySelector(`button[data-page-name="${projectName}"]`).closest("li");
+    subsection.remove();
+
+    if (subsections.childElementCount === 0) {
+        _createEmptyMessage();
+    };
+};
+
 export {
     create,
     addSubsection,
     createAlerts,
     updateSubsectionName,
+    deleteSubsection,
 };

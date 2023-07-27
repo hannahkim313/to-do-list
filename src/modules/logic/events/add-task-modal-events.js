@@ -113,6 +113,11 @@ const _updateAllTaskMenus = (newTask) => {
     
     const pageNames = ["today", "upcoming", "projects"];
     for (const pageName of pageNames) {
+        if (document.querySelector(`.page.${pageName} .empty`)) {
+            const emptyMessage = document.querySelector(`.page.${pageName} .empty`);
+            emptyMessage.remove();
+        };
+        
         const filters = [];
         filters.push(_getFilters(pageName));
 
@@ -321,7 +326,7 @@ const _emitClickEvents = (e) => {
     ) {
         _validateModal(e);
 
-        const btn = document.querySelector(".add-task-btn.active");
+        const btn = document.querySelector(".active");
         _toggleBtnBackgroundColor(btn);
     };
 
@@ -332,7 +337,7 @@ const _emitClickEvents = (e) => {
         const modal = e.target.closest("dialog");
         _cancel(modal);
 
-        const btn = document.querySelector(".add-task-btn.active");
+        const btn = document.querySelector(".active");
         _toggleBtnBackgroundColor(btn);
     };
 };

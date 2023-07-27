@@ -19,6 +19,11 @@ const deleteTask = (taskProperties) => {
     projectTasks.splice(indexToRemove, 1);
 };
 
+const deleteProject = (projectName) => {
+    const index = _library.findIndex(project => project.getName() === projectName);
+    _library.splice(index, 1);
+};
+
 const _getTotalTasks = (projectName) => {
     let count = 0;
     for (const project of _library) {
@@ -286,6 +291,7 @@ export {
     add,
     get,
     deleteTask,
+    deleteProject,
     getTaskStats,
     filterBy,
     updateCheckedStatus,

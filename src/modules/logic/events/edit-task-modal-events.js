@@ -103,7 +103,7 @@ const _changePriorityBtn = (btn) => {
 const _toggleBtnBackgroundColor = (btn) => btn.classList.toggle("active");
 
 const _getProjectName = () => {
-    const taskElement = document.querySelector(".task-options-wrapper .active").closest("li").previousElementSibling;
+    const taskElement = document.querySelector(".active").closest("li").previousElementSibling;
 
     return method.undoKebabCase(taskElement.closest("article").dataset.projectName);
 };
@@ -159,7 +159,7 @@ const _validateInput = (input, e) => {
 };
 
 const _updateLibrary = (values) => {
-    const taskElement = document.querySelector(".task-edit-btn.active").closest("li").previousElementSibling;
+    const taskElement = document.querySelector(".active").closest("li").previousElementSibling;
     const isChecked = taskElement.classList.contains("checked") ? true : false;
     const title = isChecked ? taskElement.querySelector(".left p s").textContent : taskElement.querySelector(".left p").textContent;
 
@@ -312,7 +312,7 @@ const _emitClickEvents = (e) => {
     ) {
         _cancel(modal);
 
-        const btn = document.querySelector(".task-details.expanded .active");
+        const btn = document.querySelector(".active");
         _toggleBtnBackgroundColor(btn);
     };
 };
@@ -333,3 +333,5 @@ const emitEvents = (e) => {
 export {
     emitEvents,
 };
+
+// Fix to prevent naming projects with symbols

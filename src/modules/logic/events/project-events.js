@@ -28,12 +28,12 @@ const _emitClickEvents = (e) => {
         editProject.emitEvents(e);
     };
 
-    // if (
-    //     e.target.closest("button") &&
-    //     e.target.closest("button").classList.contains("delete-project-btn")
-    // ) {
-    //     deleteProject.emitEvents(e);
-    // };
+    if (
+        e.target.closest("button") &&
+        e.target.closest("button").classList.contains("delete-project-btn")
+    ) {
+        deleteProject.emitEvents(e);
+    };
 };
 
 const _events = {

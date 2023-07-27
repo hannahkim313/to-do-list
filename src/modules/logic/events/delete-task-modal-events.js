@@ -145,8 +145,8 @@ const _emitClickEvents = (e) => {
         e.target.closest("button") &&
         e.target.closest("button").classList.contains("confirm-btn")
     ) {
-        const taskElement = document.querySelector(".task-details.expanded .active").closest("li").previousElementSibling;
-        const projectName = document.querySelector(".task-details.expanded .active").closest("article").dataset.projectName;
+        const taskElement = document.querySelector(".active").closest("li").previousElementSibling;
+        const projectName = document.querySelector(".active").closest("article").dataset.projectName;
 
         _deleteTask(taskElement);
         _updateSidebarAlerts(projectName);
@@ -159,7 +159,7 @@ const _emitClickEvents = (e) => {
     ) {
         _cancel(modal);
 
-        const btn = document.querySelector(".task-details.expanded .active");
+        const btn = document.querySelector(".active");
         _toggleBtnBackgroundColor(btn);
     };
 };

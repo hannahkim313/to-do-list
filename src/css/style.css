@@ -678,6 +678,70 @@ button:hover {
 }
 
 /******************************************************************************/
+/* Selectors for the "Delete Project" modal start here.
+/******************************************************************************/
+
+.delete-project.modal {
+    margin: auto;
+    
+    border: none;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px #4d4d4d50, -3px 3px 5px #4d4d4d50;
+
+    top: 0;
+    left: 0;
+}
+
+.delete-project.modal::backdrop {
+    background-color: #4d4d4d50;
+}
+
+.delete-project.modal form {
+    width: 300px;
+    height: 165px;
+    
+    padding: 8px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.delete-project.modal .message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.delete-project.modal .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+}
+
+.delete-project.modal button {
+    padding: 2px 8px;
+
+    background-color: var(--color-neutral-2);
+    border: none;
+    border-radius: 4px;
+
+    transition: all 0.2s ease;
+}
+
+.delete-project.modal button:hover {
+    background-color: var(--color-neutral-3);
+}
+
+.delete-project.modal button:active {
+    background-color: var(--color-neutral-4);
+}
+
+/******************************************************************************/
 /* Selectors for the header start here.
 /******************************************************************************/
 
@@ -764,7 +828,7 @@ header .logo {
     transition: all 0.3s ease;
 }
 
-.subsections button {
+.subsections li > * {
     width: 100%;
 
     padding: 8px 8px 8px 40px;
@@ -792,6 +856,10 @@ header .logo {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.subsection .empty {
+    margin-right: auto;
 }
 
 .subsection img {
@@ -869,7 +937,7 @@ header .logo {
     grid-row: 2 / 3;
 
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto 1fr;
 }
 
 .page h2 {
@@ -1198,7 +1266,7 @@ header .logo {
 
 /* Selectors for empty projects/tasks start here. */
 
-.empty {
+.projects .empty {
     height: 60px;
 
     padding: 16px;

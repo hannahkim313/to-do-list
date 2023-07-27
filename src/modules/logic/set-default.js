@@ -2,7 +2,7 @@ import * as addProjectModal from "../dom/add-project-modal";
 import * as addTaskModal from "../dom/add-task-modal";
 import * as defaultContent from "../dom/default-content";
 import * as deleteTaskModal from "../dom/delete-task-modal";
-// import * as deleteProjectModal from "../dom/delete-project-modal";
+import * as deleteProjectModal from "../dom/delete-project-modal";
 import * as editProjectModal from "../dom/edit-project-modal";
 import * as editTaskModal from "../dom/edit-task-modal";
 import * as footer from "../dom/footer";
@@ -27,7 +27,7 @@ const setDefault = () => {
         editTaskModal.create(),
         deleteTaskModal.create(),
         editProjectModal.create(),
-        // deleteProjectModal.create(),
+        deleteProjectModal.create(),
     ];
     method.appendChildren(body, elements);
 

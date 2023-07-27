@@ -17,7 +17,7 @@ const _isEmpty = (input) => input.value === "" ? true : false;
 
 const _isDuplicate = (input) => {
     const value = input.value.toLowerCase();
-    const projectName = document.querySelector(".options .active").closest("article").querySelector("h3").textContent.toLowerCase();
+    const projectName = document.querySelector(".active").closest("article").querySelector("h3").textContent.toLowerCase();
     
     return value === projectName ? true : false;
 };
@@ -65,12 +65,12 @@ const _clearModal = (modal) => {
 };
 
 const _submit = (modal) => {
-    const currentProjectName = document.querySelector(".options .active").closest("article").querySelector("h3").textContent.toLowerCase();
+    const currentProjectName = document.querySelector(".active").closest("article").querySelector("h3").textContent.toLowerCase();
     const newProjectName = modal.querySelector("#new-project-name").value.toLowerCase();
 
     sidebar.updateSubsectionName(method.capitalize(newProjectName));
 
-    const project = library.get(method.toKebabCase(currentProjectName));
+    const project = library.get(currentProjectName);
     project.setName(method.undoKebabCase(newProjectName));
 
     const projectPage = document.querySelector(`.page[data-page-name="${method.toKebabCase(currentProjectName)}"]`);
@@ -83,17 +83,16 @@ const _submit = (modal) => {
 
     const projectMenus = document.querySelectorAll(".project");
     for (const menu of projectMenus) {
-        menu.dataset.projectName = method.toKebabCase(newProjectName);
-
         const projectElement = menu.querySelector("h3");
-
+        
         if (projectElement.textContent === method.capitalize(currentProjectName)) {
             projectElement.textContent = method.capitalize(newProjectName);
+            menu.dataset.projectName = method.toKebabCase(newProjectName);
         };
     };
 
     _clearModal(modal);
-    _toggleBtnBackgroundColor(document.querySelector(".options .active"));
+    _toggleBtnBackgroundColor(document.querySelector(".active"));
 };
 
 const _validateModal = (e) => {
@@ -139,7 +138,7 @@ const _emitClickEvents = (e) => {
 
         _clearModal(modal);
 
-        const btn = document.querySelector(".options .active");
+        const btn = document.querySelector(".active");
         _toggleBtnBackgroundColor(btn);
     };
 };
