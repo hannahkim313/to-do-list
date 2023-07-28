@@ -18,7 +18,7 @@ const _createSubsection = (name) => {
         ];
 
         if (name === "empty") {
-            elements.push(element.createPara("Nothing has been added"));
+            elements.push(element.createPara("There are no projects."));
         } else {
             elements.push(element.createPara(name));
         };

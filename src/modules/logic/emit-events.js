@@ -1,5 +1,6 @@
 import * as addProjectModal from "./events/add-project-modal-events";
 import * as addTaskModal from "./events/add-task-modal-events";
+import * as defaultContentModal from "./events/default-content-modal-events";
 import * as deleteProjectModal from "./events/delete-project-events";
 import * as deleteTaskModal from "./events/delete-task-modal-events";
 import * as editProjectModal from "./events/edit-project-events";
@@ -69,6 +70,13 @@ const emitEvents = () => {
         ) {
             project.emitEvents(e);
         };
+
+        if (
+            e.target.closest("dialog") &&
+            e.target.closest("dialog").classList.contains("default-content")
+        ) {
+            defaultContentModal.emitEvents(e);
+        }
     });
 };
 

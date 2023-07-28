@@ -1,6 +1,6 @@
 import * as addProjectModal from "../dom/add-project-modal";
 import * as addTaskModal from "../dom/add-task-modal";
-import * as defaultContent from "../dom/default-content";
+import * as contentModal from "../dom/default-content-modal";
 import * as deleteTaskModal from "../dom/delete-task-modal";
 import * as deleteProjectModal from "../dom/delete-project-modal";
 import * as editProjectModal from "../dom/edit-project-modal";
@@ -28,10 +28,12 @@ const setDefault = () => {
         deleteTaskModal.create(),
         editProjectModal.create(),
         deleteProjectModal.create(),
+        contentModal.create(),
     ];
     method.appendChildren(body, elements);
 
-    defaultContent.create();
+    const defaultContentModal = document.querySelector(".default-content.modal");
+    defaultContentModal.showModal();
 };
 
 export {

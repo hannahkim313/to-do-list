@@ -742,6 +742,67 @@ button:hover {
 }
 
 /******************************************************************************/
+/* Selectors for the "Default Content" modal start here.
+/******************************************************************************/
+
+.default-content.modal {
+    margin: auto;
+    
+    border: none;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px #4d4d4d50, -3px 3px 5px #4d4d4d50;
+
+    top: 0;
+    left: 0;
+}
+
+.default-content.modal::backdrop {
+    background-color: #4d4d4d50;
+}
+
+.default-content.modal form {
+    width: 300px;
+    height: 165px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.default-content.modal .message {
+    text-align: center;
+
+    padding: 8px 16px;
+}
+
+.default-content.modal .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+}
+
+.default-content.modal button {
+    padding: 2px 8px;
+
+    background-color: var(--color-neutral-2);
+    border: none;
+    border-radius: 4px;
+
+    transition: all 0.2s ease;
+}
+
+.default-content.modal button:hover {
+    background-color: var(--color-neutral-3);
+}
+
+.default-content.modal button:active {
+    background-color: var(--color-neutral-4);
+}
+
+/******************************************************************************/
 /* Selectors for the header start here.
 /******************************************************************************/
 
@@ -844,12 +905,16 @@ header .logo {
     transition: all 0.2s ease;
 }
 
-.subsections button:hover {
+.subsections button:not([data-page-name="empty"]):hover {
     background-color: var(--color-neutral-3);
 }
 
-.subsections button:active {
+.subsections button:not([data-page-name="empty"]):active {
     background-color: var(--color-neutral-4);
+}
+
+.subsections button[data-page-name="empty"]:hover {
+    cursor: default;
 }
 
 .subsection {
