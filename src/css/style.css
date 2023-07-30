@@ -847,7 +847,7 @@ header .logo {
 
 /* Selectors for the sidebar sections start here. */
 
-.sidebar-sections > li > img {
+.sidebar-sections img {
     width: 1.5rem;
 }
 
@@ -873,6 +873,10 @@ header .logo {
 
 .sidebar-sections > li > button:active {
     background-color: var(--color-neutral-4);
+}
+
+.sidebar-sections li:has(.projects) {
+    margin-bottom: 8px;
 }
 
 /* Selectors for the individual projects of the sidebar start here. */

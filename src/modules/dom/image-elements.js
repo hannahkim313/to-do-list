@@ -14,6 +14,8 @@ import pencilImg from "../../img/pencil.svg";
 import plusImg from "../../img/plus.svg";
 import plusInvertedImg from "../../img/plus-inverted.svg";
 import projectsImg from "../../img/folder.svg";
+import resetImg from "../../img/reset.svg";
+import settingsImg from "../../img/settings.svg";
 import todayImg from "../../img/today.svg";
 import trashCanImg from "../../img/trash-can.svg";
 import uncheckedImg from "../../img/unchecked.svg";
@@ -149,6 +151,24 @@ const createProjectsIcon = () => {
     return element.createImg(imgAttributes);
 };
 
+const createResetIcon = () => {
+    const imgAttributes = {
+        src: resetImg,
+        alt: "Reset icon",
+    };
+    
+    return element.createImg(imgAttributes);
+};
+
+const createSettingsIcon = () => {
+    const imgAttributes = {
+        src: settingsImg,
+        alt: "Gear icon",
+    };
+    
+    return element.createImg(imgAttributes);
+};
+
 const createTodayIcon = () => {
     const imgAttributes = {
         src: todayImg,
@@ -202,6 +222,8 @@ export {
     createPencilIcon,
     createPlusIcon,
     createProjectsIcon,
+    createResetIcon,
+    createSettingsIcon,
     createTodayIcon,
     createTrashCanIcon,
     createUncheckedIcon,

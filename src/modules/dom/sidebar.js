@@ -157,6 +157,10 @@ const create = () => {
             icon: image.createProjectsIcon(),
             collapsible: true,
         },
+        {
+            name: "settings",
+            icon: image.createSettingsIcon(),
+        },
     ];
     const elements = [
         createMenu(mainSections),
