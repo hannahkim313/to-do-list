@@ -1018,7 +1018,7 @@ header .logo {
 /* Selectors for the project filters start here. */
 
 .filters {
-    padding: 16px 16px 16px 32px;
+    padding: 16px 16px 0 32px;
     
     grid-row: 2 / 3;
 
