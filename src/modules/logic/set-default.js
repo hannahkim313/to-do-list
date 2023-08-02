@@ -9,6 +9,7 @@ import * as footer from "../dom/footer";
 import * as header from "../dom/header";
 import * as homePage from "../dom/home-page";
 import * as method from "../helper-functions";
+import * as settingsPage from "../dom/settings-page";
 import * as sidebar from "../dom/sidebar";
 import * as todayPage from "../dom/today-page";
 import * as upcomingPage from "../dom/upcoming-page";
@@ -21,6 +22,7 @@ const setDefault = () => {
         homePage.create(),
         todayPage.create(),
         upcomingPage.create(),
+        settingsPage.create(),
         footer.create(),
         addProjectModal.create(),
         addTaskModal.create(),
