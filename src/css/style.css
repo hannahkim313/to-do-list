@@ -716,6 +716,10 @@ button:hover {
     gap: 8px;
 }
 
+.delete-project.modal .message p {
+    text-align: center;
+}
+
 .delete-project.modal .buttons {
     display: flex;
     justify-content: center;
@@ -799,6 +803,74 @@ button:hover {
 }
 
 .default-content.modal button:active {
+    background-color: var(--color-neutral-4);
+}
+
+/******************************************************************************/
+/* Selectors for the "Reset Program" modal start here.
+/******************************************************************************/
+
+.reset-program.modal {
+    margin: auto;
+    
+    border: none;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px #4d4d4d50, -3px 3px 5px #4d4d4d50;
+
+    top: 0;
+    left: 0;
+}
+
+.reset-program.modal::backdrop {
+    background-color: #4d4d4d50;
+}
+
+.reset-program.modal form {
+    width: 300px;
+    height: 165px;
+    
+    padding: 8px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.reset-program.modal .message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.reset-program.modal .message p {
+    text-align: center;
+}
+
+.reset-program.modal .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+}
+
+.reset-program.modal button {
+    padding: 2px 8px;
+
+    background-color: var(--color-neutral-2);
+    border: none;
+    border-radius: 4px;
+
+    transition: all 0.2s ease;
+}
+
+.reset-program.modal button:hover {
+    background-color: var(--color-neutral-3);
+}
+
+.reset-program.modal button:active {
     background-color: var(--color-neutral-4);
 }
 
@@ -1515,6 +1587,10 @@ header .logo {
 
 .settings.page img {
     width: 1.3rem;
+}
+
+.settings.page .active {
+    background-color: var(--color-neutral-3) !important;
 }
 
 .settings.page .content-wrapper {

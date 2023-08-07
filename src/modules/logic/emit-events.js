@@ -7,6 +7,8 @@ import * as editProjectModal from "./events/edit-project-events";
 import * as editTaskModal from "./events/edit-task-modal-events";
 import * as filter from "./events/filters-events";
 import * as project from "./events/project-events";
+import * as resetProgramModal from "./events/reset-program-modal-events";
+import * as settings from "./events/settings-events";
 import * as sidebar from "./events/sidebar-events";
 import * as task from "./events/task-events";
 import * as taskDetails from "./events/task-details-events";
@@ -76,7 +78,21 @@ const emitEvents = () => {
             e.target.closest("dialog").classList.contains("default-content")
         ) {
             defaultContentModal.emitEvents(e);
-        }
+        };
+
+        if (
+            e.target.closest("dialog") &&
+            e.target.closest("dialog").classList.contains("reset-program")
+        ) {
+            resetProgramModal.emitEvents(e);
+        };
+
+        if (
+            e.target.closest("main") &&
+            e.target.closest("main").classList.contains("settings")
+        ) {
+            settings.emitEvents(e);
+        };
     });
 };
 

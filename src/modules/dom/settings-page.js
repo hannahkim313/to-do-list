@@ -9,6 +9,7 @@ const _createGeneral = () => {
     const createResetOption = () => {
         const btnAttributes = {
             type: "button",
+            class: "reset",
         };
         const btn = element.createButton(btnAttributes);
         method.setAttributesOf(btn, btnAttributes);

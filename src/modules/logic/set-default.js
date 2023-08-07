@@ -9,6 +9,7 @@ import * as footer from "../dom/footer";
 import * as header from "../dom/header";
 import * as homePage from "../dom/home-page";
 import * as method from "../helper-functions";
+import * as resetProgramModal from "../dom/reset-program-modal";
 import * as settingsPage from "../dom/settings-page";
 import * as sidebar from "../dom/sidebar";
 import * as todayPage from "../dom/today-page";
@@ -31,6 +32,7 @@ const setDefault = () => {
         editProjectModal.create(),
         deleteProjectModal.create(),
         contentModal.create(),
+        resetProgramModal.create(),
     ];
     method.appendChildren(body, elements);
 
