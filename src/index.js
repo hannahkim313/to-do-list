@@ -4,7 +4,7 @@ import { setStyles } from "./modules/logic/set-styles";
 import "./css/style.css";
 import "./css/reset.css";
 
-if (localStorage.length === 0) {
+if (localStorage.length < 2) {
     setDefault();
 } else {
     localStorage.removeItem("debug");
