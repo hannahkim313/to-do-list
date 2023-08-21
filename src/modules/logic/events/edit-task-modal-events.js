@@ -3,6 +3,7 @@ import * as element from "../../dom/html-elements";
 import * as image from "../../dom/image-elements";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
+import * as storage from "../functions/storage-functions";
 import * as taskMenu from "../../dom/task-menu";
 
 const _getTaskValues = (btn) => {
@@ -258,6 +259,8 @@ const _submit = (modal) => {
 
     _updateLibrary(values);
     _updateAllTaskMenus(values);
+
+    storage.populate();
 };
 
 const _validateModal = (e) => {

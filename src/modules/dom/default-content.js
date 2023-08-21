@@ -247,7 +247,6 @@ const _createFilteredContent = (sections) => {
 const _createProjectsContent = () => {
     const filteredTaskSets = library.filterBy(["all"]);
     for (const taskSet of filteredTaskSets) {
-
         const projectName = taskSet[0].getProject();
         const pageElement = projectPage.create(projectName);
         page.addToDOM(pageElement);

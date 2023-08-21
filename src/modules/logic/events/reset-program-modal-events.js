@@ -2,7 +2,10 @@ const _displayModal = (modal) => modal.showModal();
 
 const _toggleBtnBackgroundColor = (btn) => btn.classList.toggle("active");
 
-const _resetProgram = () => location.reload();
+const _resetProgram = () => {
+    localStorage.clear();
+    location.reload();
+};
 
 const _cancel = (modal) => modal.close();
 

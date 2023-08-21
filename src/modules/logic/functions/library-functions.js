@@ -3,6 +3,29 @@ import * as method from "../../helper-functions";
 
 const _library = [];
 
+const getContent = () => {
+    const content = [];
+
+    for (const project of _library) {
+        content.push(project);
+    };
+
+    return content;
+};
+
+const checkIfOverdue = () => {
+    for (const project of _library) {
+        const tasks = project.getTasks();
+        for (const task of tasks) {
+            const dueDate = task.getDueDate();
+            
+            if (date.isBeforeToday(dueDate)) {
+                task.setOverdue(true);
+            };
+        };
+    };
+};
+
 const add = (project) => _library.push(project);
 
 const get = (projectName) => {
@@ -288,6 +311,8 @@ const updateCheckedStatus = (taskTitle) => {
 };
 
 export {
+    getContent,
+    checkIfOverdue,
     add,
     get,
     deleteTask,

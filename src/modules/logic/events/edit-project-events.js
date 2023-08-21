@@ -2,6 +2,7 @@ import * as element from "../../dom/html-elements";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
 import * as sidebar from "../../dom/sidebar";
+import * as storage from "../functions/storage-functions";
 
 const _populateModal = (modal, e) => {
     const input = modal.querySelector("#new-project-name");
@@ -96,6 +97,9 @@ const _submit = (modal) => {
             menu.dataset.projectName = method.toKebabCase(newProjectName);
         };
     };
+
+    storage.removeItems(currentProjectName);
+    storage.populate();
 
     _clearModal(modal);
     _toggleBtnBackgroundColor(document.querySelector(".active"));

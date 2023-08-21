@@ -1,5 +1,6 @@
 import * as defaultContent from "../../dom/default-content";
 import * as page from "../../dom/page";
+import * as storage from "../functions/storage-functions";
 
 const _createEmptyMessages = () => {
     const projectMenus = document.querySelectorAll(".page .projects");
@@ -15,6 +16,7 @@ const _emitClickEvents = (e) => {
         e.target.closest("button").classList.contains("yes-btn")
     ) {
         defaultContent.create();
+        storage.populate();
     };
 
     if (
@@ -22,6 +24,7 @@ const _emitClickEvents = (e) => {
         e.target.closest("button").classList.contains("no-btn")
     ) {
         _createEmptyMessages();
+        storage.populate();
 
         const modal = document.querySelector(".default-content.modal");
         modal.close();

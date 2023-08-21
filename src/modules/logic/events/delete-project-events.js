@@ -3,6 +3,7 @@ import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
 import * as page from "../../dom/page";
 import * as sidebar from "../../dom/sidebar";
+import * as storage from "../functions/storage-functions";
 
 const _displayModal = (modal) => modal.showModal();
 
@@ -59,6 +60,9 @@ const _emitClickEvents = (e) => {
         _deleteFromLibrary(projectName);
         _deleteProjectMenus(projectName);
         _deleteProjectPage(projectName, pageName);
+
+        storage.removeItems(projectName);
+        storage.populate();
 
         homePage.updateOverviewTasks();
     };

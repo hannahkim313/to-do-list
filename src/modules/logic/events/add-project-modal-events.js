@@ -1,6 +1,7 @@
 import * as element from "../../dom/html-elements";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
+import * as storage from "../functions/storage-functions";
 import * as page from "../../dom/page";
 import { Project } from "../factories/project-factory";
 import * as project from "../../dom/project";
@@ -97,6 +98,8 @@ const _submit = (modal) => {
     projectMenu.addTo(projectName, projectElement);
 
     taskMenu.addTo(projectName);
+
+    storage.populate();
 
     page.display(newProjectPage);
 

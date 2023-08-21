@@ -13,7 +13,7 @@ const create = () => {
 };
 
 const addTo = (pageName, tasks) => {
-    if (!tasks) {
+    if (!tasks || tasks.length === 0) {
         const message = page.createEmptyMessage("This project does not have any tasks.", true);
         const taskMenu = document.querySelector("footer").previousElementSibling.querySelector(".tasks");
         taskMenu.appendChild(message);

@@ -2,6 +2,25 @@ import * as dateAPI from "date-fns";
 
 const _date = new Date();
 
+const _getMonthIndex = (monthName) => {
+    const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ];
+    
+    return months.findIndex(month => month === monthName);
+};
+
 const getDate = () => dateAPI.format(_date, "d");
 
 const getDay = () => dateAPI.format(_date, "EEE");
@@ -85,26 +104,7 @@ const stringToDate = (date) => {
     chars.splice(commaIndex, 1)
     date = chars.join("").split(" ");
     
-    const getMonthIndex = () => {
-        const months = [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-        ];
-        
-        return months.findIndex(month => month === date[0]);
-    };
-    
-    const month = getMonthIndex();
+    const month = _getMonthIndex(date[0]);
     const day = date[1];
     const year = date[2];
 
@@ -149,6 +149,17 @@ const isToday = (date) => {
     return dateAPI.isToday(date);
 };
 
+const isBeforeToday = (date) => {
+    date = stringToDate(date);
+
+    const year = getYear();
+    const month = _getMonthIndex(getMonth());
+    const dateNum = getDate();
+    const today = new Date(year, month, dateNum);
+    
+    return dateAPI.isBefore(date, today);
+};
+
 export {
     getDate,
     getDay,
@@ -166,4 +177,5 @@ export {
     isThisWeek,
     isThisMonth,
     isToday,
+    isBeforeToday,
 };

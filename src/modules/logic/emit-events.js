@@ -6,6 +6,7 @@ import * as deleteTaskModal from "./events/delete-task-modal-events";
 import * as editProjectModal from "./events/edit-project-events";
 import * as editTaskModal from "./events/edit-task-modal-events";
 import * as filter from "./events/filters-events";
+import * as homePage from "./events/home-page-events";
 import * as project from "./events/project-events";
 import * as resetProgramModal from "./events/reset-program-modal-events";
 import * as settings from "./events/settings-events";
@@ -92,6 +93,15 @@ const emitEvents = () => {
             e.target.closest("main").classList.contains("settings")
         ) {
             settings.emitEvents(e);
+        };
+    });
+
+    body.addEventListener("change", e => {
+        if (
+            e.target.closest("article") &&
+            e.target.closest("article").classList.contains("notes")
+        ) {
+            homePage.emitEvents(e);
         };
     });
 };

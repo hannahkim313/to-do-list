@@ -149,7 +149,6 @@ const create = () => {
     return homePage;
 };
 
-
 const updateOverviewTasks = () => {
     const numCompleted = library.getTaskStats(null, "completed");
     const currentCompleted = document.querySelector(".overview-tasks .completed h4");

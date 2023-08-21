@@ -3,6 +3,7 @@ import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
 import * as page from "../../dom/page";
 import * as sidebar from "../../dom/sidebar";
+import * as storage from "../functions/storage-functions";
 
 const _displayModal = (modal) => modal.showModal();
 
@@ -115,6 +116,9 @@ const _deleteTask = (taskElement) => {
         title: title,
     };
     library.deleteTask(taskProperties);
+
+    storage.removeItems(projectName);
+    storage.populate();
 };
 
 const _updateSidebarAlerts = (projectName) => {

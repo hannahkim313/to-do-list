@@ -1410,7 +1410,7 @@ header .logo {
 .projects .empty {
     height: 61px;
 
-    margin: 16px;
+    margin: 32px 16px 0 16px;
     padding: 16px;
 
     background-color: var(--color-neutral-1);
@@ -1419,6 +1419,10 @@ header .logo {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.projects .empty.nested {
+    margin: 0;
 }
 
 /******************************************************************************/

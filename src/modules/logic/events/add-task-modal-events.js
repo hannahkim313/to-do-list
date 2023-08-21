@@ -7,6 +7,7 @@ import * as method from "../../helper-functions";
 import * as project from "../../dom/project";
 import * as projectMenu from "../../dom/project-menu";
 import * as sidebar from "../../dom/sidebar";
+import * as storage from "../functions/storage-functions";
 import { Task } from "../factories/task-factory";
 import * as taskMenu from "../../dom/task-menu";
 
@@ -202,6 +203,8 @@ const _submit = (modal) => {
 
     const project = library.get(projectName);
     project.addTask(task);
+
+    storage.populate();
 
     _updateAllTaskMenus(task);
     _updateSidebarAlerts(projectName);

@@ -147,7 +147,7 @@ const _createProjectOptions = () => {
 
 const create = (tasks) => {
     const getProjectName = () => {
-        if (tasks) {
+        if (tasks && tasks.length > 0) {
             return tasks[0].getProject();
         } else {
             return document.querySelector("footer").previousElementSibling.dataset.pageName;
