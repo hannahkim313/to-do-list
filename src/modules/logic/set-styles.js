@@ -107,7 +107,7 @@ const _getFilters = (pageName) => {
     };
 
     if (pageName === "upcoming") {
-        return "all";
+        return "upcoming";
     };
 
     if (pageName === "projects") {
