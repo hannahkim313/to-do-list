@@ -115,7 +115,6 @@ const _getFilters = (pageName) => {
     }
 };
 
-// CREATE EMPTY MESSAGE WHEN THERE ARE NO TASKS THE NEXT TIME USER OPENS PROGRAM
 const _populateFilteredPages = () => {
     const pages = ["today", "upcoming"];
     for (const pageName of pages) {
