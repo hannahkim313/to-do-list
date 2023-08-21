@@ -1,8 +1,10 @@
+import * as element from "../../dom/html-elements";
 import * as homePage from "../../dom/home-page";
 import * as image from "../../dom/image-elements";
 import * as library from "../functions/library-functions";
 import * as method from "../../helper-functions";
 import * as sidebar from "../../dom/sidebar";
+import * as storage from "../functions/storage-functions";
 import * as taskDetails from "../../dom/task-details";
 
 const _updateTaskCount = (projectName) => {
@@ -36,11 +38,28 @@ const _toggleStrikethrough = (para) => {
     };
 };
 
+const _toggleOverdue = (task) => {
+    if (task.querySelector(".overdue")) {
+        const overdueElement = task.querySelector(".overdue");
+        overdueElement.remove();
+    } else {
+        const overdue = element.createPara("Overdue");
+        const overdueAttributes = {
+            class: "overdue",
+        };
+        method.setAttributesOf(overdue, overdueAttributes);
+
+        const rightInfo = task.querySelector(".right");
+        rightInfo.insertAdjacentElement("afterbegin", overdue);
+    };
+};
+
 const _toggleOpacity = (task) => task.classList.toggle("checked");
 
 const _toggleVisuals = (task) => {
     _toggleCheckbox(task.querySelector(".left img"));
     _toggleStrikethrough(task.querySelector(".left p"));
+    _toggleOverdue(task);
     _toggleOpacity(task);
 };
 
@@ -93,6 +112,7 @@ const _emitClickEvents = (e) => {
         };
         
         library.updateCheckedStatus(taskTitle);
+        storage.populate();
         _updateTaskCount(taskProject);
         _toggleTask(data);
     };

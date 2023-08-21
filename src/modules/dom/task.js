@@ -55,6 +55,7 @@ const create = (data) => {
     };
     
     const createRightInfo = () => {
+        const isChecked = data.getChecked();
         const priority = data.getPriority();
         const dueDate = data.getDueDate();
         const isOverdue = data.getOverdue();
@@ -107,7 +108,7 @@ const create = (data) => {
             createCollapsibleTaskBtn(),
         ];
 
-        if (isOverdue) {
+        if (isOverdue && !isChecked) {
             elements.unshift(createOverdue());
         };
 
