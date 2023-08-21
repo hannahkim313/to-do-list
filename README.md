@@ -1,4 +1,5 @@
 # To-Do Manager
+https://hannahkim313.github.io/to-do-manager/
 
 ## Project Summary
 This project exercise, created by The Odin Project, is a to-do list manager that allows a user to create and manage both projects and individual tasks. The application also takes advantage of the Web Storage API by using local storage to save and store data. In doing so, the user can access all data created in their last session when reopening the application on the same computer.
