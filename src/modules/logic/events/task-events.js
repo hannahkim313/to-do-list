@@ -1,3 +1,4 @@
+import * as date from "../functions/date-functions";
 import * as element from "../../dom/html-elements";
 import * as homePage from "../../dom/home-page";
 import * as image from "../../dom/image-elements";
@@ -43,14 +44,18 @@ const _toggleOverdue = (task) => {
         const overdueElement = task.querySelector(".overdue");
         overdueElement.remove();
     } else {
-        const overdue = element.createPara("Overdue");
-        const overdueAttributes = {
-            class: "overdue",
-        };
-        method.setAttributesOf(overdue, overdueAttributes);
+        const dueDate = task.querySelector(".right p").textContent;
 
-        const rightInfo = task.querySelector(".right");
-        rightInfo.insertAdjacentElement("afterbegin", overdue);
+        if (date.isBeforeToday(dueDate) && !task.querySelector(".overdue")) {
+            const overdue = element.createPara("Overdue");
+            const overdueAttributes = {
+                class: "overdue",
+            };
+            method.setAttributesOf(overdue, overdueAttributes);
+        
+            const rightInfo = task.querySelector(".right");
+            rightInfo.insertAdjacentElement("afterbegin", overdue);
+        };
     };
 };
 
